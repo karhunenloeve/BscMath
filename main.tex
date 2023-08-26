@@ -1,0 +1,96 @@
+\documentclass[b5paper, 11pt, twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+twoside,
+bindingoffset=7mm,
+verbose,
+marginratio={5:7,5:7},
+textwidth=117.3mm,
+height=179.6mm,
+foot=2cm
+}
+\usepackage[protrusion=true, expansion=true]{microtype}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{tocloft}
+\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelsep=colon, labelformat=simple, labelfont=sc}
+\usepackage[style=authoryear,sorting=none]{biblatex}
+\addbibresource{references.bib}
+\graphicspath{{images/}}
+
+\title{Algebraic and Topological Persistence}
+\author{Luciano Melodia}
+\date{\today}
+
+\begin{document}
+
+\input{titlepage}
+\input{abstract}
+
+\chapter*{Dedication}
+
+To mum and dad
+
+\chapter*{Declaration}
+
+I declare that..
+
+\chapter*{Acknowledgements}
+
+I want to thank...
+
+Supported by grant numbers...
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+\listoftables
+
+\singlespacing
+\chapter{Introduction}
+\pagenumbering{arabic} 
+\input{chapters/introduction}
+
+\chapter{Chapter Two Title}
+\input{chapters/chapter02}
+
+\chapter{Chapter Three Title}
+\input{chapters/chapter03}
+
+\chapter{Chapter Four Title}
+\input{chapters/chapter04}
+
+\chapter{Conclusion}
+\input{chapters/conclusion}
+
+\appendix
+\chapter{Appendix Title}
+\input{chapters/appendix}
+
+\singlespacing
+\printbibliography
+\end{document}
