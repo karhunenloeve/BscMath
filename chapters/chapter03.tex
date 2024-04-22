@@ -1,38 +1,55 @@
-\section{Section Title}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\section{Persistence Modules}
+\begin{definition}{(Persistence complex)}
+\label{persistencecomplex}
+A \textbf{persistence complex} is an indexed family of chain complexes $\{C_\bullet^i, \partial)\}_{i \in I}$ along with chain maps $f^i: C_\bullet^i \rightarrow C_\bullet^{i+1}$.
+\end{definition}
 
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graph1}
-        \caption{$y=x$}
-        \label{fig:y equals x}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graph2}
-        \caption{$y=3sinx$}
-        \label{fig:three sin x}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graph3}
-        \caption{$y=5/x$}
-        \label{fig:five over x}
-    \end{subfigure}
-    \caption{Three simple graphs}
-    \label{fig:three graphs}
+Every finite filtration $\emptyset \subset K^0 \subset K^1 \subset \cdots \subset K^m$ generates a finite persistence complex. From each of the simplicial complexes $K^i$ one can generate a chain complex $C_\bullet^i$ according to \ref{chaincomplex}. The chain map $f^i C_\bullet^i \rightarrow C_\bullet^{i+1}$ is an inclusion, since every $n$-simplex in $K^i$ is also contained in $K^{i+1}$ and the inclusion is naturally transferred to $n$-chains, since these are merely linear combinations of $n$-simplices.
+
+\begin{figure}
+\centering
+\begin{tikzcd}
+                                  & \vdots \arrow[d, "\partial_{n+2}"]                                   & \vdots \arrow[d, "\partial_{n+2}"]                               & \vdots \arrow[d, "\partial_{n+2}"]                                            & \vdots \arrow[d, "\partial_{n+2}"]                                   &        \\
+\cdots \arrow[r, "f^{i-2}_{n+1}"] & C_{n+1}^{i-1} \arrow[r, "f^{i-1}_{n+1}"] \arrow[d, "\partial_{n+1}"] & C_{n+1}^{i} \arrow[r, "f^{i}_{n+1}"] \arrow[d, "\partial_{n+1}"] & C_{n+1}^{i+1} \arrow[r, "f^{i+1}_{n+1}", no head] \arrow[d, "\partial_{n+1}"] & C_{n+1}^{i+2} \arrow[d, "\partial_{n+1}"] \arrow[r, "f^{i+2}_{n+1}"] & \cdots \\
+\cdots \arrow[r, "f^{i-2}_{n}"]   & C_{n}^{i-1} \arrow[d, "\partial_{n}"] \arrow[r, "f^{i-1}_{n}"]       & C_{n}^{i} \arrow[d, "\partial_{n}"] \arrow[r, "f^{i}_{n}"]       & C_{n}^{i+1} \arrow[d, "\partial_{n}"] \arrow[r, "f^{i+1}_{n}"]                & C_{n}^{i+2} \arrow[d, "\partial_{n}"] \arrow[r, "f^{i+2}_{n}"]       & \cdots \\
+\cdots \arrow[r, "f^{i-2}_{n-1}"] & C_{n-1}^{i-1} \arrow[d, "\partial_{n-1}"] \arrow[r, "f^{i-1}_{n-1}"] & C_{n-1}^{i} \arrow[d, "\partial_{n-1}"] \arrow[r, "f^{i}_{n-1}"] & C_{n-1}^{i+1} \arrow[d, "\partial_{n-1}"] \arrow[r, "f^{i+1}_{n-1}"]          & C_{n-1}^{i+2} \arrow[d, "\partial_{n-1}"] \arrow[r, "f^{i+2}_{n-1}"] & \cdots \\
+                                  & \vdots                                                               & \vdots                                                           & \vdots                                                                        & \vdots                                                               &       
+\end{tikzcd}
+\caption[A persistence complex]{A persistence complex, where moving to the right increases the filtration index, while moving downwards decreases the dimension.}
 \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{definition}{(Persistence module \cite[§1.1]{chazal2016structure})}
+A \textbf{persistence $\mathbb{R}$-module $\mathbb{V}$} is an indexed family of vector spaces $(V_r \ \vert \ r \in \mathbb{R})$ and a doubly-indexed family of linear maps $(v_s^t: V_s \rightarrow V_t \ \vert \ s \leq t)$ which satisfy the composition law $v_s^t \circ v_r^s = v_r^t$ whenever $r \leq s \leq t$, and where $v_t^t = \text{id}_{V_t}$. 
+\end{definition}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-see \ref{fig:five over x}
+\begin{remark}
+In general, we can define a persistence module over any partially ordered set $T$ instead of the real numbers. This is called a {\bfseries $T$-persistence module}.
+\end{remark}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{example}
+Consider the following persistence modules:
+\begin{enumerate}
+	\item Let $X$ be a topological space and let $f: X \rightarrow \R$ be a function. Consider the sublevelsets $X^t := (X,f)^t = \{ x \in X \ \vert \ f(x) \leq t \}$. The inclusion maps $(i_s^t: X^s \rightarrow X^t \ \vert \ s \leq t)$ satisfy trivially the composition law $i_s^t \circ i_r^s = i_r^t$ whenever $r \leq s \leq t$ with $i_t^t$ the identity on $X^t$. This information is also called sublevelset filtration of $(X,f)$ and is denoted as $\X_{\text{sub}}^f$ \cite[p.7]{chazal2016structure}.
+	\item In general one obtains a persistence module by applying any functor from topological spaces to vector spaces. For example, let $H := H_p(-;\F)$ be the functor of the $p$-dimensional singular homology on the category of topological spaces with coefficients in some abelian group $G$, in our case in some field $\F$. We define a persistence module $\V$ by setting $V_t = H(X^t)$, and $v_s^t = H(i_s^t): H(X^s) \rightarrow H(X^t)$, which are the maps on homology induced by the inclusion maps \cite[p.7]{chazal2016structure}.
 
-\subsection{SubSection Title}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	In brief we yield $\V = H(\X_{\text{sub}}^f)$.
+\end{enumerate}
+\end{example}
+
+\section{Interval Decompositions}
+
+\section{Persistence Barcodes}
+
+\section{Persistence Diagrams}
+
+\section{Interval-indecomposable Persistence Modules}
+
+\section{Zigzag Persistence}
+Instead of a persistence module, zigzag persistences are always considered when we look at a zigzag diagram of a topological space or vector space, i.e. a sequence of spaces $V_1, \ldots, V_n$ where each adjacency pair is connected by a mapping $V_i \rightarrow V_{i+1}$ or $V_i \leftarrow V_{i+1}$. This means that the persistence modules discussed so far are also zigzag persistence modules in which the morphisms all point in one direction.
+
+\begin{definition}{(Zigzag Module) \cite[§2.1]{}}
+
+\end{definition}
+
+
+\section{Multiparameter Persistence}
