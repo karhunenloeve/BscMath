@@ -178,10 +178,10 @@ It is worth noting that $B^\Delta_d$ is equal to the image of the boundary opera
 The group $H^\Delta_d$ represents the $d$-dimensional simplicial homology group of the complex $K$ over $\mathbb{Z}$. It can be expressed as the group quotient $\ker(\partial_d) / \text{im}(\partial_{d+1})$.
 \end{definition}
 
-\section{Persistent Homology Groups}
+\section{Persistent Homology}
 
 \section{Persistent (Co)homology}
-Inverse problems primarily involve inferring geometric shapes from measurements like path integrals. Classical methods such as Fourier transforms provide extensive information but struggle with nonlinearity and ill-posed conditions, requiring substantial regularization. Topology, particularly through persistent homology, offers alternative methods for deducing topological rather than geometric information. This approach is especially useful in high-dimensional, finite, and discrete data contexts, exemplified by geological sonar to detect subterranean features based on density variations \cite[§1]{de2011dualities}. Persistent homology identifies topological features represented as intervals in a barcode or persistence diagram, crucial for understanding the presence and persistence of features such as holes or voids in data. This method is statistically robust and can provide both qualitative and quantitative insights into the data  \cite{chazal2014persistence,chazal2009proximity}.
+Inverse problems primarily involve inferring geometric shapes from measurements like path integrals. Classical methods such as Fourier transforms provide extensive information but struggle with nonlinearity and ill-posed conditions, requiring substantial regularization. Topology, particularly through persistent homology, offers alternative methods for deducing topological rather than geometric information. This approach is especially useful in high-dimensional, discrete sets of points, exemplified in the finite case by geological sonar to detect subterranean features based on density variations \cite[§1]{de2011dualities}. Persistent homology identifies topological features represented as intervals in a barcode or persistence diagram, crucial for understanding the presence and persistence of features such as holes or voids in topological spaces. This method is statistically robust and can provide both qualitative and quantitative insights into point sets, which we suspect to lie on some compact topological object \cite{chazal2014persistence,chazal2009proximity}.
 
 In our work, we continue to examine the consequences of absolute and relative homology and cohomology groups for filtrations of cell complexes, such as the introduced simplicial complexes. In particular, we derive the theory in the context of filtered simplicial complexed upon sets of points, embedded into some metric space. While we can apply the entire theory to simplicial complexes and their (co)homology, cell complexes provide a much broader context and significantly simplify notation in many instances.
 
@@ -199,20 +199,14 @@ In this work, we address the computation of barcodes for all four types of persi
 	\text{Absolute cohomology} &\rightleftarrows \text{relative homology.}
 \end{align*}
 
-We discuss two computational strategies:
-\begin{itemize}
-	\item The column algorithm (\texttt{pHcol}): The \texttt{pHcol} follows conventional approaches but pHrow restructures the computations based on matrix row accessibility, which can significantly streamline the process for certain data structures.
-	\item The row algorithm (\texttt{pHrow}): Notably, an optimized variant of \texttt{pHrow}, termed \texttt{pCoh} (the cohomology algorithm), has proven superior for calculating absolute barcodes, based on experimental evidence.
-\end{itemize}
+The main results from the literature suggest that a single calculation is sufficient to compute all four persistent objects due to the commutative nature of the global duality.
 
-The main results from the literature suggest that a single execution of the calculation, when run with both algorithms, is sufficient to compute all four persistent objects due to the commutative nature of the global duality with any computational method. This duality ensures that once the input data are appropriately adjusted (i.e. transposed), the same algorithms can be used interchangeably for calculating both absolute and relative forms of homology and cohomology.
-
-\subsection{Coefficients, filtered complexes, persistent homology}
+\subsection{Filtrations of Complexes}
 Individual (co)homology groups are consistently defined with coefficients in a fixed field $\mathbb{K}$, organizing persistent (co)homology as a graded module over $\mathbb{K}[x]$, as can be seen in the next chapter \ref{}. Replacing $\mathbb{K}$ with the ring $\mathbb{Z}$ leads to substantial issues, discussed in \cite[§3.1]{zomorodian2004computing}.
 
-We investigate the persistent topology of filtered topological spaces, with a primary focus on the prototypical example of a filtered cell complex. This structure is defined by a sequence \(X\) of cell complexes:
+We investigate the persistent topology of filtered topological spaces, with a primary focus on the prototypical example of a filtered cell complex. This structure is defined by a sequence \(\mathbb{X}\) of cell complexes:
 \begin{equation*}
-\mathbb{X} : X_1 \subset X_2 \subset \cdots \subset X_n = X_{\infty},
+\mathbb{X} : \emptyset \subset X_1 \subset X_2 \subset \cdots \subset X_n = X_{\infty},
 \end{equation*}
 where \(X_1\) starts with a single vertex \( \sigma_1 \), and each subsequent complex \(X_i\) is constructed by adding a single cell to the previous complex:
 \begin{equation*}
@@ -220,4 +214,63 @@ X_i := X_{i-1} \cup \sigma_i.
 \end{equation*}
 Here, the indexing set is \( \{1, 2, \ldots, n\} \). Additionally, associated real values \(a_i\) are assigned to these indices, satisfying $a_1 \leq a_2 \leq \cdots \leq a_n.$ This formulation clearly delineates the stepwise enlargement of the complex, illustrating the dynamic evolution of its topology as new cells are incrementally incorporated. We will use the same running example as in \cite[§2.2]{de2011dualities}.
 
+\begin{example}
+\label{filteredsphere}
+The chosen illustrative example involves a cellular filtration of the 2-sphere, denoted by \( \mathbb{S}^2 \). This process constructs a cell complex and introduces an ordering among the cells to facilitate differentiation between them. The development of the filtration can be articulated as follows \cite[§2.2]{de2011dualities}:
+
+\begin{itemize}
+    \item[\( \mathbb{S}^2:\)] \( \emptyset \)
+    \item[\( \subset \)] \( S_1 = \{\sigma_1\} \)
+    \item[\( \subset \)] \( S_2 = \{\sigma_1, \sigma_2\} \)
+    \item[\( \subset \)] \( S_3 = \{\sigma_1, \sigma_2, \sigma_3 := (\sigma_1, \sigma_2)\} \)
+    \item[\( \subset \)] \( S_4 = \{\sigma_1, \sigma_2, \sigma_3, \sigma_4 := (\sigma_2, \sigma_1)\} \)
+    \item[\( \subset \)] \( S_5 = \{\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5 := (\sigma_3, \sigma_4)\} \)
+    \item[\( \subset \)] \( S_6 = \{\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5, \sigma_6 := (\sigma_4, \sigma_3)\}. \)
+\end{itemize}
+
+In this sequence, the cell \( \sigma_1 \) symbolizes the initial point. The set \( S_2 \) incorporates two distinct points. In \( S_3 \), a path connecting \( \sigma_1 \) and \( \sigma_2 \) is introduced. \( S_4 \) augments this path with its reverse—from \( \sigma_2 \) to \( \sigma_1 \)—clearly distinguishing it from \( \sigma_3 \). Finally, \( S_5 \) and \( S_6 \) progressively differentiate between cells that represent the upper and lower halves of the sphere, respectively.
+\end{example}
+
+\subsection{Persistent Homology on Complexes}
+In the context of algebraic topology, applying the homology functor $\mathfrak{H}$ to a filtration of a complex $\mathbb{X}$ yields a sequence of algebraic structures:
+\begin{equation}
+\mathfrak{H}(\mathbb{X}): \quad \mathfrak{H}(X_1) \to \mathfrak{H}(X_2) \to \cdots \to \mathfrak{H}(X_n),
+\end{equation}
+where $\mathfrak{H}(-)$ generally represents either the $k$-th dimensional homology, denoted by $H_k(-;\mathbb{F})$, or the total homology, expressed as $H_\bullet(-;\mathbb{F})$. Here, this diagram characterizes a sequence of abelian groups or finite-dimensional vector spaces, interconnected through vector space homomorphisms, forming what is known as a persistence module.
+
+Persistence modules are central to understanding how the features of a space evolve over time. They can typically be decomposed into a direct sum of interval modules (\ref{intervaldecomposition}). Each interval module is associated with an ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq n$, within a finite filtration. These pairs $(p,q)$ signify topological features that persist over an index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally, these tuples are interpreted as half-open intervals $[a_p, a_{q+1})$, with $a_{n+1} = \infty$ being a customary notation when the sequence extends beyond the largest indexed space.
+
+The decomposition of a persistence module into its constituent interval modules is represented in a persistence diagram (\ref{persistencediagrams}), or a barcode (\ref{persistencebarcodes}). This barcode is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset of half-open intervals $[a_p, a_{q+1})$. This collection is formally expressed through the forgetful functor $\text{Pers}(-)$:
+\begin{align}
+\text{Pers}(\mathfrak{H}(\mathbb{X})) &= \{(p_1,q_1), \ldots, (p_m,q_m)\} \\
+&\cong \{[a_{p_1}, a_{q_1+1}), \ldots, [a_{p_m}, a_{q_m+1})\}.
+\end{align}
+In practical applications, intervals where $a_p = a_{q+1}$ are usually omitted, as they represent ephemeral topological features.
+
+\begin{example}
+In the further elaboration of the example previously cited, which is also described in \ref{filteredsphere}, we consider the topological subspaces $S_1, S_3, S_5$, all of which are contractible. Meanwhile, $S_2, S_4, S_6$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere, respectively. This structural distinction leads to four distinct intervals in the persistence diagram of the total homology of a sphere, specifically $\mathbb{S}^2$:
+\begin{align}
+\text{Pers}(H_\bullet(\mathbb{S}^2)) &= \{(1,6)_0, (2,2)_0, (4,4)_1, (6,6)_2 \} \\
+&= \{(1,\infty)_0, (2,3)_0, (4,5)_1, (6, \infty)_2 \}.
+\end{align}
+Here, the subscript $k$ in $(p,q)_k$ or $[a_p, a_{q+1})_k$ denotes a topological feature in the $k$-dimensional homology.
+\end{example}
+
+\subsection{The Four Standard Persistence Modules}
+\label{standardpersistencemodules}
+The standard module of persistent homology, \( H_\bullet(\mathbb{X}) \), illustrates how the absolute homology groups \( H_\bullet(X_i) \) relate to each other as the index \( i \) changes. Similar observations can be made by considering the absolute cohomology groups \( H^\bullet(X_i) \), the relative homology groups \( H_\bullet(X_n, X_i) \), and the relative cohomology groups \( H^\bullet(X_n, X_i) \) \cite[§2.4]{de2011dualities}. This leads to the following sequences:
+\begin{align*}
+	H_\bullet(\mathbb{X}) &: \quad H_\bullet(X_1) \rightarrow \cdots \rightarrow H_\bullet(X_{n-1}) \rightarrow H_\bullet(X_n) \\
+	H^\bullet(\mathbb{X}) &: \quad H^\bullet(X_1) \leftarrow \cdots \leftarrow H^\bullet(X_{n-1}) \leftarrow H^\bullet(X_n) \\
+	H_\bullet(X_\infty, \mathbb{X})&: \quad H_\bullet(X_n) \rightarrow H_\bullet(X_n,X_1) \rightarrow \cdots \rightarrow H_\bullet(X_n,X_{n-1}) \\
+	H^{\bullet}(H_\infty, \mathbb{X})&: \quad H^{\bullet}(X_n) \leftarrow H^{\bullet}(X_n,X_1) \leftarrow \cdots \leftarrow H^{\bullet}(X_n, X_{n-1}).
+\end{align*}
+
+\subsection{Barcode Isomorphisms}
+
+\subsection{Persistent Chain Complexes}
+
+\subsection{Cohomology of Chain Complexes}
+
 \section{Distances and the Stability Theorem}
+
