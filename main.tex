@@ -2,18 +2,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{
-twoside,
-bindingoffset=7mm,
-verbose,
-marginratio={5:7,5:7},
-textwidth=130mm,
-height=200mm,
-foot=2cm
+	twoside,
+	bindingoffset=7mm,
+	verbose,
+	marginratio={5:7,5:7},
+	textwidth=130mm,
+	height=200mm,
+	foot=2cm
 }
 \usepackage[protrusion=true, expansion=true]{microtype}
+\usepackage[nodisplayskipstretch]{setspace}
+\linespread{1.25}
 \usepackage{tikz}
 \usepackage{imakeidx}
-\makeindex[columns=2, title=Index]
+\makeindex[columns=2,
+title=Index]
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{caption}
@@ -21,7 +24,11 @@ foot=2cm
 \usepackage{float}
 \usepackage{fancyhdr}
 \usepackage{setspace}
+\expandafter\def\expandafter\normalsize\expandafter{%
+\normalsize \setlength{\abovedisplayskip}{1ex} \setlength{\belowdisplayskip}{1ex} \setlength{\abovedisplayshortskip}{1ex} \setlength{\belowdisplayshortskip}{1ex} }
 \usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, topsep=0pt}
 \setlist[enumerate]{noitemsep, topsep=0pt}
@@ -38,18 +45,20 @@ foot=2cm
 \usepackage{grffile}
 \usepackage{tocloft}
 \usepackage{tikz-cd}
-\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
+\usepackage[libertine, cmintegrals, cmbraces, vvarbb]{newtxmath}
 \usepackage{subcaption}
 \captionsetup[subfigure]{labelsep=colon, labelformat=simple, labelfont=sc}
-\usepackage[style=nature,sorting=nty]{biblatex}
+\usepackage[style=nature, sorting=nty]{biblatex}
 \addbibresource{main.bib}
 \graphicspath{{images/}}
 
-\newcommand{\R}{{\mathbb R}} 
-\newcommand{\F}{{\mathbb F}} 
-\newcommand{\X}{{\mathbb X}} 
-\newcommand{\V}{{\mathbb V}} 
-\newcommand{\Hom}{{\text{Hom}}} 
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\X}{{\mathcal{X}}}
+\newcommand{\V}{{\mathcal{V}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\ima}{\mathrm{im}}
+\newcommand{\Hom}{{\mathrm{Hom}}}
 
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}[definition]{Remark}
@@ -59,77 +68,116 @@ foot=2cm
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$ \vspace{0.5cm}}
-      
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$
+\vspace{0.5cm}}
+
 \title{Algebraic and Topological Persistence}
 \author{Luciano Melodia}
 \date{\today}
+
 \begin{document}
+	\input{titlepage}
+	\input{abstract}
 
-\input{titlepage}
-\input{abstract}
+	\chapter*{Dedication}
 
-\chapter*{Dedication}
+	I would like to dedicate this work to the people closest to me, without whom I
+	would not have been able to write these pages, without whom I would not have
+	been able to embark on this trip, without whom I would not have had the desire
+	to continue on this journey.
 
-I would like to dedicate this work to the people closest to me, without whom I would not have been able to write these pages, without whom I would not have been able to embark on this trip, without whom I would not have had the desire to continue on this journey.
+	My path led me to study German with a minor in Italian, to major in
+	Information Science with a minor in Media Informatics and finally to a Master's
+	degree in Information Science in Regensburg. After a three-year doctorate in the
+	field of Computer Science in Erlangen, I finally decided not to continue with
+	my dissertation but to devote myself to studying theoretical mathematics. I was
+	asked whether I could make up my mind and whether I was finally satisfied with
+	what I was doing. To be honest, I was always interested in the structure of,
+	well, basically elements. That just translated into language or computer
+	programs. I'm glad I was able to discover that for myself.
 
-My path led me to study German with a minor in Italian, to major in Information Science with a minor in Media Informatics and finally to a Master's degree in Information Science in Regensburg. After a three-year doctorate in the field of Computer Science in Erlangen, I finally decided not to continue with my dissertation but to devote myself to studying theoretical mathematics. I was asked whether I could make up my mind and whether I was finally satisfied with what I was doing. To be honest, I was always interested in the structure of, well, basically elements. That just translated into language or computer programs. I'm glad I was able to discover that for myself.
+	I would like to thank my mother Beata, who was always skeptical about these
+	decisions, but always supported them once they were made.
 
-I would like to thank my mother Beata, who was always skeptical about these decisions, but always supported them once they were made.
+	I would like to thank my late father Domenico, who always encouraged me to
+	think more about yesterday and less about tomorrow.
 
-I would like to thank my late father Domenico, who always encouraged me to think more about yesterday and less about tomorrow.
+	I would like to thank my sister Dominique, who never missed an opportunity to ask
+	me questions about physics whenever she could.
 
-I would like to thank my sister Dominique, who never missed an opportunity to ask me questions about physics whenever she could.
+	I would like to thank Luciana, who always brought back my old laughter in
+	difficult times.
 
-I would like to thank Luciana, who always brought back my old laughter in difficult times.
+	I would also like to thank all those whom I cannot mention by name. If you feel
+	touched by reading these lines, then I'm sure they affect you in one way or
+	another.
 
-I would also like to thank all those whom I cannot mention by name.
-If you feel touched by reading these lines, then I'm sure they affect you in one way or another.
+	Perhaps I have learned a lesson or two from you.
 
-Perhaps I have learned a lesson or two from you.
+	\chapter*{Declaration}
 
-\chapter*{Declaration}
+	I hereby declare that I
 
-I hereby declare that I
+	\begin{itemize}
+		\item alone wrote the submitted Bachelor's thesis without illicit or improper
+			assistance.
 
-\begin{itemize}
-	\item alone wrote the submitted Bachelor's thesis without illicit or improper assistance.
-	\item did not use any materials other than those listed in the bibliography and that all passages taken from these sources in part or in full have been marked as citations and their sources cited individually in the thesis. Citations include the version (edition and year of publication), the volume and page numbers of the cited work.
-	\item have not submitted this Bachelor's thesis to another institution and that it has never been used for other purposes or to fulfill other requirements, in part or in full.
-\end{itemize}
+		\item did not use any materials other than those listed in the bibliography and
+			that all passages taken from these sources in part or in full have been marked
+			as citations and their sources cited individually in the thesis. Citations
+			include the version (edition and year of publication), the volume and page
+			numbers of the cited work.
 
-\vspace{2cm}
-\begin{tabular}{@{}p{3.5in}p{2in}p{2in}@{}}
-\hrulefill && Erlangen, \today\\
-Luciano Melodia M.A., B.A. &&\\
-Friedrich-Alexander University Erlangen-Nürnberg\end{tabular}
+		\item have not submitted this Bachelor's thesis to another institution and that
+			it has never been used for other purposes or to fulfill other requirements,
+			in part or in full.
+	\end{itemize}
 
-\chapter*{Acknowledgements}
+	\vspace{2cm}
+	\begin{tabular}{@{}p{3.5in}p{2in}p{2in}@{}}
+		\hrulefill                                      &  & Erlangen, \today \\
+		Luciano Melodia M.A., B.A.                      &  &                  \\
+		Friedrich-Alexander University Erlangen-Nürnberg
+	\end{tabular}
 
-I would like to thank Prof. Dr. Catherine Meusburger, who has taken over my mentorship for the Master's program in Mathematics and whose foundation lectures in Linear Algebra I and II were invaluable. I would also like to thank her for her help during the introductory lectures, when we rummaged through the exercise sheets in the study room and she occasionally took a look over our shoulders after a cup of coffee and then decorated the blackboard with helpful approaches or even complete solutions with a piece of chalk.
+	\chapter*{Acknowledgements}
 
-My special thanks go to my supervisor, Prof. Dr. Kang Li. Prof. Li always motivated me with his willingness to discuss when I had already invested too much time in reading the scientific papers and lacked a clear view in the forest of theorems. Often also when there were tricky passages in the research literature whose evidence first had to be deciphered. Prof. Li also took the time to reduce the sprawling content to an appropriate level for a bachelor's thesis. I would like to thank him for his excellent supervision.
+	I would like to thank Prof. Dr. Catherine Meusburger, who has taken over my
+	mentorship for the Master's program in Mathematics and whose foundation
+	lectures in Linear Algebra I and II were invaluable. I would also like to thank
+	her for her help during the introductory lectures, when we rummaged through
+	the exercise sheets in the study room and she occasionally took a look over
+	our shoulders after a cup of coffee and then decorated the blackboard with
+	helpful approaches or even complete solutions with a piece of chalk.
 
-\newpage
-\tableofcontents
+	My special thanks go to my supervisor, Prof. Dr. Kang Li. Prof. Li always motivated
+	me with his willingness to discuss when I had already invested too much time in
+	reading the scientific papers and lacked a clear view in the forest of theorems.
+	Often also when there were tricky passages in the research literature whose
+	evidence first had to be deciphered. Prof. Li also took the time to reduce the
+	sprawling content to an appropriate level for a bachelor's thesis. I would like
+	to thank him for his excellent supervision.
 
-\newpage
-\listoffigures
+	\newpage
+	\tableofcontents
 
-\singlespacing
-\chapter{Motivation}
-\pagenumbering{arabic} 
-\input{chapters/introduction}
+	\newpage
+	\listoffigures
 
-\chapter{Topological Persistence}
-\input{chapters/chapter02}
+	\singlespacing
+	\chapter{Motivation}
+	\pagenumbering{arabic}
+	\input{chapters/introduction}
 
-\chapter{Algebraic Persistence}
-\input{chapters/chapter03}
+	\chapter{Topological Persistence}
+	\input{chapters/chapter02}
 
-\singlespacing
-\printbibliography
+	\chapter{Algebraic Persistence}
+	\input{chapters/chapter03}
 
-\newpage
-\printindex
+	\singlespacing
+	\printbibliography
+
+	\newpage
+	\printindex
 \end{document}
