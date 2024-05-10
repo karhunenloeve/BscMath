@@ -484,41 +484,6 @@ Interestingly, for spaces where both simplicial and singular homology groups can
     \]
 \end{proof}
 
-\begin{proposition}
-    The zero-dimensional homology group of a space $X$ can be expressed as the direct sum of $\mathbb{Z}$ copies, with each copy corresponding to a distinct path-component of $X$. This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
-\end{proposition}
-
-\begin{proof}
-    To establish the isomorphism $H_0(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}$, it is sufficient to consider the case where $X$ is path-connected. For a $0$-chain $c$, the boundary operator $\partial_0(c)$ is always zero since the boundary of any $0$-simplex vanishes. Consequently, $\ker(\partial_0) = C_0(X)$, which implies that:
-    \[
-        H_0(X) = C_0(X) / \operatorname{im}(\partial_1),
-    \]
-    by definition.
-
-    Define the map $I: C_0(X) \to \mathbb{Z}$ by:
-    \[
-        I(c) = \sum_i g_i \quad \text{for } c = \sum_i g_i \tilde{\sigma}^{(0)} \in C_0(X).
-    \]
-    Our goal is to demonstrate that $\ker(I) = \operatorname{im}(\partial_1)$. In other words, for any $0$-chain $c$, $I(c) = 0$ if and only if $c \sim 0$. The proof follows a similar line of reasoning as Prop. \ref{decomposition}.
-
-    "$\Rightarrow$": Suppose $I(c) = 0$ for $c = \sum_i g_i \tilde{\sigma}^{(0)}$. Since $X$ is path-connected, we can express $c$ as the boundary of a $1$-chain:
-    \[
-        c = \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right) \quad \text{implying } c \sim 0.
-    \]
-
-    "$\Leftarrow$": If $c \sim 0$, then $c = \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right)$ for some $1$-chain $\sum_j g_j \tilde{\sigma}^{(1)}$. By linearity of $I$, we have:
-    \[
-        I(c) = I \left( \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right) \right) = 0.
-    \]
-
-    Thus, $I$ induces an isomorphism between $H_0(X)$ and $\mathbb{Z}$ when $X$ is path-connected.
-
-    For the general case where $X$ has $p$ path-components $X_1, \ldots, X_p$, we apply the above argument to each component. Therefore, $H_0(X)$ is isomorphic to the direct sum:
-    \[
-        H_0(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}.
-    \]
-\end{proof}
-
 \begin{example}
 Alternative proof that \( H_d(S^d) \cong \mathbb{Z} \). To prove that the \(d\)-th homology group of the \(d\)-sphere is isomorphic to \(\mathbb{Z}\), we utilize the singular homology approach. The \(d\)-th singular chain group \(C_d(S^d)\) consists of formal linear combinations of singular \(d\)-simplices in \(S^d\) with integer coefficients. First, we observe that \(S^d\) is a connected and compact topological space. According to the Hurewicz theorem, we have \( H_d(S^d) \cong \pi_d(S^d) \), where \(\pi_d(S^d)\) denotes the \(d\)-th homotopy group of \(S^d\). Since \(S^d\) is simply connected for \(d \geq 2\), it follows that \(\pi_d(S^d) = 0\) for \(d \geq 2\). However, for \(d = 1\), \(\pi_1(S^1) \cong \mathbb{Z}\).
 
