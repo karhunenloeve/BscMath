@@ -1,10 +1,504 @@
-\section{Persistence Modules}
-\begin{definition}{(Persistence complex)}
-\label{persistencecomplex}
-A \textbf{persistence complex} is an indexed family of chain complexes $\{C_\bullet^i, \partial)\}_{i \in I}$ along with chain maps $f^i: C_\bullet^i \rightarrow C_\bullet^{i+1}$.
-\end{definition}
+\section{Persistent Homology}
+\subsection{Filtrations of Complexes}
+Individual (co)homology groups are consistently defined with coefficients in a
+fixed field $\mathbb{F}$, organizing persistent (co)homology as a graded module
+over $\mathbb{F}[x]$, as can be seen in the next chapter \ref{}. Replacing
+$\mathbb{F}$ with the ring $\mathbb{Z}$ leads to substantial issues, but most of
+the results still hold for principal ideal domains, as discussed in
+\cite[\S 3.1]{zomorodian2004computing}.
 
-Every finite filtration $\emptyset \subset K^0 \subset K^1 \subset \cdots \subset K^m$ generates a finite persistence complex. From each of the simplicial complexes $K^i$ one can generate a chain complex $C_\bullet^i$ according to \ref{chaincomplex}. The chain map $f^i C_\bullet^i \rightarrow C_\bullet^{i+1}$ is an inclusion, since every $n$-simplex in $K^i$ is also contained in $K^{i+1}$ and the inclusion is naturally transferred to $n$-chains, since these are merely linear combinations of $n$-simplices.
+We investigate the persistent topology of filtered topological spaces, with a primary
+focus on the prototypical example of a filtered cell complex. This structure is
+defined by a sequence $\mathcal{X}$ of cell complexes:
+\begin{equation*}
+	\mathcal{X}: \emptyset \subset X_{1} \subset X_{2} \subset \cdots \subset X_{n}
+	= X_{\infty},
+\end{equation*}
+where $X_{1}$ starts with a single vertex $\sigma_{1}$, and each subsequent
+complex $X_{i}$ is constructed by adding a single cell to the previous complex:
+\begin{equation*}
+	X_{i} := X_{i-1}\cup \sigma_{i}.
+\end{equation*}
+Here, the indexing set is $\{1, 2, \ldots, n\}$. Additionally, associated real
+values $a_{i}$ are assigned to these indices, satisfying $a_{1} \leq a_{2} \leq \cdots
+\leq a_{n}.$ This formulation clearly delineates the stepwise enlargement of the
+complex, illustrating the dynamic evolution of its topology as new cells are
+incrementally incorporated. We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
+
+\begin{example}
+	\label{filteredsphere} The chosen illustrative example involves a cellular filtration\index{filtration}
+	of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex
+	and introduces an ordering among the cells to facilitate differentiation between
+	them. The development of the filtration can be articulated as follows
+	\cite[\S 2.2]{de2011dualities}:
+
+	\begin{itemize}
+		\item[$\mathcal{S}^{2}:$] $\emptyset$
+
+		\item[$\subset$] $S_{1} = \{\sigma_{1}\}$
+
+		\item[$\subset$] $S_{2} = \{\sigma_{1}, \sigma_{2}\}$
+
+		\item[$\subset$] $S_{3} = \{\sigma_{1}, \sigma_{2}, \sigma_{3} := (\sigma_{1}
+			, \sigma_{2})\}$
+
+		\item[$\subset$] $S_{4} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4} :=
+			(\sigma_{2}, \sigma_{1})\}$
+
+		\item[$\subset$] $S_{5} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4}, \sigma
+			_{5} := (\sigma_{3}, \sigma_{4})\}$
+
+		\item[$\subset$] $S_{6} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4}, \sigma
+			_{5}, \sigma_{6} := (\sigma_{4}, \sigma_{3})\}.$
+	\end{itemize}
+
+	In this sequence, the cell $\sigma_{1}$ symbolizes the initial point. The set $S
+	_{2}$ incorporates two distinct points. In $S_{3}$, a path connecting $\sigma_{1}$
+	and $\sigma_{2}$ is introduced. $S_{4}$ augments this path with its
+	reverse—from $\sigma_{2}$ to $\sigma_{1}$—clearly distinguishing it from $\sigma
+	_{3}$. Finally, $S_{5}$ and $S_{6}$ progressively differentiate between cells that
+	represent the upper and lower halves of the sphere, respectively.
+\end{example}
+
+\subsection{Persistent Homology on Complexes}
+In the context of algebraic topology, applying the homology functor $\mathsf{H}$
+to a filtration of a complex $\mathcal{X}$ yields a sequence of algebraic structures:
+\begin{equation}
+	\mathsf{H}(\mathcal{X}): \quad \mathsf{H}(X_{1}) \to \mathsf{H}(X_{2}) \to \cdots
+	\to \mathsf{H}(X_{n}),
+\end{equation}
+where $\mathsf{H}(-)$ generally represents either the $k$-th dimensional
+homology, denoted by $H_{k}(-;\mathbb{F})$, or the total homology, expressed as $H
+_{\bullet}(-;\mathbb{F})$. Here, this diagram characterizes a sequence of abelian
+groups or finite-dimensional vector spaces, interconnected through vector space
+homomorphisms, forming what is known as a persistence module.
+
+Persistence modules are central to understanding how the features of a space evolve
+over time. They can typically be decomposed into a direct sum of interval
+modules (\ref{intervaldecomposition}). Each interval module is associated with an
+ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq n$, within a finite
+filtration. These pairs $(p,q)$ signify topological features that persist over an
+index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally,
+these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_{n+1}
+= \infty$ being a customary notation when the sequence extends beyond the largest
+indexed space.
+
+The decomposition of a persistence module into its constituent interval modules is
+represented in a persistence diagram (\ref{persistencediagrams}), or a barcode (\ref{persistencebarcodes}).
+This barcode is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset
+of half-open intervals $[a_{p}, a_{q+1})$. This collection is formally expressed
+through the forgetful functor $\textbf{Pers}(-)$:
+\begin{align}
+	\textbf{Pers}(\mathsf{H}(\mathcal{X})) & = \{(p_{1},q_{1}), \ldots, (p_{m},q_{m})\}                    \\
+	                                       & \cong \{[a_{p_1}, a_{q_1+1}), \ldots, [a_{p_m}, a_{q_m+1})\}.
+\end{align}
+In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted,
+as they represent ephemeral topological features.
+
+\begin{example}
+	In the further elaboration of the example previously cited, which is also
+	described in \ref{filteredsphere}, we consider the topological subspaces $S_{1}
+	, S_{3}, S_{5}$, all of which are contractible. Meanwhile,
+	$S_{2}, S_{4}, S_{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
+	respectively. This structural distinction leads to four distinct intervals in
+	the persistence diagram of the total homology of a sphere, specifically $\mathcal{S}
+	^{2}$:
+	\begin{align}
+		\textbf{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \\
+		                                            & = \{(1,\infty)_{0}, (2,3)_{0}, (4,5)_{1}, (6, \infty)_{2} \}.
+	\end{align}
+	Here, the subscript $k$ in $(p,q)_{k}$ or $[a_{p}, a_{q+1})_{k}$ denotes a topological
+	feature in the $k$-dimensional homology.
+\end{example}
+
+\subsection{The Four Standard Persistence Modules}
+\label{standardpersistencemodules} The standard module of persistent homology, $H
+_{\bullet}(\mathcal{X})$, illustrates how the absolute homology groups
+$H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
+can be made by considering the absolute cohomology groups $H^{\bullet}(X_{i})$,
+the relative homology groups $H_{\bullet}(X_{n}, X_{i})$, and the relative cohomology
+groups $H^{\bullet}(X_{n}, X_{i})$ \cite[\S 2.4]{de2011dualities}.
+
+The persistence diagram for absolute cohomology is represented as a multiset of integer
+pairs $(p,q)$, where $1 \leq p \leq q \leq n$ for a finite filtration. For relative
+homology and cohomology, the persistence diagram consists of a multiset of
+tuples $(p,q)$ where $0 \leq p \leq q \leq n-1$ for a finite filtration. In each
+case, we interpret $(p,q)$ as a half-open interval $[a_{p}, a_{q+1})$ with the
+convention that $a_{0} = -\infty$ and $a_{n+1}= \infty$
+\cite[\S 2.4]{de2011dualities}.
+
+\begin{figure}
+	\begin{align*}
+		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{n-1}) \rightarrow H_{\bullet}(X_{n}),             \\
+		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{n-1}) \leftarrow H^{\bullet}(X_{n}),                \\
+		H_{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X_{n}) \rightarrow H_{\bullet}(X_{n},X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{n},X_{n-1}), \\
+		H^{\bullet}(H_{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X_{n}) \leftarrow H^{\bullet}(X_{n},X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{n}, X_{n-1}).
+	\end{align*}
+	\caption{The four standard persistence modules.}
+\end{figure}
+
+\begin{example}
+	For $\mathcal{S}^{2}$ we yield
+	\begin{align}
+		\textbf{Pers}(H_{\bullet}(S_{6},\mathcal{S}^{2}) & = \{(0,0)_{0}, (2,2)_{1}, (4,4)_{2}, (0,5)_{2}\}               \\
+		                                                 & = \{[-\infty, 1)_{0}, [2,3)_{1}, [4,5)_{2}, [-\infty,6)_{3}\}.
+	\end{align}
+	At index $2$ there is a nontrivial element of $H_{1}(S_{6},S_{2})$ represented
+	by any arc connecting the two points of $S_{2}$ \cite[\S 2.4]{de2011dualities} --
+	the homology class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}
+	(S_{6},S_{3})$, thus we yield the interval $[2,3)$.
+\end{example}
+
+\section{Persistent (Co)homology}
+Inverse problems primarily involve inferring geometric shapes from measurements like
+path integrals. Classical methods such as Fourier transforms provide extensive
+information but struggle with nonlinearity and ill-posed conditions, requiring substantial
+regularization. Topology, particularly through persistent homology, offers
+alternative methods for deducing topological rather than geometric information. This
+approach is especially useful in high-dimensional, discrete sets of points, exemplified
+in the finite case by geological sonar to detect subterranean features based on density
+variations \cite[\S 1]{de2011dualities}. Persistent homology identifies
+topological features represented as intervals in a barcode or persistence
+diagram, crucial for understanding the presence and persistence of features such
+as holes or voids in topological spaces. This method is statistically robust and
+can provide both qualitative and quantitative insights into point sets, which we
+suspect to lie on some compact topological object \cite{chazal2014persistence,chazal2009proximity}.
+
+In our work, we continue to examine the consequences of absolute and relative
+homology and cohomology groups for filtrations of cell complexes, such as the introduced
+simplicial complexes. In particular, we derive the theory in the context of filtered
+simplicial complexed upon sets of points, embedded into some metric space. While
+we can apply the entire theory to simplicial complexes and their (co)homology, cell
+complexes provide a much broader context and significantly simplify notation in many
+instances.
+
+In particular, there are at least four naturally arising persistent objects that
+can be extracted from a filtration of any topological space. We follow the results
+of de Silva, Morozov, and Vejdemo-Johansson for our explanations \cite[\S 1]{de2011dualities}.
+They are
+
+\begin{equation*}
+	\text{persistent}
+	\begin{Bmatrix}
+		\text{absolute} \\
+		\text{relative}
+	\end{Bmatrix}
+	\begin{Bmatrix}
+		\text{homology}   \\
+		\text{cohomology}
+	\end{Bmatrix}.
+\end{equation*}
+
+In this work, we address the computation of barcodes for all four types of persistent
+objects. We demonstrate that both absolute and relative (co)homologies yield identical
+barcodes and that transitions between these states are facilitated by established
+duality principles. The duality between homology and cohomology is akin to the
+duality in vector spaces, whereas a global duality specific to persistent topology
+allows for a unique interchange:
+\begin{align*}
+	\text{Absolute homology}   & \rightleftarrows \text{relative cohomology.} \\
+	\text{Absolute cohomology} & \rightleftarrows \text{relative homology.}
+\end{align*}
+
+The main results from the literature suggest that a single calculation is sufficient
+to compute all four persistent objects due to the commutative nature of the global
+duality.
+
+\subsection{Barcode Isomorphisms}
+We characterise the multisets for persistence modules that are decomposable into
+interval modules. The persistence diagram partitions into $\textbf{Pers}_{0}$,
+comprising finite intervals $[a, b)$ as per \cite[\S 2.3]{de2011dualities}, and $\textbf
+{Pers}_{\infty}$, consisting of intervals $[a, \infty)$. This leads to the decomposition
+$\textbf{Pers}= \textbf{Pers}_{0} \cup \textbf{Pers}_{\infty}$.
+
+In this chapter, we establish that persistent homology and cohomology yield the
+same intervals, or barcodes, for both absolute and relative (co-)homology
+frameworks. This equivalence necessitates invoking the universal coefficient theorem
+from algebraic topology, which we will proof beforehand. The universal coefficient
+theorem for cohomology elegantly ties together the cohomology of a space with coefficients
+in any abelian group $G$ to the homology of the space with integer coefficients.
+Specifically, as notation for this proof, $H_{n}(X;\mathbb{Z})$ and
+$H^{n}(X;\mathbb{Z})$ denote the $n$-th singular homology and cohomology groups
+with coefficients in $\mathbb{Z}$, respectively. We further involve
+$\text{Hom}(A, G)$, denoting group homomorphisms from an abelian group $A$ to another
+abelian group $G$, and $\text{Ext}^{1}(A, G)$ \cite{}, which measures obstructions
+in the splitting of a short exact sequence of abelian groups. Further, we use the
+properties of derived functors \cite{}.
+
+\begin{theorem}
+	{(Universal Coefficient Theorem for Cohomology) \cite[\S 3.1]{hatcher2005algebraic}}
+	\label{universalcoefficients} Let $X$ be a topological space and $G$ be an abelian
+	group. For any integer $n \geq 0$, there is a short exact sequence:
+	\begin{align*}
+		0 \rightarrow \text{Ext}^{1}(H_{n-1}(X;\mathbb{Z},G) \rightarrow H^{n}(X;G) \rightarrow \text{Hom}(H_{n}(X;\mathbb{Z},G) \rightarrow 0,
+	\end{align*}
+	which splits, though not canonically.
+\end{theorem}
+
+\begin{proof}
+	Let $C_{\bullet}(X)$ be the singular chain complex of a topological space $X$ with
+	integer coefficients. The homology groups $H_{d}(X; \mathbb{Z})$ are defined
+	as
+	$H_{d}(X; \mathbb{Z}) := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1})$,
+	where $\partial_{d}$ are the boundary maps in $C_{\bullet}(X)$. The chain
+	group $C_{d}(X)$ consists of formal sums of singular $d$-simplices in $X$ with
+	integer coefficients. The boundary maps $\partial_{d}: C_{d}(X) \rightarrow C_{d-1}
+	(X)$ are defined by
+	\[
+		\partial_{d}(\sigma) = \sum_{i=0}^{d}(-1)^{i} \sigma|_{[v_0, \ldots, \hat{v}_i,
+		\ldots, v_d]},
+	\]
+	where $\sigma: \Delta^{d} \rightarrow X$ is a singular simplex, and
+	$\sigma|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]}$ denotes the restriction of
+	$\sigma$ to the $i$-th face of the simplex, omitting the $i$-th vertex.
+
+	The functor $\operatorname{Hom}(-, G)$ applied to $C_{d}(X)$ yields a group $\operatorname{Hom}
+	(C_{d}(X), G)$, and the coboundary $\delta^{d}$ for the cochain complex
+	$\operatorname{Hom}(C_{\bullet}(X), G)$ is defined by
+	\[
+		\delta^{d}(f) = f \circ \partial_{d+1}
+	\]
+	for $f$ in $\operatorname{Hom}(C_{d+1}(X), G)$. This leads to the cohomology groups
+	$H^{d}(X; G) = \ker(\delta^{d}) / \operatorname{im}(\delta^{d-1})$. We
+	consider the projective resolution of $C_{\bullet}(X)$ to effectively apply
+	the $\operatorname{Ext}$ functor. Recall that for any abelian group $A$,
+	\[
+		\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G),
+	\]
+	where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$.
+	To show this equality, we begin by taking a projective resolution of $A$:
+	\[
+		\cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0,
+	\]
+	where each $P_{i}$ is a projective abelian group. Then we can apply the
+	functor $\operatorname{Hom}(-, G)$ to the projective resolution:
+	\[
+		0 \to \operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}
+		(P_{2}, G) \to \cdots.
+	\]
+	This sequence is exact on the left because $\operatorname{Hom}(-, G)$ is left exact
+	and each $P_{i}$ is projective. The first right derived functor
+	$R^{1}\operatorname{Hom}(A, G)$ is defined as the cohomology of this sequence
+	at the location corresponding to $P_{1}$:
+	\[
+		R^{1} \operatorname{Hom}(A, G) = \frac{\ker(\operatorname{Hom}(P_{1}, G) \to
+		\operatorname{Hom}(P_{2}, G))}{\operatorname{im}(\operatorname{Hom}(P_{0}, G)
+		\to \operatorname{Hom}(P_{1}, G))}.
+	\]
+	The group $\operatorname{Ext}^{1}(A, G)$ classifies extensions of $A$ by $G$,
+	equivalent to the kernel/image calculation in the cohomology of the
+	$\text{Hom}$-sequence, confirming
+	\[
+		\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G).
+	\]
+
+	Given $H_{d}(X; \mathbb{Z})$, consider the short exact sequence obtained from the
+	projective resolution of $\mathbb{Z}$:
+	\[
+		0 \rightarrow \mathbb{Z}\rightarrow F \rightarrow H_{d}(X; \mathbb{Z}) \rightarrow
+		0,
+	\]
+	where $F$ is free. Applying $\operatorname{Hom}(-, G)$ gives
+	\[
+		0 \rightarrow \operatorname{Hom}(H_{d}(X; \mathbb{Z}), G) \rightarrow \operatorname{Hom}
+		(F, G) \rightarrow \operatorname{Hom}(\mathbb{Z}, G) \rightarrow \operatorname{Ext}
+		^{1}(H_{d}(X; \mathbb{Z}), G) \rightarrow 0.
+	\]
+	We apply $\operatorname{Ext}^{\bullet}$, which gives rise to the long exact
+	sequence of $\operatorname{Ext}$ groups:
+	\[
+		0 \rightarrow \operatorname{Hom}(H_{d}(X; \mathbb{Z}), G) \rightarrow H^{d}(X
+		; G) \rightarrow \operatorname{Ext}^{1}(H_{d-1}(X; \mathbb{Z}), G) \rightarrow
+		0.
+	\]
+	Finally, we verify exactness and splitting. The term $\operatorname{Ext}^{1}(H_{d-1}
+	(X; \mathbb{Z}), G)$ measures the non-trivial extensions of $G$ by $H_{d-1}(X;
+	\mathbb{Z})$, which corresponds to the obstructions to lifting
+	$H_{d-1}(X; \mathbb{Z})$ linearly over $G$. The term $\operatorname{Hom}(H_{d}(
+	X; \mathbb{Z}), G)$ represents the group homomorphisms from $H_{d}(X; \mathbb{Z}
+	)$ to $G$, which naturally includes in $H^{d}(X; G)$. The sequence is exact at
+	each stage by the properties of derived functors and their application to the singular
+	chain complex. The sequence ends with $0$ because $\operatorname{Ext}^{1}$ of
+	a projective (or free) module vanishes, and $\mathbb{Z}$ is free. The sequence
+	splits because the functor $\operatorname{Hom}(-, G)$ preserves products and
+	coproducts. However, the way it splits is not canonical and depends on the
+	choice of a splitting homomorphism, which is not unique.
+
+	In the generalization of the universal coefficient theorem to the case of modules
+	over a principal ideal domain, the $\text{Ext}^{1}$ terms vanish since $\F$ is
+	a field, so we obtain isomorphisms $H^{d}(X;\F) \cong \Hom(H_{d}(X;\F),\F)$ \cite[p.198
+	\S 3.3.1]{hatcher2005algebraic}.
+\end{proof}
+
+\begin{theorem}
+	For all integers $d \geq 0$ it holds that \cite[\S 2.3]{de2011dualities}:
+	\begin{align*}
+		\textbf{Pers}(H_{d}(\mathcal{X}) = \textbf{Pers}(H^{d}(\mathcal{X}),                         \\
+		\textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X}) = \textbf{Pers}(H^{d}(X_{\infty}, \mathcal{X}).
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	When we consider coefficients in a field rather than in a ring, the universal
+	coefficient theorem assures us of a natural isomorphism between the $d$-th
+	cohomology group and the homomorphisms from the $d$-th homology group to the
+	base field:
+	\begin{equation}
+		H^{d}(X;\mathbb{F}) \cong \text{Hom}(H_{d}(X;\mathbb{F}),\mathbb{F}).
+	\end{equation}
+	Therefore, the associated maps
+	\begin{equation}
+		H_{d}(X_{i};\mathbb{F}) \rightarrow H_{d}(X_{j};\mathbb{F}) \quad \text{and}\quad
+		H^{d}(X_{i};\mathbb{F}) \leftarrow H^{d}(X_{j};\mathbb{F})
+	\end{equation}
+	are adjoint and hence possess the same rank. Since the persistence intervals over
+	a field are uniquely determined by the dimension and rank of the homology vector
+	spaces, it follows that this holds for both homology and cohomology. Consequently,
+	they share the same barcode.
+\end{proof}
+
+Consider a filtration $X_{1} \subseteq X_{2} \subseteq \cdots \subseteq X_{n}$ of
+a topological space $X$, extending to $X_{\infty}$ where $X_{\infty}$ is the
+direct limit of the filtration. The homology groups $H_{d}(X_{n})$ for some fixed
+dimension $d$ serve as the initial terms for the relative homology groups $H_{d}(
+X_{\infty}, X)$. Since $H_{d}(X)$ is consistent with $H_{d}(X_{n})$ as $n$
+approaches infinity, these sequences can be unified into a single sequence:
+$H_{d}(X) \to H_{d}(X_{\infty}, X)$. For this concatenated sequence, the indices
+are denoted as
+$\{1, 2, \ldots, n = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (n-1)^{\flat}\}$, using
+the $\flat$ symbol to indicate terms in the relative homology part of the sequence.
+
+This structure allows us to discuss the persistence diagram associated with this
+homological configuration. The persistence intervals in this diagram can
+generally be categorized into three types:
+
+\begin{itemize}
+	\item Intervals of the form $(p, q)$ where $1 \leq p \leq q < n$, denoted as
+		$[p, q+1)$ or $[a_{p}, a_{q+1})$.
+
+	\item Intervals of the form $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq n
+		-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
+
+	\item Intervals of the form $(p, q^{\flat})$ where $1 \leq p \leq n$ and $0 \leq
+		q \leq n-1$, represented as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
+\end{itemize}
+
+\begin{corollary}
+	The barcode $\textbf{Pers}(H_{d}(\X) \rightarrow H_{d}(X_{\infty}, \X)$ comprises
+	the following collections of intervals \cite[\S 2.5]{de2011dualities}:
+	\begin{itemize}
+		\item An interval $[a,b)$ for every interval $[a,b)$ in $\textbf{Pers}_{0}(H_{d}
+			(\X))$.
+
+		\item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a,b)$ in $\textbf
+			{Pers}_{0}(H_{d-1}(\X))$.
+
+		\item An interval $[a,a^{\flat})$ for every interval $[a,\infty)$ in $\textbf
+			{Pers}_{\infty}(H_{d}(\X))$.
+	\end{itemize}
+\end{corollary}
+
+\begin{proof}
+	We begin by analyzing the first two types of intervals in the persistence diagram
+	$\textbf{Pers}(H_{d}(X) \to H_{d}(X_{\infty}, X))$. These intervals either do
+	not intersect the intermediate term $H_{d}(X_{n})$ or terminate before it. Consequently,
+	they correspond precisely to the finite intervals in $\textbf{Pers}(H_{d}(X))$
+	and $\textbf{Pers}(H_{d}(X_{\infty}, X))$, clarifying the first two cases. The
+	correspondence
+	$\textbf{Pers}_{0}(H_{d}(X_{\infty}, X)) = \textbf{Pers}_{0}(H_{d-1}(X))$
+	helps in mapping these relationships.
+
+	The third case requires examining intervals of the form $[a, b^{\flat})$ and
+	proving that they are invariably of the form $[a, a^{\flat})$, which means that
+	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\textbf{Pers}_{\infty}(
+	H_{d}(\X))$ and $\textbf{Pers}_{\infty}(H_{d}(X_{\infty}, \X))$ are restrictions
+	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[p.6]{de2011dualities}.
+	To establish this, we compare the ascending filtration defined by the images of
+	$H_{d}(X_{i})$ in $H_{d}(X_{n})$ for $i = 1, 2, \ldots, n-1$ (denoted as
+	$\text{Im}(H_{d}(X_{i}) \to H_{d}(X_{n}))$) with the descending filtration defined
+	by the kernels of $H_{d}(X_{n})$ in $H_{d}(X_{\infty}, X)$ for $i = 1, 2, \ldots
+	, n-1$ (denoted as $\text{Ker}(H_{d}(X_{n}) \to H_{d}(X_{n}, X_{i}))$). This
+	examination revolves around the fundamental properties of the homology groups
+	in a filtration setting.
+
+	For each index $i$, the image and kernel correspond to the same subspace of $H_{d}
+	(X_{n})$. This equivalence is guaranteed by the homology long exact sequence
+	associated with the pair $(X_{n}, X_{i})$, which links the relative and absolute
+	homology groups. Specifically, the exact sequence implies that any cycle in $\text{Im}
+	(H_{d}(X_{i}) \to H_{d}(X_{n}))$ that becomes a boundary in $H_{d}(X_{n}, X_{i}
+	)$ must vanish, thus equating the image and kernel. As a result, both
+	filtrations align perfectly, establishing that the third type of interval indeed
+	maps to self-closing intervals of the form $[a, a^{\flat})$.
+\end{proof}
+
+\subsection{Persistent Chain Complexes}
+Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
+can be described via a filtered cell complex $\mathcal{X}:= \sigma_{1} \cup \cdots
+\cup \sigma_{d}$, so that the persistence module can be expressed as the
+sequence
+\[
+	\mathcal{C}: \quad C_{1} \to C_{2} \to \cdots \to C_{d},
+\]
+for a finite filtration, where each $C_{i} := \langle \sigma_{1}, \ldots, \sigma_{i}
+\rangle$ is a vector space (or an abelian group) over a field $\mathbb{F}$,
+generated by the elements $\sigma_{1}, \ldots, \sigma_{i}$. The boundary operator
+is defined by $\partial \sigma_{j} = \sum_{i<j}\lambda_{ij}\sigma_{i}$ for $\lambda
+_{ij}\in \mathbb{F}$ for all $i, j \in \{1, \ldots, d\}$.
+
+Then $C_{\bullet}(X_{i}) = (C_{i},\partial_{i})$ is the chain complex for the absolute
+homology of $X_{i}$, and $C_{\bullet}(\mathcal{X}) = (\mathcal{C},\partial)$
+represents the persistent version for $\mathcal{X}$. This leads to the definition
+of the persistent absolute homology of $\mathcal{X}$ as
+\[
+	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}, \partial): \quad \frac{\ker(\partial_{1})}{\text{im}(\partial_{1})}
+	\to \frac{\ker(\partial_{2})}{\text{im}(\partial_{2})}\to \cdots \to \frac{\ker(\partial_{d})}{\text{im}(\partial_{d})}
+	.
+\]
+
+For the persistent absolute cohomology $H^{\bullet}(\mathcal{X})$, we define
+\[
+	\mathcal{C}^{\flat}: \quad C^{\flat}_{1} \leftarrow C^{\flat}_{2} \leftarrow \cdots
+	\leftarrow C^{\flat}_{d},
+\]
+where $C_{i}^{\flat} = \text{Hom}(C_{i}, \mathbb{F}) = \langle \sigma_{1}^{\flat}
+, \sigma_{2}^{\flat}, \ldots, \sigma_{i}^{\flat} \rangle$, with
+$\{\sigma_{i}^{\flat}\}$ as the dual basis of $\{\sigma_{i}\}$. The coboundary $\delta
+= \partial^{\flat}$ is defined as the adjoint of $\partial$. Then
+$C^{\flat}(\mathcal{X}) = (\mathcal{C}^{\flat}, \delta)$ and
+$H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}, \delta) = \ker(\delta) / \text{im}
+(\delta)$. This too constitutes a persistence module, with morphisms in the
+reverse direction.
+
+\begin{example}
+	For $\mathcal{S}^{2}$, the boundary operator is given by
+	\begin{align}
+		\partial\sigma_{1} & = \partial\sigma_{2} = 0,                       \\
+		\partial\sigma_{3} & = \partial\sigma_{4} = \sigma_{1}-\sigma_{2},   \\
+		\partial\sigma_{5} & = \partial\sigma_{6} = \sigma_{3} - \sigma_{4}.
+	\end{align}
+	This information can also be summarized in a matrix. Similarly, the coboundary
+	operator is given by
+	\begin{align}
+		\delta\sigma_{1}^{\flat} = -\delta\sigma_{2}^{\flat} & = \sigma_{3}^{\flat} + \sigma_{4}^{\flat}, \\
+		\delta\sigma_{3}^{\flat} = -\delta\sigma_{4}^{\flat} & = \sigma_{5}^{\flat} + \sigma_{6}^{\flat}, \\
+		\delta\sigma_{5}^{\flat} = \delta\sigma_{6}^{\flat}  & = 0.
+	\end{align}
+	This data can analogously be summarized in a transposed matrix
+	\cite[p.7]{de2011dualities}.
+
+	The relative homology and cohomology persistence modules are then defined as
+	the homology of the persistence modules \cite[p.7]{de2011dualities}:
+	\begin{align}
+		(C_{d}/\mathcal{C}):         & \quad C_{d} \rightarrow (C_{d}/C_{1}) \rightarrow (C_{d}/C_{2}) \rightarrow \cdots \rightarrow (C_{d}/C_{d-1}),                             \\
+		(C_{d}/\mathcal{C})^{\flat}: & \quad C_{d}^{\flat} \leftarrow (C_{d}/C_{1})^{\flat} \leftarrow (C_{d}/C_{2})^{\flat} \leftarrow \cdots \leftarrow (C_{d}/C_{d-1})^{\flat}.
+	\end{align}
+	We note that the mappings $\rightarrow$ from $\mathcal{C}$ and the mappings $\leftarrow$
+	from $(C_{d}/\mathcal{C})^{\flat}$ are injective, while the mappings
+	$\leftarrow$ from $\mathcal{C}^{\flat}$ and the mappings $\rightarrow$ from
+	$(C_{d}/\mathcal{C})$ are surjective. Thus, absolute and relative cohomology
+	are structurally similar but qualitatively different from absolute homology
+	and relative homology.
+\end{example}
 
 \begin{figure}
 \centering
@@ -18,39 +512,106 @@ Every finite filtration $\emptyset \subset K^0 \subset K^1 \subset \cdots \subse
 \caption[A persistence complex]{A persistence complex, where moving to the right increases the filtration index, while moving downwards decreases the dimension.}
 \end{figure}
 
-\begin{definition}{(Persistence module \cite[§1.1]{chazal2016structure})}
-A \textbf{persistence $\mathbb{R}$-module $\mathbb{V}$} is an indexed family of vector spaces $(V_r \ \vert \ r \in \mathbb{R})$ and a doubly-indexed family of linear maps $(v_s^t: V_s \rightarrow V_t \ \vert \ s \leq t)$ which satisfy the composition law $v_s^t \circ v_r^s = v_r^t$ whenever $r \leq s \leq t$, and where $v_t^t = \text{id}_{V_t}$. 
-\end{definition}
+\begin{theorem}
+	{(Persistence Partition) \cite[\S 2.6]{de2011dualities}} \label{persistence
+	partition} Let $\mathcal{C}$ be given and $\partial$ as above, then there
+	exists a partition
+	\begin{align*}
+		\{1,2, \ldots, d\} = P^{\Join} \sqcup P \sqcup N
+	\end{align*}
+	with a bijective pairing $P \leftrightarrow N$, such that
+	\begin{align}
+		p \text{ is paired with }n \; \iff [p,n) \in \textbf{Pairs}(\mathcal{C}, \partial).
+	\end{align}
+	Furthermore, there is a basis
+	$\hat{\sigma}_{1}, \hat{\sigma}_{2}, \ldots, \hat{\sigma}_{d}$ of $C_{d}$ such
+	that
+	\begin{enumerate}
+		\item $C_{i} = \langle \hat{\sigma}_{1}, \ldots, \hat{\sigma}_{i} \rangle$ for
+			each $i$.
+
+		\item $\partial\hat{\sigma}_{p} = 0$ for all $p \in P^{\Join}$.
+
+		\item $\partial\hat{\sigma}_{n} = \hat{\sigma}_{p}$, and thus
+			$\partial\hat{\sigma}_{p} = 0$, for all $[p,n) \in \textbf{Pairs}$.
+	\end{enumerate}
+	It follows that the persistence diagram
+	$\textbf{Pers}(H(\mathcal{C},\partial))$ consists of $[a_{p}, \infty)$ for
+	$p \in P^{\Join}$ together with intervals $[a_{p},a_{n})$ for
+	$[p,n) \in \textbf{Pairs}$.
+\end{theorem}
+
+\begin{proof}
+	Let $\mathcal{C}= \{C_{i}\}_{i \in I}$ be a filtered chain complex associated with
+	a topological space, structured over a field $\mathbb{F}$ for any finite index
+	set $I$. The filtration indices ${1, 2, \ldots, d}$, where $d = \vert I \vert$,
+	classify the stages at which elements are born or die in homology. The
+	partition of $\{1, 2, \ldots, d\}$ into $P^{\Join} \sqcup P \sqcup N$ is then
+	constructed such that:
+	\begin{itemize}
+		\item $P^{\Join}$ contains indices corresponding to elements that persist indefinitely,
+			i.e., those for which $\partial\sigma_{i} = 0$ and $\sigma_{i}$ does not
+			become a boundary at any higher index.
+
+		\item $P$ and $N$ are paired bijectively, where each $p \in P$ (births)
+			corresponds uniquely to an $n \in N$ (deaths), signifying the termination of
+			the homological feature introduced at $p$. This pairing is determined
+			through the matrix reduction of $\partial$, ensuring that every cycle born
+			at stage $p$ becomes a boundary at stage $n$.
+	\end{itemize}
+
+	We then construct a basis ${\hat{\sigma}_i}$ such that for each $i$, $\hat{\sigma}
+	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in P^{\Join}$, then
+	$\partial\hat{\sigma}_{i} = 0$, indicating these elements are cycles that persist
+	indefinitely. For pairs $[p, n) \in \textbf{Pairs}(\mathcal{C}, \partial)$
+	with $p \in P$ and $n \in N$, set $\partial\hat{\sigma}_{n} = \hat{\sigma}_{p}$
+	and $\partial\hat{\sigma}_{p} = 0$, reflecting the fact that the cycle
+	$\hat{\sigma}_{p}$ born at $p$ becomes a boundary at $n$ and thus ceases to
+	contribute to homology past $n$.
+
+	Hence, the persistence diagram $\textbf{Pers}(H(\mathcal{C}, \partial))$ contains
+	intervals $[a_{p}, \infty)$ for each $p \in P^{\Join}$, indicating persistent
+	homological features and intervals $[a_{p}, a_{n})$ for each
+	$[p, n) \in \textbf{Pairs}$, describing features with finite lifespans,
+	starting as a cycle at $p$ and terminating as a boundary at $n$.
+\end{proof}
+
+In \ref{persistence partition} the index sets are defined as follows \cite[p.8]{de2011dualities}:
+\begin{itemize}
+	\item $P$ identifies the positive simplices that remain unpaired,
+
+	\item $P^{\Join}$ identifies the positive simplices that do become paired,
+
+	\item $N$ identifies the negative simplices.
+\end{itemize}
+
+The vectors $\hat{\sigma}_{p}$ and $\hat{\sigma}_{n}$ are cycles characterized by
+their leading terms $\sigma_{p}$ and $\sigma_{n}$ respectively, while the vector
+$\hat{\sigma}_{n}$ is a chain with leading term $\sigma_{n}$. This chain 'kills'
+the homology class of its paired cycle $\hat{\sigma}_{p}$ through the boundary relation
+$\partial \hat{\sigma}_{n} = \hat{\sigma}_{p}$.
+
+\begin{theorem}
+	For all integers $d \geq 0$ it holds that \cite[\S 2.4]{de2011dualities}:
+	\begin{align*}
+		\textbf{Pers}(H_{d}(\mathcal{X}) \cong \textbf{Pers}(H_{d+1}(\mathcal{X}),                       \\
+		\textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X}) \cong \textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X}).
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	Die Zerlegung
+\end{proof}
 
 \begin{remark}
-In general, we can define a persistence module over any partially ordered set $T$ instead of the real numbers. This is called a {\bfseries $T$-persistence module}.
+	In this case, we get an isomorphism of multisets. This is due to the identification
+	of the intervals $[a,\infty) \leftrightarrow [-\infty, a)$ for $\textbf{Pers}_{\infty}$.
+	Thus, persistent homology and relative homology barcodes carry the same information,
+	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
 \end{remark}
 
-\begin{example}
-Consider the following persistence modules:
-\begin{enumerate}
-	\item Let $X$ be a topological space and let $f: X \rightarrow \R$ be a function. Consider the sublevelsets $X^t := (X,f)^t = \{ x \in X \ \vert \ f(x) \leq t \}$. The inclusion maps $(i_s^t: X^s \rightarrow X^t \ \vert \ s \leq t)$ satisfy trivially the composition law $i_s^t \circ i_r^s = i_r^t$ whenever $r \leq s \leq t$ with $i_t^t$ the identity on $X^t$. This information is also called sublevelset filtration of $(X,f)$ and is denoted as $\X_{\text{sub}}^f$ \cite[p.7]{chazal2016structure}.
-	\item In general one obtains a persistence module by applying any functor from topological spaces to vector spaces. For example, let $H := H_p(-;\F)$ be the functor of the $p$-dimensional singular homology on the category of topological spaces with coefficients in some abelian group $G$, in our case in some field $\F$. We define a persistence module $\V$ by setting $V_t = H(X^t)$, and $v_s^t = H(i_s^t): H(X^s) \rightarrow H(X^t)$, which are the maps on homology induced by the inclusion maps \cite[p.7]{chazal2016structure}.
+\subsection{Cohomology of Chain Complexes}
 
-	In brief we yield $\V = H(\X_{\text{sub}}^f)$.
-\end{enumerate}
-\end{example}
+\section{Distances and the Stability Theorem}
 
-\section{Interval Decompositions}
-\label{intervaldecomposition}
 
-\section{Persistence Barcodes}
-\label{persistencebarcodes}
-
-\section{Persistence Diagrams}
-\label{persistencediagrams}
-
-\section{Interval-indecomposable Persistence Modules}
-\label{intervaldinecomposition}
-
-\section{Zigzag Persistence}
-Instead of a persistence module, zigzag persistences are always considered when we look at a zigzag diagram of a topological space or vector space, i.e. a sequence of spaces $V_1, \ldots, V_n$ where each adjacency pair is connected by a mapping $V_i \rightarrow V_{i+1}$ or $V_i \leftarrow V_{i+1}$. This means that the persistence modules discussed so far are also zigzag persistence modules in which the morphisms all point in one direction.
-
-\begin{definition}{(Zigzag Module) \cite[§2.1]{}}
-
-\end{definition}
