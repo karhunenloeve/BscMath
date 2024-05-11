@@ -1,944 +1,1620 @@
-Topological persistence is deeply rooted in algebraic topology, which studies topological spaces and functions based on algebraic objects and their properties. An example of this are homotopy and homology theories, which are essential for understanding the construction and connectedness of surfaces, a central aspect of data analysis. Persistent homology, the central tool of topological persistence, extends classical homology to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology examines multi-scale topological features through a filtration process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each stage of filtration represents a snapshot of the topological space at a different resolution and captures the appearance and disappearance of homology groups in different dimensions that encode topological properties such as connected components, holes and voids.
+Topological persistence is deeply rooted in algebraic topology, which studies topological
+spaces and functions based on algebraic objects and their properties. An example
+of this are homotopy and homology theories, which are essential for understanding
+the construction and connectedness of surfaces, a central aspect of data
+analysis. Persistent homology, the central tool of topological persistence, extends
+classical homology to identify features across multiple scales. Introduced by
+Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations},
+persistent homology examines multi-scale topological features through a
+filtration process - an indexed family of nested spaces that starts with the
+empty set and progressively covers the entire space under study. Each stage of filtration
+represents a snapshot of the topological space at a different resolution and captures
+the appearance and disappearance of homology groups in different dimensions that
+encode topological properties such as connected components, holes and voids.
 
-Mathematically, the persistence of homological features is visualized with the help of diagrams or barcode representations. These visual aids represent the emergence (birth) and vanishing (death) of topological features when the filter parameter changes. The duration of a feature's presence, represented by the length of its interval in the diagram, indicates its significance, with longer intervals suggesting features that represent the underlying data's likely true characteristics rather than mere noise. The robustness of persistent homology, in particular its resistance to minor perturbations in the data, is captured in the stability theorem. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer \cite{bendich2007inferring}, states that slight variations in the input data lead to slight changes in the persistence graphs. This property is crucial for practical applications as it guarantees that the topological summaries are both reliable and meaningful for the actual underlying structures.
+Mathematically, the persistence of homological features is visualized with the help
+of diagrams or barcode representations. These visual aids represent the
+emergence (birth) and vanishing (death) of topological features when the filter
+parameter changes. The duration of a feature's presence, represented by the
+length of its interval in the diagram, indicates its significance, with longer
+intervals suggesting features that represent the underlying data's likely true
+characteristics rather than mere noise. The robustness of persistent homology,
+in particular its resistance to minor perturbations in the data, is captured in the
+Stability Theorem \ref{stability}. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer
+\cite{bendich2007inferring}, states that slight variations in the input data lead
+to slight changes in the persistence barcodes. This property is crucial for
+practical applications as it guarantees that the topological summaries are both
+reliable and meaningful for the actual underlying structures.
 
-We start with basic concepts such as topological spaces and groups, which are crucial for understanding and encoding connectedness and other invariants. The discussion extends to simplicial complexes, which are essential for modeling data structures in topological data analysis. We explore simplicial and singular homology groups to accurately quantify topological features, and dwell on singular chain complexes and exact sequences to deepen the algebraic aspects of topology. This will be useful in some of the later proofs when we discuss the algebraic nature of the persistence module.
+We start with basic concepts such as topological spaces and groups, which are crucial
+for understanding and encoding connectedness and other invariants. The
+discussion extends to simplicial complexes, which are essential for modeling data
+structures in topological data analysis. We explore simplicial and singular
+homology groups to accurately quantify topological features, and dwell on singular
+chain complexes and exact sequences to deepen the algebraic aspects of persistence theory. This will be useful in some of the later proofs when we discuss the algebraic
+nature of the persistence module.
 
-The core of the chapter focuses on persistent homology and illustrates how it identifies multiscale topological features using filtrations of complexes and persistent homology. We discuss barcode isomorphisms and persistence modules that visualize and explain the stability of data features. The chapter concludes with advanced topics such as persistent chain complexes and the cohomology of these structures, which enhance our understanding of the evolving topology of filtrations on point clouds. We also look at distances and the stability theorem to provide metrics for comparing topological features and ensure the statistical robustness of persistent homology.
 
 \section{Simplicial Complexes}
-\label{Simplicial Complexes}
-We note that a set of points $X = \{x_{0}, x_{1}, \ldots, x_{d}\}$ in $\mathbb{R}^{n}$ is affinely independent\index{affinely independent} if no affine subspace\index{affine subspace} of dimension less than $d$ contains all the points in $X$. Such a set of points is commonly called point cloud.
+\label{Simplicial Complexes} We note that a set of points
+$X = \{x_{0}, x_{1}, \ldots, x_{d}\}$ in $\mathbb{R}^{n}$ is affinely
+independent\index{affinely independent} if no affine subspace\index{affine
+subspace}
+of dimension less than $d$ contains all the points in $X$. Such a set of points is
+commonly called point cloud.
 
-\begin{definition}
-	{($d$-Simplex) \cite[\S 2.1]{boissonnat2018geometric}} \label{d-simplex} A $d$-dimensional simplex $\sigma^{(d)}$, or \index{$d$-simplex}, is the set of all convex combinations of a set $X = \{x_{0}, x_{1}, \ldots, x_{d}\} \subset \mathbb{R}^{n}$, where $X$ consists of $d+1$ affinely independent points. Formally, $\sigma^{(d)}$ is defined by:
+\begin{definition}[$d$-Simplex]{\cite[\S 2.1]{boissonnat2018geometric}}
+\label{d-simplex} A $d$-dimensional
+	simplex $\sigma^{(d)}$, or $d$-simplex\index{$d$-simplex}, is the set of all convex combinations
+	of a set $X = \{x_{0}, x_{1}, \ldots, x_{d}\} \subset \mathbb{R}^{n}$, where
+	$X$ consists of $d+1$ affinely independent points.
+	
+	Formally, $\sigma^{(d)}$ is
+	defined by:
 	\begin{equation}
-		\sigma^{(d)} := \left\{\sum_{i=0}^{d} \lambda_i x_i \; | \; \sum_{i=0}^{d} \lambda_i = 1, \; \lambda_i \geq 0\right\}.
+		\sigma^{(d)}:= \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; | \; \sum_{i=0}^{d}\lambda
+		_{i} = 1, \; \lambda_{i} \geq 0\right\}.
 	\end{equation}
 \end{definition}
 
-As a convention, the empty set $\emptyset$ is considered a face\index{face}, corresponding to the simplex formed by the empty subset of vertices. Specifically, a $0$-simplex corresponds to a single point, a $1$-simplex to a line segment between two points, a $2$-simplex to a triangle, and a $3$-simplex to a tetrahedron. Notably, a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
+As a convention, the empty set $\emptyset$ is considered a face\index{face}, corresponding
+to the simplex formed by the empty subset of vertices. Specifically, a $0$-simplex
+corresponds to a single point, a $1$-simplex to a line segment between two
+points, a $2$-simplex to a triangle, and a $3$-simplex to a tetrahedron. Notably,
+a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 
-\begin{theorem}
-    The $d$-simplex $\sigma^{(d)}$ is homeomorphic to the $d$-dimensional disk $D^{d}$.
+\begin{theorem}[$d$-Disk to $d$-Simplex]
+	The $d$-simplex $\sigma^{(d)}$ is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \end{theorem}
 
 \begin{proof}
-    Define the standard $d$-simplex $\sigma^{(d)}$ as
-    \[
-        \sigma^{(d)} = \left\{(x_1, \ldots, x_{d+1}) \in \mathbb{R}^{d+1} \mid \sum_{i=1}^{d+1} x_i = 1, x_i \geq 0\right\},
-    \]
-    and the $d$-dimensional disk $D^{d}$ as
-    \[
-        D^{d} = \left\{(x_1, \ldots, x_d) \in \mathbb{R}^{d} \mid \sum_{i=1}^{d} x_i^2 \leq 1\right\}.
-    \]
+	Define the standard $d$-simplex $\sigma^{(d)}$ as
+	\[
+		\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1}\mid \sum_{i=0}
+		^{d}x_{i} = 1, x_{i} \geq 0\right\},
+	\]
+	and the $d$-dimensional disk $D^{d}$ as
+	\[
+		D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d}\mid \sum_{i=0}^{d-1}x_{i}
+		^{2} \leq 1\right\}.
+	\]
 
-    We construct a homeomorphism $f: \sigma^{(d)} \rightarrow D^{d}$ by
-    \[
-        f(x_1, \ldots, x_{d+1}) = (\sqrt{x_1}, \ldots, \sqrt{x_d}),
-    \]
-    where $x_{d+1} = 1 - \sum_{i=1}^{d} x_i$. This map is well-defined since $\sum_{i=1}^{d} (\sqrt{x_i})^2 = \sum_{i=1}^{d} x_i \leq 1$.
+	We construct a homeomorphism $f: \sigma^{(d)}\rightarrow D^{d}$ by
+	\[
+		f(x_{0}, \ldots, x_{d}) = (\sqrt{x_{0}}, \ldots, \sqrt{x_{d-1}}),
+	\]
+	where $x_{d}= 1 - \sum_{i=0}^{d-1}x_{i}$. This map is well-defined since $\sum_{i=1}
+	^{d}(\sqrt{x_{i}})^{2} = \sum_{i=1}^{d}x_{i} \leq 1$.
 
-    The inverse $g: D^{d} \rightarrow \sigma^{(d)}$ is given by
-    \[
-        g(y_1, \ldots, y_d) = (y_1^2, \ldots, y_d^2, 1 - \sum_{i=1}^{d} y_i^2),
-    \]
-    ensuring that $g$ is well-defined because $\sum_{i=1}^{d} y_i^2 \leq 1$ implies $1 - \sum_{i=1}^{d} y_i^2 \geq 0$.
+	The inverse $g: D^{d}\rightarrow \sigma^{(d)}$ is given by
+	\[
+		g(y_{0}, \ldots, y_{d-1}) = (y_{0}^{2}, \ldots, y_{d-1}^{2}, 1 - \sum_{i=0}^{d-1}y_{i}
+		^{2}),
+	\]
+	ensuring that $g$ is well-defined because $\sum_{i=1}^{d}y_{i}^{2} \leq 1$ implies
+	$1 - \sum_{i=1}^{d}y_{i}^{2} \geq 0$.
 
-    Both $f$ and $g$ are continuous and are inverses of each other, as shown by $f(g(y)) = y$ for all $y \in D^{d}$ and $g(f(x)) = x$ for all $x \in \sigma^{(d)}$.
+	Both $f$ and $g$ are continuous and are inverses of each other, as shown by
+	$f(g(y)) = y$ for all $y \in D^{d}$ and $g(f(x)) = x$ for all
+	$x \in \sigma^{(d)}$.
 \end{proof}
 
-Furthermore, it is important to note that $\sigma^{(d)}$ represents the convex hull\index{convex hull} of the points $X = \{x_0, x_1, \ldots, x_d\}$, defined as the smallest convex subset of $\mathbb{R}^{n}$ that contains all the points. The faces of the simplex $\sigma^{(d)}$, with vertex set $X$, are formed by the simplices corresponding to subsets of $X$. A $d$-face of a simplex consists of a subset of the vertices with cardinality $d+1$. The faces of a $d$-simplex with dimensions less than $d$ are known as its proper faces\index{proper faces}. Two simplices are considered properly situated\index{properly situated} if their intersection is either empty or a face of both simplices. By identifying simplices along entire faces, we can construct the corresponding simplicial complexes\index{simplicial complex}.
+Furthermore, it is important to note that $\sigma^{(d)}$ represents the convex hull\index{convex
+hull}
+of the points $X = \{x_{0}, x_{1}, \ldots, x_{d}\}$, defined as the smallest convex
+subset of $\mathbb{R}^{n}$ that contains all of these points. The faces of the
+simplex $\sigma^{(d)}$, with vertex set $X$, are formed by the simplices
+corresponding to subsets of $X$. A $d$-face of a simplex consists of a subset of
+the vertices with cardinality $d+1$. The faces of a $d$-simplex with dimensions
+less than $d$ are known as its proper faces\index{proper faces}. Two simplices
+are considered properly situated\index{properly situated} if their intersection is
+either empty or a face of both simplices. By identifying simplices along entire
+faces, we can construct the corresponding simplicial complexes\index{simplicial
+complex}.
 
 \begin{definition}
-	{(Simplicial Complex) \cite[\S 2.2]{boissonnat2018geometric}} \label{simplicialcomplex}
-	A simplicial complex $K$ is a finite collection of simplices that satisfies the following properties:
+	[Simplicial Complex]{\cite[\S 2.2]{boissonnat2018geometric}} \label{simplicialcomplex}
+	A simplicial complex $K$ is a finite collection of simplices that satisfies the
+	following properties:
 	\begin{enumerate}
-		\item For every simplex $\sigma^{(d)}$ in $K$, and every face $\tau^{(k)}$ of $\sigma^{(d)}$ with $k < d$, it follows that $\tau^{(k)}$ is also in $K$.
-		\item Any two simplices $\sigma^{(d)}$ and $\tau^{(k)}$ in $K$ are properly situated; that is, their intersection is either empty or a face of both simplices.
+		\item For every simplex $\sigma^{(d)}$ in $K$, and every face $\tau^{(k)}$
+			of $\sigma^{(d)}$ with $k < d$, it follows that $\tau^{(k)}$ is also in $K$.
+
+		\item Any two simplices $\sigma^{(d)}$ and $\tau^{(k)}$ in $K$ are properly situated;
+			that is, their intersection is either empty or a face of both simplices.
 	\end{enumerate}
 \end{definition}
 
-The dimension of a simplicial complex $K$ is defined as the highest dimension among its simplices. For a simplicial complex $K$ in $\mathbb{R}^{n}$, the underlying space $\vert K \vert$ is the union of all the simplices in $K$. The topology of $K$ is determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{n}$'s standard topology. Notably, when the vertex set is specified, a simplicial complex in $\mathbb{R}^{n}$ can be fully characterized by listing its simplices. Thus, it can be described purely in terms of combinatorics using abstract simplicial complexes.
+The dimension of a simplicial complex $K$ is defined as the highest dimension among
+its simplices. For a simplicial complex $K$ in $\mathbb{R}^{d}$, the underlying space
+$\vert K \vert$ is the union of all the simplices in $K$. The topology of $K$ is
+determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{d}$'s
+standard topology. Notably, when the vertex set is specified, a simplicial complex
+in $\mathbb{R}^{d}$ can be fully characterized by listing its simplices. Thus, it
+can be described purely in terms of combinatorics using abstract simplicial complexes.
 
 \begin{definition}
-	{(Abstract Simplicial Complex) \cite[\S 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
-	Consider a finite set $V = \{v_1, \ldots, v_n\}$. An abstract simplicial complex\index{abstract simplicial complex} $\tilde{K}$ with vertex set $V$ is a collection of finite subsets of $V$ that satisfies the following conditions:
+	[Abstract Simplicial Complex]{\cite[\S 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
+	Consider a finite set $V = \{v_{0}, \ldots, v_{d}\}$. An abstract simplicial
+	complex\index{abstract simplicial complex} $\tilde{K}$ with vertex set $V$ is a
+	collection of finite subsets of $V$ that satisfies the following conditions:
 	\begin{enumerate}
-		\item Every singleton set $\{v_i\}$, where $v_i \in V$, is included in $\tilde{K}$.
-		\item If a set $\sigma^{(d)}$ is in $\tilde{K}$ and $\tau^{(k)}$ is a subset of $\sigma^{(d)}$, then $\tau^{(k)}$ must also be in $\tilde{K}$.
+		\item Every singleton set $\{v_{i}\}$, where $v_{i} \in V$, is included in $\tilde
+			{K}$.
+
+		\item If a set $\sigma^{(d)}$ is in $\tilde{K}$ and $\tau^{(k)}$ is a subset
+			of $\sigma^{(d)}$, then $\tau^{(k)}$ must also be in $\tilde{K}$.
 	\end{enumerate}
 \end{definition}
 
-The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex $K$ is commonly referred to as its vertex scheme\index{vertex scheme}. Conversely, if an abstract complex $\tilde{K}$ serves as the vertex scheme for a complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\index{geometric realization} of $\tilde{K}$.
+The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex
+$K$ is commonly referred to as its vertex scheme\index{vertex scheme}.
+Conversely, if an abstract complex $\tilde{K}$ serves as the vertex scheme for a
+complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\index{geometric
+realization} of $\tilde{K}$.
 
 \begin{proposition}
-	Every finite abstract simplicial complex $\tilde{K}$ can be geometrically realized in a Euclidean space.
+	Every finite abstract simplicial complex $\tilde{K}$ can be geometrically realized
+	in Euclidean space.
 \end{proposition}
 
 \begin{proof}
-    Let $\{v_1, v_2, \ldots, v_n\}$ denote the vertex set of $\tilde{K}$, with $n$ representing the number of vertices in $\tilde{K}$. Consider $\sigma^{(n-1)} \subset \mathbb{R}^{n}$, the simplex formed by the span of $\{e_1, e_2, \ldots, e_n\}$, where $e_i$ represents the $i$-th unit vector. In this context, $K$ refers to the subcomplex of $\sigma^{(n-1)}$ such that $[e_{i_0}, \ldots, e_{i_d}]$ is a $d$-simplex of $K$ if and only if $[v_{i_0}, \ldots, v_{i_d}]$ is a simplex of $\tilde{K}$.
+	Let $\{v_{0}, v_{1}, \ldots, v_{d}\}$ denote the vertex set of $\tilde{K}$,
+	with $d$ representing the number of vertices in $\tilde{K}$. Consider $\sigma^{(d-1)}
+	\subset \mathbb{R}^{d}$, the simplex formed by the span of
+	$\{e_{1}, e_{2}, \ldots, e_{d}\}$, where $e_{i}$ represents the $i$-th unit vector.
+	In this context, $K$ refers to the subcomplex of $\sigma^{(d-1)}$ such that $[e
+	_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ if and only if $[v_{i_0}, \ldots
+	, v_{i_l}]$ is a simplex of $\tilde{K}$.
 \end{proof}
 
-All realizations of an abstract simplicial complex are homeomorphic to each other. The specific realization mentioned above is referred to as the natural realization.
+Pay attention, that this result is in particular interesting for data analysis, as computer aided methods deal with finite point sets. All realizations of an abstract simplicial complex are homeomorphic to each other.
+The specific realization mentioned above is referred to as the natural
+realization\index{natural realization}.
 
-\begin{proposition}
-	Let $\tilde{K}$ be an abstract simplicial complex. Then any two geometric realizations $|\tilde{K}|_1$ and $|\tilde{K}|_2$ of $\tilde{K}$ are homeomorphic.
+\begin{proposition}[Equivalence of Geometric Realizations]
+	Let $\tilde{K}$ be an abstract simplicial complex. Then any two geometric
+	realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of $\tilde{K}$ are
+	homeomorphic.
 \end{proposition}
 
 \begin{proof}
-    Consider two geometric realizations $|\tilde{K}|_1$ and $|\tilde{K}|_2$ of the abstract simplicial complex $\tilde{K}$. Each realization $|\tilde{K}|_i$ is constructed by mapping the vertices of $\tilde{K}$ to points in $\mathbb{R}^{n}$, and by identifying each simplex in $\tilde{K}$ with the convex hull of its image under this mapping. By construction, each simplex in $|\tilde{K}|_i$ corresponds homeomorphically to a standard $k$-simplex in $\mathbb{R}^{k}$ for the appropriate $k$.
+	Consider two geometric realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of
+	the abstract simplicial complex $\tilde{K}$. Each realization
+	$|\tilde{K}|_{i}$ is constructed by mapping the vertices of $\tilde{K}$ to
+	points in $\mathbb{R}^{d}$, and by identifying each simplex in $\tilde{K}$ with
+	the convex hull of its image under this mapping. By construction, each simplex
+	in $|\tilde{K}|_{i}$ corresponds homeomorphically to a standard $l$-simplex in
+	$\mathbb{R}^{d}$ for the appropriate $l$ for integers $0 \leq l \leq d$.
 
-    To establish a homeomorphism between $|\tilde{K}|_1$ and $|\tilde{K}|_2$, define a map $f: |\tilde{K}|_1 \to |\tilde{K}|_2$ that acts on each vertex $v$ of $\tilde{K}$ by mapping it from its image in $|\tilde{K}|_1$ to its image in $|\tilde{K}|_2$. Extend $f$ linearly to each simplex in $|\tilde{K}|_1$, where a simplex is represented as a convex combination of the images of its vertices.
+	To establish a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$,
+	define a map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ that acts on each vertex
+	$v$ of $\tilde{K}$ by mapping it from its image in $|\tilde{K}|_{1}$ to its
+	image in $|\tilde{K}|_{2}$. Extend $f$ linearly to each simplex in $|\tilde{K}|
+	_{1}$, where a simplex is represented as a convex combination of the images of
+	its vertices. Given the two geometric realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$
+	of $\tilde{K}$, where vertices $v_{i}$ in $|\tilde{K}|_{1}$ are mapped to points
+	$p_{i}$ in $\mathbb{R}^{d}$ and in $|\tilde{K}|_{2}$ to points $q_{i}$, the
+	map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ is defined such that for each
+	vertex $v_{i}$, corresponding to $p_{i}$ in $|\tilde{K}|_{1}$, we set
+	$f(p_{i}) = q_{i}$. This map is linearly extended across each simplex in $|\tilde
+	{K}|_{1}$.
 
-    Given the two geometric realizations $|\tilde{K}|_1$ and $|\tilde{K}|_2$ of $\tilde{K}$, where vertices $v_i$ in $|\tilde{K}|_1$ are mapped to points $p_i$ in $\mathbb{R}^{n}$ and in $|\tilde{K}|_2$ to points $q_i$, the map $f: |\tilde{K}|_1 \to |\tilde{K}|_2$ is defined such that for each vertex $v_i$, corresponding to $p_i$ in $|\tilde{K}|_1$, we set $f(p_i) = q_i$. This map is linearly extended across each simplex in $|\tilde{K}|_1$.
+	Specifically, for a point $x$ and an integer $0 \leq k \leq d$ within a simplex of $|\tilde{K}|_{1}$, expressed
+	as a convex combination
+	\begin{align}
+		x = \sum_{j=1}^{k}\lambda_{j} p_{i_j},
+	\end{align}
+	where $\{v_{i_1}, v_{i_2}, \ldots, v_{i_k}\}$ denote the vertices of the simplex
+	and $\lambda_{j} \geq 0$ with $\sum_{j=1}^{k}\lambda_{j} = 1$, the function
+	$f$ is defined by
+	\[
+		f(x) = \sum_{j=1}^{k}\lambda_{j} q_{i_j}.
+	\]
+	This ensures that $f$ is a continuous and bijective map, preserving
+	the simplicial structure and thereby establishing $f$ as a homeomorphism between
+	$|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. $f$ is continuous on each simplex because it represents a linear transformation
+	on compact convex subsets in $\mathbb{R}^{d}$. Since both $|\tilde{K}|_{1}$
+	and $|\tilde{K}|_{2}$ are topologized by the quotient of their respective
+	disjoint unions of simplices under an equivalence relation that glues them
+	along common faces, and since $f$ preserves these gluing conditions, $f$ is
+	continuous globally. Each simplex and its face structure in $|\tilde{K}|_{1}$ maps
+	uniquely onto a corresponding simplex and face structure in $|\tilde{K}|_{2}$,
+	rendering $f$ bijective.
 
-    Specifically, for a point $x$ within a simplex of $|\tilde{K}|_1$, expressed as a convex combination
-    \[
-        x = \sum_{j=1}^{k} \lambda_j p_{i_j},
-    \]
-    where $\{v_{i_1}, v_{i_2}, \ldots, v_{i_k}\}$ denote the vertices of the simplex and $\lambda_j \geq 0$ with $\sum_{j=1}^{k} \lambda_j = 1$, the function $f$ is defined by
-    \[
-        f(x) = \sum_{j=1}^{k} \lambda_j q_{i_j}.
-    \]
-    This formulation ensures that $f$ is a continuous and bijective map, preserving the simplicial structure and thereby establishing $f$ as a homeomorphism between $|\tilde{K}|_1$ and $|\tilde{K}|_2$.
+	Similarly, the inverse map $g: |\tilde{K}|_{2} \to |\tilde{K}|_{1}$ can be constructed
+	by reversing the roles of $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. It also
+	maintains continuity for analogous reasons to $f$.
 
-    The map $f$ is continuous on each simplex because it represents a linear transformation on compact convex subsets in $\mathbb{R}^{n}$. Since both $|\tilde{K}|_1$ and $|\tilde{K}|_2$ are topologized by the quotient of their respective disjoint unions of simplices under an equivalence relation that glues them along common faces, and since $f$ preserves these gluing conditions, $f$ is continuous globally. Each simplex and its face structure in $|\tilde{K}|_1$ maps uniquely onto a corresponding simplex and face structure in $|\tilde{K}|_2$, rendering $f$ bijective.
-
-    Similarly, the inverse map $g: |\tilde{K}|_2 \to |\tilde{K}|_1$ can be constructed by reversing the roles of $|\tilde{K}|_1$ and $|\tilde{K}|_2$. It also maintains continuity for analogous reasons to $f$.
-
-    Thus, $|\tilde{K}|_1$ and $|\tilde{K}|_2$ are homeomorphic.
+	Thus, $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are homeomorphic.
 \end{proof}
 
-Furthermore, it has been proven that any finite abstract simplicial complex of dimension $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
+Furthermore, it has been proven that any finite abstract simplicial complex of dimension
+$d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
 
-\begin{theorem}
-    Any finite abstract simplicial complex of dimension $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
+\begin{theorem}[Realizations into $\mathbb{R}^{2d+1}$]
+	Any finite abstract simplicial complex of dimension $d$ can be realized as a simplicial
+	complex in $\mathbb{R}^{2d+1}$.
 \end{theorem}
 
 \begin{proof}
-    Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We will construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$.
+	Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We
+	will construct an injective geometric realization
+	$f: \tilde{K}\to \mathbb{R}^{2d+1}$.
 
-    First, define an injective map $\tilde{f}: V(\tilde{K}) \to \mathbb{R}^{2d+1}$ for the vertex set $V(\tilde{K})$ of $\tilde{K}$. Since $V(\tilde{K})$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality, injectivity is guaranteed. Adjust $\tilde{f}$ if necessary to ensure the images of the vertices of each simplex $\sigma \in \tilde{K}$ are affinely independent. This can be achieved by slight perturbations within $\mathbb{R}^{2d+1}$, leveraging the ample dimensionality to avoid overlaps.
+	First, define an injective map $\tilde{f}: V(\tilde{K}) \to \mathbb{R}^{2d+1}$
+	for the vertex set $V(\tilde{K})$ of $\tilde{K}$. Since $V(\tilde{K})$ is
+	finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality, injectivity is guaranteed.
+	Adjust $\tilde{f}$ if necessary to ensure the images of the vertices of each
+	simplex $\sigma \in \tilde{K}$ are affinely independent. This can be achieved by
+	slight perturbations within $\mathbb{R}^{2d+1}$, leveraging the ample
+	dimensionality to avoid overlaps. We extend $\tilde{f}$ to a map $f: \tilde{K}\to \mathbb{R}^{2d+1}$ by defining
+	it on each simplex $\sigma = [v_{0}, \ldots, v_{k}]$ through the unique affine
+	map $v_{i} \mapsto \tilde{f}(v_{i})$. The injective and affine properties of $\tilde
+	{f}$ on vertices guarantee that $f$ is injective over each simplex and preserves
+	the simplicial structure. Specifically, for any simplices $\sigma, \tau \in \tilde
+	{K}$, we have:
+	\[
+		f(|\sigma| \cap |\tau|) = f(|\sigma|) \cap f(|\tau|).
+	\]
 
-    We extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma = [v_0, \ldots, v_k]$ through the unique affine map $v_i \mapsto \tilde{f}(v_i)$. The injective and affine properties of $\tilde{f}$ on vertices guarantee that $f$ is injective over each simplex and preserves the simplicial structure. Specifically, for any simplices $\sigma, \tau \in \tilde{K}$, we have:
-    \[
-        f(|\sigma| \cap |\tau|) = f(|\sigma|) \cap f(|\tau|).
-    \]
-
-    Thus, $f$ provides an injective geometric realization of $\tilde{K}$ as a simplicial complex in $\mathbb{R}^{2d+1}$.
+	Thus, $f$ provides an injective geometric realization of $\tilde{K}$ as a simplicial
+	complex in $\mathbb{R}^{2d+1}$.
 \end{proof}
 
 \section{Simplicial Homology}
-\label{Simplicial Homology}
-Given a set $V$ representing the vertices of a $d$-simplex $\sigma^{(d)}$, we can establish an orientation for the simplex by selecting a specific ordering of the vertices. If the vertex ordering differs from our chosen order by an odd permutation, the orientation is considered reversed, while even permutations preserve the orientation. Thus, a simplex can have only two possible orientations. Moreover, the orientation of a $d$-simplex induces an orientation on its $(d-1)$-faces. Specifically, if $\sigma^{(d)}:= (v_0, v_1, \ldots, v_d)$ represents an oriented $d$-simplex, then the orientation of the $(d-1)$-face $\tau^{(d-1)}$ of $\sigma^{(d)}$, omitting the vertex $v_i$, is given by $\tau_i^{(d-1)} = (-1)^i (v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d)$.
+\label{Simplicial Homology} Given a set $V$ representing the vertices of a $d$-simplex
+$\sigma^{(d)}$, we can establish an orientation for the simplex by selecting a
+specific ordering of the vertices. If the vertex ordering differs from our chosen
+order by an odd permutation, the orientation is considered reversed, while even permutations
+preserve the orientation. Thus, a simplex can have only two possible orientations.
+Moreover, the orientation of a $d$-simplex induces an orientation on its $(d-1)$-faces.
+Specifically, if $\sigma^{(d)}:= (v_{0}, v_{1}, \ldots, v_{d})$ represents an oriented
+$d$-simplex, then the orientation of the $(d-1)$-face $\tau^{(d-1)}$ of
+$\sigma^{(d)}$, omitting the vertex $v_{i}$, is given by
+$\tau_{i}^{(d-1)}= (-1)^{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d})$.
 
 \begin{definition}
-    {($d$-Chain) \cite[\S 2.3]{zomorodian2004computing}}
-    \label{$d$-Chain}
-    Given a set $\{\sigma_{1}^{(d)}, \ldots, \sigma_{k}^{(d)}\}$ of arbitrarily oriented $d$-simplices in a complex $K$ and an abelian group $G$, a $d$-chain $c$ with coefficients $g_i \in G$ is defined as a formal sum:
-    \begin{equation}
-        c := g_{0} \sigma^{(d)}_{0} + g_{1} \sigma^{(d)}_{1} + \ldots + g_{k} \sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i} \sigma^{(d)}_{i}.
-    \end{equation}
+	{($d$-Chain) \cite[\S 2.3]{zomorodian2004computing}} \label{$d$-Chain} Given a
+	set $\{\sigma_{1}^{(d)}, \ldots, \sigma_{k}^{(d)}\}$ of arbitrarily oriented $d$-simplices
+	in a complex $K$ and an abelian group $G$, a $d$-chain $c$ with coefficients
+	$g_{i} \in G$ is defined as a formal sum:
+	\begin{equation}
+		c := g_{0}\sigma^{(d)}_{0}+ g_{1}\sigma^{(d)}_{1}+ \ldots + g_{k}\sigma^{(d)}
+		_{k}= \sum_{i=0}^{k}g_{i}\sigma^{(d)}_{i}.
+	\end{equation}
 \end{definition}
 
 Henceforth, we will assume that $G = (\mathbb{Z}, +)$.
 
 \begin{lemma}
-    The set of simplicial $d$-chains $C^{\Delta}_d$ forms an abelian group $(C^{\Delta}_d, +)$.
+	The set of simplicial $d$-chains $C^{\Delta}_{d}$ forms an abelian group $(C^{\Delta}
+	_{d}, +)$.
 \end{lemma}
 
 \begin{proof}
-    The identity element of the group is the empty chain, given by:
-    \[
-        e_{C^{\Delta}_d} = \sum_{i \in \emptyset} g_i \sigma_i^{(d)} = e_G = 0.
-    \]
+	The identity element of the group is the empty chain, given by:
+	\[
+		e_{C^{\Delta}_d}= \sum_{i \in \emptyset}g_{i} \sigma_{i}^{(d)}= e_{G} = 0.
+	\]
 
-    The sum of two chains is defined as:
-    \[
-        c + c' = \sum_{i=0}^{k} g_i \sigma_i^{(d)} + \sum_{j=1}^{l} g'_j \sigma_j^{(d)},
-    \]
-    which simplifies to:
-    \[
-        c + c' = \sum_{i=0}^{\min(k, l)} (g_i + g'_i) \sigma_i^{(d)} + \sum_{j=\min(k, l)+1}^{\max(k, l)} \begin{cases}
-            g_j \sigma_j^{(d)} & \text{if } k \geq l,\\
-            g'_j \sigma_j^{(d)} & \text{if } k < l.
-        \end{cases}
-    \]
-    Hence, $c + c' \in C^{\Delta}_d$.
+	The sum of two chains is defined as:
+	\[
+		c + c' = \sum_{i=0}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{j=1}^{l}g'_{j} \sigma_{j}
+		^{(d)},
+	\]
+	which simplifies to:
+	\[
+		c + c' = \sum_{i=0}^{\min(k, l)}(g_{i} + g'_{i}) \sigma_{i}^{(d)}+ \sum_{j=\min(k,
+		l)+1}^{\max(k, l)}
+		\begin{cases}
+			g_{j} \sigma_{j}^{(d)}  & \text{if }k \geq l, \\
+			g'_{j} \sigma_{j}^{(d)} & \text{if }k < l.
+		\end{cases}
+	\]
+	Hence, $c + c' \in C^{\Delta}_{d}$.
 
-    The associativity of the group operation in $C^{\Delta}_d$ follows directly from the associativity of the group operation in $G$.
+	The associativity of the group operation in $C^{\Delta}_{d}$ follows directly from
+	the associativity of the group operation in $G$.
 
-    The inverse element is given by:
-    \[
-        c + (-c) = \sum_{i=0}^{k} g_i \sigma_i^{(d)} + \sum_{i=0}^{k} (-g_i) \sigma_i^{(d)} = \sum_{i=0}^{k} (g_i - g_i) \sigma_i^{(d)} = e_{C^{\Delta}_d}.
-    \]
-    Thus, $(C^{\Delta}_d, +)$ is an abelian group.
+	The inverse element is given by:
+	\[
+		c + (-c) = \sum_{i=0}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{i=0}^{k}(-g_{i}) \sigma
+		_{i}^{(d)}= \sum_{i=0}^{k}(g_{i} - g_{i}) \sigma_{i}^{(d)}= e_{C^{\Delta}_d}.
+	\]
+	Thus, $(C^{\Delta}_{d}, +)$ is an abelian group.
 \end{proof}
 
 \begin{definition}
-    {(Boundary) \cite[p.106]{hatcher2005algebraic}} Let $\sigma^{(d)}$ be an oriented $d$-simplex in a complex $K$. The boundary of $\sigma^{(d)}$ is defined as the simplicial $(d-1)$-chain of $K$ with coefficients in the abelian group $G$, given by
-    \begin{equation}
-        \partial(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^i \sigma^{(d-1)}_{i},
-    \end{equation}
-    where $\sigma^{(d-1)}_{i}$ is a $(d-1)$-face of $\sigma^{(d)}$. If $d = 0$, we define $\partial(\sigma^{(0)}) = 0$.
+	{(Boundary) \cite[p.106]{hatcher2005algebraic}} Let $\sigma^{(d)}$ be an oriented
+	$d$-simplex in a complex $K$. The boundary of $\sigma^{(d)}$ is defined as the
+	simplicial $(d-1)$-chain of $K$ with coefficients in the abelian group $G$, given
+	by
+	\begin{equation}
+		\partial(\sigma^{(d)}) = \sum_{i=0}^{d}(-1)^{i} \sigma^{(d-1)}_{i},
+	\end{equation}
+	where $\sigma^{(d-1)}_{i}$ is a $(d-1)$-face of $\sigma^{(d)}$. If $d = 0$, we
+	define $\partial(\sigma^{(0)}) = 0$.
 \end{definition}
 
-Since $\sigma^{(d)}$ is an oriented simplex, the $\sigma^{(d-1)}_i$ faces also have associated orientations. We extend the definition of the boundary linearly to elements of $C^{\Delta}_d$.
+Since $\sigma^{(d)}$ is an oriented simplex, the $\sigma^{(d-1)}_{i}$ faces also
+have associated orientations. We extend the definition of the boundary linearly to
+elements of $C^{\Delta}_{d}$.
 
 \begin{lemma}
-    The boundary operator is a group homomorphism
-    \[
-        \partial: C^{\Delta}_d \to C^{\Delta}_{d-1}.
-    \]
+	The boundary operator is a group homomorphism
+	\[
+		\partial: C^{\Delta}_{d} \to C^{\Delta}_{d-1}.
+	\]
 \end{lemma}
 
 \begin{proof}
-    We define the boundary operator for a $d$-chain $c = \sum_{i=1}^{k} g_i \sigma_i^{(d)}$ as follows:
-    \[
-        \partial(c) = \sum_{i=1}^{k} g_i \partial(\sigma_i^{(d)}) = \sum_{i=1}^{k} g_i \sum_{j=0}^{d} (-1)^j \sigma_{i,j}^{(d-1)} = \sum_{i=1}^{k} \sum_{j=0}^{d} g_i (-1)^j \sigma_{i,j}^{(d-1)},
-    \]
-    which is an element of $C^{\Delta}_{d-1}$, where $\sigma_{i,j}^{(d-1)}$ are the $(d-1)$-faces of the $d$-simplices $\sigma_i^{(d)}$ in $K$.
+	We define the boundary operator for a $d$-chain $c = \sum_{i=1}^{k}g_{i} \sigma
+	_{i}^{(d)}$ as follows:
+	\[
+		\partial(c) = \sum_{i=1}^{k}g_{i} \partial(\sigma_{i}^{(d)}) = \sum_{i=1}^{k}
+		g_{i} \sum_{j=0}^{d}(-1)^{j} \sigma_{i,j}^{(d-1)}= \sum_{i=1}^{k}\sum_{j=0}^{d}
+		g_{i} (-1)^{j} \sigma_{i,j}^{(d-1)},
+	\]
+	which is an element of $C^{\Delta}_{d-1}$, where $\sigma_{i,j}^{(d-1)}$ are the
+	$(d-1)$-faces of the $d$-simplices $\sigma_{i}^{(d)}$ in $K$.
 
-    To verify that $\partial$ is a group homomorphism, consider two $d$-chains $c = \sum_{i=1}^{k} g_i \sigma_i^{(d)}$ and $c' = \sum_{j=1}^{l} g'_j \sigma_j^{(d)}$. We compute:
-    \begin{align}
-        \partial(c + c') &= \partial\left( \sum_{i=1}^{k} g_i \sigma_i^{(d)} + \sum_{j=1}^{l} g'_j \sigma_j^{(d)} \right) \\
-                          &= \sum_{i=1}^{k} g_i \partial(\sigma_i^{(d)}) + \sum_{j=1}^{l} g'_j \partial(\sigma_j^{(d)}) \\
-                          &= \partial(c) + \partial(c').
-    \end{align}
+	To verify that $\partial$ is a group homomorphism, consider two $d$-chains
+	$c = \sum_{i=1}^{k}g_{i} \sigma_{i}^{(d)}$ and
+	$c' = \sum_{j=1}^{l}g'_{j} \sigma_{j}^{(d)}$. We compute:
+	\begin{align}
+		\partial(c + c') & = \partial\left( \sum_{i=1}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{j=1}^{l}g'_{j} \sigma_{j}^{(d)}\right) \\
+		                 & = \sum_{i=1}^{k}g_{i} \partial(\sigma_{i}^{(d)}) + \sum_{j=1}^{l}g'_{j} \partial(\sigma_{j}^{(d)})  \\
+		                 & = \partial(c) + \partial(c').
+	\end{align}
 
-    Thus, $\partial$ is a group homomorphism.
+	Thus, $\partial$ is a group homomorphism.
 \end{proof}
 
 \begin{example}
-    Let's consider the $2$-simplex $\sigma^{(2)}$ with vertices $v_0$, $v_1$, and $v_2$. The $1$-faces of this simplex are:
-    \begin{align*}
-        e_0 &= (v_1, v_2), \quad \text{connecting } v_1 \text{ and } v_2,\\
-        e_1 &= (v_2, v_0), \quad \text{connecting } v_2 \text{ and } v_0,\\
-        e_2 &= (v_0, v_1), \quad \text{connecting } v_0 \text{ and } v_1.
-    \end{align*}
-    Now, let's proceed with the computation:
-    \begin{align}
-        \partial(\partial(\sigma^{(2)})) &= \partial(e_0 + e_1 + e_2) \nonumber\\
-        &= \partial(e_0) + \partial(e_1) + \partial(e_2) \nonumber\\
-        &= \partial(v_1, v_2) + \partial(v_2, v_0) + \partial(v_0, v_1) \nonumber\\
-        &= [(v_2) - (v_1)] + [(v_0) - (v_2)] + [(v_1) - (v_0)] \nonumber\\
-        &= 0.
-    \end{align}
-    We observe that $C^{\Delta}_0$ is an abelian group and that oppositely oriented simplices cancel each other out, resulting in:
-    \[
-        \partial(\partial(\sigma^{(2)})) = 0.
-    \]
-    This property can be generalized to higher dimensions through induction. Therefore, since $\partial$ is a linear operator and the chain $c$ is a sum of $d$-simplices, we can conclude that:
-    \[
-        \partial^2(c) = 0 \quad \text{for any $d$-chain $c$ in } C^{\Delta}_d.
-    \]
-    Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
+	Let's consider the $2$-simplex $\sigma^{(2)}$ with vertices $v_{0}$, $v_{1}$, and
+	$v_{2}$. The $1$-faces of this simplex are:
+	\begin{align}
+		e_{0} & = (v_{1}, v_{2}), \quad \text{connecting }v_{1} \text{ and }v_{2}, \\
+		e_{1} & = (v_{2}, v_{0}), \quad \text{connecting }v_{2} \text{ and }v_{0}, \\
+		e_{2} & = (v_{0}, v_{1}), \quad \text{connecting }v_{0} \text{ and }v_{1}.
+	\end{align}
+	Now, let's proceed with the computation:
+	\begin{align}
+		\partial(\partial(\sigma^{(2)})) & = \partial(e_{0} + e_{1} + e_{2}) \nonumber                                          \\
+		                                 & = \partial(e_{0}) + \partial(e_{1}) + \partial(e_{2}) \nonumber                      \\
+		                                 & = \partial(v_{1}, v_{2}) + \partial(v_{2}, v_{0}) + \partial(v_{0}, v_{1}) \nonumber \\
+		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})] \nonumber          \\
+		                                 & = 0.
+	\end{align}
+	We observe that $C^{\Delta}_{0}$ is an abelian group and that oppositely oriented
+	simplices cancel each other out, resulting in:
+	\[
+		\partial(\partial(\sigma^{(2)})) = 0.
+	\]
+	This property can be generalized to higher dimensions through induction.
+	Therefore, since $\partial$ is a linear operator and the chain $c$ is a sum of
+	$d$-simplices, we can conclude that:
+	\[
+		\partial^{2}(c) = 0 \quad \text{for any $d$-chain $c$ in }C^{\Delta}_{d}.
+	\]
+	Consequently, the boundary of the boundary is zero. Moreover, if the boundary
+	of a simplex is zero, it is referred to as a cycle. By this definition, we can
+	deduce that the boundary of any simplex is a cycle.
 \end{example}
 
 \begin{definition}
-    {(Cycle) \cite[p.106]{hatcher2005algebraic}} A $d$-chain is called a cycle if its boundary is equal to zero.
+	{(Cycle) \cite[p.106]{hatcher2005algebraic}} A $d$-chain is called a cycle if its
+	boundary is equal to zero.
 \end{definition}
 
-We denote the set of $d$-cycles of a complex $K$ over the group $\mathbb{Z}$ as $Z^{\Delta}_d$, the simplicial cycle group. It is important to note that $Z^{\Delta}_d$ is a subgroup of $C^{\Delta}_d$ and can also be expressed as:
+We denote the set of $d$-cycles of a complex $K$ over the group $\mathbb{Z}$ as $Z
+^{\Delta}_{d}$, the simplicial cycle group. It is important to note that $Z^{\Delta}
+_{d}$ is a subgroup of $C^{\Delta}_{d}$ and can also be expressed as:
 \[
-    Z^{\Delta}_d = \ker(\partial_d).
+	Z^{\Delta}_{d} = \ker(\partial_{d}).
 \]
 
-A $d$-cycle of a $k$-complex $K$ is said to be homologous to zero if it can be expressed as the boundary of a $(d+1)$-chain in $K$, where $d = 0, 1, \ldots, k-1$. In other words, a cycle is considered a boundary if it can be "filled in" by a higher-dimensional chain. This equivalence relation is denoted as $c \sim 0$.
+A $d$-cycle of a $k$-complex $K$ is said to be homologous to zero if it can be expressed
+as the boundary of a $(d+1)$-chain in $K$, where $d = 0, 1, \ldots, k-1$. In other
+words, a cycle is considered a boundary if it can be "filled in" by a higher-dimensional
+chain. This equivalence relation is denoted as $c \sim 0$.
 
 \begin{definition}
-    {(Boundary Group) \cite[\S 2.3]{zomorodian2004computing}} The subgroup of $Z^{\Delta}_d$ consisting of boundaries is referred to as the simplicial boundary group $B^{\Delta}_d$.
+	{(Boundary Group) \cite[\S 2.3]{zomorodian2004computing}} The subgroup of $Z^{\Delta}
+	_{d}$ consisting of boundaries is referred to as the simplicial boundary group
+	$B^{\Delta}_{d}$.
 \end{definition}
 
-It is worth noting that $B^{\Delta}_d$ is equal to the image of the boundary operator $\partial_{d+1}$. Since $B^{\Delta}_d$ is a subgroup of $Z^{\Delta}_d$ and $Z^{\Delta}_d$ is an abelian group, every subgroup of $Z^{\Delta}_d$ is normal. Therefore, we can construct the group quotient:
+It is worth noting that $B^{\Delta}_{d}$ is equal to the image of the boundary
+operator $\partial_{d+1}$. Since $B^{\Delta}_{d}$ is a subgroup of $Z^{\Delta}_{d}$
+and $Z^{\Delta}_{d}$ is an abelian group, every subgroup of $Z^{\Delta}_{d}$ is
+normal. Therefore, we can construct the group quotient:
 \[
-    H^{\Delta}_d = Z^{\Delta}_d / B^{\Delta}_d.
+	H^{\Delta}_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}.
 \]
 
 \begin{definition}
-    {(Simplicial Homology Group) \cite[\S 2.1]{hatcher2005algebraic}} The group $H^{\Delta}_d$ represents the $d$-dimensional simplicial homology group of the complex $K$ over $\mathbb{Z}$. It is expressed as the group quotient:
-    \[
-        H^{\Delta}_d = \ker(\partial_d) / \operatorname{im}(\partial_{d+1}).
-    \]
+	{(Simplicial Homology Group) \cite[\S 2.1]{hatcher2005algebraic}} The group $H^{\Delta}
+	_{d}$ represents the $d$-dimensional simplicial homology group of the complex $K$
+	over $\mathbb{Z}$. It is expressed as the group quotient:
+	\[
+		H^{\Delta}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
+	\]
 \end{definition}
 
-Next, we want to examine the structure of this homology group by shedding light on its connection to the connected components of a simplicial complex. We will find that the homology groups of the connected components of the complex, which in turn form a complex themselves, yield the direct sum of the homology group of the entire complex.
+Next, we want to examine the structure of this homology group by shedding light
+on its connection to the connected components of a simplicial complex. We will find
+that the homology groups of the connected components of the complex, which in
+turn form a complex themselves, yield the direct sum of the homology group of the
+entire complex.
 
 \begin{definition}
-    A subcomplex is a subset $S$ of the simplices belonging to a complex $K$, where $S$ itself forms a complex.
+	A subcomplex is a subset $S$ of the simplices belonging to a complex $K$,
+	where $S$ itself forms a complex.
 \end{definition}
 
 \begin{definition}
-    The collection of all simplices in a complex $K$ with dimensions less than or equal to $d$ is referred to as the $d$-skeleton of $K$.
+	The collection of all simplices in a complex $K$ with dimensions less than or equal
+	to $d$ is referred to as the $d$-skeleton of $K$.
 \end{definition}
 
 By definition, the $d$-skeleton forms a subcomplex.
 
 \begin{definition}
-    A complex $K$ is considered connected if it cannot be expressed as the disjoint union of two or more non-empty subcomplexes. A geometric complex is path-connected if there exists a path consisting of $1$-simplices connecting any vertex to any other vertex.
+	A complex $K$ is considered connected if it cannot be expressed as the disjoint
+	union of two or more non-empty subcomplexes. A geometric complex is path-connected
+	if there exists a path consisting of $1$-simplices connecting any vertex to
+	any other vertex.
 \end{definition}
 
 \begin{lemma}
-    \label{pathconnect}
-    A geometric complex is path-connected if and only if it is connected.
+	\label{pathconnect} A geometric complex is path-connected if and only if it is
+	connected.
 \end{lemma}
 
 \begin{proof}
-    Path-connectedness $\implies$ connectedness: Suppose $K$ is path-connected. Assume for contradiction that $K$ can be expressed as the disjoint union of two non-empty subcomplexes $L$ and $M$. Since $K$ is path-connected, there exists a path of $1$-simplices between any two vertices in $K$. Let $l \in L$ and $m \in M$ be any two vertices. By path-connectedness, there is a path from $l$ to $m$, which contradicts the assumption that $L$ and $M$ are disjoint. Therefore, $K$ is connected.
+	Path-connectedness $\implies$ connectedness: Suppose $K$ is path-connected. Assume
+	for contradiction that $K$ can be expressed as the disjoint union of two non-empty
+	subcomplexes $L$ and $M$. Since $K$ is path-connected, there exists a path of $1$-simplices
+	between any two vertices in $K$. Let $l \in L$ and $m \in M$ be any two
+	vertices. By path-connectedness, there is a path from $l$ to $m$, which contradicts
+	the assumption that $L$ and $M$ are disjoint. Therefore, $K$ is connected.
 
-    Connectedness $\implies$ path-connectedness: Suppose $K$ is connected. Pick any vertex $v \in K$. Let $L$ denote the subcomplex of $K$ containing all vertices reachable from $v$ via paths of $1$-simplices. If $L \neq K$, then $L$ and $K \setminus L$ form a disjoint union of two non-empty subcomplexes, contradicting the connectedness of $K$. Hence, $L = K$, and $K$ is path-connected.
+	Connectedness $\implies$ path-connectedness: Suppose $K$ is connected. Pick any
+	vertex $v \in K$. Let $L$ denote the subcomplex of $K$ containing all vertices
+	reachable from $v$ via paths of $1$-simplices. If $L \neq K$, then $L$ and
+	$K \setminus L$ form a disjoint union of two non-empty subcomplexes, contradicting
+	the connectedness of $K$. Hence, $L = K$, and $K$ is path-connected.
 \end{proof}
 
 \begin{theorem}
-    \label{decomptheorem}
-    Let $K_1, \ldots, K_p$ be the collection of all connected components of a complex $K$. Furthermore, let $H^\Delta_{d_i}$ represent the $d$th simplicial homology group of $K_i$, and $H^\Delta_d$ denote the $d$th simplicial homology group of $K$. In this context, we can establish that $H^\Delta_d$ is isomorphic to the direct sum $H^\Delta_{d_1} \oplus \cdots \oplus H^\Delta_{d_p}$.
+	\label{decomptheorem} Let $K_{1}, \ldots, K_{p}$ be the collection of all connected
+	components of a complex $K$. Furthermore, let $H^{\Delta}_{d_i}$ represent the
+	$d$th simplicial homology group of $K_{i}$, and $H^{\Delta}_{d}$ denote the $d$th
+	simplicial homology group of $K$. In this context, we can establish that
+	$H^{\Delta}_{d}$ is isomorphic to the direct sum
+	$H^{\Delta}_{d_1}\oplus \cdots \oplus H^{\Delta}_{d_p}$.
 \end{theorem}
 
 \begin{proof}
-    Let $C^\Delta_d$ represent the group of simplicial $d$-chains of $K$, and let $K_i$ denote the $i$th component of $K$. Define $C^\Delta_{d_i}$ as the group of simplicial $d$-chains of $K_i$. It is evident that $C^\Delta_{d_i}$ is a subgroup of $C^\Delta_d$. Furthermore, we observe that $C^\Delta_d$ can be expressed as the direct sum of $C^\Delta_{d_1}, \ldots, C^\Delta_{d_p}$:
-    \[
-        C^\Delta_d = C^\Delta_{d_1} \oplus \cdots \oplus C^\Delta_{d_p}.
-    \]
-    Our goal is to demonstrate that a similar decomposition applies to the groups $B^\Delta_d$ and $Z^\Delta_d$. By considering $B^\Delta_{d_i}$ as the image of $\partial_{d+1}$ restricted to the subgroup $C^\Delta_{d_i}$, we can represent the group $B^\Delta_d$ as the direct sum of these restrictions:
-    \[
-        B^\Delta_d = B^\Delta_{d_1} \oplus \cdots \oplus B^\Delta_{d_p}.
-    \]
-    Thus, for any element $c \in C^\Delta_{d+1}$, we have:
-    \[
-        c = c_1 + \cdots + c_p, \quad \partial_{d+1}(c) = \partial_{d+1}(c_1) + \cdots + \partial_{d+1}(c_p) \in B^\Delta_d,
-    \]
-    where $c_i \in C^\Delta_{(d+1)_i}$.
+	Let $C^{\Delta}_{d}$ represent the group of simplicial $d$-chains of $K$, and
+	let $K_{i}$ denote the $i$th component of $K$. Define $C^{\Delta}_{d_i}$ as
+	the group of simplicial $d$-chains of $K_{i}$. It is evident that $C^{\Delta}_{d_i}$
+	is a subgroup of $C^{\Delta}_{d}$. Furthermore, we observe that $C^{\Delta}_{d}$
+	can be expressed as the direct sum of $C^{\Delta}_{d_1}, \ldots, C^{\Delta}_{d_p}$:
+	\[
+		C^{\Delta}_{d} = C^{\Delta}_{d_1}\oplus \cdots \oplus C^{\Delta}_{d_p}.
+	\]
+	Our goal is to demonstrate that a similar decomposition applies to the groups
+	$B^{\Delta}_{d}$ and $Z^{\Delta}_{d}$. By considering $B^{\Delta}_{d_i}$ as the
+	image of $\partial_{d+1}$ restricted to the subgroup $C^{\Delta}_{d_i}$, we
+	can represent the group $B^{\Delta}_{d}$ as the direct sum of these
+	restrictions:
+	\[
+		B^{\Delta}_{d} = B^{\Delta}_{d_1}\oplus \cdots \oplus B^{\Delta}_{d_p}.
+	\]
+	Thus, for any element $c \in C^{\Delta}_{d+1}$, we have:
+	\[
+		c = c_{1} + \cdots + c_{p}, \quad \partial_{d+1}(c) = \partial_{d+1}(c_{1}) +
+		\cdots + \partial_{d+1}(c_{p}) \in B^{\Delta}_{d},
+	\]
+	where $c_{i} \in C^{\Delta}_{(d+1)_i}$.
 
-    Let us define $Z^\Delta_{d_i}$ as the intersection of the kernel of $\partial_d$ and $C^\Delta_{d_i}$. It follows that $Z^\Delta_d$ can be expressed as the direct sum of $Z^\Delta_{d_1}, \ldots, Z^\Delta_{d_p}$:
-    \[
-        Z^\Delta_d = Z^\Delta_{d_1} \oplus \cdots \oplus Z^\Delta_{d_p}.
-    \]
-    To verify this, consider an element $c \in C^\Delta_d$ that belongs to $Z^\Delta_d$. We require $\partial_d(c) = 0$. However, we can express $\partial_d(c)$ as $\partial_d(c_1) + \cdots + \partial_d(c_p)$. Therefore, for $\partial_d(c) = 0$, it must be that $\partial_d(c_i) = 0$, indicating that $c_i \in Z^\Delta_{d_i}$.
+	Let us define $Z^{\Delta}_{d_i}$ as the intersection of the kernel of
+	$\partial_{d}$ and $C^{\Delta}_{d_i}$. It follows that $Z^{\Delta}_{d}$ can be
+	expressed as the direct sum of $Z^{\Delta}_{d_1}, \ldots, Z^{\Delta}_{d_p}$:
+	\[
+		Z^{\Delta}_{d} = Z^{\Delta}_{d_1}\oplus \cdots \oplus Z^{\Delta}_{d_p}.
+	\]
+	To verify this, consider an element $c \in C^{\Delta}_{d}$ that belongs to $Z^{\Delta}
+	_{d}$. We require $\partial_{d}(c) = 0$. However, we can express
+	$\partial_{d}(c)$ as $\partial_{d}(c_{1}) + \cdots + \partial_{d}(c_{p})$. Therefore,
+	for $\partial_{d}(c) = 0$, it must be that $\partial_{d}(c_{i}) = 0$,
+	indicating that $c_{i} \in Z^{\Delta}_{d_i}$.
 
-    Since both $Z^\Delta_d$ and $B^\Delta_d$ can be decomposed componentwise, we conclude that:
-    \[
-        Z^\Delta_d / B^\Delta_d = Z^\Delta_{d_1} / B^\Delta_{d_1} \oplus \cdots \oplus Z^\Delta_{d_p} / B^\Delta_{d_p},
-    \]
-    and consequently:
-    \[
-        H^\Delta_d = H^\Delta_{d_1} \oplus \cdots \oplus H^\Delta_{d_p}.
-    \]
+	Since both $Z^{\Delta}_{d}$ and $B^{\Delta}_{d}$ can be decomposed
+	componentwise, we conclude that:
+	\[
+		Z^{\Delta}_{d} / B^{\Delta}_{d} = Z^{\Delta}_{d_1}/ B^{\Delta}_{d_1}\oplus \cdots
+		\oplus Z^{\Delta}_{d_p}/ B^{\Delta}_{d_p},
+	\]
+	and consequently:
+	\[
+		H^{\Delta}_{d} = H^{\Delta}_{d_1}\oplus \cdots \oplus H^{\Delta}_{d_p}.
+	\]
 \end{proof}
 
 \begin{proposition}
-    \label{decomposition}
-    If $K$ is a connected complex and $c$ is a $0$-chain with $I(c) = 0$, then $I(c) = 0$ is equivalent to $c \sim 0$, where $\sim$ denotes homology equivalence. Furthermore, in this case, the zeroth simplicial homology group $H^\Delta_0(K, \mathbb{Z})$ is isomorphic to the integers $\mathbb{Z}$.
+	\label{decomposition} If $K$ is a connected complex and $c$ is a $0$-chain with
+	$I(c) = 0$, then $I(c) = 0$ is equivalent to $c \sim 0$, where $\sim$ denotes homology
+	equivalence. Furthermore, in this case, the zeroth simplicial homology group
+	$H^{\Delta}_{0}(K, \mathbb{Z})$ is isomorphic to the integers $\mathbb{Z}$.
 \end{proposition}
 
 \begin{proof}
-    $c \sim 0 \implies I(c) = 0$: Let $\sigma^{(1)} = (v_0, v_1)$ be a $1$-simplex. For the chain $c = \partial_1(g \sigma^{(1)}) = g v_1 - g v_0$, we have $c \sim 0$, and it is clear that $I(c) = g - g = 0$. Since $I(c + c') = I(c) + I(c')$, $I$ is a group homomorphism. For any $1$-chain $c \in C^\Delta_1$ of the form $\sum_{i=1}^{k} g_i \sigma_i^{(1)}$, where $\sigma_i^{(1)} = (v_i, v_{i+1})$, we have:
-    \[
-        c = \partial_1(c) \sim 0 \implies I(c) = I(\partial_1(c)) = 0.
-    \]
+	$c \sim 0 \implies I(c) = 0$: Let $\sigma^{(1)}= (v_{0}, v_{1})$ be a $1$-simplex.
+	For the chain $c = \partial_{1}(g \sigma^{(1)}) = g v_{1} - g v_{0}$, we have
+	$c \sim 0$, and it is clear that $I(c) = g - g = 0$. Since
+	$I(c + c') = I(c) + I(c')$, $I$ is a group homomorphism. For any $1$-chain
+	$c \in C^{\Delta}_{1}$ of the form $\sum_{i=1}^{k}g_{i} \sigma_{i}^{(1)}$, where
+	$\sigma_{i}^{(1)}= (v_{i}, v_{i+1})$, we have:
+	\[
+		c = \partial_{1}(c) \sim 0 \implies I(c) = I(\partial_{1}(c)) = 0.
+	\]
 
-    $I(c) = 0 \implies c \sim 0$: Consider two vertices $v$ and $w$ in $K$. Since $K$ is connected, there exists a path between $v$ and $w$ consisting of $1$-simplices $\sigma_i^{(1)} = (v_i, v_{i+1})$, $i = 1, \ldots, k-1$, where $v_0 = v$ and $v_k = w$. The boundary of the chain $c = \sum_{i=1}^{k} g \sigma_i^{(1)}$ is given by:
-    \[
-        \partial_1(c) = \sum_{i=1}^{k} g \partial_1(\sigma_i^{(1)}) = \sum_{i=1}^{k} g [(v_{i+1}) - (v_i)] = g w - g v.
-    \]
-    Since $\partial_1(c)$ is a boundary, we have $c = \partial_1(c) \sim 0$. Thus, $(g w - g v) \sim 0$, implying $g w \sim g v$. Therefore, any $0$-chain $c$ in $K$ is homologous to the chain $g v$. We observe that homologous chains have equal indices, i.e., $I(c) = I(g v) = g$. Thus, $c \sim g v \implies c \sim I(c) v$. This shows that if $I(c) = 0$, then $c \sim 0$. Hence, $I(c) = 0$ is equivalent to $c \sim 0$.
+	$I(c) = 0 \implies c \sim 0$: Consider two vertices $v$ and $w$ in $K$. Since
+	$K$ is connected, there exists a path between $v$ and $w$ consisting of $1$-simplices
+	$\sigma_{i}^{(1)}= (v_{i}, v_{i+1})$, $i = 1, \ldots, k-1$, where $v_{0} = v$ and
+	$v_{k} = w$. The boundary of the chain $c = \sum_{i=1}^{k}g \sigma_{i}^{(1)}$
+	is given by:
+	\[
+		\partial_{1}(c) = \sum_{i=1}^{k}g \partial_{1}(\sigma_{i}^{(1)}) = \sum_{i=1}
+		^{k}g [(v_{i+1}) - (v_{i})] = g w - g v.
+	\]
+	Since $\partial_{1}(c)$ is a boundary, we have $c = \partial_{1}(c) \sim 0$. Thus,
+	$(g w - g v) \sim 0$, implying $g w \sim g v$. Therefore, any $0$-chain $c$ in
+	$K$ is homologous to the chain $g v$. We observe that homologous chains have
+	equal indices, i.e., $I(c) = I(g v) = g$. Thus, $c \sim g v \implies c \sim I(c
+	) v$. This shows that if $I(c) = 0$, then $c \sim 0$. Hence, $I(c) = 0$ is equivalent
+	to $c \sim 0$.
 
-    Since $I$ is a homomorphism from $C^\Delta_0 = Z^\Delta_0$ to $\mathbb{Z}$, for any $0$-simplex $c$ and $g \in \mathbb{Z}$, the chain $g c \in C^\Delta_0$ is a cycle with $I(g c) = g$. Therefore, $I(Z^\Delta_0) = \mathbb{Z}$. Since $I(c) = 0$ is equivalent to $c \sim 0$, we have $B^\Delta_0 = \ker(I)$. This implies that:
-    \[
-        H^\Delta_0 = Z^\Delta_0 / B^\Delta_0 \cong \mathbb{Z}.
-    \]
+	Since $I$ is a homomorphism from $C^{\Delta}_{0} = Z^{\Delta}_{0}$ to $\mathbb{Z}$,
+	for any $0$-simplex $c$ and $g \in \mathbb{Z}$, the chain $g c \in C^{\Delta}_{0}$
+	is a cycle with $I(g c) = g$. Therefore, $I(Z^{\Delta}_{0}) = \mathbb{Z}$.
+	Since $I(c) = 0$ is equivalent to $c \sim 0$, we have $B^{\Delta}_{0} = \ker(I)$.
+	This implies that:
+	\[
+		H^{\Delta}_{0} = Z^{\Delta}_{0} / B^{\Delta}_{0} \cong \mathbb{Z}.
+	\]
 \end{proof}
 
 \begin{corollary}
-    \label{directsum0hom}
-    The zero-dimensional simplicial homology group of a complex $K$ over $\mathbb{Z}$ can be represented as $\mathbb{Z}^p = \bigoplus_p \mathbb{Z}$, where $p$ denotes the number of connected components present in $K$.
+	\label{directsum0hom} The zero-dimensional simplicial homology group of a complex
+	$K$ over $\mathbb{Z}$ can be represented as $\mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z}$,
+	where $p$ denotes the number of connected components present in $K$.
 \end{corollary}
 
-
-
 \begin{example}
-    \begin{itemize}
-        \item[]
-        \item The zeroth homology group of the circle is isomorphic to $\mathbb{Z}$. Consider a simplicial representation of the circle using four $1$-simplices: $v_1 = (w, v)$, $v_2 = (v, y)$, $v_3 = (y, x)$, and $v_4 = (x, w)$. The group $Z^\Delta_0$ consists of sums over the four zero-simplices $v$, $w$, $x$, and $y$ with coefficients in $\mathbb{Z}$. Let $c$ be a zero-chain with non-zero coefficients given by:
-        \[
-            c = g_1 v + g_2 w + g_3 x + g_4 y.
-        \]
-        To reduce it to an element of $H^\Delta_0$, subtract the chain $c' = g_4 x - g_4 y \sim 0$:
-        \[
-            c - c' = g_1 v + g_2 w + (g_3 - g_4) x.
-        \]
-        By repeating this process, we obtain a new chain:
-        \[
-            c'' = (g_1 - g_2 + g_3 - g_4) v.
-        \]
-        Since $c'' \sim c$, it represents an element of $H^\Delta_0$. Moreover, since $g_i \in \mathbb{Z}$, we can write $(g_1 - g_2 + g_3 - g_4) \in \mathbb{Z}$ as $c'' = g v$, where $g$ is an element of $\mathbb{Z}$. Therefore, we can choose any $g$, implying that $H^\Delta_0 \cong \mathbb{Z}$.
+	\begin{itemize}
+		\item[]
 
-        \item We will demonstrate that $H^\Delta_d(S^d) \cong \mathbb{Z}$. The $d$-simplex $\sigma^{(d)}$ and the $d$-ball are homeomorphic, and their boundaries, which consist of $(d-1)$-simplices, are homeomorphic to the $d$-sphere. Thus, the appropriate simplicial structure to impose on $S^d$ is that of the boundary of the $(d+1)$-simplex $\sigma^{(d+1)}$. Let $\{v_0, \ldots, v_{d-1}\}$ denote the set of vertices of $\sigma^{(d+1)}$. This set is not oriented, and the orientations of the $(d-1)$-simplices can be arbitrarily determined. We'll utilize their numbering to establish orientations.
+		\item The zeroth homology group of the circle is isomorphic to $\mathbb{Z}$.
+			Consider a simplicial representation of the circle using four $1$-simplices:
+			$v_{1} = (w, v)$, $v_{2} = (v, y)$, $v_{3} = (y, x)$, and $v_{4} = (x, w)$.
+			The group $Z^{\Delta}_{0}$ consists of sums over the four zero-simplices $v$,
+			$w$, $x$, and $y$ with coefficients in $\mathbb{Z}$. Let $c$ be a zero-chain
+			with non-zero coefficients given by:
+			\[
+				c = g_{1} v + g_{2} w + g_{3} x + g_{4} y.
+			\]
+			To reduce it to an element of $H^{\Delta}_{0}$, subtract the chain $c' = g_{4}
+			x - g_{4} y \sim 0$:
+			\[
+				c - c' = g_{1} v + g_{2} w + (g_{3} - g_{4}) x.
+			\]
+			By repeating this process, we obtain a new chain:
+			\[
+				c'' = (g_{1} - g_{2} + g_{3} - g_{4}) v.
+			\]
+			Since $c'' \sim c$, it represents an element of $H^{\Delta}_{0}$. Moreover,
+			since $g_{i} \in \mathbb{Z}$, we can write
+			$(g_{1} - g_{2} + g_{3} - g_{4}) \in \mathbb{Z}$ as $c'' = g v$, where $g$
+			is an element of $\mathbb{Z}$. Therefore, we can choose any $g$, implying
+			that $H^{\Delta}_{0} \cong \mathbb{Z}$.
 
-        Consequently, all $d$-chains on this structure can be expressed as:
-         \begin{equation}
-            \label{chain}
-            c = \sum_{i=0}^{d+1} g_i (v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d),
-        \end{equation}
-        where $g_i \in \mathbb{Z}$.
+		\item We will demonstrate that $H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}$. The
+			$d$-simplex $\sigma^{(d)}$ and the $d$-ball are homeomorphic, and their boundaries,
+			which consist of $(d-1)$-simplices, are homeomorphic to the $d$-sphere.
+			Thus, the appropriate simplicial structure to impose on $S^{d}$ is that of
+			the boundary of the $(d+1)$-simplex $\sigma^{(d+1)}$. Let
+			$\{v_{0}, \ldots, v_{d-1}\}$ denote the set of vertices of
+			$\sigma^{(d+1)}$. This set is not oriented, and the orientations of the
+			$(d-1)$-simplices can be arbitrarily determined. We'll utilize their numbering
+			to establish orientations.
 
-        Since $\sigma^{(d+1)}$ itself is not part of the structure, there are no boundaries in $Z^\Delta_d$, the group of simplicial cycles. Thus, $H^\Delta_d = Z^\Delta_d / B^\Delta_d$ represents the group of simplicial cycles. If $c \in Z^\Delta_d$, then $\partial_{d+1}(c) = 0$. Using Eq. \ref{chain}, we have:
-        \begin{align*}
-            \partial_{d+1}(c) &= \partial_{d+1}\left( \sum_{i=0}^{d+1} g_i (v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d) \right) \\
-            &= \sum_{i=0}^{d+1} g_i \big( \sum_{j=0}^{d+1} (-1)^j (v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_d) \big).
-        \end{align*}
-        By rearranging this sum, we obtain terms of the form:
-        \[
-            \label{terms}
-            (g_k - g_l)(v_0, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d),
-        \]
-        where $k, l = 0, \ldots, d+1$ for all $i, j = 0, \ldots, d$.
+			Consequently, all $d$-chains on this structure can be expressed as:
+			\begin{equation}
+				\label{chain}c = \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1},
+				\ldots, v_{d}),
+			\end{equation}
+			where $g_{i} \in \mathbb{Z}$.
 
-        Each pair of $d$-simplices of $\sigma^{(d+1)}$ intersects along a $(d-1)$-face. Therefore, we obtain terms of the form given in Eq. \ref{terms} for each of these faces. From this, we deduce that if $\partial_{d}(c) = 0$, we must have $g_k = g_l$ for all $k, l = 0, \ldots, d+1$. In other words, $g_0 = g_1 = \cdots = g_{d+1}$. Consequently, our original $d$-chain is:
-        \[
-            c = \sum_{i=0}^{d+1} g_0 (v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d),
-        \]
-        allowing us to choose $g_0$ from $\mathbb{Z}$. Thus, we conclude that $H^\Delta_d(S^d) \cong \mathbb{Z}$.
+			Since $\sigma^{(d+1)}$ itself is not part of the structure, there are no
+			boundaries in $Z^{\Delta}_{d}$, the group of simplicial cycles. Thus, $H^{\Delta}
+			_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}$ represents the group of simplicial
+			cycles. If $c \in Z^{\Delta}_{d}$, then $\partial_{d+1}(c) = 0$. Using Eq.
+			\ref{chain}, we have:
+			\begin{align}
+				\partial_{d+1}(c) & = \partial_{d+1}\left( \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}) \right)                                    \\
+				                  & = \sum_{i=0}^{d+1}g_{i} \big( \sum_{j=0}^{d+1}(-1)^{j} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{d}) \big).
+			\end{align}
+			By rearranging this sum, we obtain terms of the form:
+			\[
+				\label{terms}(g_{k} - g_{l})(v_{0}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{i-1}
+				, v_{i+1}, \ldots, v_{d}),
+			\]
+			where $k, l = 0, \ldots, d+1$ for all $i, j = 0, \ldots, d$.
 
-        \item We demonstrate that $H^\Delta_d(D^d) = 0$. The simplest simplicial structure for $D^d$ is that of the $d$-simplex $\sigma^{(d)}$. Consequently, all $d$-chains can be expressed as $c = g \sigma^{(d)}$, where $g \in \mathbb{Z}$. This form is never a boundary, implying that $H^\Delta_d = Z^\Delta_d$. However, $\partial_d(c) = 0$ is generally only true when $g = 0$. Thus, we conclude that $H^\Delta_d(D^d) \cong 0$.
-    \end{itemize}
+			Each pair of $d$-simplices of $\sigma^{(d+1)}$ intersects along a $(d-1)$-face.
+			Therefore, we obtain terms of the form given in Eq. \ref{terms} for each
+			of these faces. From this, we deduce that if $\partial_{d}(c) = 0$, we must
+			have $g_{k} = g_{l}$ for all $k, l = 0, \ldots, d+1$. In other words, $g_{0}
+			= g_{1} = \cdots = g_{d+1}$. Consequently, our original $d$-chain is:
+			\[
+				c = \sum_{i=0}^{d+1}g_{0} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}
+				),
+			\]
+			allowing us to choose $g_{0}$ from $\mathbb{Z}$. Thus, we conclude that
+			$H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}$.
+
+		\item We demonstrate that $H^{\Delta}_{d}(D^{d}) = 0$. The simplest
+			simplicial structure for $D^{d}$ is that of the $d$-simplex $\sigma^{(d)}$.
+			Consequently, all $d$-chains can be expressed as $c = g \sigma^{(d)}$, where
+			$g \in \mathbb{Z}$. This form is never a boundary, implying that $H^{\Delta}
+			_{d} = Z^{\Delta}_{d}$. However, $\partial_{d}(c) = 0$ is generally only true
+			when $g = 0$. Thus, we conclude that $H^{\Delta}_{d}(D^{d}) \cong 0$.
+	\end{itemize}
 \end{example}
 
-
-
-
 \section{Singular Homology}
-\label{Singular Homology}
-In the realm of lower dimensions, we possess an intuitive understanding of when two topological spaces are fundamentally "equivalent". To formalize and solidify this intuition, we have devised various methods, one of which is the concept of homeomorphism. It would be highly desirable to establish a relationship between the homology groups of homeomorphic spaces. Remarkably, it has been discovered that if two topological spaces are homeomorphic, their homology groups are isomorphic. This fact begs for verification.
+\label{Singular Homology} In the realm of lower dimensions, we possess an
+intuitive understanding of when two topological spaces are fundamentally "equivalent".
+To formalize and solidify this intuition, we have devised various methods, one of
+which is the concept of homeomorphism. It would be highly desirable to establish
+a relationship between the homology groups of homeomorphic spaces. Remarkably,
+it has been discovered that if two topological spaces are homeomorphic, their homology
+groups are isomorphic. This fact begs for verification.
 
-To accomplish this task, we require a means of comparing homology groups. However, it is not immediately evident how we can achieve this using the tools we have developed thus far. In fact, it proves to be quite a challenging problem. To circumvent this difficulty, we introduce the notion of singular homology. The fundamental principles underlying this concept are analogous to those we have already explored.
+To accomplish this task, we require a means of comparing homology groups.
+However, it is not immediately evident how we can achieve this using the tools we
+have developed thus far. In fact, it proves to be quite a challenging problem.
+To circumvent this difficulty, we introduce the notion of singular homology. The
+fundamental principles underlying this concept are analogous to those we have
+already explored.
 
-To compute $Z_d(X)$, we need to find the group of $d$-cycles in $X$. Since $X$ is obtained by identifying opposite faces of $\partial_d \sigma^{(d)}$, a $d$-cycle in $X$ corresponds to a $d$-cycle in $\partial_d \sigma^{(d)}$ that is not a boundary of any $(d+1)$-dimensional simplex in $\sigma^{(d)}$. In other words, a $d$-cycle in $X$ corresponds to a $d$-cycle in $\partial_d \sigma^{(d)}$ that is not a boundary of any $(d+1)$-dimensional face of $\sigma^{(d)}$.
+To compute $Z_{d}(X)$, we need to find the group of $d$-cycles in $X$. Since $X$
+is obtained by identifying opposite faces of $\partial_{d} \sigma^{(d)}$, a $d$-cycle
+in $X$ corresponds to a $d$-cycle in $\partial_{d} \sigma^{(d)}$ that is not a boundary
+of any $(d+1)$-dimensional simplex in $\sigma^{(d)}$. In other words, a $d$-cycle
+in $X$ corresponds to a $d$-cycle in $\partial_{d} \sigma^{(d)}$ that is not a boundary
+of any $(d+1)$-dimensional face of $\sigma^{(d)}$.
 
 \begin{definition}
-    In the context of a topological space $X$, a singular $d$-simplex\index{singular $d$-simplex} is defined as a map $\tilde{\sigma}^{(d)}: \sigma^{(d)} \to X$, where $\tilde{\sigma}^{(d)}$ is continuous.
+	In the context of a topological space $X$, a singular $d$-simplex\index{singular
+	$d$-simplex} is defined as a map $\tilde{\sigma}^{(d)}: \sigma^{(d)}\to X$,
+	where $\tilde{\sigma}^{(d)}$ is continuous.
 \end{definition}
 
-We define the boundary map $\partial_d$ in a similar manner as before. The boundary map, denoted as $\partial_d$, is a function that operates on the chain group $C_d(X)$ and maps it to the chain group $C_{d-1}(X)$. It is defined as follows: For any singular $d$-simplex $\tilde{\sigma}^{(d)}$ in $X$, the boundary map $\partial_d(\tilde{\sigma}^{(d)})$ is obtained by summing over all the $(d-1)$-simplices that are obtained by removing one vertex from $\tilde{\sigma}^{(d)}$. Each term in the sum is multiplied by $(-1)^i$, where $i$ represents the index of the removed vertex. In other words, if $v_i$ represents the $0$-simplex (vertex) of $\tilde{\sigma}^{(d)}$, then the boundary map can be expressed as:
+We define the boundary map $\partial_{d}$ in a similar manner as before. The boundary
+map, denoted as $\partial_{d}$, is a function that operates on the chain group $C
+_{d}(X)$ and maps it to the chain group $C_{d-1}(X)$. It is defined as follows: For
+any singular $d$-simplex $\tilde{\sigma}^{(d)}$ in $X$, the boundary map
+$\partial_{d}(\tilde{\sigma}^{(d)})$ is obtained by summing over all the $(d-1)$-simplices
+that are obtained by removing one vertex from $\tilde{\sigma}^{(d)}$. Each term in
+the sum is multiplied by $(-1)^{i}$, where $i$ represents the index of the
+removed vertex. In other words, if $v_{i}$ represents the $0$-simplex (vertex)
+of $\tilde{\sigma}^{(d)}$, then the boundary map can be expressed as:
 \begin{equation}
-    \partial_d(\tilde{\sigma}^{(d)}) = \sum_{i} (-1)^i \tilde{\sigma}^{(d)}\vert_{[v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d]}.
+	\partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i}(-1)^{i} \tilde{\sigma}^{(d)}\vert
+	_{[v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d]}.
 \end{equation}
 
-Here, $v_i$ is a map that takes the $0$-simplex $\sigma^{(0)}$ to the corresponding vertex in $X$, such that $v_i: \sigma^{(0)} \to X$ is continuous.
+Here, $v_{i}$ is a map that takes the $0$-simplex $\sigma^{(0)}$ to the
+corresponding vertex in $X$, such that $v_{i}: \sigma^{(0)}\to X$ is continuous.
 
-As mentioned earlier, when we apply the boundary map twice to a $d$-chain $c$, denoted as $\partial^2(c)$ or $\partial_{d-1}(\partial_d(c))$, the result is always zero. This observation leads us to the idea of defining the singular homology groups in a similar way to the simplicial homology groups.
+As mentioned earlier, when we apply the boundary map twice to a $d$-chain $c$, denoted
+as $\partial^{2}(c)$ or $\partial_{d-1}(\partial_{d}(c))$, the result is always
+zero. This observation leads us to the idea of defining the singular homology groups
+in a similar way to the simplicial homology groups.
 
 \begin{definition}
-    The singular homology group\index{singular homology group} $H_d(X)$ is defined to be the quotient:
-    \[
-        H_d(X) = \ker(\partial_d) / \operatorname{im}(\partial_{d+1}).
-    \]
+	The singular homology group\index{singular homology group} $H_{d}(X)$ is
+	defined to be the quotient:
+	\[
+		H_{d}(X) = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
+	\]
 \end{definition}
 
-In the following section, we will explore how this definition of homology allows us to establish a simple relationship between homeomorphic spaces and their corresponding homology groups. This relationship becomes apparent when we consider the fact that the definitions of $H_d$ and $H^\Delta_d$ are analogous. Intuitively, we would expect these two groups to be the same. However, this is not immediately obvious. One reason for this is that $H^\Delta_d$ is finitely generated, while the chain group $C_d(X)$, from which we derived $H_d$, is uncountable.
+In the following section, we will explore how this definition of homology allows
+us to establish a simple relationship between homeomorphic spaces and their corresponding
+homology groups. This relationship becomes apparent when we consider the fact
+that the definitions of $H_{d}$ and $H^{\Delta}_{d}$ are analogous. Intuitively,
+we would expect these two groups to be the same. However, this is not
+immediately obvious. One reason for this is that $H^{\Delta}_{d}$ is finitely generated,
+while the chain group $C_{d}(X)$, from which we derived $H_{d}$, is uncountable.
 
-Interestingly, for spaces where both simplicial and singular homology groups can be calculated, these two groups are indeed equivalent. We will provide a proof for this later on. But before we do, let us present some facts about singular homology that support the intuition that $H_d$ is isomorphic to $H^\Delta_d$.
+Interestingly, for spaces where both simplicial and singular homology groups can
+be calculated, these two groups are indeed equivalent. We will provide a proof for
+this later on. But before we do, let us present some facts about singular homology
+that support the intuition that $H_{d}$ is isomorphic to $H^{\Delta}_{d}$.
 
 \begin{proposition}
-    In the context of a topological space $X$, $H_d(X)$ is isomorphic to the direct sum $H_d(X_1) \oplus \cdots \oplus H_d(X_p)$, where $X_i$ represents the path-connected components of $X$. This equivalence serves as the counterpart to Theorem \ref{decomptheorem}.
+	In the context of a topological space $X$, $H_{d}(X)$ is isomorphic to the
+	direct sum $H_{d}(X_{1}) \oplus \cdots \oplus H_{d}(X_{p})$, where $X_{i}$ represents
+	the path-connected components of $X$. This equivalence serves as the
+	counterpart to Theorem \ref{decomptheorem}.
 \end{proposition}
 
 \begin{proof}
-    As the maps $\tilde{\sigma}^{(d)}$ exhibit continuity, it can be deduced that a singular simplex always possesses a path-connected image within $X$. Consequently, $C_d(X)$ can be expressed as the direct sum of subgroups $C_d(X_1) \oplus \cdots \oplus C_d(X_p)$. The boundary map $\partial$ functions as a homomorphism, thereby preserving this decomposition. Consequently, $\ker(\partial_d)$ and $\operatorname{im}(\partial_{d+1})$ also undergo a split:
-    \[
-        H_d(X) \cong H_d(X_1) \oplus H_d(X_2) \oplus \cdots \oplus H_d(X_p).
-    \]
+	As the maps $\tilde{\sigma}^{(d)}$ exhibit continuity, it can be deduced that
+	a singular simplex always possesses a path-connected image within $X$. Consequently,
+	$C_{d}(X)$ can be expressed as the direct sum of subgroups
+	$C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p})$. The boundary map $\partial$ functions
+	as a homomorphism, thereby preserving this decomposition. Consequently,
+	$\ker(\partial_{d})$ and $\operatorname{im}(\partial_{d+1})$ also undergo a
+	split:
+	\[
+		H_{d}(X) \cong H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}
+		).
+	\]
 \end{proof}
 
 \begin{proposition}
-    The zero-dimensional homology group of a space $X$ can be expressed as the direct sum of $\mathbb{Z}$ copies, with each copy corresponding to a distinct path-component of $X$. This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
+	The zero-dimensional homology group of a space $X$ can be expressed as the direct
+	sum of $\mathbb{Z}$ copies, with each copy corresponding to a distinct path-component
+	of $X$.
 \end{proposition}
 
+This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
+
 \begin{proof}
-    To establish the isomorphism $H_0(X) \cong \mathbb{Z}$, it is sufficient to consider the case where $X$ is path-connected. For a $0$-chain $c$, the boundary operator $\partial_0(c)$ is always zero since the boundary of any $0$-simplex vanishes. Consequently, $\ker(\partial_0) = C_0(X)$, which implies that:
-    \[
-        H_0(X) = C_0(X) / \operatorname{im}(\partial_1).
-    \]
+	To establish the isomorphism $H_{0}(X) \cong \mathbb{Z}$, it is sufficient to
+	consider the case where $X$ is path-connected. For a $0$-chain $c$, the
+	boundary operator $\partial_{0}(c)$ is always zero since the boundary of any
+	$0$-simplex vanishes. Consequently, $\ker(\partial_{0}) = C_{0}(X)$, which implies
+	that:
+	\[
+		H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}).
+	\]
 
-    Define the map $I: C_0(X) \to \mathbb{Z}$ by:
-    \[
-        I(c) = \sum_i g_i \quad \text{for } c = \sum_i g_i \tilde{\sigma}^{(0)} \in C_0(X).
-    \]
-    Our goal is to demonstrate that $\ker(I) = \operatorname{im}(\partial_1)$. That is, for any $0$-chain $c$, $I(c) = 0$ if and only if $c \sim 0$.
+	Define the map $I: C_{0}(X) \to \mathbb{Z}$ by:
+	\[
+		I(c) = \sum_{i} g_{i} \quad \text{for }c = \sum_{i} g_{i} \tilde{\sigma}^{(0)}
+		\in C_{0}(X).
+	\]
+	Our goal is to demonstrate that $\ker(I) = \operatorname{im}(\partial_{1})$. That
+	is, for any $0$-chain $c$, $I(c) = 0$ if and only if $c \sim 0$.
 
-    "$\Rightarrow$": Suppose $I(c) = 0$ for $c = \sum_i g_i \tilde{\sigma}^{(0)}$. Since $X$ is path-connected, we can express $c$ as the boundary of a $1$-chain:
-    \[
-        c = \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right) \quad \text{implying } c \sim 0.
-    \]
+	"$\Rightarrow$": Suppose $I(c) = 0$ for
+	$c = \sum_{i} g_{i} \tilde{\sigma}^{(0)}$. Since $X$ is path-connected, we can
+	express $c$ as the boundary of a $1$-chain:
+	\[
+		c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right) \quad \text{implying
+		}c \sim 0.
+	\]
 
-    "$\Leftarrow$": If $c \sim 0$, then $c = \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right)$ for some $1$-chain $\sum_j g_j \tilde{\sigma}^{(1)}$. By linearity of $I$, we have:
-    \[
-        I(c) = I \left( \partial_1 \left( \sum_j g_j \tilde{\sigma}^{(1)} \right) \right) = 0.
-    \]
+	"$\Leftarrow$": If $c \sim 0$, then
+	$c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right)$ for some
+	$1$-chain $\sum_{j} g_{j} \tilde{\sigma}^{(1)}$. By linearity of $I$, we have:
+	\[
+		I(c) = I \left( \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right
+		) \right) = 0.
+	\]
 
-    Thus, $I$ induces an isomorphism between $H_0(X)$ and $\mathbb{Z}$ when $X$ is path-connected.
+	Thus, $I$ induces an isomorphism between $H_{0}(X)$ and $\mathbb{Z}$ when $X$ is
+	path-connected.
 
-    For the general case where $X$ has $p$ path-components $X_1, \ldots, X_p$, we apply the above argument to each component. Therefore, $H_0(X)$ is isomorphic to the direct sum:
-    \[
-        H_0(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}.
-    \]
+	For the general case where $X$ has $p$ path-components $X_{1}, \ldots, X_{p}$,
+	we apply the above argument to each component. Therefore, $H_{0}(X)$ is
+	isomorphic to the direct sum:
+	\[
+		H_{0}(X) \cong \bigoplus_{i=1}^{p}\mathbb{Z}.
+	\]
 \end{proof}
 
 \begin{example}
-Alternative proof that \( H_d(S^d) \cong \mathbb{Z} \). To prove that the \(d\)-th homology group of the \(d\)-sphere is isomorphic to \(\mathbb{Z}\), we utilize the singular homology approach. The \(d\)-th singular chain group \(C_d(S^d)\) consists of formal linear combinations of singular \(d\)-simplices in \(S^d\) with integer coefficients. First, we observe that \(S^d\) is a connected and compact topological space. According to the Hurewicz theorem, we have \( H_d(S^d) \cong \pi_d(S^d) \), where \(\pi_d(S^d)\) denotes the \(d\)-th homotopy group of \(S^d\). Since \(S^d\) is simply connected for \(d \geq 2\), it follows that \(\pi_d(S^d) = 0\) for \(d \geq 2\). However, for \(d = 1\), \(\pi_1(S^1) \cong \mathbb{Z}\).
+	Alternative proof that $H_{d}(S^{d}) \cong \mathbb{Z}$. To prove that the $d$-th
+	homology group of the $d$-sphere is isomorphic to $\mathbb{Z}$, we utilize the
+	singular homology approach. The $d$-th singular chain group $C_{d}(S^{d})$
+	consists of formal linear combinations of singular $d$-simplices in $S^{d}$
+	with integer coefficients. First, we observe that $S^{d}$ is a connected and
+	compact topological space. According to the Hurewicz theorem, we have
+	$H_{d}(S^{d}) \cong \pi_{d}(S^{d})$, where $\pi_{d}(S^{d})$ denotes the $d$-th
+	homotopy group of $S^{d}$. Since $S^{d}$ is simply connected for $d \geq 2$, it
+	follows that $\pi_{d}(S^{d}) = 0$ for $d \geq 2$. However, for $d = 1$,
+	$\pi_{1}(S^{1}) \cong \mathbb{Z}$.
 
-Now, to establish the isomorphism between \(\pi_1(S^1)\) and \(H_1(S^1)\), consider the singular \(1\)-chain group \(C_1(S^1)\), which consists of formal linear combinations of singular \(1\)-simplices in \(S^1\) with integer coefficients. Let \(c\) be a singular \(1\)-chain in \(C_1(S^1)\) expressed as:
-\[
-c = \sum_i g_i \tilde{\sigma}^{(1)}_i,
-\]
-where \(g_i \in \mathbb{Z}\) and \(\tilde{\sigma}^{(1)}_i\) are singular \(1\)-simplices. The boundary of \(c\) is given by:
-\[
-\partial_1(c) = \sum_i g_i \partial_1(\tilde{\sigma}^{(1)}_i).
-\]
-Since \(S^1\) is a \(1\)-dimensional manifold, the boundary of any singular \(1\)-simplex \(\tilde{\sigma}^{(1)}_i\) is a formal linear combination of two points in \(S^1\), each with opposite orientations, hence:
-\[
-\partial_1(\tilde{\sigma}^{(1)}_i) = p - q,
-\]
-where \(p\) and \(q\) are points in \(S^1\). Thus, we have:
-\[
-\partial_1(c) = (p - q) \sum_i g_i,
-\]
-where the sum \(\sum_i g_i\) is an integer. Consequently, the boundary of any singular \(1\)-chain \(c\) in \(C_1(S^1)\) is of the form \((p - q)k\), where \(k\) is an integer. This implies that:
-\[
-H_1(S^1) = Z_1(S^1) / B_1(S^1) \cong \mathbb{Z},
-\]
-where \(Z_1(S^1)\) is the group of \(1\)-cycles and \(B_1(S^1)\) is the group of \(1\)-boundaries. In conclusion, \(H_d(S^d) \cong \pi_d(S^d) = 0\) for \(d \geq 2\), and \(H_1(S^1) \cong \pi_1(S^1) \cong \mathbb{Z}\). Thus, the \(d\)-th homology group of the \(d\)-sphere is isomorphic to \(\mathbb{Z}\).
+	Now, to establish the isomorphism between $\pi_{1}(S^{1})$ and $H_{1}(S^{1})$,
+	consider the singular $1$-chain group $C_{1}(S^{1})$, which consists of formal
+	linear combinations of singular $1$-simplices in $S^{1}$ with integer coefficients.
+	Let $c$ be a singular $1$-chain in $C_{1}(S^{1})$ expressed as:
+	\[
+		c = \sum_{i} g_{i} \tilde{\sigma}^{(1)}_{i},
+	\]
+	where $g_{i} \in \mathbb{Z}$ and $\tilde{\sigma}^{(1)}_{i}$ are singular $1$-simplices.
+	The boundary of $c$ is given by:
+	\[
+		\partial_{1}(c) = \sum_{i} g_{i} \partial_{1}(\tilde{\sigma}^{(1)}_{i}).
+	\]
+	Since $S^{1}$ is a $1$-dimensional manifold, the boundary of any singular $1$-simplex
+	$\tilde{\sigma}^{(1)}_{i}$ is a formal linear combination of two points in
+	$S^{1}$, each with opposite orientations, hence:
+	\[
+		\partial_{1}(\tilde{\sigma}^{(1)}_{i}) = p - q,
+	\]
+	where $p$ and $q$ are points in $S^{1}$. Thus, we have:
+	\[
+		\partial_{1}(c) = (p - q) \sum_{i} g_{i},
+	\]
+	where the sum $\sum_{i} g_{i}$ is an integer. Consequently, the boundary of
+	any singular $1$-chain $c$ in $C_{1}(S^{1})$ is of the form $(p - q)k$, where $k$
+	is an integer. This implies that:
+	\[
+		H_{1}(S^{1}) = Z_{1}(S^{1}) / B_{1}(S^{1}) \cong \mathbb{Z},
+	\]
+	where $Z_{1}(S^{1})$ is the group of $1$-cycles and $B_{1}(S^{1})$ is the group
+	of $1$-boundaries. In conclusion, $H_{d}(S^{d}) \cong \pi_{d}(S^{d}) = 0$ for $d
+	\geq 2$, and $H_{1}(S^{1}) \cong \pi_{1}(S^{1}) \cong \mathbb{Z}$. Thus, the
+	$d$-th homology group of the $d$-sphere is isomorphic to $\mathbb{Z}$.
 \end{example}
 
 \subsection{Singular Chain Complexes}
-\label{Singular Chain Complexes}
-To establish the equivalence between the groups $H_d^\Delta$ and $H_d$, we will introduce some concepts that will aid us in our proof.
+\label{Singular Chain Complexes} To establish the equivalence between the groups
+$H_{d}^{\Delta}$ and $H_{d}$, we will introduce some concepts that will aid us in
+our proof.
 
-Since the maps $\tilde{\sigma}^{(d)}$ are continuous, a singular simplex always has a path-connected image in $X$. Thus, we can express $C_d(X)$ as the direct sum of subgroups $C_d(X_1) \oplus \cdots \oplus C_d(X_p)$, where each subgroup corresponds to a distinct path-component of $X$. This decomposition is preserved by the boundary map $\partial$, which is a homomorphism. Consequently, both $\ker(\partial_d)$ and $\mathrm{im}(\partial_{d+1})$ also split, leading to the conclusion that $H_d(X)$ is isomorphic to $H_d(X_1) \oplus H_d(X_2) \oplus \cdots \oplus H_d(X_p)$.
+Since the maps $\tilde{\sigma}^{(d)}$ are continuous, a singular simplex always
+has a path-connected image in $X$. Thus, we can express $C_{d}(X)$ as the direct
+sum of subgroups $C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p})$, where each subgroup
+corresponds to a distinct path-component of $X$. This decomposition is preserved
+by the boundary map $\partial$, which is a homomorphism. Consequently, both $\ker
+(\partial_{d})$ and $\mathrm{im}(\partial_{d+1})$ also split, leading to the
+conclusion that $H_{d}(X)$ is isomorphic to
+$H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p})$.
 
-These ideas will serve as valuable tools in proving the equivalence of the groups $H_d^\Delta$ and $H_d$.
+These ideas will serve as valuable tools in proving the equivalence of the
+groups $H_{d}^{\Delta}$ and $H_{d}$.
 
 \begin{definition}
-A chain complex is a sequence of abelian groups, connected by homomorphisms (called boundary operators\index{boundary operators}), such that the composition of any two consecutive maps is zero.
+	A chain complex is a sequence of abelian groups, connected by homomorphisms (called
+	boundary operators\index{boundary operators}), such that the composition of
+	any two consecutive maps is zero.
 \end{definition}
 
 \begin{example}
-The groups $C_d(X)$ represent the collection of singular $d$-chains that form a part of a chain complex, where the boundary operator $\partial_d$ guides the flow between these groups.
-\begin{equation*}
-\cdots \xrightarrow{} C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_d(X) \xrightarrow{\partial_d} C_{d-1}(X) \xrightarrow{} \cdots \xrightarrow{} C_1(X) \xrightarrow{\partial_1} C_0(X) \xrightarrow{\partial_0} 0.
-\end{equation*}
+	The groups $C_{d}(X)$ represent the collection of singular $d$-chains that form
+	a part of a chain complex, where the boundary operator $\partial_{d}$ guides
+	the flow between these groups.
+	\begin{align}
+		\cdots \xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} & C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \\
+		\cdots \xrightarrow{}C_{1}(X) \xrightarrow{\partial_1}       & C_{0}(X) \xrightarrow{\partial_0}0.
+	\end{align}
 \end{example}
 
 \begin{definition}
-A chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B,\partial^{(B)})$ is a collection of maps $f_d: A_d \rightarrow B_d$ such that for each $d$, the following condition holds:
-\begin{equation*}
-\partial^{(B)}_{d-1} \circ f_d = f_{d-1} \circ \partial^{(A)}_d.
-\end{equation*}
+	A chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B,\partial
+	^{(B)})$ is a collection of maps $f_{d}: A_{d} \rightarrow B_{d}$ such that for
+	each $d$, the following condition holds:
+	\begin{equation}
+		\partial^{(B)}_{d-1}\circ f_{d} = f_{d-1}\circ \partial^{(A)}_{d}.
+	\end{equation}
 \end{definition}
 
 \begin{theorem}
-\label{chainmaps}
-A chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B, \partial^{(B)})$ induces a homomorphism between their respective homology groups.
-\begin{equation*}
-\begin{tikzcd}
-\cdots \arrow[r, "\partial^{(A)}_{d+2}"] & A_{d+1} \arrow[r, "\partial^{(A)}_{d+1}"] \arrow[d, "f_{d+1}"] & A_d \arrow[r, "\partial^{(A)}_{d}"] \arrow[d, "f_d"] & A_{d-1} \arrow[r, "\partial^{(A)}_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\
-\cdots \arrow[r, "\partial^{(B)}_{d+2}"] & B_{d+1} \arrow[r, "\partial^{(B)}_{d+1}"]                                  & B_d \arrow[r, "\partial^{(B)}_d"]                              & B_{d-1} \arrow[r, "\partial^{(B)}_{d-1}"]                                  & \cdots
-\end{tikzcd}
-\end{equation*}
+	\label{chainmaps} A chain map $f$ between two chain complexes $(A, \partial^{(A)}
+	)$ and $(B, \partial^{(B)})$ induces a homomorphism between their respective homology
+	groups.
+	\begin{equation}
+		\begin{tikzcd}
+			\cdots \arrow[r, "\partial^{(A)}_{d+2}"] & A_{d+1} \arrow[r, "\partial^{(A)}_{d+1}"]
+			\arrow[d, "f_{d+1}"] & A_d \arrow[r, "\partial^{(A)}_{d}"] \arrow[d, "f_d"]
+			& A_{d-1} \arrow[r, "\partial^{(A)}_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\
+			\cdots \arrow[r, "\partial^{(B)}_{d+2}"] & B_{d+1} \arrow[r, "\partial^{(B)}_{d+1}"]
+			& B_d \arrow[r, "\partial^{(B)}_d"] & B_{d-1} \arrow[r, "\partial^{(B)}_{d-1}"]
+			& \cdots
+		\end{tikzcd}
+	\end{equation}
 \end{theorem}
 
 \begin{proof}
-Given a chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B, \partial^{(B)})$, we want to show that $f$ induces a homomorphism $f_\star: H_d(A) \rightarrow H_d(B)$.
+	Given a chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B
+	, \partial^{(B)})$, we want to show that $f$ induces a homomorphism
+	$f_{\star}: H_{d}(A) \rightarrow H_{d}(B)$.
 
-By definition of a chain map, we have $f \circ \partial^{(A)} = \partial^{(B)} \circ f$. Let $[c] \in Z_d(A)$ be a cycle in $A$, i.e., $\partial^{(A)}_d(c) = 0$. Applying $f$ to this equation, we obtain:
-\begin{equation}
-f_{d-1}(\partial^{(A)}_d(c)) = \partial^{(B)}_d(f_d(c)).
-\end{equation}
-Since $\partial^{(A)}_d(c) = 0$, we have:
-\begin{equation}
-f_{d-1}(0) = \partial^{(B)}_d(f_d(c)),
-\end{equation}
-which implies that $\partial^{(B)}_d(f_d(c)) = 0$. Thus, $f_d(c)$ is a cycle in $B$.
+	By definition of a chain map, we have $f \circ \partial^{(A)}= \partial^{(B)}\circ
+	f$. Let $[c] \in Z_{d}(A)$ be a cycle in $A$, i.e., $\partial^{(A)}_{d}(c) = 0$.
+	Applying $f$ to this equation, we obtain:
+	\begin{equation}
+		f_{d-1}(\partial^{(A)}_{d}(c)) = \partial^{(B)}_{d}(f_{d}(c)).
+	\end{equation}
+	Since $\partial^{(A)}_{d}(c) = 0$, we have:
+	\begin{equation}
+		f_{d-1}(0) = \partial^{(B)}_{d}(f_{d}(c)),
+	\end{equation}
+	which implies that $\partial^{(B)}_{d}(f_{d}(c)) = 0$. Thus, $f_{d}(c)$ is a
+	cycle in $B$.
 
-Now, let $[b] \in B_d(A)$ be a boundary in $A$, i.e., there exists $a \in A_{d+1}$ such that $\partial^{(A)}_{d+1}(a) = b$. Applying $f$ to both sides, we obtain:
-\begin{equation}
-f_d(\partial^{(A)}_{d+1}(a)) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
-\end{equation}
-Since $\partial^{(A)}_{d+1}(a) = b$, we have:
-\begin{equation}
-f_d(b) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
-\end{equation}
-Therefore, $f_d(b)$ is a boundary in $B$.
+	Now, let $[b] \in B_{d}(A)$ be a boundary in $A$, i.e., there exists
+	$a \in A_{d+1}$ such that $\partial^{(A)}_{d+1}(a) = b$. Applying $f$ to both sides,
+	we obtain:
+	\begin{equation}
+		f_{d}(\partial^{(A)}_{d+1}(a)) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
+	\end{equation}
+	Since $\partial^{(A)}_{d+1}(a) = b$, we have:
+	\begin{equation}
+		f_{d}(b) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
+	\end{equation}
+	Therefore, $f_{d}(b)$ is a boundary in $B$.
 
-From the above, we see that $f$ maps cycles in $A$ to cycles in $B$ and boundaries in $A$ to boundaries in $B$. Hence, $f$ induces a well-defined map $f_\star: H_d(A) \rightarrow H_d(B)$.
+	From the above, we see that $f$ maps cycles in $A$ to cycles in $B$ and boundaries
+	in $A$ to boundaries in $B$. Hence, $f$ induces a well-defined map $f_{\star}:
+	H_{d}(A) \rightarrow H_{d}(B)$.
 
-To show that $f_\star$ is a homomorphism, let $[c_1], [c_2] \in H_d(A)$ be two homology classes. We want to show that $f_\star([c_1] + [c_2]) = f_\star([c_1]) + f_\star([c_2])$. Let $c_1$ and $c_2$ be representatives of $[c_1]$ and $[c_2]$, respectively. Then, $[c_1] + [c_2]$ is represented by $c_1 + c_2$. Applying $f$ to both sides, we have:
-\begin{equation}
-f_d(c_1 + c_2) = f_d(c_1) + f_d(c_2).
-\end{equation}
-Since $f_d(c_1)$ and $f_d(c_2)$ are cycles in $B$, we have:
-\begin{equation}
-[f_d(c_1 + c_2)] = [f_d(c_1)] + [f_d(c_2)].
-\end{equation}
-Therefore, $f_\star([c_1] + [c_2]) = f_\star([c_1]) + f_\star([c_2])$.
+	To show that $f_{\star}$ is a homomorphism, let
+	$[c_{1}], [c_{2}] \in H_{d}(A)$ be two homology classes. We want to show that $f
+	_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}])$. Let
+	$c_{1}$ and $c_{2}$ be representatives of $[c_{1}]$ and $[c_{2}]$, respectively.
+	Then, $[c_{1}] + [c_{2}]$ is represented by $c_{1} + c_{2}$. Applying $f$ to
+	both sides, we have:
+	\begin{equation}
+		f_{d}(c_{1} + c_{2}) = f_{d}(c_{1}) + f_{d}(c_{2}).
+	\end{equation}
+	Since $f_{d}(c_{1})$ and $f_{d}(c_{2})$ are cycles in $B$, we have:
+	\begin{equation}
+		[f_{d}(c_{1} + c_{2})] = [f_{d}(c_{1})] + [f_{d}(c_{2})].
+	\end{equation}
+	Therefore, $f_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}
+	])$.
 
-Thus, we have shown that the chain map $f$ induces a homomorphism $f_\star: H_d(A) \rightarrow H_d(B)$.
+	Thus, we have shown that the chain map $f$ induces a homomorphism
+	$f_{\star}: H_{d}(A) \rightarrow H_{d}(B)$.
 \end{proof}
 
 \subsection{Exact and Short Exact Sequences}
-\label{Exact and Short Exact Sequences}
-We can apply Theorem \ref{chainmaps} to the case of singular homology. Consider two topological spaces $X$ and $Y$. For any map $f: X \rightarrow Y$, we can define an induced homomorphism $f_\star: C_d(X) \rightarrow C_d(Y)$ by composing singular $d$-simplices $\tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow X$ with $f$. Specifically, we have $f_\star \circ \tilde{\sigma}^{(d)} = f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y$.
+\label{Exact and Short Exact Sequences} We can apply Theorem \ref{chainmaps} to the
+case of singular homology. Consider two topological spaces $X$ and $Y$. For any map
+$f: X \rightarrow Y$, we can define an induced homomorphism
+$f_{\star}: C_{d}(X) \rightarrow C_{d}(Y)$ by composing singular $d$-simplices
+$\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$ with $f$. Specifically, we
+have
+$f_{\star} \circ \tilde{\sigma}^{(d)}= f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)}
+\rightarrow Y$.
 
-We can extend this definition by applying $f_\star$ to $d$-chains in $C_d(X)$. This gives us the following commutative diagram.
+We can extend this definition by applying $f_{\star}$ to $d$-chains in
+$C_{d}(X)$. This gives us the following commutative diagram.
 \begin{equation}
-\begin{tikzcd}
-\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d, "f_{d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_d"] & C_{d-1}(X) \arrow[r, "\partial_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\
-\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"]                                  & C_d(Y) \arrow[r, "\partial_d"]                              & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"]                                  & \cdots
-\end{tikzcd}
+	\begin{tikzcd}
+		\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d,
+		"f_{d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_d"] & C_{d-1}(X)
+		\arrow[r, "\partial_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\ \cdots \arrow[r,
+		"\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r,
+		"\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots
+	\end{tikzcd}
 \end{equation}
 
-The chain map $f_d$ gives rise to a homomorphism $f_\star: H_d(X) \rightarrow H_d(Y)$. It becomes evident that if $X$ and $Y$ are homeomorphic, meaning there exists a homeomorphism $f: X \rightarrow Y$, then the induced map $f_\star$ is an isomorphism.
+The chain map $f_{d}$ gives rise to a homomorphism $f_{\star}: H_{d}(X) \rightarrow
+H_{d}(Y)$. It becomes evident that if $X$ and $Y$ are homeomorphic, meaning there
+exists a homeomorphism $f: X \rightarrow Y$, then the induced map $f_{\star}$ is
+an isomorphism.
 
-To formalize the relationships between the homology groups of a topological space $X$, a subset $A \subset X$, and the quotient space $X/A$, we introduce the concept of exact sequences\index{exact sequence}.
+To formalize the relationships between the homology groups of a topological
+space $X$, a subset $A \subset X$, and the quotient space $X/A$, we introduce the
+concept of exact sequences\index{exact sequence}.
 
 \begin{definition}
-An arrangement of elements in the form
-\begin{equation}
-\cdots \rightarrow A_{d+1} \xrightarrow{\alpha_{d+1}} A_{d} \xrightarrow{\alpha_d} A_{d-1} \xrightarrow{} \cdots
-\end{equation}
-is referred to as an exact sequence when the $A_i$ are abelian groups and the $\alpha_i$ are homomorphisms, and it satisfies the condition that $\ker(\alpha_d) = \mathrm{im}(\alpha_{d+1})$ for all $d$.
+	An arrangement of elements in the form
+	\begin{equation}
+		\cdots \rightarrow A_{d+1}\xrightarrow{\alpha_{d+1}}A_{d}\xrightarrow{\alpha_d}
+		A_{d-1}\xrightarrow{}\cdots
+	\end{equation}
+	is referred to as an exact sequence when the $A_{i}$ are abelian groups and the
+	$\alpha_{i}$ are homomorphisms, and it satisfies the condition that
+	$\ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1})$ for all $d$.
 \end{definition}
 
 \begin{remark}
-\begin{itemize}
-	\item The condition $\ker(\alpha_d) = \mathrm{im}(\alpha_{d+1})$ implies that $\mathrm{im}(\alpha_{d+1})$ is a subset of $\ker(\alpha_d)$, which is equivalent to $\alpha_d \circ \alpha_{d+1} = 0$. Therefore, an exact sequence can be seen as a chain complex.
-	\item Since $\ker(\alpha_d)$ is a subset of $\mathrm{im}(\alpha_{d+1})$, the homology groups of an exact sequence are trivial.
-\end{itemize}
+	\begin{itemize}
+		\item[]
+
+		\item The condition $\ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1})$ implies that
+			$\mathrm{im}(\alpha_{d+1})$ is a subset of $\ker(\alpha_{d})$, which is
+			equivalent to $\alpha_{d} \circ \alpha_{d+1}= 0$. Therefore, an exact
+			sequence can be seen as a chain complex.
+
+		\item Since $\ker(\alpha_{d})$ is a subset of $\mathrm{im}(\alpha_{d+1})$,
+			the homology groups of an exact sequence are trivial.
+	\end{itemize}
 \end{remark}
 
 \begin{proposition}
-We can establish the following equivalences:
-\begin{enumerate}
-	\item $0 \xrightarrow{} A \xrightarrow{a} B$ is exact $\Longleftrightarrow$ $\ker(a) = 0$, or $a$ is injective.
-	\item $A \xrightarrow{a} B \rightarrow 0$ is exact $\Longleftrightarrow$ \(\mathrm{im}(a) = B\), or $a$ is surjective.
-	\item $0 \xrightarrow{} A \xrightarrow{a} B \xrightarrow 0$ is exact if and only if $a$ is an isomorphism.
-	\item A sequence of the form
-	\begin{equation}
-	0 \xrightarrow{} A \xrightarrow{a} B \xrightarrow{} 0
-	\end{equation}
-	is said to be exact if and only if the following conditions hold:
-	\begin{itemize}
-		\item The map $a: A \rightarrow B$ is injective, meaning that $\ker(a) = 0$.
-		\item The map $b: B \rightarrow 0$ is surjective, meaning that \(\mathrm{im}(b) = 0\).
-		\item The kernel of $b$ is equal to the image of $a$, i.e., $\ker(b) = \mathrm{im}(a)$.
-		\item In this case, the map $b$ induces an isomorphism $C \cong B/\mathrm{im}(a)$, where $C$ is the quotient of $B$ by the image of $a$.
-	\end{itemize}
-	If the map $a: A \hookrightarrow B$ is an inclusion, then $C \cong B/A$, where $B/A$ denotes the quotient of $B$ by the subgroup $A$. This type of exact sequence is commonly referred to as a short exact sequence\index{short exact sequence}.
-\end{enumerate}
+	We can establish the following equivalences:
+	\begin{enumerate}
+		\item $0 \xrightarrow{}A \xrightarrow{a}B$ is exact $\Longleftrightarrow$ $\ker
+			(a) = 0$, or $a$ is injective.
+
+		\item $A \xrightarrow{a}B \rightarrow 0$ is exact $\Longleftrightarrow$ $\mathrm{im}
+			(a) = B$, or $a$ is surjective.
+
+		\item $0 \xrightarrow{}A \xrightarrow{a}B \xrightarrow 0$ is exact if and only
+			if $a$ is an isomorphism.
+
+		\item A sequence of the form
+			\begin{equation}
+				0 \xrightarrow{}A \xrightarrow{a}B \xrightarrow{}0
+			\end{equation}
+			is said to be exact if and only if the following conditions hold:
+			\begin{itemize}
+				\item The map $a: A \rightarrow B$ is injective, meaning that
+					$\ker(a) = 0$.
+
+				\item The map $b: B \rightarrow 0$ is surjective, meaning that
+					$\mathrm{im}(b) = 0$.
+
+				\item The kernel of $b$ is equal to the image of $a$, i.e.,
+					$\ker(b) = \mathrm{im}(a)$.
+
+				\item In this case, the map $b$ induces an isomorphism
+					$C \cong B/\mathrm{im}(a)$, where $C$ is the quotient of $B$ by the image
+					of $a$.
+			\end{itemize}
+			If the map $a: A \hookrightarrow B$ is an inclusion, then $C \cong B/A$,
+			where $B/A$ denotes the quotient of $B$ by the subgroup $A$. This type of exact
+			sequence is commonly referred to as a short exact sequence\index{short
+			exact sequence}.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}
-	\item First, assume that $0 \rightarrow A \xrightarrow{a} B$ is exact. This means that $\mathrm{im}(0) = \ker(a)$, which implies $\ker(a) = 0$ since the image of the zero map is always the trivial group. Therefore, $a$ is injective.
+	\begin{enumerate}
+		\item First, assume that $0 \rightarrow A \xrightarrow{a}B$ is exact. This means
+			that $\mathrm{im}(0) = \ker(a)$, which implies $\ker(a) = 0$ since the
+			image of the zero map is always the trivial group. Therefore, $a$ is
+			injective.
 
-	Conversely, suppose that $\ker(a) = 0$. We need to show that $\mathrm{im}(0) = \ker(a)$. Since $\ker(a) = 0$, the only element mapped to the identity element in $B$ is the zero element of $A$. Thus, the sequence $0 \rightarrow A \xrightarrow{a} B$ is exact.
-	\item Assume that $A \xrightarrow{a} B \rightarrow 0$ is exact. This means that $\mathrm{im}(a) = \ker(0)$, which implies $\mathrm{im}(a) = B$ since the kernel of the zero map is always the entire group. Therefore, $a$ is surjective.
+			Conversely, suppose that $\ker(a) = 0$. We need to show that
+			$\mathrm{im}(0) = \ker(a)$. Since $\ker(a) = 0$, the only element mapped
+			to the identity element in $B$ is the zero element of $A$. Thus, the
+			sequence $0 \rightarrow A \xrightarrow{a}B$ is exact.
 
-	Conversely, suppose that $\mathrm{im}(a) = B$. We need to show that $\mathrm{im}(a) = \ker(0)$. Since $\mathrm{im}(a) = B$, every element in $B$ has a preimage in $A$ under the map $a$. Thus, the sequence $A \xrightarrow{a} B \rightarrow 0$ is exact.
-	\item Assume that $0 \rightarrow A \xrightarrow{a} B \rightarrow 0$ is exact. From the exactness, we have $\ker(a) = \mathrm{im}(0) = 0$ and $\mathrm{im}(a) = \ker(0) = B$. Therefore, $a$ is both injective and surjective, hence an isomorphism.
+		\item Assume that $A \xrightarrow{a}B \rightarrow 0$ is exact. This means
+			that $\mathrm{im}(a) = \ker(0)$, which implies $\mathrm{im}(a) = B$ since the
+			kernel of the zero map is always the entire group. Therefore, $a$ is surjective.
 
-	Conversely, suppose $a$ is an isomorphism, meaning $a$ is both injective (no kernel) and surjective (maps onto $B$). Thus, $0 \rightarrow A \xrightarrow{a} B \rightarrow 0$ is exact, satisfying $\mathrm{im}(0) = \ker(a)$ and $\mathrm{im}(a) = \ker(0)$.
-	\item Assuming the sequence $0 \rightarrow A \xrightarrow{a} B \rightarrow 0$ is exact, $a$ is injective, and $\mathrm{im}(a) = \ker(b)$ where $b$ maps $B$ to 0. As $b$ is the zero map and surjective, $B/\mathrm{im}(a) = 0$, implying $B = \mathrm{im}(a)$. Therefore, $a$ is an isomorphism, establishing $B \cong A$.
+			Conversely, suppose that $\mathrm{im}(a) = B$. We need to show that $\mathrm{im}
+			(a) = \ker(0)$. Since $\mathrm{im}(a) = B$, every element in $B$ has a preimage
+			in $A$ under the map $a$. Thus, the sequence $A \xrightarrow{a}B \rightarrow
+			0$ is exact.
 
-	Conversely, if $a$ is an isomorphism, $\ker(a) = 0$ and $\mathrm{im}(a) = B$. Therefore, the sequence $0 \rightarrow A \xrightarrow{a} B \rightarrow 0$ is exact by definition.
-\end{enumerate}
+		\item Assume that $0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact.
+			From the exactness, we have $\ker(a) = \mathrm{im}(0) = 0$ and $\mathrm{im}
+			(a) = \ker(0) = B$. Therefore, $a$ is both injective and surjective, hence
+			an isomorphism.
+
+			Conversely, suppose $a$ is an isomorphism, meaning $a$ is both injective (no
+			kernel) and surjective (maps onto $B$). Thus,
+			$0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact, satisfying $\mathrm{im}
+			(0) = \ker(a)$ and $\mathrm{im}(a) = \ker(0)$.
+
+		\item Assuming the sequence $0 \rightarrow A \xrightarrow{a}B \rightarrow 0$
+			is exact, $a$ is injective, and $\mathrm{im}(a) = \ker(b)$ where $b$ maps $B$
+			to 0. As $b$ is the zero map and surjective, $B/\mathrm{im}(a) = 0$, implying
+			$B = \mathrm{im}(a)$. Therefore, $a$ is an isomorphism, establishing
+			$B \cong A$.
+
+			Conversely, if $a$ is an isomorphism, $\ker(a) = 0$ and
+			$\mathrm{im}(a) = B$. Therefore, the sequence
+			$0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact by definition.
+	\end{enumerate}
 \end{proof}
 
 \section{Relative Homology}
-\label{Relative Homology}
-The concept we will now discuss is that of relative homology groups. Let $X$ be a topological space and $A$ a subspace of $X$. We define $C_d(X,A)$ as the quotient group $C_d(X)/C_d(A)$. This means that chains in $A$ are considered equivalent to the trivial chains in $C_d(X)$.
+\label{Relative Homology} The concept we will now discuss is that of relative
+homology groups. Let $X$ be a topological space and $A$ a subspace of $X$. We
+define $C_{d}(X,A)$ as the quotient group $C_{d}(X)/C_{d}(A)$. This means that chains
+in $A$ are considered equivalent to the trivial chains in $C_{d}(X)$.
 
-Since the boundary operator $\partial_d: C_d(X) \rightarrow C_{d-1}(X)$ also maps $C_d(A)$ to $C_{d-1}(A)$, a natural boundary map on the quotient group $\partial_d: C_d(X,A) \rightarrow C_{d-1}(X,A)$ is obtained. This gives rise to the following sequence:
+Since the boundary operator $\partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X)$ also
+maps $C_{d}(A)$ to $C_{d-1}(A)$, a natural boundary map on the quotient group
+$\partial_{d}: C_{d}(X,A) \rightarrow C_{d-1}(X,A)$ is obtained. This gives rise
+to the following sequence:
 \begin{equation}
-\cdots \xrightarrow{} C_{d+1}(X,A) \xrightarrow{\partial_{d+1}} C_d(X,A) \xrightarrow{\partial_d} C_{d-1}(X,A) \xrightarrow{} \cdots
+	\cdots \xrightarrow{}C_{d+1}(X,A) \xrightarrow{\partial_{d+1}}C_{d}(X,A) \xrightarrow
+	{\partial_d}C_{d-1}(X,A) \xrightarrow{}\cdots
 \end{equation}
-This sequence forms a chain complex because $\partial_{d+1} \circ \partial_{d} = 0$. We can then define the \emph{relative homology groups} $H_d(X,A)$ as the homology groups of this chain complex.
+This sequence forms a chain complex because
+$\partial_{d+1}\circ \partial_{d}= 0$. We can then define the \emph{relative
+homology groups} $H_{d}(X,A)$ as the homology groups of this chain complex.
 
-We propose two important facts about $H_d(X,A)$:
+We propose two important facts about $H_{d}(X,A)$:
 
 \begin{proposition}
-\begin{enumerate}
-    \item Elements in $H_d(X,A)$ are represented by relative cycles, which are $d$-chains $c$ in $C_d(X)$ such that $\partial_d(c) \in C_{d-1}(A)$.
-    \item A relative cycle $c$ is trivial in $H_d(X,A)$ if and only if it is a relative boundary, i.e., $c$ is the sum of a chain in $C_d(A)$ and the boundary of a chain in $C_{d+1}(X)$.
-\end{enumerate}
+	\begin{enumerate}
+		\item[]
+
+		\item Elements in $H_{d}(X,A)$ are represented by relative cycles, which are
+			$d$-chains $c$ in $C_{d}(X)$ such that $\partial_{d}(c) \in C_{d-1}(A)$.
+
+		\item A relative cycle $c$ is trivial in $H_{d}(X,A)$ if and only if it is a
+			relative boundary, i.e., $c$ is the sum of a chain in $C_{d}(A)$ and the
+			boundary of a chain in $C_{d+1}(X)$.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}
-    \item Assume $[c] \in H_d(X,A)$ represents a homology class of a chain $c \in C_d(X)$. Since $[c]$ is a class in the relative homology group, $\partial_d(c) \in C_{d-1}(A)$, implying that $c$ is a relative cycle because its boundary maps into the subspace $A$.
+	\begin{enumerate}
+		\item Assume $[c] \in H_{d}(X,A)$ represents a homology class of a chain $c \in
+			C_{d}(X)$. Since $[c]$ is a class in the relative homology group, $\partial
+			_{d}(c) \in C_{d-1}(A)$, implying that $c$ is a relative cycle because its
+			boundary maps into the subspace $A$.
 
-    Conversely, if $\partial_d(c) \in C_{d-1}(A)$, then $c$ qualifies as a relative cycle by definition, and any chain homologous to $c$ in $C_d(X)$ that differs from $c$ by a boundary in $C_d(A)$ will also have its boundary in $C_{d-1}(A)$, confirming $[c]$ as an element of $H_d(X,A)$.
+			Conversely, if $\partial_{d}(c) \in C_{d-1}(A)$, then $c$ qualifies as a
+			relative cycle by definition, and any chain homologous to $c$ in $C_{d}(X)$
+			that differs from $c$ by a boundary in $C_{d}(A)$ will also have its boundary
+			in $C_{d-1}(A)$, confirming $[c]$ as an element of $H_{d}(X,A)$.
 
-    \item For a chain $c$ in $C_d(X)$ to be a relative boundary, it must be expressible as $c = a + \partial_{d+1}(b)$ where $a \in C_d(A)$ and $b \in C_{d+1}(X)$. Applying the boundary operator, we have:
-    \[
-    \partial_d(c) = \partial_d(a) + \partial_d(\partial_{d+1}(b)) = \partial_d(a) + 0 = \partial_d(a).
-    \]
-    Since $\partial_d(a) \in C_{d-1}(A)$ and $\partial_{d+1} \partial_d = 0$ (as boundaries of boundaries are zero), $c$ is a cycle relative to $A$, making it trivial in $H_d(X,A)$.
+		\item For a chain $c$ in $C_{d}(X)$ to be a relative boundary, it must be
+			expressible as $c = a + \partial_{d+1}(b)$ where $a \in C_{d}(A)$ and
+			$b \in C_{d+1}(X)$. Applying the boundary operator, we have:
+			\[
+				\partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial
+				_{d}(a) + 0 = \partial_{d}(a).
+			\]
+			Since $\partial_{d}(a) \in C_{d-1}(A)$ and $\partial_{d+1}\partial_{d} = 0$
+			(as boundaries of boundaries are zero), $c$ is a cycle relative to $A$, making
+			it trivial in $H_{d}(X,A)$.
 
-    Conversely, if a relative cycle $c$ is trivial in $H_d(X,A)$, then it must be homologous to a boundary in $C_d(A)$, meaning there exists $a \in C_d(A)$ and $b \in C_{d+1}(X)$ such that $c = a + \partial_{d+1}(b)$. This implies that $c$ is expressible as the sum of a chain in $C_d(A)$ and the boundary of a chain in $C_{d+1}(X)$, confirming it as a relative boundary.
+			Conversely, if a relative cycle $c$ is trivial in $H_{d}(X,A)$, then it must
+			be homologous to a boundary in $C_{d}(A)$, meaning there exists
+			$a \in C_{d}(A)$ and $b \in C_{d+1}(X)$ such that
+			$c = a + \partial_{d+1}(b)$. This implies that $c$ is expressible as the sum
+			of a chain in $C_{d}(A)$ and the boundary of a chain in $C_{d+1}(X)$,
+			confirming it as a relative boundary.
 
-    Thus, a relative cycle is trivial in $H_d(X,A)$ if and only if it is a relative boundary.
-\end{enumerate}
+			Thus, a relative cycle is trivial in $H_{d}(X,A)$ if and only if it is a relative
+			boundary.
+	\end{enumerate}
 \end{proof}
 
+Before we further investigate the decomposition of the relative homology groups into exact sequences, we need an intermediate result for commutative diagrams, which facilitates further argumentation. This intermediate result is also known as the snake lemma.
+
+\begin{lemma}[The Snake Lemma]
+\label{snake}
+
+\end{lemma}
+
 \begin{theorem}
-The relative homology groups $H_d(X,A)$ are part of the exact sequence:
-\begin{equation*}
-\cdots \rightarrow H_d(A) \rightarrow H_d(X) \rightarrow H_d(X,A) \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_0(X,A) \rightarrow 0.
-\end{equation*}
+	The relative homology groups $H_{d}(X,A)$ are part of the exact sequence:
+	\begin{align}
+		\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X,A) \rightarrow \\
+		\cdots \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_{0}(X,A) \rightarrow 0.
+	\end{align}
 \end{theorem}
 
 \begin{proof}
-Consider the following diagram:
-\begin{equation}
-\begin{tikzcd}
-0 \arrow[r] & C_d(A) \arrow[r, "i", hook] \arrow[d, "\partial_d"] & C_d(X) \arrow[r, "j", two heads] \arrow[d, "\partial_d"] & {C_d(X,A)} \arrow[r] \arrow[d, "\partial_d"] & 0 \\
-0 \arrow[r] & C_{d-1}(A) \arrow[r, "i", hook]                               & C_{d-1}(X) \arrow[r, "j", two heads]                               & {C_{d-1}(X,A)} \arrow[r]                               & 0.
-\end{tikzcd}
-\end{equation}
+	Consider the following diagram:
+	\begin{equation}
+		\begin{tikzcd}
+			0 \arrow[r] & C_d(A) \arrow[r, "i", hook] \arrow[d, "\partial_d"] & C_d(X)
+			\arrow[r, "j", two heads] \arrow[d, "\partial_d"] & {C_d(X,A)} \arrow[r] \arrow[d,
+			"\partial_d"] & 0 \\ 0 \arrow[r] & C_{d-1}(A) \arrow[r, "i", hook] & C_{d-1}(X)
+			\arrow[r, "j", two heads] & {C_{d-1}(X,A)} \arrow[r] & 0.
+		\end{tikzcd}
+	\end{equation}
 
-Here, $i$ is the inclusion map $C_d(A) \hookrightarrow C_d(X)$, and $j$ is the quotient map $C_d(X) \twoheadrightarrow C_d(X,A)$. Both rows are exact, and the diagram commutes. This gives rise to a long exact sequence of homology groups by the snake lemma.
+	Here, $i$ is the inclusion map $C_{d}(A) \hookrightarrow C_{d}(X)$, and $j$ is
+	the quotient map $C_{d}(X) \twoheadrightarrow C_{d}(X,A)$. Both rows are exact,
+	and the diagram commutes. This gives rise to a long exact sequence of homology
+	groups by the Snake Lemma \ref{snake}.
 
-\begin{figure}
-\begin{equation*}
-\begin{tikzcd}
-\cdots \arrow[r] & A_{d+1} \arrow[r, "\partial_{d+1}"] \arrow[d, "i", hook]      & A_d \arrow[r, "\partial_d"] \arrow[d, "i", hook]      & A_{d-1} \arrow[r, "\partial_{d-1}"] \arrow[d, "i", hook]      & \cdots \\
-\cdots \arrow[r] & B_{d+1} \arrow[r, "\partial_{d+1}"] \arrow[d, "j", two heads] & B_d \arrow[r, "\partial_d"] \arrow[d, "j", two heads] & B_{d-1} \arrow[r, "\partial_{d-1}"] \arrow[d, "j", two heads] & \cdots \\
-\cdots \arrow[r] & C_{d+1} \arrow[r, "\partial_{d+1}"] \arrow[d]                             & C_d \arrow[r, "\partial_d"] \arrow[d]                             & C_{d-1} \arrow[r, "\partial_{d-1}"] \arrow[d]                             & \cdots \\
-                 & 0                                                                   & 0                                                               & 0                                                                   & .
-\end{tikzcd}
-\end{equation*}
-\caption{Diagram of chain complexes for relative homology.}
-\label{diagramchains}
-\end{figure}
+	\begin{figure}
+		\begin{equation*}
+			\begin{tikzcd}
+				\cdots \arrow[r] & A_{d+1} \arrow[r, "\partial_{d+1}"] \arrow[d, "i", hook]
+				& A_d \arrow[r, "\partial_d"] \arrow[d, "i", hook] & A_{d-1} \arrow[r, "\partial_{d-1}"]
+				\arrow[d, "i", hook] & \cdots \\ \cdots \arrow[r] & B_{d+1} \arrow[r, "\partial_{d+1}"]
+				\arrow[d, "j", two heads] & B_d \arrow[r, "\partial_d"] \arrow[d, "j",
+				two heads] & B_{d-1} \arrow[r, "\partial_{d-1}"] \arrow[d, "j", two
+				heads] & \cdots \\ \cdots \arrow[r] & C_{d+1} \arrow[r, "\partial_{d+1}"]
+				\arrow[d] & C_d \arrow[r, "\partial_d"] \arrow[d] & C_{d-1} \arrow[r, "\partial_{d-1}"]
+				\arrow[d] & \cdots \\ & 0 & 0 & 0 & .
+			\end{tikzcd}
+		\end{equation*}
+		\caption{Diagram of chain complexes for relative homology.}
+		\label{diagramchains}
+	\end{figure}
 
-To clarify, consider the chain complexes $A_\bullet = \{C_d(A), \partial_d\}_{d\in\mathbb{N}}$, $B_\bullet = \{C_d(X), \partial_d\}_{d\in\mathbb{N}}$, and $C_\bullet = \{C_d(X,A), \partial_d\}$. The diagram of chain complexes is depicted in Fig. \ref{diagramchains}.
+	To clarify, consider the chain complexes
+	$A_{\bullet} = \{C_{d}(A), \partial_{d}\}_{d\in\mathbb{N}}$, $B_{\bullet} = \{C
+	_{d}(X), \partial_{d}\}_{d\in\mathbb{N}}$, and
+	$C_{\bullet} = \{C_{d}(X,A), \partial_{d}\}$. The diagram of chain complexes is
+	depicted in Fig. \ref{diagramchains}.
 
-The vertical maps $i$ and $j$ are chain maps and thus induce homomorphisms on homology groups $i_\star: H_d(A) \rightarrow H_d(X)$ and $j_\star: H_d(X) \rightarrow H_d(X,A)$. The exactness of the rows implies that $\mathrm{ker}(j_\star) = \mathrm{im}(i_\star)$.
+	The vertical maps $i$ and $j$ are chain maps and thus induce homomorphisms on
+	homology groups $i_{\star}: H_{d}(A) \rightarrow H_{d}(X)$ and
+	$j_{\star}: H_{d}(X) \rightarrow H_{d}(X,A)$. The exactness of the rows implies
+	that $\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})$.
 
-The connecting homomorphism $\partial: H_d(X,A) \rightarrow H_{d-1}(A)$ can be defined as follows: for any class $[c] \in H_d(X,A)$ represented by a cycle $c \in C_d(X)$ with $\partial_d(c) \in C_{d-1}(A)$, choose a chain $b \in C_d(X)$ such that $j(b) = c$. Since $c$ is a cycle, $\partial_d(b) \in \mathrm{ker}(j) = \mathrm{im}(i)$, so there exists a chain $a \in C_{d-1}(A)$ such that $\partial_d(b) = i(a)$. Define $\partial([c]) = [a] \in H_{d-1}(A)$.
+	The connecting homomorphism $\partial: H_{d}(X,A) \rightarrow H_{d-1}(A)$ can be
+	defined as follows: for any class $[c] \in H_{d}(X,A)$ represented by a cycle
+	$c \in C_{d}(X)$ with $\partial_{d}(c) \in C_{d-1}(A)$, choose a chain $b \in C
+	_{d}(X)$ such that $j(b) = c$. Since $c$ is a cycle, $\partial_{d}(b) \in \mathrm{ker}
+	(j) = \mathrm{im}(i)$, so there exists a chain $a \in C_{d-1}(A)$ such that
+	$\partial_{d}(b) = i(a)$. Define $\partial([c]) = [a] \in H_{d-1}(A)$.
 
-We need to verify that the map $\partial$ is well-defined:
-\begin{enumerate}
-	\item Uniqueness: If $b$ and $b'$ both map to $c$ via $j$, then $b - b' \in \mathrm{ker}(j) = \mathrm{im}(i)$. Thus, there exists $a' \in C_{d-1}(A)$ such that $b - b' = i(a')$. Hence,
-	\[
-	\partial_d(b) = \partial_d(b') + \partial_d(i(a')) = \partial_d(b') + i(\partial_{d-1}(a')).
-	\]
-	So, $[a] = [a']$ in $H_{d-1}(A)$, ensuring the uniqueness of $\partial([c])$.
+	We need to verify that the map $\partial$ is well-defined:
+	\begin{itemize}
+		\item Uniqueness: If $b$ and $b'$ both map to $c$ via $j$, then $b - b' \in \mathrm{ker}
+			(j) = \mathrm{im}(i)$. Thus, there exists $a' \in C_{d-1}(A)$ such that $b
+			- b' = i(a')$. Hence,
+			\[
+				\partial_{d}(b) = \partial_{d}(b') + \partial_{d}(i(a')) = \partial_{d}(b
+				') + i(\partial_{d-1}(a')).
+			\]
+			So, $[a] = [a']$ in $H_{d-1}(A)$, ensuring the uniqueness of $\partial([c])$.
 
-	\item Homologous Chains: If $c$ and $c'$ are homologous in $H_d(X,A)$, then $c - c' = \partial_d(c'')$ for some $c'' \in C_{d+1}(X,A)$. Thus, $b - b' = \partial_{d+1}(c'')$ in $C_d(X)$, and the same argument as above applies.
-\end{enumerate}
+		\item Homologous chains: If $c$ and $c'$ are homologous in $H_{d}(X,A)$, then
+			$c - c' = \partial_{d}(c'')$ for some $c'' \in C_{d+1}(X,A)$. Thus, $b - b'
+			= \partial_{d+1}(c'')$ in $C_{d}(X)$, and the same argument as above
+			applies.
+	\end{itemize}
 
-This establishes the long exact sequence:
-\begin{equation*}
-\cdots \rightarrow H_d(A) \rightarrow H_d(X) \rightarrow H_d(X,A) \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_0(X,A) \rightarrow 0.
-\end{equation*}
+	This establishes the long exact sequence:
+	\begin{align}
+		&\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X,A) \rightarrow \cdots \\
+		&\cdots \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_{0}(X,A) \rightarrow 0.
+	\end{align}
 \end{proof}
 
 \begin{proposition}
-The map $\partial_d: H_d(C) \rightarrow H_{d-1}(A)$ is a homomorphism.
+	The map $\partial_{d}: H_{d}(C) \rightarrow H_{d-1}(A)$ is a homomorphism.
 \end{proposition}
 
 \begin{proof}
-Let $[c_1], [c_2] \in H_d(C)$ be two homology classes, where $c_1, c_2 \in C_d(X,A)$ are cycles. By definition, let $[a_1] = \partial_d([c_1])$ and $[a_2] = \partial_d([c_2])$. This means that $c_1$ and $c_2$ are represented by chains $b_1, b_2 \in C_d(X)$ such that $j(b_1) = c_1$ and $j(b_2) = c_2$. 
+	Let $[c_{1}], [c_{2}] \in H_{d}(C)$ be two homology classes, where
+	$c_{1}, c_{2} \in C_{d}(X,A)$ are cycles. By definition, let
+	$[a_{1}] = \partial_{d}([c_{1}])$ and $[a_{2}] = \partial_{d}([c_{2}])$. This means
+	that $c_{1}$ and $c_{2}$ are represented by chains $b_{1}, b_{2} \in C_{d}(X)$
+	such that $j(b_{1}) = c_{1}$ and $j(b_{2}) = c_{2}$.
 
-Since $b_1$ and $b_2$ are cycles modulo $A$, we have:
-\[
-\partial_d(b_1) = i(a_1) \quad \text{and} \quad \partial_d(b_2) = i(a_2).
-\]
-We need to show that:
-\[
-\partial_d([c_1] + [c_2]) = [a_1] + [a_2].
-\]
+	Since $b_{1}$ and $b_{2}$ are cycles modulo $A$, we have:
+	\[
+		\partial_{d}(b_{1}) = i(a_{1}) \quad \text{and}\quad \partial_{d}(b_{2}) = i(
+		a_{2}).
+	\]
+	We need to show that:
+	\[
+		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1}] + [a_{2}].
+	\]
 
-Consider the sum $c_1 + c_2 \in C_d(X,A)$. By the properties of the quotient map $j$:
-\[
-j(b_1 + b_2) = j(b_1) + j(b_2) = c_1 + c_2.
-\]
-Thus, $b_1 + b_2 \in C_d(X)$ is a preimage of $c_1 + c_2$ under the quotient map $j$. Furthermore, the boundary of $b_1 + b_2$ is:
-\[
-\partial_d(b_1 + b_2) = \partial_d(b_1) + \partial_d(b_2) = i(a_1) + i(a_2) = i(a_1 + a_2).
-\]
-Therefore, the cycle $c_1 + c_2$ maps to the cycle $a_1 + a_2$ under $\partial_d$, implying that:
-\[
-\partial_d([c_1] + [c_2]) = [a_1 + a_2] = [a_1] + [a_2].
-\]
-Thus, $\partial_d$ is a homomorphism.
+	Consider the sum $c_{1} + c_{2} \in C_{d}(X,A)$. By the properties of the
+	quotient map $j$:
+	\[
+		j(b_{1} + b_{2}) = j(b_{1}) + j(b_{2}) = c_{1} + c_{2}.
+	\]
+	Thus, $b_{1} + b_{2} \in C_{d}(X)$ is a preimage of $c_{1} + c_{2}$ under the
+	quotient map $j$. Furthermore, the boundary of $b_{1} + b_{2}$ is:
+	\[
+		\partial_{d}(b_{1} + b_{2}) = \partial_{d}(b_{1}) + \partial_{d}(b_{2}) = i(a
+		_{1}) + i(a_{2}) = i(a_{1} + a_{2}).
+	\]
+	Therefore, the cycle $c_{1} + c_{2}$ maps to the cycle $a_{1} + a_{2}$ under
+	$\partial_{d}$, implying that:
+	\[
+		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1} + a_{2}] = [a_{1}] + [a_{2}].
+	\]
+	Thus, $\partial_{d}$ is a homomorphism.
 \end{proof}
 
 \begin{lemma}
-\label{exacthomsequence}
-The given sequence,
-\begin{equation*}
-\cdots \rightarrow H_d(A) \xrightarrow{i_\star} H_d(B) \xrightarrow{j_\star} H_d(C) \xrightarrow{\partial_d} H_{d-1}(A) \xrightarrow{i_\star} H_{d-1}(B) \rightarrow \cdots
-\end{equation*}
-is exact.
+	\label{exacthomsequence} The given sequence,
+	\begin{equation}
+		\cdots \rightarrow H_{d}(A) \xrightarrow{i_\star}H_{d}(B) \xrightarrow{j_\star}
+		H_{d}(C) \xrightarrow{\partial_d}H_{d-1}(A) \xrightarrow{i_\star}H_{d-1}(B) \rightarrow
+		\cdots
+	\end{equation}
+	is exact.
 \end{lemma}
 
 \begin{proof}
-There are six inclusions that need to be confirmed:
-\begin{enumerate}
-	\item $\operatorname{im}(i_\star) \subseteq \ker(j_\star)$: Since $j \circ i = 0$, it follows that $j_\star \circ i_\star = 0$, so $\mathrm{im}(i_\star) \subseteq \ker(j_\star)$.
-	\item $\operatorname{im}(j_\star) \ker(\partial_d)$: By definition, if $[b] \in \mathrm{im}(j_\star)$, then $j_\star([b]) = [c] \in H_d(C)$ where $c$ is a cycle. Therefore, $\partial_d([c]) = 0$, and thus $\mathrm{im}(j_\star) \subseteq \ker(\partial_d)$.
-	\item $\operatorname{im}(\partial_d) \subseteq \ker(i_\star)$: If $[c] \in \mathrm{im}(\partial_d)$, then $c$ is a relative boundary. This implies that there exists $b \in B_d$ such that $c = j(b)$. Since $\partial_d(b) = 0$, it follows that $i_\star([c]) = 0$, thus $\mathrm{im}(\partial_d) \subseteq \ker(i_\star)$.
-	\item $\ker(j_\star) \subseteq \operatorname{im}(i_\star)$: Let $[b] \in \ker(j_\star)$, meaning $j_\star([b]) = [c] = 0$ in $H_d(C)$. This implies that $c$ is a boundary, i.e., there exists a chain $c' \in C_{d+1}$ such that $c = \partial_{d+1}(c')$. Since $j$ is surjective, $c' = j(b')$ for some $b' \in B_{d+1}$. Thus, $j(b) = \partial_{d+1}(c') = \partial_{d+1} \circ j(b')$, which leads to:
-	\[
-	j(b - \partial_{d+1}(b')) = 0.
-	\]
-	Hence, $b - \partial_{d+1}(b') = i(a)$ for some $a \in A_d$. Since $i$ is injective, $a$ is a cycle because:
-	\[
-	i \circ \partial_d(a) = \partial_d \circ i(a) = \partial_d(b - \partial_{d+1}(b')) = \partial_d(b) = 0,
-	\]
-	given that $b$ is a cycle. Thus, $i_\star([a]) = [b]$, and $\mathrm{im}(i_\star) = \ker(j_\star)$.
-	\item $\ker(\partial) \subseteq \operatorname{im}(j_\star)$: Let $[c] \in \ker(\partial_d)$. This means that $c$ is a relative cycle such that $\partial_d([c]) = 0$. Hence, there exists $b \in B_d$ such that $j(b) = c$. Therefore, $\ker(\partial_d) \subseteq \mathrm{im}(j_\star)$.
-	\item $\ker(i_\star) \subseteq \operatorname{im}(\partial)$: Let $[a] \in \ker(i_\star)$, meaning $i_\star([a]) = 0$ in $H_{d-1}(B)$. Thus, $i(a) = \partial_d(b)$ for some $b \in B_d$. Since $\partial_d(j(b)) = j(\partial_d(b)) = j \circ i(a) = 0$, $j(b)$ is a cycle. Therefore, $\partial_d([j(b)]) = [a]$, which demonstrates that $\ker(i_\star) \subseteq \mathrm{im}(\partial_d)$.
-\end{enumerate}
-We have established the following relationships:
-\begin{itemize}
-    \item $\mathrm{im}(i_\star) = \ker(j_\star)$,
-    \item $\mathrm{im}(j_\star) = \ker(\partial_d)$,
-    \item $\mathrm{im}(\partial_d) = \ker(i_\star)$.
-\end{itemize}
-These relationships confirm that the sequence is exact, satisfying all the necessary conditions.
+	There are six inclusions that need to be confirmed:
+	\begin{enumerate}
+		\item $\operatorname{im}(i_{\star}) \subseteq \ker(j_{\star})$: Since
+			$j \circ i = 0$, it follows that $j_{\star} \circ i_{\star} = 0$, so
+			$\mathrm{im}(i_{\star}) \subseteq \ker(j_{\star})$.
+
+		\item $\operatorname{im}(j_{\star}) \ker(\partial_{d})$: By definition, if $[
+			b] \in \mathrm{im}(j_{\star})$, then $j_{\star}([b]) = [c] \in H_{d}(C)$
+			where $c$ is a cycle. Therefore, $\partial_{d}([c]) = 0$, and thus $\mathrm{im}
+			(j_{\star}) \subseteq \ker(\partial_{d})$.
+
+		\item $\operatorname{im}(\partial_{d}) \subseteq \ker(i_{\star})$: If
+			$[c] \in \mathrm{im}(\partial_{d})$, then $c$ is a relative boundary. This
+			implies that there exists $b \in B_{d}$ such that $c = j(b)$. Since $\partial
+			_{d}(b) = 0$, it follows that $i_{\star}([c]) = 0$, thus $\mathrm{im}(\partial
+			_{d}) \subseteq \ker(i_{\star})$.
+
+		\item $\ker(j_{\star}) \subseteq \operatorname{im}(i_{\star})$: Let
+			$[b] \in \ker(j_{\star})$, meaning $j_{\star}([b]) = [c] = 0$ in $H_{d}(C)$.
+			This implies that $c$ is a boundary, i.e., there exists a chain $c' \in C_{d+1}$
+			such that $c = \partial_{d+1}(c')$. Since $j$ is surjective, $c' = j(b')$ for
+			some $b' \in B_{d+1}$. Thus, $j(b) = \partial_{d+1}(c') = \partial_{d+1}\circ
+			j(b')$, which leads to:
+			\[
+				j(b - \partial_{d+1}(b')) = 0.
+			\]
+			Hence, $b - \partial_{d+1}(b') = i(a)$ for some $a \in A_{d}$. Since $i$ is
+			injective, $a$ is a cycle because:
+			\[
+				i \circ \partial_{d}(a) = \partial_{d} \circ i(a) = \partial_{d}(b - \partial
+				_{d+1}(b')) = \partial_{d}(b) = 0,
+			\]
+			given that $b$ is a cycle. Thus, $i_{\star}([a]) = [b]$, and
+			$\mathrm{im}(i_{\star}) = \ker(j_{\star})$.
+
+		\item $\ker(\partial) \subseteq \operatorname{im}(j_{\star})$: Let
+			$[c] \in \ker(\partial_{d})$. This means that $c$ is a relative cycle such
+			that $\partial_{d}([c]) = 0$. Hence, there exists $b \in B_{d}$ such that $j
+			(b) = c$. Therefore, $\ker(\partial_{d}) \subseteq \mathrm{im}(j_{\star})$.
+
+		\item $\ker(i_{\star}) \subseteq \operatorname{im}(\partial)$: Let
+			$[a] \in \ker(i_{\star})$, meaning $i_{\star}([a]) = 0$ in $H_{d-1}(B)$.
+			Thus, $i(a) = \partial_{d}(b)$ for some $b \in B_{d}$. Since
+			$\partial_{d}(j(b)) = j(\partial_{d}(b)) = j \circ i(a) = 0$, $j(b)$ is a cycle.
+			Therefore, $\partial_{d}([j(b)]) = [a]$, which demonstrates that
+			$\ker(i_{\star}) \subseteq \mathrm{im}(\partial_{d})$.
+	\end{enumerate}
+	We have established the following relationships:
+	\begin{itemize}
+		\item $\mathrm{im}(i_{\star}) = \ker(j_{\star})$,
+
+		\item $\mathrm{im}(j_{\star}) = \ker(\partial_{d})$,
+
+		\item $\mathrm{im}(\partial_{d}) = \ker(i_{\star})$.
+	\end{itemize}
+	These relationships confirm that the sequence is exact, satisfying all the
+	necessary conditions.
 \end{proof}
 
 \begin{proposition}
-The sequence
-\begin{equation*}
-\cdots \rightarrow H_d(A) \xrightarrow{i_\star} H_d(X) \xrightarrow{j_\star} H_d(X,A) \xrightarrow{\partial_d} H_{d-1}(A) \rightarrow \cdots \rightarrow H_0(X,A) \rightarrow 0
-\end{equation*}
-is exact.
+	The sequence
+	\begin{align}
+		&\cdots \rightarrow H_{d}(A) \xrightarrow{i_\star}H_{d}(X) \xrightarrow{j_\star}
+		H_{d}(X,A) \xrightarrow{\partial_d} \cdots \\
+		&\cdots \xrightarrow{\partial_d} H_{d-1}(A) \rightarrow \cdots \rightarrow
+		H_{0}(X,A) \rightarrow 0
+	\end{align}
+	is exact.
 \end{proposition}
 
 \begin{proof}
-The exactness of this sequence is a standard result in algebraic topology, which follows from the long exact sequence of the pair $(X, A)$. The maps in the sequence are defined as follows:
-\begin{itemize}
-    \item $i_\star$ is induced by the inclusion map $i: A \hookrightarrow X$.
-    \item $j_\star$ is induced by the quotient map $j: X \rightarrow X/A$, where each chain in $X$ is mapped to its homology class in $X/A$ modulo the image of chains in $A$.
-    \item $\partial_d$ is the boundary map connecting homology groups, defined by taking the boundary of a relative cycle in $H_d(X,A)$, which by definition of a chain complex is a cycle in $A$ at one dimension lower.
-\end{itemize}
+	The exactness of this sequence is a standard result in algebraic topology,
+	which follows from the long exact sequence of the pair $(X, A)$. The maps in the
+	sequence are defined as follows:
+	\begin{itemize}
+		\item $i_{\star}$ is induced by the inclusion map $i: A \hookrightarrow X$.
 
-The exactness at each position, for instance at $H_d(X,A)$, implies that the image of $j_\star$ from $H_d(X)$ is equal to the kernel of $\partial_d$. This shows that any cycle in $H_d(X,A)$ that becomes trivial in $H_{d-1}(A)$ must come from a cycle in $X$ that is not affected by cycles in $A$. The exactness at $H_{d-1}(A)$ further implies that the image of $\partial_d$ is exactly the kernel of $i_\star$, which matches cycles in $A$ that bound in $X$ but not in $A$ itself.
+		\item $j_{\star}$ is induced by the quotient map $j: X \rightarrow X/A$,
+			where each chain in $X$ is mapped to its homology class in $X/A$ modulo
+			the image of chains in $A$.
 
-Therefore, the exactness of the entire sequence follows from the properties of the chain maps and the boundary operators defined in the chain complexes of $A$, $X$, and $X/A$. The additional observation that $\partial_d([c]) = [\partial_d(c)]$ for any relative cycle $c \in H_d(X,A)$ reinforces the continuity of the exact sequence through the boundary mapping, as it relates the homology in one dimension in $A$ to the relative homology in $X$ and $A$.
+		\item $\partial_{d}$ is the boundary map connecting homology groups, defined
+			by taking the boundary of a relative cycle in $H_{d}(X,A)$, which by definition
+			of a chain complex is a cycle in $A$ at one dimension lower.
+	\end{itemize}
+
+	The exactness at each position, for instance at $H_{d}(X,A)$, implies that the
+	image of $j_{\star}$ from $H_{d}(X)$ is equal to the kernel of $\partial_{d}$.
+	This shows that any cycle in $H_{d}(X,A)$ that becomes trivial in $H_{d-1}(A)$
+	must come from a cycle in $X$ that is not affected by cycles in $A$. The exactness
+	at $H_{d-1}(A)$ further implies that the image of $\partial_{d}$ is exactly the
+	kernel of $i_{\star}$, which matches cycles in $A$ that bound in $X$ but not
+	in $A$ itself.
+
+	Therefore, the exactness of the entire sequence follows from the properties of
+	the chain maps and the boundary operators defined in the chain complexes of $A$,
+	$X$, and $X/A$. The additional observation that
+	$\partial_{d}([c]) = [\partial_{d}(c)]$ for any relative cycle
+	$c \in H_{d}(X,A)$ reinforces the continuity of the exact sequence through the
+	boundary mapping, as it relates the homology in one dimension in $A$ to the relative
+	homology in $X$ and $A$.
 \end{proof}
 
 \section{The Excision Theorem}
-Additionally, we refer to the Excision Theorem, a foundational result in algebraic topology. Simply put, the Excision Theorem allows for the analysis of the homology of a space by effectively "excising", or removing, a smaller subspace, under specific topological conditions. These conditions usually involve the smaller subspace being "negligible" in a certain sense, such as being contained in the interior of another subspace. Essentially, this theorem guarantees that, given these conditions, the homology of the original space is preserved when compared to the homology of the space with the smaller subspace removed.
+Additionally, we refer to the Excision Theorem, a foundational result in
+algebraic topology. Simply put, the Excision Theorem allows for the analysis of
+the homology of a space by effectively "excising", or removing, a smaller
+subspace, under specific topological conditions. These conditions usually
+involve the smaller subspace being "negligible" in a certain sense, such as being
+contained in the interior of another subspace. Essentially, this theorem guarantees
+that, given these conditions, the homology of the original space is preserved when
+compared to the homology of the space with the smaller subspace removed.
 
 We will need the famous five lemma to prove the Excision Theorem.
 
-
-CORRECT
-
 \begin{lemma}[The Five Lemma]
-\label{fivelemma}
-In a commutative diagram structured as follows:
-\begin{equation}
-\begin{tikzcd}
-A \arrow[r, "i"] \arrow[d, "\alpha"] & B \arrow[r, "j"] \arrow[d, "\beta"] & C \arrow[r, "k"] \arrow[d, "\gamma"] & D \arrow[r, "l"] \arrow[d, "\delta"] & E \arrow[d, "\epsilon"] \\
-A' \arrow[r, "i'"]                               & B' \arrow[r, "j'"]                              & C' \arrow[r, "k'"]                               & D' \arrow[r, "l'"]                               & E'.                                 
-\end{tikzcd}
-\end{equation}
-If the morphisms $\alpha, \beta, \delta, \epsilon$ are all isomorphisms, and both rows in the diagram are exact, then it follows that $\gamma$ is also an isomorphism.
+	\label{fivelemma} Consider a commutative diagram with exact rows:
+	\begin{equation}
+		\begin{tikzcd}
+			A \arrow[r, "i"] \arrow[d, "\alpha"] & B \arrow[r, "j"] \arrow[d, "\beta"]
+			& C \arrow[r, "k"] \arrow[d, "\gamma"] & D \arrow[r, "l"] \arrow[d, "\delta"]
+			& E \arrow[d, "\epsilon"] \\ A' \arrow[r, "i'"] & B' \arrow[r, "j'"] & C'
+			\arrow[r, "k'"] & D' \arrow[r, "l'"] & E'
+		\end{tikzcd}
+	\end{equation}
+	If $\alpha, \beta, \delta, \epsilon$ are isomorphisms, then $\gamma$ is also an
+	isomorphism.
 \end{lemma}
 
 \begin{proof}
-The commutativity of the diagram implies that $\gamma$ is a homomorphism. To establish that $\gamma$ is bijective, we proceed as follows:
-\begin{itemize}
-    \item Surjectivity of $\gamma$: Let $c' \in C'$. Since $\delta$ is surjective, there exists some $d \in D$ such that $k'(c') = \delta(d)$. Injectivity of $\epsilon$ implies $\epsilon \circ l(d) = l' \circ \delta(d) = l' \circ k'(c') = 0$. Therefore, $l(d) = 0$. Since the rows are exact, we have $d = k(c)$ for some $c \in C$. This leads to $k'(c') - k'(\gamma(c)) = k'(c') - \delta \circ k(c) = k'(c') - \delta(d) = 0$. Hence, $k'(c' - \gamma(c)) = 0$, and by exactness, $c' - \gamma(c) = j'(b')$ for some $b' \in B'$. The surjectivity of $\beta$ implies that $b' = \beta(b)$ for some $b \in B$. Consequently, $\gamma(c + j(b)) = \gamma(c) + \gamma(j(b)) = \gamma(c) + j' \circ \beta(b) = \gamma(c) - j'(b') = c'$, establishing the surjectivity of $\gamma$.
-    \item Injectivity of $\gamma$: Suppose $\gamma(c) = 0$. Since $\delta$ is injective, we have $\delta(k(c)) = k'(\gamma(c)) = 0$. This implies $k(c) = 0$. Therefore, $c = j(b)$ for some $b \in B$. From $\gamma(c) = \gamma(j(b)) = j'(\beta(b))$, we deduce that $\beta(b) = i'(a')$ for some $a' \in A'$. Surjectivity of $\alpha$ gives us $a' = \alpha(a)$ for some $a \in A$. As $\beta$ is injective, we find that $\beta(i(a) - b) = \beta(i(a)) - \beta(b) = i'(\alpha(a)) - \beta(b) = i'(a') - \beta(b) = 0$. Therefore, $i(a) - b = 0$, which implies $b = i(a)$. Consequently, $c = j(b) = j(i(a)) = 0$ by the exactness of rows. Hence, $\gamma$ has a trivial kernel and is thus injective.
-\end{itemize}
-In summary, we have shown that $\gamma$ is both surjective and injective, which establishes its bijectiveness.
-\end{proof}
+	Commutativity of the diagram ensures that $\gamma$ is a homomorphism. To show
+	that $\gamma$ is bijective, we consider:
 
+	\begin{itemize}
+		\item Surjectivity: Let $c' \in C'$. Since $\delta$ is surjective, there
+			exists $d \in D$ such that $k'(c') = \delta(d)$. Because $\epsilon$ is injective,
+			$\epsilon(l(d)) = l'(\delta(d)) = l'(k'(c')) = 0$, thus $l(d) = 0$. By
+			exactness, $d = k(c)$ for some $c \in C$. Therefore, $k'(c' - \gamma(c)) =
+			0$, and exactness implies $c' - \gamma(c) = j'(b')$ for some $b' \in B'$. With
+			$\beta$ surjective, $b' = \beta(b)$ for some $b \in B$, hence $\gamma(c + j
+			(b)) = c'$, proving surjectivity of $\gamma$.
+
+		\item Injectivity: Assume $\gamma(c) = 0$. Injectivity of $\delta$ and exactness
+			yield $\delta(k(c)) = 0$ and $k(c) = 0$, thus $c = j(b)$ for some
+			$b \in B$. Since $\gamma(j(b)) = j'(\beta(b)) = 0$ and $\beta$ is injective,
+			$b = i(a)$ for some $a \in A$, giving $c = j(i(a)) = 0$. Therefore, $\gamma$
+			has a trivial kernel and is injective.
+	\end{itemize}
+
+	Thus, $\gamma$ is both surjective and injective, proving it is an isomorphism.
+\end{proof}
 
 \begin{theorem}[Excision Theorem]
-\label{excisiontheorem}
-Let \(X\) be a topological space, and let \(A\) and \(U\) be subspaces of \(X\) such that \(\overline{U} \subset \operatorname{int}(A)\). Then the inclusion \((X \setminus U, A \setminus U) \hookrightarrow (X, A)\) induces isomorphisms on all homology groups:
-\[
-H_n(X \setminus U, A \setminus U) \cong H_n(X, A) \text{ for all } n.
-\]
+	{\cite[\S 2.20]{hatcher2005algebraic} \label{excisiontheorem} Given subspaces $Z \subset A \subset X$ such that $\overline{Z}\subseteq \operatorname{int}(A)$, the inclusion $(X\setminus Z, A\setminus Z) \hookrightarrow (X, A)$ induces isomorphisms in homology}:
+	\[
+		H_{n}(X\setminus Z, A\setminus Z) \to H_{n}(X, A) \quad \text{for all }n.
+	\]
+	Equivalently, for subspaces $A, B \subset X$ whose interiors cover $X$, the
+	inclusion $(B, A \cap B) \hookrightarrow (X, A)$ induces isomorphisms:
+	\[
+		H_{n}(B, A \cap B) \to H_{n}(X, A) \quad \text{for all }n.
+	\]
+\end{theorem}
+
+The equivalence is demonstrated by setting $B = X \setminus Z$ and
+$Z = X \setminus B$, thereby $A \cap B = A \setminus Z$. The condition
+$\overline{Z}\subseteq \operatorname{int}(A)$ translates to
+$X = \operatorname{int}(A) \cup \operatorname{int}(B)$. Following Hatcher's proof,
+it involves barycentric subdivision, which aids in the computation of homology groups
+using small singular simplices. In metric spaces, 'smallness' is determined by the
+diameters of simplices, while in general topological spaces, it is defined by their
+containment within elements of a cover $U$. Define $U = \{U_{j}\}$, an open cover
+of $X$, and let $CU_{n}(X)$ be the subgroup of $C_{n}(X)$ consisting of chains
+$\sum_{i} n_{i} \sigma_{i}$ with each $\sigma_{i}$ contained within one of the
+$U_{j}$. The boundary operator $\partial: C_{n}(X) \to C_{n}-1(X)$ preserves this
+containment, forming a chain complex $CU_{n}(X) \to CU_{n-1}(X)$. The homology groups
+of this complex are denoted by $HU_{n}(X)$, as elaborated in Hatcher's text.
+
+\begin{proposition}
+	{\cite[\S 2.21]{hatcher2005algebraic}} The inclusion $\iota : CU_{n}(X) \hookrightarrow
+	C_{n}(X)$ is a chain homotopy equivalence. There exists a chain map
+	$\rho : C_{n}(X) \to CU_{n}(X)$ such that the compositions $\iota \rho$ and
+	$\rho \iota$ are chain homotopic to the identity, implying that $\iota$ induces
+	isomorphisms $HU_{n}(X) \cong H_{n}(X)$ for all $n$.
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+Finally, we can proof the Excision Theorem.
+
+\begin{proof}
+	We use the setup and notation previously established, where $U$ is a subset of
+	$B$ and $\overline{U}\subseteq \operatorname{int}(A)$. Define $C_{n}(A + B) \equiv
+	CU_{n}(X)$ which sums chains in $A$ and chains in $B$. We consider the
+	following key steps:
+
+	In our setup, the formulas:
+	\[
+		\partial D + D \partial = \text{id}- \iota \rho \quad \text{and}\quad \rho \iota
+		= \text{id}
+	\]
+	establish that all maps take chains in $A$ to chains in $A$, which allows us to
+	induce quotient maps when factoring out chains solely in $A$. These quotient
+	maps automatically satisfy the same two formulas, thereby ensuring that the inclusion
+	map $C_{n}(A + B)/C_{n}(A) \to C_{n}(X)/C_{n}(A)$ is an isomorphism on homology.
+
+	The inclusion $C_{n}(B)/C_{n}(A \cap B) \to C_{n}(A + B)/C_{n}(A)$ is also an isomorphism
+	because both quotient groups are free and have a basis represented by singular
+	$n$-simplices in $B$ that are not in $A$. This property ensures that we have a
+	one-to-one correspondence between the generators of both groups.
+
+	With these isomorphisms established, we apply the excision property to show that
+	the inclusion $i: (X \setminus U, A \setminus U) \hookrightarrow (X, A)$ induces
+	an isomorphism:
+	\[
+		H_{n}(X \setminus U, A \setminus U) \cong H_{n}(X, A)
+	\]
+	for each $n$. This follows because the quotient spaces $(X \setminus U, A \setminus
+	U)$ and $(X, A)$ relative to $A$ share the same homological structure due to the
+	isomorphisms we've established in the quotient chain groups and by the preservation
+	of homotopy relations.
+
+	Thus, we conclude that the excision property holds under the given conditions,
+	confirming the fundamental theorem of algebraic topology in these settings.
+\end{proof}
+
+\section{Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)}
+We aim to establish the equivalence of the homology groups $H^{\Delta}_{d}(X)$
+and $H_{d}(X)$. Note that simplicial homology groups $H^{\Delta}_{d}(X)$ are defined
+solely for simplicial complexes, whereas singular homology groups $H_{d}(X)$ can
+be computed for any topological space. This generality is advantageous, as
+homeomorphic spaces have isomorphic singular homology groups, enabling the imposition
+of a simplicial structure on any trianguliable topological space. For the scope
+of this thesis, we restrict our attention to spaces representable as simplicial complexes.
+
+To demonstrate the equivalence between $H_{d}(X)$ and $H^{\Delta}_{d}(X)$, we
+establish an isomorphism between these groups for all dimensions $d$. A homomorphism
+naturally arises from the map $C^{\Delta}_{d}(X) \rightarrow C_{d}(X)$, which
+sends each $d$-simplex in $X$ to a singular simplex via the mapping
+$\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from
+$H^{\Delta}_{d}(X)$ to $H_{d}(X)$.
+
+While simplicial and singular homologies originate from similar foundational ideas
+and are particularly useful in different contexts—simplicial homology in computational
+geometry and singular homology in proving theorems involving continuous maps—their
+equivalence is a significant theoretical result. This equivalence not only
+bridges computational and conceptual approaches in algebraic topology but also
+provides a robust framework for addressing a broad spectrum of mathematical
+challenges.
+
+\begin{theorem}[Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)]
+	For each integer $d$, the homomorphisms from the simplicial homology group
+	$H^{\Delta}_{d}(X)$ to the singular homology group $H_{d}(X)$ are isomorphisms.
+	Hence, the simplicial and singular homology groups are equivalent for all
+	dimensions.
 \end{theorem}
 
 \begin{proof}
-\textbf{Step Focused on the Chain Complex Isomorphism:}
+	Consider a simplicial complex $X$. For each $k$-skeleton $X^{k}$, the inclusion
+	$X^{k-1}\subset X^{k}$ leads to the following commutative diagram of exact sequences:
+	\begin{figure}[h]
+		\centering
+		\adjustbox{scale=.825,center}{%
+		\begin{tikzcd}H^\Delta_{d+1}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d-1}(X^{k-1}) \arrow[d] \\ H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})\end{tikzcd} }
+		\caption{Commutative diagram of exact sequences for homology and relative
+		homology of a trianguliable topological space $X$.}
+	\end{figure}
 
-The proof crucially depends on the demonstration that the inclusion 
-\[j: (X \setminus U, A \setminus U) \to (X, A)\]
-induces an isomorphism between the respective chain complexes. This step is validated by applying the principle of excision in the setting of singular homology.
+	Given that $X^{k}/X^{k-1}$ only contains simplices of dimension $k$,
+	$C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group for
+	$d = k$, with a basis formed by the $k$-simplices of $X$.
 
-\textbf{Construction of the Isomorphism:}
-\begin{itemize}
-    \item The relative chain complexes \(C_*(X \setminus U, A \setminus U)\) and \(C_*(X, A)\) are constructed such that they consist of singular chains in their respective spaces modulo the chains in the subspace \(A\) and \(A \setminus U\).
-    \item The excision property implies that the singular chains in \(U\) do not contribute to the relative homology of the pair \((X, A)\), allowing their removal—hence the focus on \(X \setminus U\) and \(A \setminus U\).
-\end{itemize}
+	We define a characteristic map $\Phi: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}
+	_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism
+	$\Phi\star: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow
+	X^{k}/X^{k-1}$. By the Excision Theorem \ref{excisiontheorem},
+	$H_{d}(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})) \cong H_{d}(X^{k}, X
+	^{k-1}) \cong H_{d}(X^{k}/X^{k-1})$, establishing isomorphisms for $H_{d}(X^{k}
+	, X^{k-1})$.
 
-\textbf{Diagrammatic Representation Using `tikz-cd`:}
-\begin{center}
-\begin{tikzcd}
-C_*(X \setminus U, A \setminus U) \arrow{r}{j_*} \arrow{d}{\cong} & C_*(X, A) \arrow{d}{\cong} \\
-H_*(X \setminus U, A \setminus U) \arrow{r}{\tilde{j}_*} & H_*(X, A)
-\end{tikzcd}
-\end{center}
-
-Here, \(j_*\) maps chain complexes and \(\tilde{j}_*\) denotes the induced map on homology. The vertical arrows represent the isomorphisms from chain complexes to their corresponding homology groups, asserting that these mappings preserve the homological structure.
-
-\textbf{Conclusion:}
-The chain complex mapping \(j_*\) being an isomorphism ensures that the induced homology map \(\tilde{j}_*\) is also an isomorphism. This step, therefore, confirms the excision property by demonstrating that the homological information remains unchanged after the excision of \(U\).
-
+	Using induction and assuming that the necessary homology isomorphisms hold for
+	dimensions less than $k$, we extend the isomorphism to all dimensions:
+	\begin{equation}
+		H_{k}^{\Delta}(X^{k},X^{k-1}) \cong H_{k}(X^{k},X^{k-1})
+	\end{equation}
+	The Five Lemma \ref{fivelemma} supports the isomorphism between $H_{k}^{\Delta}
+	(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that $H_{d}^{\Delta}
+	(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})$ is an isomorphism for all $d$,
+	verifying the equivalence of simplicial and singular homology for all $k$.
 \end{proof}
-
-\section{Equivalence of $H_d^\Delta$ and $H_d$}
-We aim to establish the equivalence between the groups $H_d(X)$ and $H^\Delta_d(X)$. It is important to note that simplicial homology groups are defined and computable only for simplicial structures. However, this limitation can be overcome by calculating singular homology groups for any topological space, including simplicial complexes. Furthermore, the fact that homeomorphic spaces have isomorphic singular homology groups suggests that we can impose a simplicial structure on a topological space. Therefore, to prove the equivalence of $H_d(X)$ and $H^\Delta_d(X)$, we consider an arbitrary simplicial complex as our topological space $X$. It is worth mentioning that not all topological spaces can be homeomorphic to a simplicial complex, but for the purpose of this paper, we will focus solely on spaces that can be represented as simplicial complexes.
-
-To demonstrate the equivalence of $H_d(X)$ and $H^\Delta_d(X)$, we need to establish the existence of an isomorphism between the two groups for all $d$. It is relatively straightforward to observe the existence of a homomorphism: we already have a map $C^\Delta_d(X) \rightarrow C_d(X)$ from the simplicial chain group to the singular chain group, which maps each simplex of $X$ to $\tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow X$. This map induces a corresponding map $H^\Delta_d(X) \rightarrow H_d(X)$.
-
-Simplicial and singular homology, although stemming from similar concepts, have distinct purposes in algebraic topology. They excel in different scenarios: Simplicial homology simplifies homology group calculations, particularly suited for geometric problems, while singular homology is advantageous when streamlined theorem proofs are needed, thanks to its compatibility with continuous maps.
-
-The fundamental achievement in algebraic topology lies in their equivalence. This unification not only bridges the gap between the two approaches but also equips mathematicians with a versatile tool for addressing a wide range of problems. It stands as a pivotal result in the field, empowering researchers to tackle diverse challenges effectively.
-
-\begin{theorem}{(Equivalence of Simplicial and Singular Homology)}
-For all values of $d$, the homomorphisms from the simplicial homology group $H^\Delta_d(X)$ to the singular homology group $H_d(X)$ are isomorphisms. Therefore, it follows that the singular and simplicial homology groups are equivalent.
-\end{theorem}
-
-\begin{proof}
-Consider a simplicial complex $X$. For the $k$-skeleton $X^k$ of $X$, we obtain the following commutative diagram of exact sequences due to the inclusion $X^{k-1} \subset X^k$:
-\begin{equation*}
-\begin{tikzcd}[column sep=0.3em]
-{H^\Delta_{d+1}(X^k,X^{k-1})} \arrow[d] \arrow[r] & H^\Delta_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k) \arrow[d] \arrow[r] & {H^\Delta_{d}(X^k,X^{k-1})} \arrow[d] \arrow[r] & H^\Delta_{d-1}(X^{k-1}) \arrow[d] \\
-{H_{d+1}(X^k,X^{k-1})} \arrow[r]                  & H_{d}(X^{k-1}) \arrow[r]                  & H_{d}(X^k) \arrow[r]                  & {H_{d}(X^k,X^{k-1})} \arrow[r]                  & H_{d-1}(X^{k-1})                 
-\end{tikzcd}
-\end{equation*}
-Here, $X^k/X^{k-1}$ contains only simplices of dimension $k$, so for $d \neq k$, the group $C_d(X^k, X^{k-1})$ is trivial. When $d = k$, $C_d(X^k, X^{k-1})$ is a free abelian group with a basis consisting of the $k$-simplices of $X$. Since the cycles $Z_d$ form a subgroup of $C_d$, and the boundary group $B_d$ is empty, $H^\Delta_d(X^k, X^{k-1})$ is essentially the same as $C_d$, with the distinction that when $d = k$, the basis of $Z_d$ consists of $k$-cycles.
-
-We notice that the characteristic maps $\sigma^{(k)} \rightarrow X$ for all the $k$-simplices of $X$ provide us with a map $\Phi: \coprod_i(\sigma^{(k)}_i, \sigma^{(k-1)}_i) \rightarrow (X^k, X^{k-1})$. It is evident that this map induces a homeomorphism $\Phi\star: \coprod_i \sigma^{(k)}_i/\coprod_i \sigma^{(k-1)}_i \rightarrow X^k/X^{k-1}$. As a result, we have $H_d(\coprod_i (\sigma^{(k)}_i, \sigma^{(k-1)}_i)) \cong H_d(X^k, X^{k-1})$.
-
-Utilizing the Excision Theorem \ref{excisiontheorem}, which allows us to replace a subspace with its complement while preserving homology, we can conclude that there exists an isomorphism $H_d(X,A) \rightarrow H_d(X/A)$ for all good pairs $(X,A)$. Consequently, we have $H_d(\coprod_i (\sigma^{(k)}_i, \sigma^{(k-1)}_i)) \cong H_d(X^k, X^{k-1}) \cong H_d(X^k/X^{k-1})$. Through transitivity, this establishes $H_d(\coprod_i (\sigma^{(k)}_i, \sigma^{(k-1)}_i)) \cong H_d(X^k/X^{k-1})$. This result shows that $H_d(X^k, X^{k-1})$ is trivial for $d \neq k$ and is a free abelian group with the basis being the relative cycles defined by the maps $\sigma^{(k)} \rightarrow X$.
-
-To complete the argument, we use induction and assume that the second and fifth parts of the homology long exact sequence are isomorphisms for dimensions less than $k$. In other words, we assume that:
-\begin{itemize}
-	\item $H_{d+1}^\Delta(X^{k-1}, X^{k-2}) \cong H_{d+1}(X^{k-1}, X^{k-2})$ for $d \leq k-2$.
-	\item $H_d^\Delta(X^{k-1}, X^{k-2}) \rightarrow H_d(X^{k-1}, X^{k-2})$ is an isomorphism for $d \leq k-1$.
-\end{itemize}
-Now, we aim to show that the map $H_d^\Delta(X^k, X^{k-1}) \rightarrow H_d(X^k, X^{k-1})$ is an isomorphism for all $d$. We already know this holds for $d \neq k$. For $d = k$, we have:
-\begin{equation}
-H_k^\Delta(X^k,X^{k-1}) \cong H_k(X^k,X^{k-1})
-\end{equation}
-This follows from the Five Lemma \ref{fivelemma} regarding the isomorphism between the relative simplicial homology group $H_k^\Delta(X^k, X^{k-1})$ and the relative homology group $H_k(X^k, X^{k-1})$. Having established the isomorphism for all $d$, we've shown that the map 
-$H_d^\Delta(X^k, X^{k-1}) \rightarrow H_d(X^k, X^{k-1})$ is indeed an isomorphism for all dimensions.
-
-In summary, by induction and the previous arguments, we've demonstrated that for all $k$, the homomorphisms $H_d^\Delta(X^k, X^{k-1}) \rightarrow H_d(X^k, X^{k-1})$ are isomorphisms, which confirms the equivalence between simplicial and singular homology.
-\end{proof}
-
-
