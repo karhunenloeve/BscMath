@@ -126,11 +126,11 @@ complex}.
 \end{definition}
 
 The dimension of a simplicial complex $K$ is defined as the highest dimension among
-its simplices. For a simplicial complex $K$ in $\mathbb{R}^{d}$, the underlying space
+its simplices. For a simplicial complex $K$ in $\mathbb{R}^{n}$, the underlying space
 $\vert K \vert$ is the union of all the simplices in $K$. The topology of $K$ is
-determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{d}$'s
+determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{n}$'s
 standard topology. Notably, when the vertex set is specified, a simplicial complex
-in $\mathbb{R}^{d}$ can be fully characterized by listing its simplices. Thus, it
+in $\mathbb{R}^{n}$ can be fully characterized by listing its simplices. Thus, it
 can be described purely in terms of combinatorics using abstract simplicial complexes.
 
 \begin{definition}
@@ -160,11 +160,11 @@ realization} of $\tilde{K}$.
 
 \begin{proof}
 	Let $\{v_{0}, v_{1}, \ldots, v_{d}\}$ denote the vertex set of $\tilde{K}$,
-	with $d$ representing the number of vertices in $\tilde{K}$. Consider $\sigma^{(d-1)}
-	\subset \mathbb{R}^{d}$, the simplex formed by the span of
+	with $0 \leq d < n$ representing the number of vertices in $\tilde{K}$. Consider $\sigma^{(d-1)}
+	\subset \mathbb{R}^{n}$, the simplex formed by the span of
 	$\{e_{1}, e_{2}, \ldots, e_{d}\}$, where $e_{i}$ represents the $i$-th unit vector.
 	In this context, $K$ refers to the subcomplex of $\sigma^{(d-1)}$ such that $[e
-	_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ if and only if $[v_{i_0}, \ldots
+	_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ with $0 \leq l \leq d$ if and only if $[v_{i_0}, \ldots
 	, v_{i_l}]$ is a simplex of $\tilde{K}$.
 \end{proof}
 
