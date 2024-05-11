@@ -10,22 +10,20 @@
 	height=200mm,
 	foot=2cm
 }
+\usepackage[mathscr]{euscript}
 \usepackage[protrusion=true, expansion=true]{microtype}
 \usepackage[nodisplayskipstretch]{setspace}
 \usepackage{tikz}
 \usepackage{imakeidx}
-\makeindex[columns=2,
-title=Index]
-\usepackage{setspace}
+\makeindex[columns=2, title=Index]
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{fancyhdr}
 \usepackage{fbb}
+\usepackage{booktabs}
 \usepackage{setspace}
-\expandafter\def\expandafter\normalsize\expandafter{%
-\normalsize \setlength{\abovedisplayskip}{1ex} \setlength{\belowdisplayskip}{1ex} \setlength{\abovedisplayshortskip}{1ex} \setlength{\belowdisplayshortskip}{1ex} }
 \usepackage{titlesec}
 \titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsection}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
@@ -33,20 +31,13 @@ title=Index]
 \setlist[itemize]{noitemsep, topsep=0pt}
 \setlist[enumerate]{noitemsep, topsep=0pt}
 \usepackage{etoolbox}
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{longtable}
-\usepackage{rotating}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
-\usepackage{wrapfig}
 \usepackage{graphicx}
-\usepackage{grffile}
 \usepackage{tocloft}
 \usepackage{adjustbox}
 \usepackage{tikz-cd}
-\usepackage[libertine, cmintegrals, cmbraces, vvarbb]{newtxmath}
 \usepackage{subcaption}
 \captionsetup[subfigure]{labelsep=colon, labelformat=simple, labelfont=sc}
 \usepackage[style=nature, sorting=nty]{biblatex}
@@ -75,7 +66,7 @@ title=Index]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$
+\newenvironment{proof}{\paragraph{Proof}}{\hfill$\square$
 \vspace{0.5cm}}
 
 \title{Algebraic and Topological Persistence}
