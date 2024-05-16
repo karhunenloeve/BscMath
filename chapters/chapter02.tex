@@ -889,8 +889,7 @@ groups $H_{d}^{\Delta}$ and $H_{d}$.
 
 \begin{example}
 	The groups $C_{d}(X)$ represent the collection of singular $d$-chains that form
-	a part of a chain complex, where the boundary operator $\partial_{d}$ guides
-	the flow between these groups.
+	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimension.
 	\begin{align}
 		\cdots \xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} & C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \\
 		\cdots \xrightarrow{}C_{1}(X) \xrightarrow{\partial_1}       & C_{0}(X) \xrightarrow{\partial_0}0.
@@ -1184,6 +1183,7 @@ We propose two important facts about $H_{d}(X,A)$:
 Before we further investigate the decomposition of the relative homology groups into exact sequences, we need an intermediate result for commutative diagrams, which facilitates further argumentation. This intermediate result is also known as the snake lemma.
 
 \begin{lemma}[The Snake Lemma]
+TBD
 \label{snake}
 
 \end{lemma}
@@ -1437,7 +1437,7 @@ compared to the homology of the space with the smaller subspace removed.
 
 We will need the famous five lemma to prove the Excision Theorem.
 
-\begin{lemma}[The Five Lemma]
+\begin{lemma}[The Five Lemma]{\cite[p.120]{hatcher2005algebraic}}
 	\label{fivelemma} Consider a commutative diagram with exact rows:
 	\begin{equation}
 		\begin{tikzcd}
@@ -1486,67 +1486,36 @@ We will need the famous five lemma to prove the Excision Theorem.
 	\]
 \end{theorem}
 
-The equivalence is demonstrated by setting $B = X \setminus Z$ and
-$Z = X \setminus B$, thereby $A \cap B = A \setminus Z$. The condition
-$\overline{Z}\subseteq \operatorname{int}(A)$ translates to
-$X = \operatorname{int}(A) \cup \operatorname{int}(B)$. Following Hatcher's proof,
-it involves barycentric subdivision, which aids in the computation of homology groups
-using small singular simplices. In metric spaces, 'smallness' is determined by the
-diameters of simplices, while in general topological spaces, it is defined by their
-containment within elements of a cover $U$. Define $U = \{U_{j}\}$, an open cover
-of $X$, and let $CU_{n}(X)$ be the subgroup of $C_{n}(X)$ consisting of chains
-$\sum_{i} n_{i} \sigma_{i}$ with each $\sigma_{i}$ contained within one of the
-$U_{j}$. The boundary operator $\partial: C_{n}(X) \to C_{n}-1(X)$ preserves this
-containment, forming a chain complex $CU_{n}(X) \to CU_{n-1}(X)$. The homology groups
-of this complex are denoted by $HU_{n}(X)$, as elaborated in Hatcher's text.
+The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). Following Hatcher's proof, it involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\} \), an open cover of \( X \), and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
 
 \begin{proposition}
-	{\cite[\S 2.21]{hatcher2005algebraic}} The inclusion $\iota : CU_{n}(X) \hookrightarrow
-	C_{n}(X)$ is a chain homotopy equivalence. There exists a chain map
-	$\rho : C_{n}(X) \to CU_{n}(X)$ such that the compositions $\iota \rho$ and
-	$\rho \iota$ are chain homotopic to the identity, implying that $\iota$ induces
-	isomorphisms $HU_{n}(X) \cong H_{n}(X)$ for all $n$.
+According to \cite[\S 2.21]{hatcher2005algebraic}, the inclusion \( \iota : C^{\mathcal{U}}_n(X) \hookrightarrow C_n(X) \) is a chain homotopy equivalence. There exists a chain map \( \rho : C_n(X) \to C^{\mathcal{U}}_n(X) \) such that the compositions \( \iota \circ \rho \) and \( \rho \circ \iota \) are chain homotopic to the identity, implying that \( \iota \) induces isomorphisms \( H^{\mathcal{U}}_n(X) \cong H_n(X) \) for all \( n \).
 \end{proposition}
 
 \begin{proof}
+TBD
 \end{proof}
 
 Finally, we can proof the Excision Theorem.
 
 \begin{proof}
-	We use the setup and notation previously established, where $U$ is a subset of
-	$B$ and $\overline{U}\subseteq \operatorname{int}(A)$. Define $C_{n}(A + B) \equiv
-	CU_{n}(X)$ which sums chains in $A$ and chains in $B$. We consider the
-	following key steps:
+We use the setup and notation previously established, where \( U \) is a subset of \( B \) and \( \overline{U} \subseteq \operatorname{int}(A) \). Define \( C_n(A + B) \equiv C^{\mathcal{U}}_n(X) \) which sums chains in \( A \) and chains in \( B \). We consider the following key steps:
 
-	In our setup, the formulas:
-	\[
-		\partial D + D \partial = \text{id}- \iota \rho \quad \text{and}\quad \rho \iota
-		= \text{id}
-	\]
-	establish that all maps take chains in $A$ to chains in $A$, which allows us to
-	induce quotient maps when factoring out chains solely in $A$. These quotient
-	maps automatically satisfy the same two formulas, thereby ensuring that the inclusion
-	map $C_{n}(A + B)/C_{n}(A) \to C_{n}(X)/C_{n}(A)$ is an isomorphism on homology.
+In our setup, the formulas:
+\[
+\partial D + D \partial = \text{id} - \iota \circ \rho \quad \text{and} \quad \rho \circ \iota = \text{id}
+\]
+establish that all maps take chains in \( A \) to chains in \( A \), which allows us to induce quotient maps when factoring out chains solely in \( A \). These quotient maps automatically satisfy the same two formulas, thereby ensuring that the inclusion map \( C_n(A + B)/C_n(A) \to C_n(X)/C_n(A) \) is an isomorphism on homology.
 
-	The inclusion $C_{n}(B)/C_{n}(A \cap B) \to C_{n}(A + B)/C_{n}(A)$ is also an isomorphism
-	because both quotient groups are free and have a basis represented by singular
-	$n$-simplices in $B$ that are not in $A$. This property ensures that we have a
-	one-to-one correspondence between the generators of both groups.
+The inclusion \( C_n(B)/C_n(A \cap B) \to C_n(A + B)/C_n(A) \) is also an isomorphism because both quotient groups are free and have a basis represented by singular \( n \)-simplices in \( B \) that are not in \( A \). This property ensures that we have a one-to-one correspondence between the generators of both groups.
 
-	With these isomorphisms established, we apply the excision property to show that
-	the inclusion $i: (X \setminus U, A \setminus U) \hookrightarrow (X, A)$ induces
-	an isomorphism:
-	\[
-		H_{n}(X \setminus U, A \setminus U) \cong H_{n}(X, A)
-	\]
-	for each $n$. This follows because the quotient spaces $(X \setminus U, A \setminus
-	U)$ and $(X, A)$ relative to $A$ share the same homological structure due to the
-	isomorphisms we've established in the quotient chain groups and by the preservation
-	of homotopy relations.
+With these isomorphisms established, we apply the excision property to show that the inclusion \( i: (X \setminus U, A \setminus U) \hookrightarrow (X, A) \) induces an isomorphism:
+\[
+H_n(X \setminus U, A \setminus U) \cong H_n(X, A)
+\]
+for each \( n \). This follows because the quotient spaces \( (X \setminus U, A \setminus U) \) and \( (X, A) \) relative to \( A \) share the same homological structure due to the isomorphisms we've established in the quotient chain groups and by the preservation of homotopy relations.
 
-	Thus, we conclude that the excision property holds under the given conditions,
-	confirming the fundamental theorem of algebraic topology in these settings.
+Thus, we conclude that the excision property holds under the given conditions, confirming the fundamental theorem of algebraic topology in these settings.
 \end{proof}
 
 \section{Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)}
@@ -1573,7 +1542,7 @@ bridges computational and conceptual approaches in algebraic topology but also
 provides a robust framework for addressing a broad spectrum of mathematical
 challenges.
 
-\begin{theorem}[Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)]
+\begin{theorem}[Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)]{\cite[p.102f]{hatcher2005algebraic}}
 	For each integer $d$, the homomorphisms from the simplicial homology group
 	$H^{\Delta}_{d}(X)$ to the singular homology group $H_{d}(X)$ are isomorphisms.
 	Hence, the simplicial and singular homology groups are equivalent for all
@@ -1584,8 +1553,7 @@ challenges.
 	Consider a simplicial complex $X$. For each $k$-skeleton $X^{k}$, the inclusion
 	$X^{k-1}\subset X^{k}$ leads to the following commutative diagram of exact sequences:
 	\begin{figure}[h]
-		\centering
-		\adjustbox{scale=.825,center}{%
+		\adjustbox{scale=.77}{%
 		\begin{tikzcd}H^\Delta_{d+1}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d-1}(X^{k-1}) \arrow[d] \\ H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})\end{tikzcd} }
 		\caption{Commutative diagram of exact sequences for homology and relative
 		homology of a trianguliable topological space $X$.}
