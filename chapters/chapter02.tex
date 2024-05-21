@@ -918,9 +918,9 @@ We propose two important facts about \( H_{d}(X, A) \):
     Conversely, if \( \partial_{d}(c) \in C_{d-1}(A) \), then \( c \) qualifies as a relative cycle by definition, and any chain homologous to \( c \) in \( C_{d}(X) \) that differs from \( c \) by a boundary in \( C_{d}(A) \) will also have its boundary in \( C_{d-1}(A) \), confirming \([c]\) as an element of \( H_{d}(X, A) \).
 
     \item For a chain \( c \) in \( C_{d}(X) \) to be a relative boundary, it must be expressible as \( c = a + \partial_{d+1}(b) \) where \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \). Applying the boundary operator, we have:
-    \[
+    \begin{align}
     \partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial_{d}(a) + 0 = \partial_{d}(a).
-    \]
+    \end{align}
     Since \( \partial_{d}(a) \in C_{d-1}(A) \) and \( \partial_{d+1}\partial_{d} = 0 \) (as boundaries of boundaries are zero), \( c \) is a cycle relative to \( A \), making it trivial in \( H_{d}(X, A) \).
 
     Conversely, if a relative cycle \( c \) is trivial in \( H_{d}(X, A) \), then it must be homologous to a boundary in \( C_{d}(A) \), meaning there exists \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \) such that \( c = a + \partial_{d+1}(b) \). This implies that \( c \) is expressible as the sum of a chain in \( C_{d}(A) \) and the boundary of a chain in \( C_{d+1}(X) \), confirming it as a relative boundary.
@@ -1032,75 +1032,34 @@ Therefore, the cycle \(c_{1} + c_{2}\) maps to the cycle \(a_{1} + a_{2}\) under
 Thus, \(\partial_{d}\) is a homomorphism.
 \end{proof}
 
-
-\begin{lemma}
-	\label{exacthomsequence} The given sequence,
-	\begin{equation}
-		\cdots \rightarrow H_{d}(A) \xrightarrow{i_\star}H_{d}(B) \xrightarrow{j_\star}
-		H_{d}(C) \xrightarrow{\partial_d}H_{d-1}(A) \xrightarrow{i_\star}H_{d-1}(B) \rightarrow
-		\cdots
-	\end{equation}
-	is exact.
+\begin{lemma}{\cite[p.115ff]{hatcher2005algebraic}}
+\label{exacthomsequence}
+The given sequence,
+\begin{align}
+&\cdots \rightarrow H_{d}(A) \xrightarrow{i_\star} H_{d}(B) \xrightarrow{j_\star} H_{d}(C) \xrightarrow{\partial_d} \cdots \\
+&\cdots \xrightarrow{\partial_d} H_{d-1}(A) \xrightarrow{i_\star} H_{d-1}(B) \rightarrow \cdots
+\end{align}
+is exact.
 \end{lemma}
 
 \begin{proof}
-	There are six inclusions that need to be confirmed:
-	\begin{enumerate}
-		\item $\operatorname{im}(i_{\star}) \subseteq \ker(j_{\star})$: Since
-			$j \circ i = 0$, it follows that $j_{\star} \circ i_{\star} = 0$, so
-			$\mathrm{im}(i_{\star}) \subseteq \ker(j_{\star})$.
-
-		\item $\operatorname{im}(j_{\star}) \ker(\partial_{d})$: By definition, if $[
-			b] \in \mathrm{im}(j_{\star})$, then $j_{\star}([b]) = [c] \in H_{d}(C)$
-			where $c$ is a cycle. Therefore, $\partial_{d}([c]) = 0$, and thus $\mathrm{im}
-			(j_{\star}) \subseteq \ker(\partial_{d})$.
-
-		\item $\operatorname{im}(\partial_{d}) \subseteq \ker(i_{\star})$: If
-			$[c] \in \mathrm{im}(\partial_{d})$, then $c$ is a relative boundary. This
-			implies that there exists $b \in B_{d}$ such that $c = j(b)$. Since $\partial
-			_{d}(b) = 0$, it follows that $i_{\star}([c]) = 0$, thus $\mathrm{im}(\partial
-			_{d}) \subseteq \ker(i_{\star})$.
-
-		\item $\ker(j_{\star}) \subseteq \operatorname{im}(i_{\star})$: Let
-			$[b] \in \ker(j_{\star})$, meaning $j_{\star}([b]) = [c] = 0$ in $H_{d}(C)$.
-			This implies that $c$ is a boundary, i.e., there exists a chain $c' \in C_{d+1}$
-			such that $c = \partial_{d+1}(c')$. Since $j$ is surjective, $c' = j(b')$ for
-			some $b' \in B_{d+1}$. Thus, $j(b) = \partial_{d+1}(c') = \partial_{d+1}\circ
-			j(b')$, which leads to:
-			\[
-				j(b - \partial_{d+1}(b')) = 0.
-			\]
-			Hence, $b - \partial_{d+1}(b') = i(a)$ for some $a \in A_{d}$. Since $i$ is
-			injective, $a$ is a cycle because:
-			\[
-				i \circ \partial_{d}(a) = \partial_{d} \circ i(a) = \partial_{d}(b - \partial
-				_{d+1}(b')) = \partial_{d}(b) = 0,
-			\]
-			given that $b$ is a cycle. Thus, $i_{\star}([a]) = [b]$, and
-			$\mathrm{im}(i_{\star}) = \ker(j_{\star})$.
-
-		\item $\ker(\partial) \subseteq \operatorname{im}(j_{\star})$: Let
-			$[c] \in \ker(\partial_{d})$. This means that $c$ is a relative cycle such
-			that $\partial_{d}([c]) = 0$. Hence, there exists $b \in B_{d}$ such that $j
-			(b) = c$. Therefore, $\ker(\partial_{d}) \subseteq \mathrm{im}(j_{\star})$.
-
-		\item $\ker(i_{\star}) \subseteq \operatorname{im}(\partial)$: Let
-			$[a] \in \ker(i_{\star})$, meaning $i_{\star}([a]) = 0$ in $H_{d-1}(B)$.
-			Thus, $i(a) = \partial_{d}(b)$ for some $b \in B_{d}$. Since
-			$\partial_{d}(j(b)) = j(\partial_{d}(b)) = j \circ i(a) = 0$, $j(b)$ is a cycle.
-			Therefore, $\partial_{d}([j(b)]) = [a]$, which demonstrates that
-			$\ker(i_{\star}) \subseteq \mathrm{im}(\partial_{d})$.
-	\end{enumerate}
-	We have established the following relationships:
-	\begin{itemize}
-		\item $\mathrm{im}(i_{\star}) = \ker(j_{\star})$,
-
-		\item $\mathrm{im}(j_{\star}) = \ker(\partial_{d})$,
-
-		\item $\mathrm{im}(\partial_{d}) = \ker(i_{\star})$.
-	\end{itemize}
-	These relationships confirm that the sequence is exact, satisfying all the
-	necessary conditions.
+We need to show that the sequence is exact at each point. 
+\begin{enumerate}
+	\item Exactness at \(H_{d}(B)\): We need to show that \(\ker(j_\star) = \operatorname{im}(i_\star)\). Since \(j \circ i = 0\), it follows that \(j_\star \circ i_\star = 0\), so \(\operatorname{im}(i_\star) \subseteq \ker(j_\star)\).
+	\item Exactness at \(H_{d}(C)\): We need to show that \(\ker(\partial_d) = \operatorname{im}(j_\star)\). By definition, if \([b] \in \operatorname{im}(j_\star)\), then \(j_\star([b]) = [c] \in H_{d}(C)\) where \(c\) is a cycle. Therefore, \(\partial_d([c]) = 0\), and thus \(\operatorname{im}(j_\star) \subseteq \ker(\partial_d)\).
+	\item Exactness at \(H_{d-1}(A)\): We need to show that \(\ker(i_\star) = \operatorname{im}(\partial_d)\). If \([c] \in \operatorname{im}(\partial_d)\), then \(c\) is a relative boundary. This implies that there exists \(b \in B_{d}\) such that \(c = j(b)\). Since \(\partial_d(b) = 0\), it follows that \(i_\star([c]) = 0\), thus \(\operatorname{im}(\partial_d) \subseteq \ker(i_\star)\).
+	\item Exactness at \(H_{d}(A)\): Let \([b] \in \ker(j_\star)\), meaning \(j_\star([b]) = [c] = 0\) in \(H_{d}(C)\). This implies that \(c\) is a boundary, i.e., there exists a chain \(c' \in C_{d+1}\) such that \(c = \partial_{d+1}(c')\). Since \(j\) is surjective, \(c' = j(b')\) for some \(b' \in B_{d+1}\). Thus, \(j(b) = \partial_{d+1}(c') = \partial_{d+1}\circ j(b')\), which leads to:
+\begin{align}
+j(b - \partial_{d+1}(b')) = 0.
+\end{align}
+Hence, \(b - \partial_{d+1}(b') = i(a)\) for some \(a \in A_{d}\). Since \(i\) is injective, \(a\) is a cycle because:
+\begin{align}
+i \circ \partial_{d}(a) = \partial_{d} \circ i(a) = \partial_{d}(b - \partial_{d+1}(b')) = \partial_{d}(b) = 0,
+\end{align}
+given that \(b\) is a cycle. Thus, \(i_\star([a]) = [b]\), and \(\operatorname{im}(i_\star) = \ker(j_\star)\).
+	\item Exactness at \(H_{d}(C)\): Let \([c] \in \ker(\partial_d)\). This means that \(c\) is a relative cycle such that \(\partial_d([c]) = 0\). Hence, there exists \(b \in B_{d}\) such that \(j(b) = c\). Therefore, \(\ker(\partial_d) \subseteq \operatorname{im}(j_\star)\).
+	\item Exactness at \(H_{d-1}(A)\): Let \([a] \in \ker(i_\star)\), meaning \(i_\star([a]) = 0\) in \(H_{d-1}(B)\). Thus, \(i(a) = \partial_d(b)\) for some \(b \in B_d\). Since \(\partial_d(j(b)) = j(\partial_d(b)) = j \circ i(a) = 0\), \(j(b)\) is a cycle. Therefore, \(\partial_d([j(b)]) = [a]\), which demonstrates that \(\ker(i_\star) \subseteq \operatorname{im}(\partial_d)\).
+\end{enumerate}
 \end{proof}
 
 \begin{proposition}
