@@ -707,31 +707,27 @@ where \( Z_{1}(S^{1}) \) is the group of \( 1 \)-cycles and \( B_{1}(S^{1}) \) i
 
 
 \subsection{Singular Chain Complexes}
-\label{SingularChainComplexes} To establish the equivalence between the groups
-$H_{d}^{\Delta}$ and $H_{d}$, we will introduce some concepts that will aid us in
-our proof.
+\label{SingularChainComplexes}
+To establish the equivalence between the groups \( H_{d}^{\Delta} \) and \( H_{d} \), we will introduce some concepts that will aid us in our proof.
 
-Since the maps $\tilde{\sigma}^{(d)}$ are continuous, a singular simplex always
-has a path-connected image in $X$. Thus, we can express $C_{d}(X)$ as the direct
-sum of subgroups $C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p})$, where each subgroup
-corresponds to a distinct path-component of $X$. This decomposition is preserved
-by the boundary map $\partial$, which is a homomorphism. Consequently, both $\ker
-(\partial_{d})$ and $\mathrm{im}(\partial_{d+1})$ also split, leading to the
-conclusion that $H_{d}(X)$ is isomorphic to
-$H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p})$.
+Since the maps \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex always has a path-connected image in \( X \). Thus, we can express \( C_{d}(X) \) as the direct sum of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \), where each subgroup corresponds to a distinct path-component of \( X \). This decomposition is preserved by the boundary map \( \partial \), which is a homomorphism. Thus, both \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also split, leading to the conclusion that \( H_{d}(X) \) is isomorphic to
+\begin{align}
+H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}).
+\end{align}
 
-These ideas will serve as valuable tools in proving the equivalence of the
-groups $H_{d}^{\Delta}$ and $H_{d}$.
+These ideas will serve as valuable tools in proving the equivalence of the groups \( H_{d}^{\Delta} \) and \( H_{d} \).
 
-\begin{definition}
-	A chain complex is a sequence of abelian groups, connected by homomorphisms (called
-	boundary operators\index{boundary operators}), such that the composition of
-	any two consecutive maps is zero.
+\begin{definition}[Chain Complex]
+A chain complex is a sequence of abelian groups \(\{C_n\}_{n \in \mathbb{Z}}\) connected by homomorphisms \(\partial_n: C_n \to C_{n-1}\) (called boundary operators), such that the composition of any two consecutive maps is zero, i.e., \(\partial_{n-1} \circ \partial_n = 0\) for all \(n\). Formally, a chain complex is:
+\begin{align}
+\cdots \xrightarrow{\partial_{n+2}} C_{n+1} \xrightarrow{\partial_{n+1}} C_n \xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots
+\end{align}
+where \(\partial_{n-1} \circ \partial_n = 0\).
 \end{definition}
 
 \begin{example}
 	The groups $C_{d}(X)$ represent the collection of singular $d$-chains that form
-	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimension.
+	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimension:
 	\begin{align}
 		\cdots \xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} & C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \\
 		\cdots \xrightarrow{}C_{1}(X) \xrightarrow{\partial_1}       & C_{0}(X) \xrightarrow{\partial_0}0.
@@ -747,7 +743,7 @@ groups $H_{d}^{\Delta}$ and $H_{d}$.
 	\end{equation}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Chain Maps]{\cite[\S 1.3.1]{Weibel1994}}
 	\label{chainmaps} A chain map $f$ between two chain complexes $(A, \partial^{(A)}
 	)$ and $(B, \partial^{(B)})$ induces a homomorphism between their respective homology
 	groups.
@@ -764,116 +760,81 @@ groups $H_{d}^{\Delta}$ and $H_{d}$.
 \end{theorem}
 
 \begin{proof}
-	Given a chain map $f$ between two chain complexes $(A, \partial^{(A)})$ and $(B
-	, \partial^{(B)})$, we want to show that $f$ induces a homomorphism
-	$f_{\star}: H_{d}(A) \rightarrow H_{d}(B)$.
+Given a chain map \( f \) between two chain complexes \( (A, \partial^{(A)}) \) and \( (B, \partial^{(B)}) \), we want to show that \( f \) induces a homomorphism \( f_{\star}: H_{d}(A) \rightarrow H_{d}(B) \).
 
-	By definition of a chain map, we have $f \circ \partial^{(A)}= \partial^{(B)}\circ
-	f$. Let $[c] \in Z_{d}(A)$ be a cycle in $A$, i.e., $\partial^{(A)}_{d}(c) = 0$.
-	Applying $f$ to this equation, we obtain:
-	\begin{equation}
-		f_{d-1}(\partial^{(A)}_{d}(c)) = \partial^{(B)}_{d}(f_{d}(c)).
-	\end{equation}
-	Since $\partial^{(A)}_{d}(c) = 0$, we have:
-	\begin{equation}
-		f_{d-1}(0) = \partial^{(B)}_{d}(f_{d}(c)),
-	\end{equation}
-	which implies that $\partial^{(B)}_{d}(f_{d}(c)) = 0$. Thus, $f_{d}(c)$ is a
-	cycle in $B$.
+By definition of a chain map, we have \( f \circ \partial^{(A)} = \partial^{(B)} \circ f \). Let \([c] \in Z_{d}(A)\) be a cycle in \( A \), i.e., \( \partial^{(A)}_{d}(c) = 0 \). Applying \( f \) to this equation, we obtain:
+\begin{align}
+f_{d-1}(\partial^{(A)}_{d}(c)) = \partial^{(B)}_{d}(f_{d}(c)).
+\end{align}
+Since \( \partial^{(A)}_{d}(c) = 0 \), we have:
+\begin{align}
+f_{d-1}(0) = \partial^{(B)}_{d}(f_{d}(c)),
+\end{align}
+which implies that \( \partial^{(B)}_{d}(f_{d}(c)) = 0 \). Thus, \( f_{d}(c) \) is a cycle in \( B \).
 
-	Now, let $[b] \in B_{d}(A)$ be a boundary in $A$, i.e., there exists
-	$a \in A_{d+1}$ such that $\partial^{(A)}_{d+1}(a) = b$. Applying $f$ to both sides,
-	we obtain:
-	\begin{equation}
-		f_{d}(\partial^{(A)}_{d+1}(a)) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
-	\end{equation}
-	Since $\partial^{(A)}_{d+1}(a) = b$, we have:
-	\begin{equation}
-		f_{d}(b) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
-	\end{equation}
-	Therefore, $f_{d}(b)$ is a boundary in $B$.
+Now, let \([b] \in B_{d}(A) \) be a boundary in \( A \), i.e., there exists \( a \in A_{d+1} \) such that \( \partial^{(A)}_{d+1}(a) = b \). Applying \( f \) to both sides, we obtain:
+\begin{align}
+f_{d}(\partial^{(A)}_{d+1}(a)) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
+\end{align}
+Since \( \partial^{(A)}_{d+1}(a) = b \), we have:
+\begin{align}
+f_{d}(b) = \partial^{(B)}_{d+1}(f_{d+1}(a)).
+\end{align}
+Therefore, \( f_{d}(b) \) is a boundary in \( B \).
 
-	From the above, we see that $f$ maps cycles in $A$ to cycles in $B$ and boundaries
-	in $A$ to boundaries in $B$. Hence, $f$ induces a well-defined map $f_{\star}:
-	H_{d}(A) \rightarrow H_{d}(B)$.
+From the above, we see that \( f \) maps cycles in \( A \) to cycles in \( B \) and boundaries in \( A \) to boundaries in \( B \). Hence, \( f \) induces a well-defined map \( f_{\star}: H_{d}(A) \rightarrow H_{d}(B) \).
 
-	To show that $f_{\star}$ is a homomorphism, let
-	$[c_{1}], [c_{2}] \in H_{d}(A)$ be two homology classes. We want to show that $f
-	_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}])$. Let
-	$c_{1}$ and $c_{2}$ be representatives of $[c_{1}]$ and $[c_{2}]$, respectively.
-	Then, $[c_{1}] + [c_{2}]$ is represented by $c_{1} + c_{2}$. Applying $f$ to
-	both sides, we have:
-	\begin{equation}
-		f_{d}(c_{1} + c_{2}) = f_{d}(c_{1}) + f_{d}(c_{2}).
-	\end{equation}
-	Since $f_{d}(c_{1})$ and $f_{d}(c_{2})$ are cycles in $B$, we have:
-	\begin{equation}
-		[f_{d}(c_{1} + c_{2})] = [f_{d}(c_{1})] + [f_{d}(c_{2})].
-	\end{equation}
-	Therefore, $f_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}
-	])$.
+To show that \( f_{\star} \) is a homomorphism, let \([c_{1}], [c_{2}] \in H_{d}(A) \) be two homology classes. We want to show that \( f_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}]) \). Let \( c_{1} \) and \( c_{2} \) be representatives of \([c_{1}]\) and \([c_{2}]\), respectively. Then, \([c_{1}] + [c_{2}]\) is represented by \( c_{1} + c_{2} \). Applying \( f \) to both sides, we have:
+\begin{align}
+f_{d}(c_{1} + c_{2}) = f_{d}(c_{1}) + f_{d}(c_{2}).
+\end{align}
+Since \( f_{d}(c_{1}) \) and \( f_{d}(c_{2}) \) are cycles in \( B \), we have:
+\begin{align}
+[f_{d}(c_{1} + c_{2})] = [f_{d}(c_{1})] + [f_{d}(c_{2})].
+\end{align}
+Therefore, \( f_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}]) \).
 
-	Thus, we have shown that the chain map $f$ induces a homomorphism
-	$f_{\star}: H_{d}(A) \rightarrow H_{d}(B)$.
+Thus, we have shown that the chain map \( f \) induces a homomorphism \( f_{\star}: H_{d}(A) \rightarrow H_{d}(B) \).
 \end{proof}
 
 \subsection{Exact and Short Exact Sequences}
-\label{Exact and Short Exact Sequences} We can apply Theorem \ref{chainmaps} to the
-case of singular homology. Consider two topological spaces $X$ and $Y$. For any map
-$f: X \rightarrow Y$, we can define an induced homomorphism
-$f_{\star}: C_{d}(X) \rightarrow C_{d}(Y)$ by composing singular $d$-simplices
-$\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$ with $f$. Specifically, we
-have
-$f_{\star} \circ \tilde{\sigma}^{(d)}= f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)}
-\rightarrow Y$.
+\label{ExactandShortExactSequences}
+We can apply Theorem \ref{chainmaps} to the case of singular homology. Consider two topological spaces \( X \) and \( Y \). For any map \( f: X \rightarrow Y \), we can define an induced homomorphism \( f_{\star}: C_{d}(X) \rightarrow C_{d}(Y) \) by composing singular \( d \)-simplices \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow X \) with \( f \). Specifically, we have
+\begin{align}
+f_{\star} \circ \tilde{\sigma}^{(d)} = f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y.
+\end{align}
 
-We can extend this definition by applying $f_{\star}$ to $d$-chains in
-$C_{d}(X)$. This gives us the following commutative diagram.
+We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \( C_{d}(X) \). This gives us the following commutative diagram:
 \begin{equation}
-	\begin{tikzcd}
-		\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d,
-		"f_{d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_d"] & C_{d-1}(X)
-		\arrow[r, "\partial_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\ \cdots \arrow[r,
-		"\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r,
-		"\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots
-	\end{tikzcd}
+\begin{tikzcd}
+\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d, "f_{d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_d"] & C_{d-1}(X) \arrow[r, "\partial_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\ 
+\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r, "\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots
+\end{tikzcd}
 \end{equation}
 
-The chain map $f_{d}$ gives rise to a homomorphism $f_{\star}: H_{d}(X) \rightarrow
-H_{d}(Y)$. It becomes evident that if $X$ and $Y$ are homeomorphic, meaning there
-exists a homeomorphism $f: X \rightarrow Y$, then the induced map $f_{\star}$ is
-an isomorphism.
+The chain map \( f_{d} \) gives rise to a homomorphism \( f_{\star}: H_{d}(X) \rightarrow H_{d}(Y) \). It becomes evident that if \( X \) and \( Y \) are homeomorphic, meaning there exists a homeomorphism \( f: X \rightarrow Y \), then the induced map \( f_{\star} \) is an isomorphism.
 
-To formalize the relationships between the homology groups of a topological
-space $X$, a subset $A \subset X$, and the quotient space $X/A$, we introduce the
-concept of exact sequences\index{exact sequence}.
+To formalize the relationships between the homology groups of a topological space \( X \), a subset \( A \subset X \), and the quotient space \( X/A \), we introduce the concept of exact sequences.
 
-\begin{definition}
-	An arrangement of elements in the form
-	\begin{equation}
-		\cdots \rightarrow A_{d+1}\xrightarrow{\alpha_{d+1}}A_{d}\xrightarrow{\alpha_d}
-		A_{d-1}\xrightarrow{}\cdots
-	\end{equation}
-	is referred to as an exact sequence when the $A_{i}$ are abelian groups and the
-	$\alpha_{i}$ are homomorphisms, and it satisfies the condition that
-	$\ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1})$ for all $d$.
+\begin{definition}[Exact Sequences]
+An arrangement of elements in the form
+\begin{equation}
+\cdots \rightarrow A_{d+1}\xrightarrow{\alpha_{d+1}}A_{d}\xrightarrow{\alpha_d} A_{d-1}\xrightarrow{}\cdots
+\end{equation}
+is referred to as an exact sequence when the \( A_{i} \) are abelian groups and the \( \alpha_{i} \) are homomorphisms, and it satisfies the condition that \( \ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1}) \) for all \( d \).
 \end{definition}
 
 \begin{remark}
-	\begin{itemize}
-		\item[]
+\begin{itemize}
+\item[]
 
-		\item The condition $\ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1})$ implies that
-			$\mathrm{im}(\alpha_{d+1})$ is a subset of $\ker(\alpha_{d})$, which is
-			equivalent to $\alpha_{d} \circ \alpha_{d+1}= 0$. Therefore, an exact
-			sequence can be seen as a chain complex.
+\item The condition \( \ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1}) \) implies that \( \mathrm{im}(\alpha_{d+1}) \) is a subset of \( \ker(\alpha_{d}) \), which is equivalent to \( \alpha_{d} \circ \alpha_{d+1} = 0 \). Therefore, an exact sequence can be seen as a chain complex.
 
-		\item Since $\ker(\alpha_{d})$ is a subset of $\mathrm{im}(\alpha_{d+1})$,
-			the homology groups of an exact sequence are trivial.
-	\end{itemize}
+\item Since \( \ker(\alpha_{d}) \) is a subset of \( \mathrm{im}(\alpha_{d+1}) \), the homology groups of an exact sequence are trivial.
+\end{itemize}
 \end{remark}
 
-\begin{proposition}
+\begin{proposition}{\cite[\S 1.3.1]{Weibel1994}}
 	We can establish the following equivalences:
 	\begin{enumerate}
 		\item $0 \xrightarrow{}A \xrightarrow{a}B$ is exact $\Longleftrightarrow$ $\ker
@@ -912,50 +873,28 @@ concept of exact sequences\index{exact sequence}.
 \end{proposition}
 
 \begin{proof}
-	\begin{enumerate}
-		\item First, assume that $0 \rightarrow A \xrightarrow{a}B$ is exact. This means
-			that $\mathrm{im}(0) = \ker(a)$, which implies $\ker(a) = 0$ since the
-			image of the zero map is always the trivial group. Therefore, $a$ is
-			injective.
+\begin{enumerate}
+    \item Assume \( 0 \rightarrow A \xrightarrow{a} B \) is exact. This means \(\mathrm{im}(0) = \ker(a)\), which implies \(\ker(a) = 0\) since the image of the zero map is always the trivial group. Therefore, \(a\) is injective.
 
-			Conversely, suppose that $\ker(a) = 0$. We need to show that
-			$\mathrm{im}(0) = \ker(a)$. Since $\ker(a) = 0$, the only element mapped
-			to the identity element in $B$ is the zero element of $A$. Thus, the
-			sequence $0 \rightarrow A \xrightarrow{a}B$ is exact.
+    Conversely, suppose \(\ker(a) = 0\). We need to show \(\mathrm{im}(0) = \ker(a)\). Since \(\ker(a) = 0\), the only element mapped to the identity in \(B\) is the zero element of \(A\). Thus, the sequence \(0 \rightarrow A \xrightarrow{a} B\) is exact.
+    
+    \item Assume \( A \xrightarrow{a} B \rightarrow 0 \) is exact. This means \(\mathrm{im}(a) = \ker(0)\), which implies \(\mathrm{im}(a) = B\) since the kernel of the zero map is always the entire group. Therefore, \(a\) is surjective.
 
-		\item Assume that $A \xrightarrow{a}B \rightarrow 0$ is exact. This means
-			that $\mathrm{im}(a) = \ker(0)$, which implies $\mathrm{im}(a) = B$ since the
-			kernel of the zero map is always the entire group. Therefore, $a$ is surjective.
+    Conversely, suppose \(\mathrm{im}(a) = B\). We need to show \(\mathrm{im}(a) = \ker(0)\). Since \(\mathrm{im}(a) = B\), every element in \(B\) has a preimage in \(A\) under the map \(a\). Thus, the sequence \( A \xrightarrow{a} B \rightarrow 0 \) is exact.
 
-			Conversely, suppose that $\mathrm{im}(a) = B$. We need to show that $\mathrm{im}
-			(a) = \ker(0)$. Since $\mathrm{im}(a) = B$, every element in $B$ has a preimage
-			in $A$ under the map $a$. Thus, the sequence $A \xrightarrow{a}B \rightarrow
-			0$ is exact.
+    \item Assume \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact. From the exactness, we have \(\ker(a) = \mathrm{im}(0) = 0\) and \(\mathrm{im}(a) = \ker(0) = B\). Therefore, \(a\) is both injective and surjective, hence an isomorphism.
 
-		\item Assume that $0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact.
-			From the exactness, we have $\ker(a) = \mathrm{im}(0) = 0$ and $\mathrm{im}
-			(a) = \ker(0) = B$. Therefore, $a$ is both injective and surjective, hence
-			an isomorphism.
+    Conversely, suppose \(a\) is an isomorphism, meaning \(a\) is both injective (no kernel) and surjective (maps onto \(B\)). Thus, \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact, satisfying \(\mathrm{im}(0) = \ker(a)\) and \(\mathrm{im}(a) = \ker(0)\).
 
-			Conversely, suppose $a$ is an isomorphism, meaning $a$ is both injective (no
-			kernel) and surjective (maps onto $B$). Thus,
-			$0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact, satisfying $\mathrm{im}
-			(0) = \ker(a)$ and $\mathrm{im}(a) = \ker(0)$.
+    \item Assume the sequence \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact. \(a\) is injective, and \(\mathrm{im}(a) = \ker(b)\) where \(b\) maps \(B\) to 0. As \(b\) is the zero map and surjective, \( B/\mathrm{im}(a) = 0 \), implying \( B = \mathrm{im}(a) \). Therefore, \(a\) is an isomorphism, establishing \( B \cong A \).
 
-		\item Assuming the sequence $0 \rightarrow A \xrightarrow{a}B \rightarrow 0$
-			is exact, $a$ is injective, and $\mathrm{im}(a) = \ker(b)$ where $b$ maps $B$
-			to 0. As $b$ is the zero map and surjective, $B/\mathrm{im}(a) = 0$, implying
-			$B = \mathrm{im}(a)$. Therefore, $a$ is an isomorphism, establishing
-			$B \cong A$.
-
-			Conversely, if $a$ is an isomorphism, $\ker(a) = 0$ and
-			$\mathrm{im}(a) = B$. Therefore, the sequence
-			$0 \rightarrow A \xrightarrow{a}B \rightarrow 0$ is exact by definition.
-	\end{enumerate}
+    Conversely, if \(a\) is an isomorphism, \(\ker(a) = 0\) and \(\mathrm{im}(a) = B\). Therefore, the sequence \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact by definition.
+\end{enumerate}
 \end{proof}
 
 \section{Relative Homology}
-\label{Relative Homology} The concept we will now discuss is that of relative
+\label{RelativeHomology}
+The concept we will now discuss is that of relative
 homology groups. Let $X$ be a topological space and $A$ a subspace of $X$. We
 define $C_{d}(X,A)$ as the quotient group $C_{d}(X)/C_{d}(A)$. This means that chains
 in $A$ are considered equivalent to the trivial chains in $C_{d}(X)$.
