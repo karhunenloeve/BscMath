@@ -68,35 +68,32 @@ a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \end{theorem}
 
 \begin{proof}
-	Define the standard $d$-simplex $\sigma^{(d)}$ as
-	\[
-		\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1}\mid \sum_{i=0}
-		^{d}x_{i} = 1, x_{i} \geq 0\right\},
-	\]
-	and the $d$-dimensional disk $D^{d}$ as
-	\[
-		D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d}\mid \sum_{i=0}^{d-1}x_{i}
-		^{2} \leq 1\right\}.
-	\]
+Define the standard \( d \)-simplex \( \sigma^{(d)} \) as
+\begin{align}
+\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1} \mid \sum_{i=0}^{d} x_{i} = 1, \, x_{i} \geq 0\right\},
+\end{align}
+and the \( d \)-dimensional disk \( D^{d} \) as
+\begin{align}
+D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \mid \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}.
+\end{align}
 
-	We construct a homeomorphism $f: \sigma^{(d)}\rightarrow D^{d}$ by
-	\[
-		f(x_{0}, \ldots, x_{d}) = (\sqrt{x_{0}}, \ldots, \sqrt{x_{d-1}}),
-	\]
-	where $x_{d}= 1 - \sum_{i=0}^{d-1}x_{i}$. This map is well-defined since $\sum_{i=1}
-	^{d}(\sqrt{x_{i}})^{2} = \sum_{i=1}^{d}x_{i} \leq 1$.
+We construct a homeomorphism \( f: \sigma^{(d)} \rightarrow D^{d} \) by
+\begin{align}
+f(x_{0}, \ldots, x_{d}) = (\sqrt{x_{0}}, \ldots, \sqrt{x_{d-1}}),
+\end{align}
+where \( x_{d} = 1 - \sum_{i=0}^{d-1} x_{i} \). This map is well-defined since
+\begin{align}
+\sum_{i=0}^{d-1} (\sqrt{x_{i}})^{2} = \sum_{i=0}^{d-1} x_{i} \leq 1.
+\end{align}
 
-	The inverse $g: D^{d}\rightarrow \sigma^{(d)}$ is given by
-	\[
-		g(y_{0}, \ldots, y_{d-1}) = (y_{0}^{2}, \ldots, y_{d-1}^{2}, 1 - \sum_{i=0}^{d-1}y_{i}
-		^{2}),
-	\]
-	ensuring that $g$ is well-defined because $\sum_{i=1}^{d}y_{i}^{2} \leq 1$ implies
-	$1 - \sum_{i=1}^{d}y_{i}^{2} \geq 0$.
-
-	Both $f$ and $g$ are continuous and are inverses of each other, as shown by
-	$f(g(y)) = y$ for all $y \in D^{d}$ and $g(f(x)) = x$ for all
-	$x \in \sigma^{(d)}$.
+The inverse \( g: D^{d} \rightarrow \sigma^{(d)} \) is given by
+\begin{align}
+g(y_{0}, \ldots, y_{d-1}) = (y_{0}^{2}, \ldots, y_{d-1}^{2}, 1 - \sum_{i=0}^{d-1} y_{i}^{2}),
+\end{align}
+ensuring that \( g \) is well-defined because \( \sum_{i=0}^{d-1} y_{i}^{2} \leq 1 \) implies
+\( 1 - \sum_{i=0}^{d-1} y_{i}^{2} \geq 0 \). Both \( f \) and \( g \) are continuous and are inverses of each other, as shown by
+\( f(g(y)) = y \) for all \( y \in D^{d} \) and \( g(f(x)) = x \) for all
+\( x \in \sigma^{(d)} \).
 \end{proof}
 
 Furthermore, it is important to note that $\sigma^{(d)}$ represents the convex hull\index{convex
@@ -298,10 +295,11 @@ c + c' = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=1}^{l} g'_{j} \sigma_{j
 \end{align}
 which simplifies to:
 \begin{align}
-c + c' = \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + \sum_{j=\min(k, l)+1}^{\max(k, l)}
+c + c' = \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + 
 \begin{cases}
-g_{j} \sigma_{j}^{(d)} & \text{if } k \geq l, \\
-g'_{j} \sigma_{j}^{(d)} & \text{if } k < l.
+\sum_{j=\min(k, l)+1}^{\max(k, l)} g_{j} \sigma_{j}^{(d)} & \text{if } k > l, \\
+0 & \text{if } k = l, \\
+\sum_{j=\min(k, l)+1}^{\max(k, l)} g'_{j} \sigma_{j}^{(d)} & \text{if } k < l.
 \end{cases}
 \end{align}
 Hence, \( c + c' \in C^{\Delta}_{d} \).
@@ -475,7 +473,7 @@ H^{\Delta}_{d} = H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p}.
 \end{proof}
 
 \begin{proposition}{\cite[p.108f]{hatcher2005algebraic}}
-\label{decomposition}
+\label{decomp}
 If \( K \) is a connected complex and \( c \) is a \( 0 \)-chain with \( I(c) = 0 \), then \( I(c) = 0 \) is equivalent to \( c \sim 0 \), where \( \sim \) denotes homology equivalence. Furthermore, in this case, the zeroth simplicial homology group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to the integers \( \mathbb{Z} \).
 \end{proposition}
 
@@ -499,7 +497,7 @@ H^{\Delta}_{0} = Z^{\Delta}_{0} / B^{\Delta}_{0} \cong \mathbb{Z}.
 
 \begin{corollary}
 \label{directsum0hom}
-The zero-dimensional simplicial homology group of a complex \( K \) over \( \mathbb{Z} \) can be represented as \( \mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z} \), where \( p \) denotes the number of connected components present in \( K \).
+The $0$-dimensional simplicial homology group of a complex \( K \) over \( \mathbb{Z} \) can be represented as \( \mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z} \), where \( p \) denotes the number of connected components present in \( K \).
 \end{corollary}
 
 \begin{proof}
@@ -599,199 +597,117 @@ when \(g = 0\). Thus, we conclude that \(H^{\Delta}_{d}(D^{d}) \cong 0\).
 \end{example}
 
 \section{Singular Homology}
-\label{Singular Homology} In the realm of lower dimensions, we possess an
-intuitive understanding of when two topological spaces are fundamentally "equivalent".
-To formalize and solidify this intuition, we have devised various methods, one of
-which is the concept of homeomorphism. It would be highly desirable to establish
-a relationship between the homology groups of homeomorphic spaces. Remarkably,
-it has been discovered that if two topological spaces are homeomorphic, their homology
-groups are isomorphic. This fact begs for verification.
+\label{Singular Homology}
+In the realm of lower dimensions, we have an intuitive idea of when two topological spaces are fundamentally 'equivalent'. To formalize and strengthen this intuition, we have developed various methods, one of which is the concept of homeomorphism. It would be highly desirable to establish a relation between the homology groups of homeomorphic spaces. Remarkably, it has been found that the homology groups of two topological spaces are isomorphic if they are homeomorphic. This fact requires verification.
 
-To accomplish this task, we require a means of comparing homology groups.
-However, it is not immediately evident how we can achieve this using the tools we
-have developed thus far. In fact, it proves to be quite a challenging problem.
-To circumvent this difficulty, we introduce the notion of singular homology. The
-fundamental principles underlying this concept are analogous to those we have
-already explored.
+To accomplish this task, we need a means of comparing homology groups. However, it is not immediately obvious how we can achieve this with the tools developed so far. In fact, this turns out to be quite a difficult problem. To circumvent this difficulty, we introduce the concept of singular homology. The basic principles underlying this concept are analogous to those we have already explored.
 
-To compute $Z_{d}(X)$, we need to find the group of $d$-cycles in $X$. Since $X$
-is obtained by identifying opposite faces of $\partial_{d} \sigma^{(d)}$, a $d$-cycle
-in $X$ corresponds to a $d$-cycle in $\partial_{d} \sigma^{(d)}$ that is not a boundary
-of any $(d+1)$-dimensional simplex in $\sigma^{(d)}$. In other words, a $d$-cycle
-in $X$ corresponds to a $d$-cycle in $\partial_{d} \sigma^{(d)}$ that is not a boundary
-of any $(d+1)$-dimensional face of $\sigma^{(d)}$.
+To compute \( Z_{d}(X) \), we need to find the group of \( d \)-cycles in \( X \). Since \( X \) is obtained by identifying opposite faces of \( \partial_{d} \sigma^{(d)} \), a \( d \) cycle in \( X \) corresponds to a \( d \) cycle in \( \partial_{d} \sigma^{(d)} \), which is not a boundary of a \( (d+1) \)-dimensional simplex in \( \sigma^{(d)} \) is. In other words, a \( d \)-cycle in \( X \) corresponds to a \( d \)-cycle in \( \partial_{d} \sigma^{(d)} \), which is not a boundary of a \( (d+1) \)-dimensional face of \( \sigma^{(d)} \).
 
 \begin{definition}
-	In the context of a topological space $X$, a singular $d$-simplex\index{singular
-	$d$-simplex} is defined as a map $\tilde{\sigma}^{(d)}: \sigma^{(d)}\to X$,
-	where $\tilde{\sigma}^{(d)}$ is continuous.
+A singular \( d \)-simplex in a topological space \( X \) is a continuous map \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \).
 \end{definition}
 
-We define the boundary map $\partial_{d}$ in a similar manner as before. The boundary
-map, denoted as $\partial_{d}$, is a function that operates on the chain group $C
-_{d}(X)$ and maps it to the chain group $C_{d-1}(X)$. It is defined as follows: For
-any singular $d$-simplex $\tilde{\sigma}^{(d)}$ in $X$, the boundary map
-$\partial_{d}(\tilde{\sigma}^{(d)})$ is obtained by summing over all the $(d-1)$-simplices
-that are obtained by removing one vertex from $\tilde{\sigma}^{(d)}$. Each term in
-the sum is multiplied by $(-1)^{i}$, where $i$ represents the index of the
-removed vertex. In other words, if $v_{i}$ represents the $0$-simplex (vertex)
-of $\tilde{\sigma}^{(d)}$, then the boundary map can be expressed as:
-\begin{equation}
-	\partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i}(-1)^{i} \tilde{\sigma}^{(d)}\vert
-	_{[v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d]}.
-\end{equation}
+We define the boundary map \( \partial_{d} \) in a similar manner as before. The boundary map, denoted as \( \partial_{d} \), is a function that operates on the chain group \( C_{d}(X) \) and maps it to the chain group \( C_{d-1}(X) \). It is defined as follows: For any singular \( d \)-simplex \( \tilde{\sigma}^{(d)} \) in \( X \), the boundary map \( \partial_{d}(\tilde{\sigma}^{(d)}) \) is obtained by summing over all the \( (d-1) \)-simplices that are obtained by removing one vertex from \( \tilde{\sigma}^{(d)} \). Each term in the sum is multiplied by \( (-1)^{i} \), where \( i \) represents the index of the removed vertex. In other words, if \( v_{i} \) represents the \( 0 \)-simplex (vertex) of \( \tilde{\sigma}^{(d)} \), then the boundary map can be expressed as:
+\begin{align}
+\partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i} (-1)^{i} \tilde{\sigma}^{(d)}\vert_{[v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d]}.
+\end{align}
 
-Here, $v_{i}$ is a map that takes the $0$-simplex $\sigma^{(0)}$ to the
-corresponding vertex in $X$, such that $v_{i}: \sigma^{(0)}\to X$ is continuous.
+Here, \( v_{i} \) is a map that takes the \( 0 \)-simplex \( \sigma^{(0)} \) to the corresponding vertex in \( X \), such that \( v_{i}: \sigma^{(0)} \to X \) is continuous.
 
-As mentioned earlier, when we apply the boundary map twice to a $d$-chain $c$, denoted
-as $\partial^{2}(c)$ or $\partial_{d-1}(\partial_{d}(c))$, the result is always
-zero. This observation leads us to the idea of defining the singular homology groups
-in a similar way to the simplicial homology groups.
+As mentioned earlier, when we apply the boundary map twice to a \( d \)-chain \( c \), denoted as \( \partial^{2}(c) \) or \( \partial_{d-1}(\partial_{d}(c)) \), the result is always zero. This observation leads us to the idea of defining the singular homology groups in a similar way to the simplicial homology groups.
 
 \begin{definition}
-	The singular homology group\index{singular homology group} $H_{d}(X)$ is
-	defined to be the quotient:
-	\[
-		H_{d}(X) = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
-	\]
+The singular homology group \( H_{d}(X) \) is the quotient:
+\begin{align}
+H_{d}(X) = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
+\end{align}
 \end{definition}
 
-In the following section, we will explore how this definition of homology allows
-us to establish a simple relationship between homeomorphic spaces and their corresponding
-homology groups. This relationship becomes apparent when we consider the fact
-that the definitions of $H_{d}$ and $H^{\Delta}_{d}$ are analogous. Intuitively,
-we would expect these two groups to be the same. However, this is not
-immediately obvious. One reason for this is that $H^{\Delta}_{d}$ is finitely generated,
-while the chain group $C_{d}(X)$, from which we derived $H_{d}$, is uncountable.
+In the following section, we will explore how this definition of homology allows us to establish a simple relationship between homeomorphic spaces and their corresponding homology groups. This relationship becomes apparent when we consider the fact that the definitions of \( H_{d} \) and \( H^{\Delta}_{d} \) are analogous. Intuitively, we would expect these two groups to be the same for triangulable topological spaces. However, this is not immediately obvious. One reason for this is that \( H^{\Delta}_{d} \) is finitely generated, while the chain group \( C_{d}(X) \), from which we derived \( H_{d} \), is uncountable.
 
-Interestingly, for spaces where both simplicial and singular homology groups can
-be calculated, these two groups are indeed equivalent. We will provide a proof for
-this later on. But before we do, let us present some facts about singular homology
-that support the intuition that $H_{d}$ is isomorphic to $H^{\Delta}_{d}$.
+Interestingly, for spaces where both simplicial and singular homology groups can be calculated, these two groups are indeed equivalent. We will provide a proof for this later on. But before we do, let us present some facts about singular homology that support the intuition that \( H_{d} \) is isomorphic to \( H^{\Delta}_{d} \).
 
-\begin{proposition}
-	In the context of a topological space $X$, $H_{d}(X)$ is isomorphic to the
-	direct sum $H_{d}(X_{1}) \oplus \cdots \oplus H_{d}(X_{p})$, where $X_{i}$ represents
-	the path-connected components of $X$. This equivalence serves as the
-	counterpart to Theorem \ref{decomptheorem}.
+\begin{proposition}{\cite[p.108f]{hatcher2005algebraic}}
+In the context of a topological space \( X \), \( H_{d}(X) \) is isomorphic to the direct sum \( H_{d}(X_{1}) \oplus \cdots \oplus H_{d}(X_{p}) \), where \( X_{i} \) represents the path-connected components of \( X \).
 \end{proposition}
 
+This equivalence serves as the counterpart to Proposition \ref{decomp}.
+
 \begin{proof}
-	As the maps $\tilde{\sigma}^{(d)}$ exhibit continuity, it can be deduced that
-	a singular simplex always possesses a path-connected image within $X$. Consequently,
-	$C_{d}(X)$ can be expressed as the direct sum of subgroups
-	$C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p})$. The boundary map $\partial$ functions
-	as a homomorphism, thereby preserving this decomposition. Consequently,
-	$\ker(\partial_{d})$ and $\operatorname{im}(\partial_{d+1})$ also undergo a
-	split:
-	\[
-		H_{d}(X) \cong H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}
-		).
-	\]
+As the maps \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex always has a path-connected image in \( X \). Consequently, \( C_{d}(X) \) can be expressed as the direct sum of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \). The boundary map \( \partial \) functions as a homomorphism, thereby preserving this decomposition. Consequently, \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also decompose:
+\begin{align}
+H_{d}(X) \cong H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}).
+\end{align}
 \end{proof}
 
 \begin{proposition}
-	The zero-dimensional homology group of a space $X$ can be expressed as the direct
-	sum of $\mathbb{Z}$ copies, with each copy corresponding to a distinct path-component
-	of $X$.
+The \( 0 \)-dimensional homology group of a space \( X \) can be expressed as the direct sum of \(\mathbb{Z}\) copies, with each copy corresponding to a distinct path-component of \( X \).
 \end{proposition}
+
+\begin{proof}
+To establish the isomorphism \( H_{0}(X) \cong \mathbb{Z} \), it is sufficient to consider the case where \( X \) is path-connected. For a \( 0 \)-chain \( c \), the boundary operator \( \partial_{0}(c) \) is always zero since the boundary of any \( 0 \)-simplex vanishes. Consequently, \( \ker(\partial_{0}) = C_{0}(X) \), which implies that:
+\begin{align}
+H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}).
+\end{align}
+
+Define the map \( I: C_{0}(X) \to \mathbb{Z} \) by:
+\begin{align}
+I(c) = \sum_{i} g_{i} \quad \text{for } c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \in C_{0}(X).
+\end{align}
+Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \).
+
+Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain:
+\begin{align}
+c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \quad \text{implying } c \sim 0.
+\end{align}
+
+If \( c \sim 0 \), then \( c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \) for some \( 1 \)-chain \( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \). By linearity of \( I \), we have:
+\begin{align}
+I(c) = I \left( \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \right) = 0.
+\end{align}
+
+Thus, \( I \) induces an isomorphism between \( H_{0}(X) \) and \( \mathbb{Z} \) when \( X \) is path-connected.
+
+For the general case where \( X \) has \( p \) path-components \( X_{1}, \ldots, X_{p} \), we apply the above argument to each component. Therefore, \( H_{0}(X) \) is isomorphic to the direct sum:
+\begin{align}
+H_{0}(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}.
+\end{align}
+\end{proof}
 
 This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
 
-\begin{proof}
-	To establish the isomorphism $H_{0}(X) \cong \mathbb{Z}$, it is sufficient to
-	consider the case where $X$ is path-connected. For a $0$-chain $c$, the
-	boundary operator $\partial_{0}(c)$ is always zero since the boundary of any
-	$0$-simplex vanishes. Consequently, $\ker(\partial_{0}) = C_{0}(X)$, which implies
-	that:
-	\[
-		H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}).
-	\]
-
-	Define the map $I: C_{0}(X) \to \mathbb{Z}$ by:
-	\[
-		I(c) = \sum_{i} g_{i} \quad \text{for }c = \sum_{i} g_{i} \tilde{\sigma}^{(0)}
-		\in C_{0}(X).
-	\]
-	Our goal is to demonstrate that $\ker(I) = \operatorname{im}(\partial_{1})$. That
-	is, for any $0$-chain $c$, $I(c) = 0$ if and only if $c \sim 0$.
-
-	"$\Rightarrow$": Suppose $I(c) = 0$ for
-	$c = \sum_{i} g_{i} \tilde{\sigma}^{(0)}$. Since $X$ is path-connected, we can
-	express $c$ as the boundary of a $1$-chain:
-	\[
-		c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right) \quad \text{implying
-		}c \sim 0.
-	\]
-
-	"$\Leftarrow$": If $c \sim 0$, then
-	$c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right)$ for some
-	$1$-chain $\sum_{j} g_{j} \tilde{\sigma}^{(1)}$. By linearity of $I$, we have:
-	\[
-		I(c) = I \left( \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)}\right
-		) \right) = 0.
-	\]
-
-	Thus, $I$ induces an isomorphism between $H_{0}(X)$ and $\mathbb{Z}$ when $X$ is
-	path-connected.
-
-	For the general case where $X$ has $p$ path-components $X_{1}, \ldots, X_{p}$,
-	we apply the above argument to each component. Therefore, $H_{0}(X)$ is
-	isomorphic to the direct sum:
-	\[
-		H_{0}(X) \cong \bigoplus_{i=1}^{p}\mathbb{Z}.
-	\]
-\end{proof}
-
 \begin{example}
-	Alternative proof that $H_{d}(S^{d}) \cong \mathbb{Z}$. To prove that the $d$-th
-	homology group of the $d$-sphere is isomorphic to $\mathbb{Z}$, we utilize the
-	singular homology approach. The $d$-th singular chain group $C_{d}(S^{d})$
-	consists of formal linear combinations of singular $d$-simplices in $S^{d}$
-	with integer coefficients. First, we observe that $S^{d}$ is a connected and
-	compact topological space. According to the Hurewicz theorem, we have
-	$H_{d}(S^{d}) \cong \pi_{d}(S^{d})$, where $\pi_{d}(S^{d})$ denotes the $d$-th
-	homotopy group of $S^{d}$. Since $S^{d}$ is simply connected for $d \geq 2$, it
-	follows that $\pi_{d}(S^{d}) = 0$ for $d \geq 2$. However, for $d = 1$,
-	$\pi_{1}(S^{1}) \cong \mathbb{Z}$.
+Alternative proof that \( H_{d}(S^{d}) \cong \mathbb{Z} \). To prove that the \( d \)-th homology group of the \( d \)-sphere is isomorphic to \(\mathbb{Z}\), we utilize the singular homology approach. The \( d \)-th singular chain group \( C_{d}(S^{d}) \) consists of formal linear combinations of singular \( d \)-simplices in \( S^{d} \) with integer coefficients. First, we observe that \( S^{d} \) is a connected and compact topological space. According to the Hurewicz theorem, we have \( H_{d}(S^{d}) \cong \pi_{d}(S^{d}) \), where \( \pi_{d}(S^{d}) \) denotes the \( d \)-th homotopy group of \( S^{d} \). Since \( S^{d} \) is simply connected for \( d \geq 2 \), it follows that \( \pi_{d}(S^{d}) = 0 \) for \( d \geq 2 \). However, for \( d = 1 \), \( \pi_{1}(S^{1}) \cong \mathbb{Z} \).
 
-	Now, to establish the isomorphism between $\pi_{1}(S^{1})$ and $H_{1}(S^{1})$,
-	consider the singular $1$-chain group $C_{1}(S^{1})$, which consists of formal
-	linear combinations of singular $1$-simplices in $S^{1}$ with integer coefficients.
-	Let $c$ be a singular $1$-chain in $C_{1}(S^{1})$ expressed as:
-	\[
-		c = \sum_{i} g_{i} \tilde{\sigma}^{(1)}_{i},
-	\]
-	where $g_{i} \in \mathbb{Z}$ and $\tilde{\sigma}^{(1)}_{i}$ are singular $1$-simplices.
-	The boundary of $c$ is given by:
-	\[
-		\partial_{1}(c) = \sum_{i} g_{i} \partial_{1}(\tilde{\sigma}^{(1)}_{i}).
-	\]
-	Since $S^{1}$ is a $1$-dimensional manifold, the boundary of any singular $1$-simplex
-	$\tilde{\sigma}^{(1)}_{i}$ is a formal linear combination of two points in
-	$S^{1}$, each with opposite orientations, hence:
-	\[
-		\partial_{1}(\tilde{\sigma}^{(1)}_{i}) = p - q,
-	\]
-	where $p$ and $q$ are points in $S^{1}$. Thus, we have:
-	\[
-		\partial_{1}(c) = (p - q) \sum_{i} g_{i},
-	\]
-	where the sum $\sum_{i} g_{i}$ is an integer. Consequently, the boundary of
-	any singular $1$-chain $c$ in $C_{1}(S^{1})$ is of the form $(p - q)k$, where $k$
-	is an integer. This implies that:
-	\[
-		H_{1}(S^{1}) = Z_{1}(S^{1}) / B_{1}(S^{1}) \cong \mathbb{Z},
-	\]
-	where $Z_{1}(S^{1})$ is the group of $1$-cycles and $B_{1}(S^{1})$ is the group
-	of $1$-boundaries. In conclusion, $H_{d}(S^{d}) \cong \pi_{d}(S^{d}) = 0$ for $d
-	\geq 2$, and $H_{1}(S^{1}) \cong \pi_{1}(S^{1}) \cong \mathbb{Z}$. Thus, the
-	$d$-th homology group of the $d$-sphere is isomorphic to $\mathbb{Z}$.
+Now, to establish the isomorphism between \( \pi_{1}(S^{1}) \) and \( H_{1}(S^{1}) \), consider the singular \( 1 \)-chain group \( C_{1}(S^{1}) \), which consists of formal linear combinations of singular \( 1 \)-simplices in \( S^{1} \) with integer coefficients. Let \( c \) be a singular \( 1 \)-chain in \( C_{1}(S^{1}) \) expressed as:
+\begin{align}
+c = \sum_{i} g_{i} \tilde{\sigma}^{(1)}_{i},
+\end{align}
+where \( g_{i} \in \mathbb{Z} \) and \( \tilde{\sigma}^{(1)}_{i} \) are singular \( 1 \)-simplices. The boundary of \( c \) is given by:
+\begin{align}
+\partial_{1}(c) = \sum_{i} g_{i} \partial_{1}(\tilde{\sigma}^{(1)}_{i}).
+\end{align}
+Since \( S^{1} \) is a \( 1 \)-dimensional manifold, the boundary of any singular \( 1 \)-simplex \( \tilde{\sigma}^{(1)}_{i} \) is a formal linear combination of two points in \( S^{1} \), each with opposite orientations:
+\begin{align}
+\partial_{1}(\tilde{\sigma}^{(1)}_{i}) = p - q,
+\end{align}
+where \( p \) and \( q \) are points in \( S^{1} \). Thus, we have:
+\begin{align}
+\partial_{1}(c) = (p - q) \sum_{i} g_{i},
+\end{align}
+where the sum \( \sum_{i} g_{i} \) is an integer. Consequently, the boundary of any singular \( 1 \)-chain \( c \) in \( C_{1}(S^{1}) \) is of the form \( (p - q)k \), where \( k \) is an integer.
+
+This implies that:
+\begin{align}
+H_{1}(S^{1}) = Z_{1}(S^{1}) / B_{1}(S^{1}) \cong \mathbb{Z},
+\end{align}
+where \( Z_{1}(S^{1}) \) is the group of \( 1 \)-cycles and \( B_{1}(S^{1}) \) is the group of \( 1 \)-boundaries. In conclusion, \( H_{d}(S^{d}) \cong \pi_{d}(S^{d}) = 0 \) for \( d \geq 2 \), and \( H_{1}(S^{1}) \cong \pi_{1}(S^{1}) \cong \mathbb{Z} \). Thus, the \( d \)-th homology group of the \( d \)-sphere is isomorphic to \(\mathbb{Z}\).
 \end{example}
 
+
 \subsection{Singular Chain Complexes}
-\label{Singular Chain Complexes} To establish the equivalence between the groups
+\label{SingularChainComplexes} To establish the equivalence between the groups
 $H_{d}^{\Delta}$ and $H_{d}$, we will introduce some concepts that will aid us in
 our proof.
 
