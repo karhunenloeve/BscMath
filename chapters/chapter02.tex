@@ -894,203 +894,144 @@ is referred to as an exact sequence when the \( A_{i} \) are abelian groups and 
 
 \section{Relative Homology}
 \label{RelativeHomology}
-The concept we will now discuss is that of relative
-homology groups. Let $X$ be a topological space and $A$ a subspace of $X$. We
-define $C_{d}(X,A)$ as the quotient group $C_{d}(X)/C_{d}(A)$. This means that chains
-in $A$ are considered equivalent to the trivial chains in $C_{d}(X)$.
+The concept we will now discuss is that of relative homology groups. Let \( X \) be a topological space and \( A \) a subspace of \( X \). We define \( C_{d}(X, A) \) as the quotient group \( C_{d}(X) / C_{d}(A) \). This means that chains in \( A \) are considered equivalent to the trivial chains in \( C_{d}(X) \).
 
-Since the boundary operator $\partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X)$ also
-maps $C_{d}(A)$ to $C_{d-1}(A)$, a natural boundary map on the quotient group
-$\partial_{d}: C_{d}(X,A) \rightarrow C_{d-1}(X,A)$ is obtained. This gives rise
-to the following sequence:
-\begin{equation}
-	\cdots \xrightarrow{}C_{d+1}(X,A) \xrightarrow{\partial_{d+1}}C_{d}(X,A) \xrightarrow
-	{\partial_d}C_{d-1}(X,A) \xrightarrow{}\cdots
-\end{equation}
-This sequence forms a chain complex because
-$\partial_{d+1}\circ \partial_{d}= 0$. We can then define the \emph{relative
-homology groups} $H_{d}(X,A)$ as the homology groups of this chain complex.
+Since the boundary operator \( \partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X) \) also maps \( C_{d}(A) \) to \( C_{d-1}(A) \), a natural boundary map on the quotient group \( \partial_{d}: C_{d}(X, A) \rightarrow C_{d-1}(X, A) \) is obtained. This gives rise to the following sequence:
+\begin{align}
+\cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots
+\end{align}
+This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A) \) as the homology groups of this chain complex.
 
-We propose two important facts about $H_{d}(X,A)$:
+We propose two important facts about \( H_{d}(X, A) \):
 
-\begin{proposition}
-	\begin{enumerate}
-		\item[]
-
-		\item Elements in $H_{d}(X,A)$ are represented by relative cycles, which are
-			$d$-chains $c$ in $C_{d}(X)$ such that $\partial_{d}(c) \in C_{d-1}(A)$.
-
-		\item A relative cycle $c$ is trivial in $H_{d}(X,A)$ if and only if it is a
-			relative boundary, i.e., $c$ is the sum of a chain in $C_{d}(A)$ and the
-			boundary of a chain in $C_{d+1}(X)$.
-	\end{enumerate}
+\begin{proposition}{\cite[\S 2.1]{hatcher2005algebraic}}
+\begin{enumerate}
+    \item Elements in \( H_{d}(X, A) \) are represented by relative cycles, which are \( d \)-chains \( c \) in \( C_{d}(X) \) such that \( \partial_{d}(c) \in C_{d-1}(A) \).
+    \item A relative cycle \( c \) is trivial in \( H_{d}(X, A) \) if and only if it is a relative boundary, i.e., \( c \) is the sum of a chain in \( C_{d}(A) \) and the boundary of a chain in \( C_{d+1}(X) \).
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	\begin{enumerate}
-		\item Assume $[c] \in H_{d}(X,A)$ represents a homology class of a chain $c \in
-			C_{d}(X)$. Since $[c]$ is a class in the relative homology group, $\partial
-			_{d}(c) \in C_{d-1}(A)$, implying that $c$ is a relative cycle because its
-			boundary maps into the subspace $A$.
+\begin{enumerate}
+    \item Assume \([c] \in H_{d}(X, A)\) represents a homology class of a chain \( c \in C_{d}(X) \). Since \([c]\) is a class in the relative homology group, \( \partial_{d}(c) \in C_{d-1}(A) \), implying that \( c \) is a relative cycle because its boundary maps into the subspace \( A \).
 
-			Conversely, if $\partial_{d}(c) \in C_{d-1}(A)$, then $c$ qualifies as a
-			relative cycle by definition, and any chain homologous to $c$ in $C_{d}(X)$
-			that differs from $c$ by a boundary in $C_{d}(A)$ will also have its boundary
-			in $C_{d-1}(A)$, confirming $[c]$ as an element of $H_{d}(X,A)$.
+    Conversely, if \( \partial_{d}(c) \in C_{d-1}(A) \), then \( c \) qualifies as a relative cycle by definition, and any chain homologous to \( c \) in \( C_{d}(X) \) that differs from \( c \) by a boundary in \( C_{d}(A) \) will also have its boundary in \( C_{d-1}(A) \), confirming \([c]\) as an element of \( H_{d}(X, A) \).
 
-		\item For a chain $c$ in $C_{d}(X)$ to be a relative boundary, it must be
-			expressible as $c = a + \partial_{d+1}(b)$ where $a \in C_{d}(A)$ and
-			$b \in C_{d+1}(X)$. Applying the boundary operator, we have:
-			\[
-				\partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial
-				_{d}(a) + 0 = \partial_{d}(a).
-			\]
-			Since $\partial_{d}(a) \in C_{d-1}(A)$ and $\partial_{d+1}\partial_{d} = 0$
-			(as boundaries of boundaries are zero), $c$ is a cycle relative to $A$, making
-			it trivial in $H_{d}(X,A)$.
+    \item For a chain \( c \) in \( C_{d}(X) \) to be a relative boundary, it must be expressible as \( c = a + \partial_{d+1}(b) \) where \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \). Applying the boundary operator, we have:
+    \[
+    \partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial_{d}(a) + 0 = \partial_{d}(a).
+    \]
+    Since \( \partial_{d}(a) \in C_{d-1}(A) \) and \( \partial_{d+1}\partial_{d} = 0 \) (as boundaries of boundaries are zero), \( c \) is a cycle relative to \( A \), making it trivial in \( H_{d}(X, A) \).
 
-			Conversely, if a relative cycle $c$ is trivial in $H_{d}(X,A)$, then it must
-			be homologous to a boundary in $C_{d}(A)$, meaning there exists
-			$a \in C_{d}(A)$ and $b \in C_{d+1}(X)$ such that
-			$c = a + \partial_{d+1}(b)$. This implies that $c$ is expressible as the sum
-			of a chain in $C_{d}(A)$ and the boundary of a chain in $C_{d+1}(X)$,
-			confirming it as a relative boundary.
-
-			Thus, a relative cycle is trivial in $H_{d}(X,A)$ if and only if it is a relative
-			boundary.
-	\end{enumerate}
+    Conversely, if a relative cycle \( c \) is trivial in \( H_{d}(X, A) \), then it must be homologous to a boundary in \( C_{d}(A) \), meaning there exists \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \) such that \( c = a + \partial_{d+1}(b) \). This implies that \( c \) is expressible as the sum of a chain in \( C_{d}(A) \) and the boundary of a chain in \( C_{d+1}(X) \), confirming it as a relative boundary.
+\end{enumerate}
+Thus, a relative cycle is trivial in \( H_{d}(X, A) \) if and only if it is a relative boundary.
 \end{proof}
 
-Before we further investigate the decomposition of the relative homology groups into exact sequences, we need an intermediate result for commutative diagrams, which facilitates further argumentation. This intermediate result is also known as the snake lemma.
+Before we further investigate the decomposition of the relative homology groups into exact sequences, we need an intermediate result for commutative diagrams, which facilitates further argumentation. This intermediate result is also known as the Snake Lemma.
 
-\begin{lemma}[The Snake Lemma]
-TBD
+\begin{lemma}[Snake Lemma]{\cite[\S 1.2.6]{Weibel1994}}
 \label{snake}
-
+Consider the following commutative diagram with exact rows:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & A' \arrow[r, "f'"] \arrow[d, "a'"] & A \arrow[r, "f"] \arrow[d, "a"] & A'' \arrow[r] \arrow[d, "a''"] & 0 \\
+0 \arrow[r] & B' \arrow[r, "g'"] & B \arrow[r, "g"] & B'' \arrow[r] & 0
+\end{tikzcd}
+\end{equation}
+There exists an exact sequence:
+\begin{align}
+&\ker(a') \xrightarrow{\delta} \ker(a) \xrightarrow{\delta} \ker(a'') \xrightarrow{\delta} \cdots \\
+&\cdots \xrightarrow{\delta} \operatorname{coker}(a') \xrightarrow{\delta} \operatorname{coker}(a) \xrightarrow{\delta} \operatorname{coker}(a'')
+\end{align}
+with the connecting homomorphism \(\delta\).
 \end{lemma}
 
-\begin{theorem}
-	The relative homology groups $H_{d}(X,A)$ are part of the exact sequence:
-	\begin{align}
-		\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X,A) \rightarrow \\
-		\cdots \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_{0}(X,A) \rightarrow 0.
-	\end{align}
+\begin{proof}
+Consider \( x'' \in \ker(a'') \subseteq A'' \). Since \( f \) is surjective, there exists \( x \in A \) such that \( f(x) = x'' \). We have \( a''(x'') = 0 \), hence \( a''(f(x)) = 0 \). By commutativity, \( g(a(x)) = 0 \), so \( a(x) \in \ker(g) = \operatorname{im}(g') \). Thus, there exists \( y' \in B' \) such that \( g'(y') = a(x) \). Set \( \delta(x'') = \operatorname{cl}(y') \in \operatorname{coker}(a') \).
+
+If \( x'' = f(x_1'') \), choose \( x \) such that \( f(x) = x'' \), then \( a(x) = g'(y_1') \) and \( \delta(x'') = \operatorname{cl}(y_1') \). If \( x = x_2 + f(x_1) \), then \( a(x) = a(x_2) + a(f(x_1)) \), with \( g(a(x_1)) = 0 \) and \( a(f(x_1)) \in \operatorname{im}(g') \), so \( \delta \) is independent of the choice of \( x \). Linear maps remain linear under \( \delta \).
+
+Suppose \( y'' \in \ker(\delta) \). This means \( y'' \in \ker(a'') \) and \( \delta(y'') = 0 \). There exists \( x \in A \) such that \( f(x) = y'' \) and \( a(x) = g'(z') \) for some \( z' \in B' \). Since \( \delta(y'') = \operatorname{cl}(z') = 0 \), we have \( z' \in \operatorname{im}(a') \), so \( z' = a'(w') \) for some \( w' \in A' \). Hence, \( a(x) = g'(a'(w')) = a(g(w')) \), so \( x - g(w') \in \ker(a) \). Therefore, \( y'' = f(x) = f(x - g(w')) \in \operatorname{im}(f) \), showing that \( \ker(\delta) = \operatorname{im}(\ker(a) \rightarrow \ker(a'')) \).
+
+Suppose \( y \in \operatorname{coker}(a) \) such that \( y \in \ker(\operatorname{coker}(a) \rightarrow \operatorname{coker}(a'')) \). This means \( y = \operatorname{cl}(z) \) for some \( z \in B \) with \( a(z) = g'(w') \) for some \( w' \in B' \). Since \( z \in \ker(g) \), we have \( z = g(x) \) for some \( x \in A \). Thus, \( y = \operatorname{cl}(z) = \operatorname{cl}(g(x)) = 0 \), showing exactness.
+\end{proof}
+
+\begin{theorem}{\cite[p.115ff]{hatcher2005algebraic}}
+The relative homology groups \( H_{d}(X, A) \) are part of the exact sequence:
+\begin{align}
+&\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
+&\cdots \rightarrow H_{0}(X, A) \rightarrow 0.
+\end{align}
 \end{theorem}
 
 \begin{proof}
-	Consider the following diagram:
-	\begin{equation}
-		\begin{tikzcd}
-			0 \arrow[r] & C_d(A) \arrow[r, "i", hook] \arrow[d, "\partial_d"] & C_d(X)
-			\arrow[r, "j", two heads] \arrow[d, "\partial_d"] & {C_d(X,A)} \arrow[r] \arrow[d,
-			"\partial_d"] & 0 \\ 0 \arrow[r] & C_{d-1}(A) \arrow[r, "i", hook] & C_{d-1}(X)
-			\arrow[r, "j", two heads] & {C_{d-1}(X,A)} \arrow[r] & 0.
-		\end{tikzcd}
-	\end{equation}
+Consider the following diagram:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & C_d(A) \arrow[r, "i", hook] \arrow[d, "\partial_d"] & C_d(X) \arrow[r, "j", two heads] \arrow[d, "\partial_d"] & C_d(X, A) \arrow[r] \arrow[d, "\partial_d"] & 0 \\
+0 \arrow[r] & C_{d-1}(A) \arrow[r, "i", hook] & C_{d-1}(X) \arrow[r, "j", two heads] & C_{d-1}(X, A) \arrow[r] & 0.
+\end{tikzcd}
+\end{equation}
 
-	Here, $i$ is the inclusion map $C_{d}(A) \hookrightarrow C_{d}(X)$, and $j$ is
-	the quotient map $C_{d}(X) \twoheadrightarrow C_{d}(X,A)$. Both rows are exact,
-	and the diagram commutes. This gives rise to a long exact sequence of homology
-	groups by the Snake Lemma \ref{snake}.
+Here, \(i\) is the inclusion map \(C_{d}(A) \hookrightarrow C_{d}(X)\), and \(j\) is the quotient map \(C_{d}(X) \twoheadrightarrow C_{d}(X, A)\). Both rows are exact, and the diagram commutes. This gives rise to a long exact sequence of homology groups by the Snake Lemma \ref{snake}.
 
-	\begin{figure}
-		\begin{equation*}
-			\begin{tikzcd}
-				\cdots \arrow[r] & A_{d+1} \arrow[r, "\partial_{d+1}"] \arrow[d, "i", hook]
-				& A_d \arrow[r, "\partial_d"] \arrow[d, "i", hook] & A_{d-1} \arrow[r, "\partial_{d-1}"]
-				\arrow[d, "i", hook] & \cdots \\ \cdots \arrow[r] & B_{d+1} \arrow[r, "\partial_{d+1}"]
-				\arrow[d, "j", two heads] & B_d \arrow[r, "\partial_d"] \arrow[d, "j",
-				two heads] & B_{d-1} \arrow[r, "\partial_{d-1}"] \arrow[d, "j", two
-				heads] & \cdots \\ \cdots \arrow[r] & C_{d+1} \arrow[r, "\partial_{d+1}"]
-				\arrow[d] & C_d \arrow[r, "\partial_d"] \arrow[d] & C_{d-1} \arrow[r, "\partial_{d-1}"]
-				\arrow[d] & \cdots \\ & 0 & 0 & 0 & .
-			\end{tikzcd}
-		\end{equation*}
-		\caption{Diagram of chain complexes for relative homology.}
-		\label{diagramchains}
-	\end{figure}
+To clarify, consider the chain complexes \(A_{\bullet} = \{C_{d}(A), \partial_{d}\}_{d \in \mathbb{N}}\), \(B_{\bullet} = \{C_{d}(X), \partial_{d}\}_{d \in \mathbb{N}}\), and \(C_{\bullet} = \{C_{d}(X, A), \partial_{d}\}_{d \in \mathbb{N}}\).
 
-	To clarify, consider the chain complexes
-	$A_{\bullet} = \{C_{d}(A), \partial_{d}\}_{d\in\mathbb{N}}$, $B_{\bullet} = \{C
-	_{d}(X), \partial_{d}\}_{d\in\mathbb{N}}$, and
-	$C_{\bullet} = \{C_{d}(X,A), \partial_{d}\}$. The diagram of chain complexes is
-	depicted in Fig. \ref{diagramchains}.
+The vertical maps \(i\) and \(j\) are chain maps and thus induce homomorphisms on homology groups \(i_{\star}: H_{d}(A) \rightarrow H_{d}(X)\) and \(j_{\star}: H_{d}(X) \rightarrow H_{d}(X, A)\). The exactness of the rows implies that \(\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})\).
 
-	The vertical maps $i$ and $j$ are chain maps and thus induce homomorphisms on
-	homology groups $i_{\star}: H_{d}(A) \rightarrow H_{d}(X)$ and
-	$j_{\star}: H_{d}(X) \rightarrow H_{d}(X,A)$. The exactness of the rows implies
-	that $\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})$.
+The connecting homomorphism \(\partial: H_{d}(X, A) \rightarrow H_{d-1}(A)\) can be defined as follows: for any class \([c] \in H_{d}(X, A)\) represented by a cycle \(c \in C_{d}(X)\) with \(\partial_{d}(c) \in C_{d-1}(A)\), choose a chain \(b \in C_{d}(X)\) such that \(j(b) = c\). Since \(c\) is a cycle, \(\partial_{d}(b) \in \mathrm{ker}(j) = \mathrm{im}(i)\), so there exists a chain \(a \in C_{d-1}(A)\) such that \(\partial_{d}(b) = i(a)\). Define \(\partial([c]) = [a] \in H_{d-1}(A)\).
 
-	The connecting homomorphism $\partial: H_{d}(X,A) \rightarrow H_{d-1}(A)$ can be
-	defined as follows: for any class $[c] \in H_{d}(X,A)$ represented by a cycle
-	$c \in C_{d}(X)$ with $\partial_{d}(c) \in C_{d-1}(A)$, choose a chain $b \in C
-	_{d}(X)$ such that $j(b) = c$. Since $c$ is a cycle, $\partial_{d}(b) \in \mathrm{ker}
-	(j) = \mathrm{im}(i)$, so there exists a chain $a \in C_{d-1}(A)$ such that
-	$\partial_{d}(b) = i(a)$. Define $\partial([c]) = [a] \in H_{d-1}(A)$.
+We need to verify that the map \(\partial\) is well-defined:
+\begin{itemize}
+    \item Uniqueness: If \(b\) and \(b'\) both map to \(c\) via \(j\), then \(b - b' \in \mathrm{ker}(j) = \mathrm{im}(i)\). Thus, there exists \(a' \in C_{d-1}(A)\) such that \(b - b' = i(a')\). Hence,
+    \begin{align}
+    \partial_{d}(b) = \partial_{d}(b') + \partial_{d}(i(a')) = \partial_{d}(b') + i(\partial_{d-1}(a')).
+    \end{align}
+    So, \([a] = [a']\) in \(H_{d-1}(A)\), ensuring the uniqueness of \(\partial([c])\).
 
-	We need to verify that the map $\partial$ is well-defined:
-	\begin{itemize}
-		\item Uniqueness: If $b$ and $b'$ both map to $c$ via $j$, then $b - b' \in \mathrm{ker}
-			(j) = \mathrm{im}(i)$. Thus, there exists $a' \in C_{d-1}(A)$ such that $b
-			- b' = i(a')$. Hence,
-			\[
-				\partial_{d}(b) = \partial_{d}(b') + \partial_{d}(i(a')) = \partial_{d}(b
-				') + i(\partial_{d-1}(a')).
-			\]
-			So, $[a] = [a']$ in $H_{d-1}(A)$, ensuring the uniqueness of $\partial([c])$.
+    \item Homologous chains: If \(c\) and \(c'\) are homologous in \(H_{d}(X, A)\), then \(c - c' = \partial_{d}(c'')\) for some \(c'' \in C_{d+1}(X, A)\). Thus, \(b - b' = \partial_{d+1}(c'')\) in \(C_{d}(X)\), and the same argument as above applies.
+\end{itemize}
 
-		\item Homologous chains: If $c$ and $c'$ are homologous in $H_{d}(X,A)$, then
-			$c - c' = \partial_{d}(c'')$ for some $c'' \in C_{d+1}(X,A)$. Thus, $b - b'
-			= \partial_{d+1}(c'')$ in $C_{d}(X)$, and the same argument as above
-			applies.
-	\end{itemize}
-
-	This establishes the long exact sequence:
-	\begin{align}
-		&\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X,A) \rightarrow \cdots \\
-		&\cdots \rightarrow H_{d-1}(A) \rightarrow \cdots \rightarrow H_{0}(X,A) \rightarrow 0.
-	\end{align}
+This establishes the long exact sequence:
+\begin{align}
+\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
+\cdots \rightarrow H_{0}(X, A) \rightarrow 0.
+\end{align}
 \end{proof}
 
 \begin{proposition}
-	The map $\partial_{d}: H_{d}(C) \rightarrow H_{d-1}(A)$ is a homomorphism.
+The map \(\partial_{d}: H_{d}(C) \rightarrow H_{d-1}(A)\) is a homomorphism.
 \end{proposition}
 
 \begin{proof}
-	Let $[c_{1}], [c_{2}] \in H_{d}(C)$ be two homology classes, where
-	$c_{1}, c_{2} \in C_{d}(X,A)$ are cycles. By definition, let
-	$[a_{1}] = \partial_{d}([c_{1}])$ and $[a_{2}] = \partial_{d}([c_{2}])$. This means
-	that $c_{1}$ and $c_{2}$ are represented by chains $b_{1}, b_{2} \in C_{d}(X)$
-	such that $j(b_{1}) = c_{1}$ and $j(b_{2}) = c_{2}$.
+Let \([c_{1}], [c_{2}] \in H_{d}(C)\) be two homology classes, where \(c_{1}, c_{2} \in C_{d}(X, A)\) are cycles. By definition, let \([a_{1}] = \partial_{d}([c_{1}])\) and \([a_{2}] = \partial_{d}([c_{2}])\). This means that \(c_{1}\) and \(c_{2}\) are represented by chains \(b_{1}, b_{2} \in C_{d}(X)\) such that \(j(b_{1}) = c_{1}\) and \(j(b_{2}) = c_{2}\).
 
-	Since $b_{1}$ and $b_{2}$ are cycles modulo $A$, we have:
-	\[
-		\partial_{d}(b_{1}) = i(a_{1}) \quad \text{and}\quad \partial_{d}(b_{2}) = i(
-		a_{2}).
-	\]
-	We need to show that:
-	\[
-		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1}] + [a_{2}].
-	\]
+Since \(b_{1}\) and \(b_{2}\) are cycles modulo \(A\), we have:
+\begin{align}
+\partial_{d}(b_{1}) = i(a_{1}) \quad \text{and} \quad \partial_{d}(b_{2}) = i(a_{2}).
+\end{align}
 
-	Consider the sum $c_{1} + c_{2} \in C_{d}(X,A)$. By the properties of the
-	quotient map $j$:
-	\[
-		j(b_{1} + b_{2}) = j(b_{1}) + j(b_{2}) = c_{1} + c_{2}.
-	\]
-	Thus, $b_{1} + b_{2} \in C_{d}(X)$ is a preimage of $c_{1} + c_{2}$ under the
-	quotient map $j$. Furthermore, the boundary of $b_{1} + b_{2}$ is:
-	\[
-		\partial_{d}(b_{1} + b_{2}) = \partial_{d}(b_{1}) + \partial_{d}(b_{2}) = i(a
-		_{1}) + i(a_{2}) = i(a_{1} + a_{2}).
-	\]
-	Therefore, the cycle $c_{1} + c_{2}$ maps to the cycle $a_{1} + a_{2}$ under
-	$\partial_{d}$, implying that:
-	\[
-		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1} + a_{2}] = [a_{1}] + [a_{2}].
-	\]
-	Thus, $\partial_{d}$ is a homomorphism.
+We need to show that:
+\begin{align}
+\partial_{d}([c_{1}] + [c_{2}]) = [a_{1}] + [a_{2}].
+\end{align}
+
+Consider the sum \(c_{1} + c_{2} \in C_{d}(X, A)\). By the properties of the quotient map \(j\) we yield:
+\begin{align}
+j(b_{1} + b_{2}) = j(b_{1}) + j(b_{2}) = c_{1} + c_{2}.
+\end{align}
+Thus, \(b_{1} + b_{2} \in C_{d}(X)\) is a preimage of \(c_{1} + c_{2}\) under the quotient map \(j\). Furthermore, the boundary of \(b_{1} + b_{2}\) is:
+\begin{align}
+\partial_{d}(b_{1} + b_{2}) = \partial_{d}(b_{1}) + \partial_{d}(b_{2}) = i(a_{1}) + i(a_{2}) = i(a_{1} + a_{2}).
+\end{align}
+Therefore, the cycle \(c_{1} + c_{2}\) maps to the cycle \(a_{1} + a_{2}\) under \(\partial_{d}\), which implies on the respective equivalence classes:
+\begin{align}
+\partial_{d}([c_{1}] + [c_{2}]) = [a_{1} + a_{2}] = [a_{1}] + [a_{2}].
+\end{align}
+Thus, \(\partial_{d}\) is a homomorphism.
 \end{proof}
+
 
 \begin{lemma}
 	\label{exacthomsequence} The given sequence,
