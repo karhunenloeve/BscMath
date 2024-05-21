@@ -249,427 +249,353 @@ $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
 	{f}$ on vertices guarantee that $f$ is injective over each simplex and preserves
 	the simplicial structure. Specifically, for any simplices $\sigma, \tau \in \tilde
 	{K}$, we have:
-	\[
+	\begin{align}
 		f(|\sigma| \cap |\tau|) = f(|\sigma|) \cap f(|\tau|).
-	\]
+	\end{align}
 
 	Thus, $f$ provides an injective geometric realization of $\tilde{K}$ as a simplicial
 	complex in $\mathbb{R}^{2d+1}$.
 \end{proof}
 
 \section{Simplicial Homology}
-\label{Simplicial Homology} Given a set $V$ representing the vertices of a $d$-simplex
-$\sigma^{(d)}$, we can establish an orientation for the simplex by selecting a
+\label{Simplicial Homology}
+Given a set \( V \) representing the vertices of a \( d \)-simplex
+\( \sigma^{(d)} \), we can establish an orientation for the simplex by selecting a
 specific ordering of the vertices. If the vertex ordering differs from our chosen
 order by an odd permutation, the orientation is considered reversed, while even permutations
 preserve the orientation. Thus, a simplex can have only two possible orientations.
-Moreover, the orientation of a $d$-simplex induces an orientation on its $(d-1)$-faces.
-Specifically, if $\sigma^{(d)}:= (v_{0}, v_{1}, \ldots, v_{d})$ represents an oriented
-$d$-simplex, then the orientation of the $(d-1)$-face $\tau^{(d-1)}$ of
-$\sigma^{(d)}$, omitting the vertex $v_{i}$, is given by
-$\tau_{i}^{(d-1)}= (-1)^{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d})$.
+Moreover, the orientation of a \( d \)-simplex induces an orientation on its \( (d-1) \)-faces.
+Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents an oriented
+\( d \)-simplex, then the orientation of the \( (d-1) \)-face \( \tau^{(d-1)} \) of
+\( \sigma^{(d)} \), omitting the vertex \( v_{i} \), is given by
+\begin{equation}
+\tau_{i}^{(d-1)} = (-1)^{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}).
+\end{equation}
 
-\begin{definition}
-	{($d$-Chain) \cite[\S 2.3]{zomorodian2004computing}} \label{$d$-Chain} Given a
-	set $\{\sigma_{1}^{(d)}, \ldots, \sigma_{k}^{(d)}\}$ of arbitrarily oriented $d$-simplices
-	in a complex $K$ and an abelian group $G$, a $d$-chain $c$ with coefficients
-	$g_{i} \in G$ is defined as a formal sum:
-	\begin{equation}
-		c := g_{0}\sigma^{(d)}_{0}+ g_{1}\sigma^{(d)}_{1}+ \ldots + g_{k}\sigma^{(d)}
-		_{k}= \sum_{i=0}^{k}g_{i}\sigma^{(d)}_{i}.
-	\end{equation}
+\begin{definition}[$d$-Chain]{\cite[\S 2.3]{zomorodian2004computing}}
+\label{d-Chain}
+Given a set \(\{\sigma_{1}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group \(G\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum:
+\begin{align}
+c := g_{0}\sigma^{(d)}_{0} + g_{1}\sigma^{(d)}_{1} + \ldots + g_{k}\sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i}\sigma^{(d)}_{i}.
+\end{align}
 \end{definition}
 
-Henceforth, we will assume that $G = (\mathbb{Z}, +)$.
+Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 
 \begin{lemma}
-	The set of simplicial $d$-chains $C^{\Delta}_{d}$ forms an abelian group $(C^{\Delta}
-	_{d}, +)$.
+The set of simplicial \( d \)-chains \( C^{\Delta}_{d} \) forms an abelian group \( (C^{\Delta}_{d}, +) \).
 \end{lemma}
 
 \begin{proof}
-	The identity element of the group is the empty chain, given by:
-	\[
-		e_{C^{\Delta}_d}= \sum_{i \in \emptyset}g_{i} \sigma_{i}^{(d)}= e_{G} = 0.
-	\]
+The identity element of the group is the empty chain, given by:
+\begin{align}
+e_{C^{\Delta}_d} = \sum_{i \in \emptyset} g_{i} \sigma_{i}^{(d)} = e_{G} = 0.
+\end{align}
 
-	The sum of two chains is defined as:
-	\[
-		c + c' = \sum_{i=0}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{j=1}^{l}g'_{j} \sigma_{j}
-		^{(d)},
-	\]
-	which simplifies to:
-	\[
-		c + c' = \sum_{i=0}^{\min(k, l)}(g_{i} + g'_{i}) \sigma_{i}^{(d)}+ \sum_{j=\min(k,
-		l)+1}^{\max(k, l)}
-		\begin{cases}
-			g_{j} \sigma_{j}^{(d)}  & \text{if }k \geq l, \\
-			g'_{j} \sigma_{j}^{(d)} & \text{if }k < l.
-		\end{cases}
-	\]
-	Hence, $c + c' \in C^{\Delta}_{d}$.
+The sum of two chains is defined as:
+\begin{align}
+c + c' = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=1}^{l} g'_{j} \sigma_{j}^{(d)},
+\end{align}
+which simplifies to:
+\begin{align}
+c + c' = \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + \sum_{j=\min(k, l)+1}^{\max(k, l)}
+\begin{cases}
+g_{j} \sigma_{j}^{(d)} & \text{if } k \geq l, \\
+g'_{j} \sigma_{j}^{(d)} & \text{if } k < l.
+\end{cases}
+\end{align}
+Hence, \( c + c' \in C^{\Delta}_{d} \).
 
-	The associativity of the group operation in $C^{\Delta}_{d}$ follows directly from
-	the associativity of the group operation in $G$.
+The associativity of the group operation in \( C^{\Delta}_{d} \) follows directly from
+the associativity of the group operation in \( G \).
 
-	The inverse element is given by:
-	\[
-		c + (-c) = \sum_{i=0}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{i=0}^{k}(-g_{i}) \sigma
-		_{i}^{(d)}= \sum_{i=0}^{k}(g_{i} - g_{i}) \sigma_{i}^{(d)}= e_{C^{\Delta}_d}.
-	\]
-	Thus, $(C^{\Delta}_{d}, +)$ is an abelian group.
+The inverse element is given by:
+\begin{align}
+c + (-c) = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{i=0}^{k} (-g_{i}) \sigma_{i}^{(d)} = \sum_{i=0}^{k} (g_{i} - g_{i}) \sigma_{i}^{(d)} = e_{C^{\Delta}_d}.
+\end{align}
+Thus, \( (C^{\Delta}_{d}, +) \) is an abelian group.
 \end{proof}
 
-\begin{definition}
-	{(Boundary) \cite[p.106]{hatcher2005algebraic}} Let $\sigma^{(d)}$ be an oriented
-	$d$-simplex in a complex $K$. The boundary of $\sigma^{(d)}$ is defined as the
-	simplicial $(d-1)$-chain of $K$ with coefficients in the abelian group $G$, given
-	by
-	\begin{equation}
-		\partial(\sigma^{(d)}) = \sum_{i=0}^{d}(-1)^{i} \sigma^{(d-1)}_{i},
-	\end{equation}
-	where $\sigma^{(d-1)}_{i}$ is a $(d-1)$-face of $\sigma^{(d)}$. If $d = 0$, we
-	define $\partial(\sigma^{(0)}) = 0$.
+\begin{definition}[Boundary]{\cite[p.106]{hatcher2005algebraic}} 
+Let \( \sigma^{(d)} \) be an oriented \( d \)-simplex in a complex \( K \). The boundary of \( \sigma^{(d)} \) is defined as the simplicial \( (d-1) \)-chain of \( K \) with coefficients in the abelian group \( G \), given by
+\begin{align}
+\partial(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^{i} \sigma^{(d-1)}_{i},
+\end{align}
+where \( \sigma^{(d-1)}_{i} \) is a \( (d-1) \)-face of \( \sigma^{(d)} \). If \( d = 0 \), we define \( \partial(\sigma^{(0)}) = 0 \).
 \end{definition}
 
-Since $\sigma^{(d)}$ is an oriented simplex, the $\sigma^{(d-1)}_{i}$ faces also
-have associated orientations. We extend the definition of the boundary linearly to
-elements of $C^{\Delta}_{d}$.
+Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) faces also have associated orientations. We extend the definition of the boundary linearly to elements of \( C^{\Delta}_{d} \).
 
 \begin{lemma}
 	The boundary operator is a group homomorphism
-	\[
+	\begin{align}
 		\partial: C^{\Delta}_{d} \to C^{\Delta}_{d-1}.
-	\]
+	\end{align}
 \end{lemma}
 
 \begin{proof}
-	We define the boundary operator for a $d$-chain $c = \sum_{i=1}^{k}g_{i} \sigma
-	_{i}^{(d)}$ as follows:
-	\[
-		\partial(c) = \sum_{i=1}^{k}g_{i} \partial(\sigma_{i}^{(d)}) = \sum_{i=1}^{k}
-		g_{i} \sum_{j=0}^{d}(-1)^{j} \sigma_{i,j}^{(d-1)}= \sum_{i=1}^{k}\sum_{j=0}^{d}
-		g_{i} (-1)^{j} \sigma_{i,j}^{(d-1)},
-	\]
-	which is an element of $C^{\Delta}_{d-1}$, where $\sigma_{i,j}^{(d-1)}$ are the
-	$(d-1)$-faces of the $d$-simplices $\sigma_{i}^{(d)}$ in $K$.
+We define the boundary operator for a \( d \)-chain \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \):
+\begin{align}
+\partial(c) &= \sum_{i=0}^{k} g_{i} \partial(\sigma_{i}^{(d)}) \\
+&= \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{i,j}^{(d-1)} \\
+&= \sum_{i=0}^{k} \sum_{j=0}^{d} g_{i} (-1)^{j} \sigma_{i,j}^{(d-1)},
+\end{align}
+which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{i,j}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \).
 
-	To verify that $\partial$ is a group homomorphism, consider two $d$-chains
-	$c = \sum_{i=1}^{k}g_{i} \sigma_{i}^{(d)}$ and
-	$c' = \sum_{j=1}^{l}g'_{j} \sigma_{j}^{(d)}$. We compute:
-	\begin{align}
-		\partial(c + c') & = \partial\left( \sum_{i=1}^{k}g_{i} \sigma_{i}^{(d)}+ \sum_{j=1}^{l}g'_{j} \sigma_{j}^{(d)}\right) \\
-		                 & = \sum_{i=1}^{k}g_{i} \partial(\sigma_{i}^{(d)}) + \sum_{j=1}^{l}g'_{j} \partial(\sigma_{j}^{(d)})  \\
-		                 & = \partial(c) + \partial(c').
-	\end{align}
+To verify that \( \partial \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute:
+\begin{align}
+\partial(c + c') &= \partial\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+&= \sum_{i=0}^{k} g_{i} \partial(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial(\sigma_{j}^{(d)}) \\
+&= \partial(c) + \partial(c').
+\end{align}
 
-	Thus, $\partial$ is a group homomorphism.
+Thus, \( \partial \) is a group homomorphism.
 \end{proof}
 
 \begin{example}
-	Let's consider the $2$-simplex $\sigma^{(2)}$ with vertices $v_{0}$, $v_{1}$, and
-	$v_{2}$. The $1$-faces of this simplex are:
-	\begin{align}
-		e_{0} & = (v_{1}, v_{2}), \quad \text{connecting }v_{1} \text{ and }v_{2}, \\
-		e_{1} & = (v_{2}, v_{0}), \quad \text{connecting }v_{2} \text{ and }v_{0}, \\
-		e_{2} & = (v_{0}, v_{1}), \quad \text{connecting }v_{0} \text{ and }v_{1}.
-	\end{align}
-	Now, let's proceed with the computation:
-	\begin{align}
-		\partial(\partial(\sigma^{(2)})) & = \partial(e_{0} + e_{1} + e_{2}) \nonumber                                          \\
-		                                 & = \partial(e_{0}) + \partial(e_{1}) + \partial(e_{2}) \nonumber                      \\
-		                                 & = \partial(v_{1}, v_{2}) + \partial(v_{2}, v_{0}) + \partial(v_{0}, v_{1}) \nonumber \\
-		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})] \nonumber          \\
-		                                 & = 0.
-	\end{align}
-	We observe that $C^{\Delta}_{0}$ is an abelian group and that oppositely oriented
-	simplices cancel each other out, resulting in:
-	\[
-		\partial(\partial(\sigma^{(2)})) = 0.
-	\]
-	This property can be generalized to higher dimensions through induction.
-	Therefore, since $\partial$ is a linear operator and the chain $c$ is a sum of
-	$d$-simplices, we can conclude that:
-	\[
-		\partial^{2}(c) = 0 \quad \text{for any $d$-chain $c$ in }C^{\Delta}_{d}.
-	\]
-	Consequently, the boundary of the boundary is zero. Moreover, if the boundary
-	of a simplex is zero, it is referred to as a cycle. By this definition, we can
-	deduce that the boundary of any simplex is a cycle.
+Let's consider the \(2\)-simplex \( \sigma^{(2)} \) with vertices \( v_{0}, v_{1}, \) and \( v_{2} \). The \( 1 \)-faces of this simplex are:
+\begin{align}
+e_{0} &= (v_{1}, v_{2}), \quad \text{connecting } v_{1} \text{ and } v_{2}, \\
+e_{1} &= (v_{2}, v_{0}), \quad \text{connecting } v_{2} \text{ and } v_{0}, \\
+e_{2} &= (v_{0}, v_{1}), \quad \text{connecting } v_{0} \text{ and } v_{1}.
+\end{align}
+
+Now, let's proceed with the computation:
+\begin{align}
+\partial(\partial(\sigma^{(2)})) &= \partial(e_{0} + e_{1} + e_{2}) \\
+&= \partial(e_{0}) + \partial(e_{1}) + \partial(e_{2}) \\
+&= \partial(v_{1}, v_{2}) + \partial(v_{2}, v_{0}) + \partial(v_{0}, v_{1}) \\
+&= [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})] \\
+&= 0.
+\end{align}
+
+We observe that \( C^{\Delta}_{0} \) is an abelian group and that oppositely oriented simplices cancel each other out, resulting in:
+\begin{align}
+\partial(\partial(\sigma^{(2)})) = 0.
+\end{align}
+
+This property can be generalized to higher dimensions through induction. Therefore, since \( \partial \) is a linear operator and the chain \( c \) is a sum of \( d \)-simplices, we can conclude that:
+\begin{align}
+\partial^{2}(c) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\Delta}_{d}.
+\end{align}
+
+Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
 \end{example}
 
-\begin{definition}
-	{(Cycle) \cite[p.106]{hatcher2005algebraic}} A $d$-chain is called a cycle if its
-	boundary is equal to zero.
+\begin{definition}[$d$-Cycle]{\cite[p.106]{hatcher2005algebraic}}
+A $d$-chain is called a $d$-cycle if its boundary is equal to zero.
 \end{definition}
 
-We denote the set of $d$-cycles of a complex $K$ over the group $\mathbb{Z}$ as $Z
-^{\Delta}_{d}$, the simplicial cycle group. It is important to note that $Z^{\Delta}
-_{d}$ is a subgroup of $C^{\Delta}_{d}$ and can also be expressed as:
-\[
-	Z^{\Delta}_{d} = \ker(\partial_{d}).
-\]
+We denote the set of \( d \)-cycles of a complex \( K \) over the group \( \mathbb{Z} \) as \( Z^{\Delta}_{d} \), the simplicial cycle group. It is important to note that \( Z^{\Delta}_{d} \) is a subgroup of \( C^{\Delta}_{d} \) and can also be expressed as:
+\begin{align}
+Z^{\Delta}_{d} = \ker(\partial_{d}).
+\end{align}
 
-A $d$-cycle of a $k$-complex $K$ is said to be homologous to zero if it can be expressed
-as the boundary of a $(d+1)$-chain in $K$, where $d = 0, 1, \ldots, k-1$. In other
-words, a cycle is considered a boundary if it can be "filled in" by a higher-dimensional
-chain. This equivalence relation is denoted as $c \sim 0$.
+A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if it can be expressed as the boundary of a \( (d+1) \)-chain in \( K \), where \( d = 0, 1, \ldots, k-1 \). In other words, a cycle is considered a boundary if it can be 'filled in' by a higher-dimensional chain. This equivalence relation is denoted as \( c \sim 0 \).
 
-\begin{definition}
-	{(Boundary Group) \cite[\S 2.3]{zomorodian2004computing}} The subgroup of $Z^{\Delta}
-	_{d}$ consisting of boundaries is referred to as the simplicial boundary group
-	$B^{\Delta}_{d}$.
+\begin{definition}[Boundary Group]{\cite[\S 2.3]{zomorodian2004computing}}
+The subgroup of $Z^{\Delta}_{d}$ consisting of boundaries is referred to as the simplicial boundary group $B^{\Delta}_{d}$.
 \end{definition}
 
-It is worth noting that $B^{\Delta}_{d}$ is equal to the image of the boundary
-operator $\partial_{d+1}$. Since $B^{\Delta}_{d}$ is a subgroup of $Z^{\Delta}_{d}$
-and $Z^{\Delta}_{d}$ is an abelian group, every subgroup of $Z^{\Delta}_{d}$ is
-normal. Therefore, we can construct the group quotient:
-\[
-	H^{\Delta}_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}.
-\]
+It is worth noting that \( B^{\Delta}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\Delta}_{d} \) is a subgroup of \( Z^{\Delta}_{d} \) and \( Z^{\Delta}_{d} \) is an abelian group, every subgroup of \( Z^{\Delta}_{d} \) is normal. Therefore, we can construct the group quotient:
+\begin{align}
+H^{\Delta}_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}.
+\end{align}
 
-\begin{definition}
-	{(Simplicial Homology Group) \cite[\S 2.1]{hatcher2005algebraic}} The group $H^{\Delta}
-	_{d}$ represents the $d$-dimensional simplicial homology group of the complex $K$
-	over $\mathbb{Z}$. It is expressed as the group quotient:
-	\[
-		H^{\Delta}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
-	\]
+\begin{definition}[Simplicial Homology Group]{\cite[\S 2.1]{hatcher2005algebraic}} 
+The group \( H^{\Delta}_{d} \) represents the \( d \)-dimensional simplicial homology group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
+\begin{align}
+H^{\Delta}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}).
+\end{align}
 \end{definition}
 
-Next, we want to examine the structure of this homology group by shedding light
-on its connection to the connected components of a simplicial complex. We will find
-that the homology groups of the connected components of the complex, which in
-turn form a complex themselves, yield the direct sum of the homology group of the
-entire complex.
+Next, we want to examine the structure of this homology group by shedding light on its connection to the connected components of a simplicial complex. We will find that the homology groups of the connected components of the complex, which in turn form a complex themselves, yield the direct sum of the homology group of the entire complex.
 
 \begin{definition}
-	A subcomplex is a subset $S$ of the simplices belonging to a complex $K$,
-	where $S$ itself forms a complex.
+A subcomplex is a subset \( S \) of the simplices belonging to a complex \( K \), where \( S \) itself forms a complex.
 \end{definition}
 
 \begin{definition}
-	The collection of all simplices in a complex $K$ with dimensions less than or equal
-	to $d$ is referred to as the $d$-skeleton of $K$.
+The collection of all simplices in a complex \( K \) with dimensions less than or equal to \( d \) is referred to as the \( d \)-skeleton of \( K \).
 \end{definition}
 
-By definition, the $d$-skeleton forms a subcomplex.
+By definition, the \( d \)-skeleton forms a subcomplex.
 
 \begin{definition}
-	A complex $K$ is considered connected if it cannot be expressed as the disjoint
-	union of two or more non-empty subcomplexes. A geometric complex is path-connected
-	if there exists a path consisting of $1$-simplices connecting any vertex to
-	any other vertex.
+A complex \( K \) is considered connected if it cannot be expressed as the disjoint union of two or more non-empty subcomplexes. A geometric complex is path-connected if there exists a path consisting of \( 1 \)-simplices connecting any vertex to any other vertex.
 \end{definition}
 
 \begin{lemma}
-	\label{pathconnect} A geometric complex is path-connected if and only if it is
-	connected.
+\label{pathconnect}
+A geometric complex is path-connected if and only if it is connected.
 \end{lemma}
 
 \begin{proof}
-	Path-connectedness $\implies$ connectedness: Suppose $K$ is path-connected. Assume
-	for contradiction that $K$ can be expressed as the disjoint union of two non-empty
-	subcomplexes $L$ and $M$. Since $K$ is path-connected, there exists a path of $1$-simplices
-	between any two vertices in $K$. Let $l \in L$ and $m \in M$ be any two
-	vertices. By path-connectedness, there is a path from $l$ to $m$, which contradicts
-	the assumption that $L$ and $M$ are disjoint. Therefore, $K$ is connected.
+Suppose \( K \) is path-connected. Assume for contradiction that \( K \) can be expressed as the disjoint union of two non-empty subcomplexes \( L \) and \( M \). Since \( K \) is path-connected, there exists a path of \( 1 \)-simplices between any two vertices in \( K \). Let \( l \in L \) and \( m \in M \) be any two vertices. By path-connectedness, there is a path from \( l \) to \( m \), which contradicts the assumption that \( L \) and \( M \) are disjoint. Therefore, \( K \) is connected.
 
-	Connectedness $\implies$ path-connectedness: Suppose $K$ is connected. Pick any
-	vertex $v \in K$. Let $L$ denote the subcomplex of $K$ containing all vertices
-	reachable from $v$ via paths of $1$-simplices. If $L \neq K$, then $L$ and
-	$K \setminus L$ form a disjoint union of two non-empty subcomplexes, contradicting
-	the connectedness of $K$. Hence, $L = K$, and $K$ is path-connected.
+Suppose \( K \) is connected. Pick any vertex \( v \in K \). Let \( L \) denote the subcomplex of \( K \) containing all vertices reachable from \( v \) via paths of \( 1 \)-simplices. If \( L \neq K \), then \( L \) and \( K \setminus L \) form a disjoint union of two non-empty subcomplexes, contradicting the connectedness of \( K \). Hence, \( L = K \), and \( K \) is path-connected.
 \end{proof}
 
-\begin{theorem}
-	\label{decomptheorem} Let $K_{1}, \ldots, K_{p}$ be the collection of all connected
-	components of a complex $K$. Furthermore, let $H^{\Delta}_{d_i}$ represent the
-	$d$th simplicial homology group of $K_{i}$, and $H^{\Delta}_{d}$ denote the $d$th
-	simplicial homology group of $K$. In this context, we can establish that
-	$H^{\Delta}_{d}$ is isomorphic to the direct sum
-	$H^{\Delta}_{d_1}\oplus \cdots \oplus H^{\Delta}_{d_p}$.
+\begin{theorem}{\cite[p.105ff]{hatcher2005algebraic}}
+Let \( K_{1}, \ldots, K_{p} \) be the collection of all connected components of a complex \( K \). Furthermore, let \( H^{\Delta}_{d_i} \) represent the \( d \)-th simplicial homology group of \( K_{i} \), and \( H^{\Delta}_{d} \) denote the \( d \)-th simplicial homology group of \( K \). In this context, we can establish that \( H^{\Delta}_{d} \) is isomorphic to the direct sum \( H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p} \).
 \end{theorem}
 
 \begin{proof}
-	Let $C^{\Delta}_{d}$ represent the group of simplicial $d$-chains of $K$, and
-	let $K_{i}$ denote the $i$th component of $K$. Define $C^{\Delta}_{d_i}$ as
-	the group of simplicial $d$-chains of $K_{i}$. It is evident that $C^{\Delta}_{d_i}$
-	is a subgroup of $C^{\Delta}_{d}$. Furthermore, we observe that $C^{\Delta}_{d}$
-	can be expressed as the direct sum of $C^{\Delta}_{d_1}, \ldots, C^{\Delta}_{d_p}$:
-	\[
-		C^{\Delta}_{d} = C^{\Delta}_{d_1}\oplus \cdots \oplus C^{\Delta}_{d_p}.
-	\]
-	Our goal is to demonstrate that a similar decomposition applies to the groups
-	$B^{\Delta}_{d}$ and $Z^{\Delta}_{d}$. By considering $B^{\Delta}_{d_i}$ as the
-	image of $\partial_{d+1}$ restricted to the subgroup $C^{\Delta}_{d_i}$, we
-	can represent the group $B^{\Delta}_{d}$ as the direct sum of these
-	restrictions:
-	\[
-		B^{\Delta}_{d} = B^{\Delta}_{d_1}\oplus \cdots \oplus B^{\Delta}_{d_p}.
-	\]
-	Thus, for any element $c \in C^{\Delta}_{d+1}$, we have:
-	\[
-		c = c_{1} + \cdots + c_{p}, \quad \partial_{d+1}(c) = \partial_{d+1}(c_{1}) +
-		\cdots + \partial_{d+1}(c_{p}) \in B^{\Delta}_{d},
-	\]
-	where $c_{i} \in C^{\Delta}_{(d+1)_i}$.
+Let \( C^{\Delta}_{d} \) represent the group of simplicial \( d \)-chains of \( K \), and let \( K_{i} \) denote the \( i \)-th component of \( K \). Define \( C^{\Delta}_{d_i} \) as the group of simplicial \( d \)-chains of \( K_{i} \). It is evident that \( C^{\Delta}_{d_i} \) is a subgroup of \( C^{\Delta}_{d} \). Furthermore, we observe that \( C^{\Delta}_{d} \) can be expressed as the direct sum of \( C^{\Delta}_{d_1}, \ldots, C^{\Delta}_{d_p} \):
+\begin{align}
+C^{\Delta}_{d} = C^{\Delta}_{d_1} \oplus \cdots \oplus C^{\Delta}_{d_p}.
+\end{align}
 
-	Let us define $Z^{\Delta}_{d_i}$ as the intersection of the kernel of
-	$\partial_{d}$ and $C^{\Delta}_{d_i}$. It follows that $Z^{\Delta}_{d}$ can be
-	expressed as the direct sum of $Z^{\Delta}_{d_1}, \ldots, Z^{\Delta}_{d_p}$:
-	\[
-		Z^{\Delta}_{d} = Z^{\Delta}_{d_1}\oplus \cdots \oplus Z^{\Delta}_{d_p}.
-	\]
-	To verify this, consider an element $c \in C^{\Delta}_{d}$ that belongs to $Z^{\Delta}
-	_{d}$. We require $\partial_{d}(c) = 0$. However, we can express
-	$\partial_{d}(c)$ as $\partial_{d}(c_{1}) + \cdots + \partial_{d}(c_{p})$. Therefore,
-	for $\partial_{d}(c) = 0$, it must be that $\partial_{d}(c_{i}) = 0$,
-	indicating that $c_{i} \in Z^{\Delta}_{d_i}$.
+Our goal is to demonstrate that a similar decomposition applies to the groups \( B^{\Delta}_{d} \) and \( Z^{\Delta}_{d} \). By considering \( B^{\Delta}_{d_i} \) as the image of \( \partial_{d+1} \) restricted to the subgroup \( C^{\Delta}_{d_i} \), we can represent the group \( B^{\Delta}_{d} \) as the direct sum of these restrictions:
+\begin{align}
+B^{\Delta}_{d} = B^{\Delta}_{d_1} \oplus \cdots \oplus B^{\Delta}_{d_p}.
+\end{align}
 
-	Since both $Z^{\Delta}_{d}$ and $B^{\Delta}_{d}$ can be decomposed
-	componentwise, we conclude that:
-	\[
-		Z^{\Delta}_{d} / B^{\Delta}_{d} = Z^{\Delta}_{d_1}/ B^{\Delta}_{d_1}\oplus \cdots
-		\oplus Z^{\Delta}_{d_p}/ B^{\Delta}_{d_p},
-	\]
-	and consequently:
-	\[
-		H^{\Delta}_{d} = H^{\Delta}_{d_1}\oplus \cdots \oplus H^{\Delta}_{d_p}.
-	\]
+Thus, for any element \( c \in C^{\Delta}_{d+1} \), we have:
+\begin{align}
+c = c_{1} + \cdots + c_{p}, \quad \partial_{d+1}(c) = \partial_{d+1}(c_{1}) + \cdots + \partial_{d+1}(c_{p}) \in B^{\Delta}_{d},
+\end{align}
+where \( c_{i} \in C^{\Delta}_{(d+1)_i} \).
+
+Let us define \( Z^{\Delta}_{d_i} \) as the intersection of the kernel of \( \partial_{d} \) and \( C^{\Delta}_{d_i} \). It follows that \( Z^{\Delta}_{d} \) can be expressed as the direct sum of \( Z^{\Delta}_{d_1}, \ldots, Z^{\Delta}_{d_p} \):
+\begin{align}
+Z^{\Delta}_{d} = Z^{\Delta}_{d_1} \oplus \cdots \oplus Z^{\Delta}_{d_p}.
+\end{align}
+
+To verify this, consider an element \( c \in C^{\Delta}_{d} \) that belongs to \( Z^{\Delta}_{d} \). We require \( \partial_{d}(c) = 0 \). However, we can express \( \partial_{d}(c) \) as \( \partial_{d}(c_{1}) + \cdots + \partial_{d}(c_{p}) \). Therefore, for \( \partial_{d}(c) = 0 \), it must be that \( \partial_{d}(c_{i}) = 0 \), indicating that \( c_{i} \in Z^{\Delta}_{d_i} \).
+
+Since both \( Z^{\Delta}_{d} \) and \( B^{\Delta}_{d} \) can be decomposed componentwise, we conclude that:
+\begin{align}
+Z^{\Delta}_{d} / B^{\Delta}_{d} = Z^{\Delta}_{d_1} / B^{\Delta}_{d_1} \oplus \cdots \oplus Z^{\Delta}_{d_p} / B^{\Delta}_{d_p},
+\end{align}
+and consequently:
+\begin{align}
+H^{\Delta}_{d} = H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p}.
+\end{align}
 \end{proof}
 
-\begin{proposition}
-	\label{decomposition} If $K$ is a connected complex and $c$ is a $0$-chain with
-	$I(c) = 0$, then $I(c) = 0$ is equivalent to $c \sim 0$, where $\sim$ denotes homology
-	equivalence. Furthermore, in this case, the zeroth simplicial homology group
-	$H^{\Delta}_{0}(K, \mathbb{Z})$ is isomorphic to the integers $\mathbb{Z}$.
+\begin{proposition}{\cite[p.108f]{hatcher2005algebraic}}
+\label{decomposition}
+If \( K \) is a connected complex and \( c \) is a \( 0 \)-chain with \( I(c) = 0 \), then \( I(c) = 0 \) is equivalent to \( c \sim 0 \), where \( \sim \) denotes homology equivalence. Furthermore, in this case, the zeroth simplicial homology group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to the integers \( \mathbb{Z} \).
 \end{proposition}
 
 \begin{proof}
-	$c \sim 0 \implies I(c) = 0$: Let $\sigma^{(1)}= (v_{0}, v_{1})$ be a $1$-simplex.
-	For the chain $c = \partial_{1}(g \sigma^{(1)}) = g v_{1} - g v_{0}$, we have
-	$c \sim 0$, and it is clear that $I(c) = g - g = 0$. Since
-	$I(c + c') = I(c) + I(c')$, $I$ is a group homomorphism. For any $1$-chain
-	$c \in C^{\Delta}_{1}$ of the form $\sum_{i=1}^{k}g_{i} \sigma_{i}^{(1)}$, where
-	$\sigma_{i}^{(1)}= (v_{i}, v_{i+1})$, we have:
-	\[
-		c = \partial_{1}(c) \sim 0 \implies I(c) = I(\partial_{1}(c)) = 0.
-	\]
+Let \( \sigma^{(1)} = (v_{0}, v_{1}) \) be a \( 1 \)-simplex. For the chain \( c = \partial_{1}(g \sigma^{(1)}) = g v_{1} - g v_{0} \), we have \( c \sim 0 \), and it is clear that \( I(c) = g - g = 0 \). Since \( I(c + c') = I(c) + I(c') \), \( I \) is a group homomorphism. For any \( 1 \)-chain \( c \in C^{\Delta}_{1} \) of the form \( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(1)} \), where \( \sigma_{i}^{(1)} = (v_{i}, v_{i+1}) \), we have:
+\begin{align}
+c = \partial_{1}(c) \sim 0 \implies I(c) = I(\partial_{1}(c)) = 0.
+\end{align}
 
-	$I(c) = 0 \implies c \sim 0$: Consider two vertices $v$ and $w$ in $K$. Since
-	$K$ is connected, there exists a path between $v$ and $w$ consisting of $1$-simplices
-	$\sigma_{i}^{(1)}= (v_{i}, v_{i+1})$, $i = 1, \ldots, k-1$, where $v_{0} = v$ and
-	$v_{k} = w$. The boundary of the chain $c = \sum_{i=1}^{k}g \sigma_{i}^{(1)}$
-	is given by:
-	\[
-		\partial_{1}(c) = \sum_{i=1}^{k}g \partial_{1}(\sigma_{i}^{(1)}) = \sum_{i=1}
-		^{k}g [(v_{i+1}) - (v_{i})] = g w - g v.
-	\]
-	Since $\partial_{1}(c)$ is a boundary, we have $c = \partial_{1}(c) \sim 0$. Thus,
-	$(g w - g v) \sim 0$, implying $g w \sim g v$. Therefore, any $0$-chain $c$ in
-	$K$ is homologous to the chain $g v$. We observe that homologous chains have
-	equal indices, i.e., $I(c) = I(g v) = g$. Thus, $c \sim g v \implies c \sim I(c
-	) v$. This shows that if $I(c) = 0$, then $c \sim 0$. Hence, $I(c) = 0$ is equivalent
-	to $c \sim 0$.
+Consider two vertices \( v \) and \( w \) in \( K \). Since \( K \) is connected, there exists a path between \( v \) and \( w \) consisting of \( 1 \)-simplices \( \sigma_{i}^{(1)} = (v_{i}, v_{i+1}) \), \( i = 0, \ldots, k-1 \), where \( v_{0} = v \) and \( v_{k} = w \). The boundary of the chain \( c = \sum_{i=0}^{k} g \sigma_{i}^{(1)} \) is given by:
+\begin{align}
+\partial_{1}(c) = \sum_{i=0}^{k} g \partial_{1}(\sigma_{i}^{(1)}) = \sum_{i=0}^{k} g [(v_{i+1}) - (v_{i})] = g w - g v.
+\end{align}
+Since \( \partial_{1}(c) \) is a boundary, we have \( c = \partial_{1}(c) \sim 0 \). Thus, \( (g w - g v) \sim 0 \), implying \( g w \sim g v \). Therefore, any \( 0 \)-chain \( c \) in \( K \) is homologous to the chain \( g v \). We observe that homologous chains have equal indices, i.e., \( I(c) = I(g v) = g \). Thus, \( c \sim g v \implies c \sim I(c) v \). This shows that if \( I(c) = 0 \), then \( c \sim 0 \). Hence, \( I(c) = 0 \) is equivalent to \( c \sim 0 \).
 
-	Since $I$ is a homomorphism from $C^{\Delta}_{0} = Z^{\Delta}_{0}$ to $\mathbb{Z}$,
-	for any $0$-simplex $c$ and $g \in \mathbb{Z}$, the chain $g c \in C^{\Delta}_{0}$
-	is a cycle with $I(g c) = g$. Therefore, $I(Z^{\Delta}_{0}) = \mathbb{Z}$.
-	Since $I(c) = 0$ is equivalent to $c \sim 0$, we have $B^{\Delta}_{0} = \ker(I)$.
-	This implies that:
-	\[
-		H^{\Delta}_{0} = Z^{\Delta}_{0} / B^{\Delta}_{0} \cong \mathbb{Z}.
-	\]
+Since \( I \) is a homomorphism from \( C^{\Delta}_{0} = Z^{\Delta}_{0} \) to \( \mathbb{Z} \), for any \( 0 \)-simplex \( c \) and \( g \in \mathbb{Z} \), the chain \( g c \in C^{\Delta}_{0} \) is a cycle with \( I(g c) = g \). Therefore, \( I(Z^{\Delta}_{0}) = \mathbb{Z} \). Since \( I(c) = 0 \) is equivalent to \( c \sim 0 \), we have \( B^{\Delta}_{0} = \ker(I) \). This implies that:
+\begin{align}
+H^{\Delta}_{0} = Z^{\Delta}_{0} / B^{\Delta}_{0} \cong \mathbb{Z}.
+\end{align}
 \end{proof}
 
 \begin{corollary}
-	\label{directsum0hom} The zero-dimensional simplicial homology group of a complex
-	$K$ over $\mathbb{Z}$ can be represented as $\mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z}$,
-	where $p$ denotes the number of connected components present in $K$.
+\label{directsum0hom}
+The zero-dimensional simplicial homology group of a complex \( K \) over \( \mathbb{Z} \) can be represented as \( \mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z} \), where \( p \) denotes the number of connected components present in \( K \).
 \end{corollary}
 
+\begin{proof}
+From Proposition \ref{decomposition}, we know that if \( K \) is a connected complex, then the zeroth simplicial homology group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \).
+
+Now, consider a complex \( K \) that consists of \( p \) connected components \( K_1, K_2, \ldots, K_p \). The zero-dimensional simplicial homology group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) can be expressed as the direct sum of the zero-dimensional homology groups of its connected components:
+\begin{align}
+H^{\Delta}_{0}(K, \mathbb{Z}) = H^{\Delta}_{0}(K_1, \mathbb{Z}) \oplus H^{\Delta}_{0}(K_2, \mathbb{Z}) \oplus \cdots \oplus H^{\Delta}_{0}(K_p, \mathbb{Z}).
+\end{align}
+
+Since each \( K_i \) is a connected component, by Proposition \ref{decomposition}, each \( H^{\Delta}_{0}(K_i, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \). Therefore, we have:
+\begin{align}
+H^{\Delta}_{0}(K, \mathbb{Z}) \cong \mathbb{Z} \oplus \mathbb{Z} \oplus \cdots \oplus \mathbb{Z} = \mathbb{Z}^{p}.
+\end{align}
+
+Thus, the zero-dimensional simplicial homology group of \( K \) over \( \mathbb{Z} \) is represented as \( \mathbb{Z}^{p} \), where \( p \) denotes the number of connected components present in \( K \).
+\end{proof}
+
 \begin{example}
-	\begin{itemize}
-		\item[]
+\begin{itemize}
+\item[]
 
-		\item The zeroth homology group of the circle is isomorphic to $\mathbb{Z}$.
-			Consider a simplicial representation of the circle using four $1$-simplices:
-			$v_{1} = (w, v)$, $v_{2} = (v, y)$, $v_{3} = (y, x)$, and $v_{4} = (x, w)$.
-			The group $Z^{\Delta}_{0}$ consists of sums over the four zero-simplices $v$,
-			$w$, $x$, and $y$ with coefficients in $\mathbb{Z}$. Let $c$ be a zero-chain
-			with non-zero coefficients given by:
-			\[
-				c = g_{1} v + g_{2} w + g_{3} x + g_{4} y.
-			\]
-			To reduce it to an element of $H^{\Delta}_{0}$, subtract the chain $c' = g_{4}
-			x - g_{4} y \sim 0$:
-			\[
-				c - c' = g_{1} v + g_{2} w + (g_{3} - g_{4}) x.
-			\]
-			By repeating this process, we obtain a new chain:
-			\[
-				c'' = (g_{1} - g_{2} + g_{3} - g_{4}) v.
-			\]
-			Since $c'' \sim c$, it represents an element of $H^{\Delta}_{0}$. Moreover,
-			since $g_{i} \in \mathbb{Z}$, we can write
-			$(g_{1} - g_{2} + g_{3} - g_{4}) \in \mathbb{Z}$ as $c'' = g v$, where $g$
-			is an element of $\mathbb{Z}$. Therefore, we can choose any $g$, implying
-			that $H^{\Delta}_{0} \cong \mathbb{Z}$.
+\item The zeroth homology group of the circle is isomorphic to \(\mathbb{Z}\).
+Consider a simplicial representation of the circle using four \(1\)-simplices:
+\(\sigma_{0} = (v_{0}, v_{1})\), \(\sigma_{1} = (v_{1}, v_{2})\), \(\sigma_{2} = (v_{2}, v_{3})\), and \(\sigma_{3} = (v_{3}, v_{0})\).
+The group \(Z^{\Delta}_{0}\) consists of sums over the four zero-simplices \(v_{0}\),
+\(v_{1}\), \(v_{2}\), and \(v_{3}\) with coefficients in \(\mathbb{Z}\). Let \(c\) be a zero-chain
+with non-zero coefficients given by:
+\begin{align}
+c = g_{0} v_{0} + g_{1} v_{1} + g_{2} v_{2} + g_{3} v_{3}.
+\end{align}
+To reduce it to an element of \(H^{\Delta}_{0}\), subtract the chain \(c' = g_{3} v_{2} - g_{3} v_{3} \sim 0\):
+\begin{align}
+c - c' = g_{0} v_{0} + g_{1} v_{1} + (g_{2} - g_{3}) v_{2}.
+\end{align}
+By repeating this process, we obtain a new chain:
+\begin{align}
+c'' = (g_{0} - g_{1} + g_{2} - g_{3}) v_{0}.
+\end{align}
+Since \(c'' \sim c\), it represents an element of \(H^{\Delta}_{0}\). Moreover,
+since \(g_{i} \in \mathbb{Z}\), we can write
+\((g_{0} - g_{1} + g_{2} - g_{3}) \in \mathbb{Z}\) as \(c'' = g v_{0}\), where \(g\)
+is an element of \(\mathbb{Z}\). Therefore, we can choose any \(g\), implying
+that \(H^{\Delta}_{0} \cong \mathbb{Z}\).
 
-		\item We will demonstrate that $H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}$. The
-			$d$-simplex $\sigma^{(d)}$ and the $d$-ball are homeomorphic, and their boundaries,
-			which consist of $(d-1)$-simplices, are homeomorphic to the $d$-sphere.
-			Thus, the appropriate simplicial structure to impose on $S^{d}$ is that of
-			the boundary of the $(d+1)$-simplex $\sigma^{(d+1)}$. Let
-			$\{v_{0}, \ldots, v_{d-1}\}$ denote the set of vertices of
-			$\sigma^{(d+1)}$. This set is not oriented, and the orientations of the
-			$(d-1)$-simplices can be arbitrarily determined. We'll utilize their numbering
-			to establish orientations.
+\item We will demonstrate that \(H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}\). The
+\(d\)-simplex \(\sigma^{(d)}\) and the \(d\)-ball are homeomorphic, and their boundaries,
+which consist of \((d-1)\)-simplices, are homeomorphic to the \(d\)-sphere.
+Thus, the appropriate simplicial structure to impose on \(S^{d}\) is that of
+the boundary of the \((d+1)\)-simplex \(\sigma^{(d+1)}\). Let
+\(\{v_{0}, \ldots, v_{d}\}\) denote the set of vertices of
+\(\sigma^{(d+1)}\). This set is not oriented, and the orientations of the
+\((d-1)\)-simplices can be arbitrarily determined. We'll utilize their numbering
+to establish orientations.
 
-			Consequently, all $d$-chains on this structure can be expressed as:
-			\begin{equation}
-				\label{chain}c = \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1},
-				\ldots, v_{d}),
-			\end{equation}
-			where $g_{i} \in \mathbb{Z}$.
+Consequently, all \(d\)-chains on this structure can be expressed as:
+\begin{align}
+\label{chain}
+c = \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}),
+\end{align}
+where \(g_{i} \in \mathbb{Z}\).
 
-			Since $\sigma^{(d+1)}$ itself is not part of the structure, there are no
-			boundaries in $Z^{\Delta}_{d}$, the group of simplicial cycles. Thus, $H^{\Delta}
-			_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}$ represents the group of simplicial
-			cycles. If $c \in Z^{\Delta}_{d}$, then $\partial_{d+1}(c) = 0$. Using Eq.
-			\ref{chain}, we have:
-			\begin{align}
-				\partial_{d+1}(c) & = \partial_{d+1}\left( \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}) \right)                                    \\
-				                  & = \sum_{i=0}^{d+1}g_{i} \big( \sum_{j=0}^{d+1}(-1)^{j} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{d}) \big).
-			\end{align}
-			By rearranging this sum, we obtain terms of the form:
-			\[
-				\label{terms}(g_{k} - g_{l})(v_{0}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{i-1}
-				, v_{i+1}, \ldots, v_{d}),
-			\]
-			where $k, l = 0, \ldots, d+1$ for all $i, j = 0, \ldots, d$.
+Since \(\sigma^{(d+1)}\) itself is not part of the structure, there are no
+boundaries in \(Z^{\Delta}_{d}\), the group of simplicial cycles. Thus, \(H^{\Delta}_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}\) represents the group of simplicial
+cycles. If \(c \in Z^{\Delta}_{d}\), then \(\partial_{d+1}(c) = 0\). Using Eq.
+\ref{chain}, we have:
+  \begin{scriptsize}
+\begin{align}
+\partial_{d+1}(c) &= \partial_{d+1}\left( \sum_{i=0}^{d+1}g_{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}) \right) \\
+&= \sum_{i=0}^{d+1}g_{i} \left( \sum_{j=0}^{d+1}(-1)^{j} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{d}) \right).
+\end{align}
+\end{scriptsize}
+By rearranging this sum, we obtain terms of the form:
+\begin{align}
+\label{terms}
+(g_{k} - g_{l})(v_{0}, \ldots, v_{j-1}, v_{j+1}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}),
+\end{align}
+where \(k, l = 0, \ldots, d+1\) for all \(i, j = 0, \ldots, d\).
 
-			Each pair of $d$-simplices of $\sigma^{(d+1)}$ intersects along a $(d-1)$-face.
-			Therefore, we obtain terms of the form given in Eq. \ref{terms} for each
-			of these faces. From this, we deduce that if $\partial_{d}(c) = 0$, we must
-			have $g_{k} = g_{l}$ for all $k, l = 0, \ldots, d+1$. In other words, $g_{0}
-			= g_{1} = \cdots = g_{d+1}$. Consequently, our original $d$-chain is:
-			\[
-				c = \sum_{i=0}^{d+1}g_{0} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}
-				),
-			\]
-			allowing us to choose $g_{0}$ from $\mathbb{Z}$. Thus, we conclude that
-			$H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}$.
+Each pair of \(d\)-simplices of \(\sigma^{(d+1)}\) intersects along a \((d-1)\)-face.
+Therefore, we obtain terms of the form given in Eq. \ref{terms} for each
+of these faces. From this, we deduce that if \(\partial_{d}(c) = 0\), we must
+have \(g_{k} = g_{l}\) for all \(k, l = 0, \ldots, d+1\). In other words, \(g_{0}
+= g_{1} = \cdots = g_{d+1}\). Consequently, our original \(d\)-chain is:
+\begin{align}
+c = \sum_{i=0}^{d+1}g_{0} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}),
+\end{align}
+allowing us to choose \(g_{0}\) from \(\mathbb{Z}\). Thus, we conclude that
+\(H^{\Delta}_{d}(S^{d}) \cong \mathbb{Z}\).
 
-		\item We demonstrate that $H^{\Delta}_{d}(D^{d}) = 0$. The simplest
-			simplicial structure for $D^{d}$ is that of the $d$-simplex $\sigma^{(d)}$.
-			Consequently, all $d$-chains can be expressed as $c = g \sigma^{(d)}$, where
-			$g \in \mathbb{Z}$. This form is never a boundary, implying that $H^{\Delta}
-			_{d} = Z^{\Delta}_{d}$. However, $\partial_{d}(c) = 0$ is generally only true
-			when $g = 0$. Thus, we conclude that $H^{\Delta}_{d}(D^{d}) \cong 0$.
-	\end{itemize}
+\item We demonstrate that \(H^{\Delta}_{d}(D^{d}) = 0\). The simplest
+simplicial structure for \(D^{d}\) is that of the \(d\)-simplex \(\sigma^{(d)}\).
+Consequently, all \(d\)-chains can be expressed as \(c = g \sigma^{(d)}\), where
+\(g \in \mathbb{Z}\). This form is never a boundary, implying that \(H^{\Delta}_{d} = Z^{\Delta}_{d}\). However, \(\partial_{d}(c) = 0\) is generally only true
+when \(g = 0\). Thus, we conclude that \(H^{\Delta}_{d}(D^{d}) \cong 0\).
+\end{itemize}
 \end{example}
 
 \section{Singular Homology}
