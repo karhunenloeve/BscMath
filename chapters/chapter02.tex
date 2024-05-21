@@ -1062,7 +1062,7 @@ given that \(b\) is a cycle. Thus, \(i_\star([a]) = [b]\), and \(\operatorname{i
 \end{enumerate}
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}{\cite[p.117f]{hatcher2005algebraic}}
 	The sequence
 	\begin{align}
 		&\cdots \rightarrow H_{d}(A) \xrightarrow{i_\star}H_{d}(X) \xrightarrow{j_\star}
@@ -1074,37 +1074,18 @@ given that \(b\) is a cycle. Thus, \(i_\star([a]) = [b]\), and \(\operatorname{i
 \end{proposition}
 
 \begin{proof}
-	The exactness of this sequence is a standard result in algebraic topology,
-	which follows from the long exact sequence of the pair $(X, A)$. The maps in the
-	sequence are defined as follows:
-	\begin{itemize}
-		\item $i_{\star}$ is induced by the inclusion map $i: A \hookrightarrow X$.
+The exactness of this sequence is a standard result of algebraic topology, which follows from the long exact sequence of the pair \((X, A)\). The maps in this sequence are defined as follows
+\begin{itemize}
+    \item \(i_{\star}\) is induced by the inclusion map \(i: A \hookrightarrow X\).
+    \item \(j_{\star}\) is induced by the quotient map \(j: X \hookrightarrow X/A\), where each chain in \(X\) is mapped to its homology class in \(X/A\) modulo the image of chains in \(A\).
+    \item \(\partial_{d}\) is the edge mapping connecting homology groups, defined by the edge of a relative cycle in \(H_{d}(X, A)\), which by definition of a chain complex is a cycle in \(A\) in one dimension lower.
+\end{itemize}
 
-		\item $j_{\star}$ is induced by the quotient map $j: X \rightarrow X/A$,
-			where each chain in $X$ is mapped to its homology class in $X/A$ modulo
-			the image of chains in $A$.
+The exactness at each point, for example in \(H_{d}(X, A)\), implies that the image of \(j_{\star}\) of \(H_{d}(X)\) is equal to the kernel of \(\partial_{d}\). This shows that any cycle in \(H_{d}(X, A)\) that becomes trivial in \(H_{d-1}(A)\) must come from a cycle in \(X\) that is not affected by cycles in \(A\). The exactness in \(H_{d-1}(A)\) further implies that the image of \(\partial_{d}\) is exactly the core of \(i_{\star}\) that corresponds to cycles in \(A\) that are bound in \(X\) but not in \(A\) itself.
 
-		\item $\partial_{d}$ is the boundary map connecting homology groups, defined
-			by taking the boundary of a relative cycle in $H_{d}(X,A)$, which by definition
-			of a chain complex is a cycle in $A$ at one dimension lower.
-	\end{itemize}
-
-	The exactness at each position, for instance at $H_{d}(X,A)$, implies that the
-	image of $j_{\star}$ from $H_{d}(X)$ is equal to the kernel of $\partial_{d}$.
-	This shows that any cycle in $H_{d}(X,A)$ that becomes trivial in $H_{d-1}(A)$
-	must come from a cycle in $X$ that is not affected by cycles in $A$. The exactness
-	at $H_{d-1}(A)$ further implies that the image of $\partial_{d}$ is exactly the
-	kernel of $i_{\star}$, which matches cycles in $A$ that bound in $X$ but not
-	in $A$ itself.
-
-	Therefore, the exactness of the entire sequence follows from the properties of
-	the chain maps and the boundary operators defined in the chain complexes of $A$,
-	$X$, and $X/A$. The additional observation that
-	$\partial_{d}([c]) = [\partial_{d}(c)]$ for any relative cycle
-	$c \in H_{d}(X,A)$ reinforces the continuity of the exact sequence through the
-	boundary mapping, as it relates the homology in one dimension in $A$ to the relative
-	homology in $X$ and $A$.
+The exactness of the entire sequence thus results from the properties of the chain maps and the boundary operators defined in the chain complexes of \(A\), \(X\) and \(X/A\). The additional observation that \(\partial_{d}([c])) = [\partial_{d}(c)]\) for each relative cycle \(c \in H_{d}(X, A)\) extends the continuity of the exact sequence by the boundary mapping, since it connects the homology in one dimension in \(A\) with the relative homology in \(X\) and \(A\).
 \end{proof}
+
 
 \section{The Excision Theorem}
 Additionally, we refer to the Excision Theorem, a foundational result in
