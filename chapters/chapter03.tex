@@ -1,14 +1,12 @@
+\label{PersistenceTheory}
 \section{Persistent Homology}
 \label{PersistentHomology}
-The core of this chapter focuses on persistent homology and illustrates how it
-identifies multiscale topological features using filtrations of complexes upon point clouds. We discuss barcode isomorphisms and persistence modules that
-visualize and explain the stability of the detected features within a filtration to perturbations of the data. The chapter concludes with persistent chain complexes and the cohomology of these structures, which enhance our understanding of the evolution of the topology of filtrations on point clouds. We also investigate distances between persistence modules and the stability theorem to provide metrics for comparing topological features and ensure the statistical robustness of persistent homology.
+The focus of this chapter is on persistent homology and shows how it identifies multiscale topological features using filtrations of complexes on point clouds. We discuss barcode isomorphisms and persistence modules that
+visualise and explain the stability of the detected features within a filtration against perturbations of the data. The chapter concludes with persistent chain complexes and the cohomology of these structures, which improve our understanding of the evolution of the topology of filtrations on point clouds. We also explore distances between persistence modules and the stability theorem to provide metrics for comparing topological features and ensure the statistical robustness of persistent homology.
 
 \subsection{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
-Individual (co)homology groups are consistently defined with coefficients in a
-fixed field $\F$, organizing persistent (co)homology as a graded module
-over $\F[x]$. Replacing $\F$ with the ring $\mathbb{Z}$ leads to substantial issues, but most of the results still hold for principal ideal domains, as discussed in \cite[\S 3.1]{zomorodian2004computing}.
+In the following individual (co)homology groups are defined with coefficients in a fixed field $\F$ and form a graded module over $\F[x]$. Replacing the field $\F$ by the ring $\mathbb{Z}$ leads to substantial problems, but most results still hold for principal ideal domains, as discussed in \cite[\S 3.1]{zomorodian2004computing}.
 
 We investigate the persistent topology of filtered topological spaces, with a primary
 focus on the prototypical example of a filtered cell complex. This structure is

@@ -1,3 +1,4 @@
+\label{TopologicalSpaces}
 Topological persistence is deeply rooted in algebraic topology, which studies topological
 spaces and functions based on algebraic objects and their properties. An example
 of this are homotopy and homology theories, which are essential for understanding
@@ -255,7 +256,7 @@ $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
 \end{proof}
 
 \section{Simplicial Homology}
-\label{Simplicial Homology}
+\label{SimplicialHomology}
 Given a set \( V \) representing the vertices of a \( d \)-simplex
 \( \sigma^{(d)} \), we can establish an orientation for the simplex by selecting a
 specific ordering of the vertices. If the vertex ordering differs from our chosen
@@ -510,7 +511,7 @@ H^{\Delta}_{0}(K, \mathbb{Z}) = H^{\Delta}_{0}(K_1, \mathbb{Z}) \oplus H^{\Delta
 
 Since each \( K_i \) is a connected component, by Proposition \ref{decomp}, each \( H^{\Delta}_{0}(K_i, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \). Therefore, we have:
 \begin{align}
-H^{\Delta}_{0}(K, \mathbb{Z}) \cong \mathbb{Z} \oplus \mathbb{Z} \oplus \cdots \oplus \mathbb{Z} = \mathbb{Z}^{p}.
+H^{\Delta}_{0}(K, \mathbb{Z}) \cong \bigoplus_{i=1}^p \mathbb{Z} = \mathbb{Z}^{p}.
 \end{align}
 
 Thus, the zero-dimensional simplicial homology group of \( K \) over \( \mathbb{Z} \) is represented as \( \mathbb{Z}^{p} \), where \( p \) denotes the number of connected components present in \( K \).
@@ -518,8 +519,6 @@ Thus, the zero-dimensional simplicial homology group of \( K \) over \( \mathbb{
 
 \begin{example}
 \begin{itemize}
-\item[]
-
 \item The zeroth homology group of the circle is isomorphic to \(\mathbb{Z}\).
 Consider a simplicial representation of the circle using four \(1\)-simplices:
 \(\sigma_{0} = (v_{0}, v_{1})\), \(\sigma_{1} = (v_{1}, v_{2})\), \(\sigma_{2} = (v_{2}, v_{3})\), and \(\sigma_{3} = (v_{3}, v_{0})\).
@@ -597,7 +596,7 @@ when \(g = 0\). Thus, we conclude that \(H^{\Delta}_{d}(D^{d}) \cong 0\).
 \end{example}
 
 \section{Singular Homology}
-\label{Singular Homology}
+\label{SingularHomology}
 In the realm of lower dimensions, we have an intuitive idea of when two topological spaces are fundamentally 'equivalent'. To formalize and strengthen this intuition, we have developed various methods, one of which is the concept of homeomorphism. It would be highly desirable to establish a relation between the homology groups of homeomorphic spaces. Remarkably, it has been found that the homology groups of two topological spaces are isomorphic if they are homeomorphic. This fact requires verification.
 
 To accomplish this task, we need a means of comparing homology groups. However, it is not immediately obvious how we can achieve this with the tools developed so far. In fact, this turns out to be quite a difficult problem. To circumvent this difficulty, we introduce the concept of singular homology. The basic principles underlying this concept are analogous to those we have already explored.
@@ -718,6 +717,7 @@ H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}).
 These ideas will serve as valuable tools in proving the equivalence of the groups \( H_{d}^{\Delta} \) and \( H_{d} \).
 
 \begin{definition}[Chain Complex]
+\label{ChainComplex}
 A chain complex is a sequence of abelian groups \(\{C_n\}_{n \in \mathbb{Z}}\) connected by homomorphisms \(\partial_n: C_n \to C_{n-1}\) (called boundary operators), such that the composition of any two consecutive maps is zero, i.e., \(\partial_{n-1} \circ \partial_n = 0\) for all \(n\). Formally, a chain complex is:
 \begin{align}
 \cdots \xrightarrow{\partial_{n+2}} C_{n+1} \xrightarrow{\partial_{n+1}} C_n \xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots
@@ -826,8 +826,6 @@ is referred to as an exact sequence when the \( A_{i} \) are abelian groups and 
 
 \begin{remark}
 \begin{itemize}
-\item[]
-
 \item The condition \( \ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1}) \) implies that \( \mathrm{im}(\alpha_{d+1}) \) is a subset of \( \ker(\alpha_{d}) \), which is equivalent to \( \alpha_{d} \circ \alpha_{d+1} = 0 \). Therefore, an exact sequence can be seen as a chain complex.
 
 \item Since \( \ker(\alpha_{d}) \) is a subset of \( \mathrm{im}(\alpha_{d+1}) \), the homology groups of an exact sequence are trivial.
@@ -1087,7 +1085,8 @@ The exactness of the entire sequence thus results from the properties of the cha
 \end{proof}
 
 
-\section{The Excision Theorem}
+\section{Excision Theorem}
+\label{ExcisionTheorem}
 Additionally, we refer to the Excision Theorem, a foundational result in
 algebraic topology. Simply put, the Excision Theorem allows for the analysis of
 the homology of a space by effectively "excising", or removing, a smaller
@@ -1148,14 +1147,33 @@ We will need the famous five lemma to prove the Excision Theorem.
 	\]
 \end{theorem}
 
-The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). Following Hatcher's proof, it involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\} \), an open cover of \( X \), and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
+The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). Following Hatcher's proof \cite[§2.20]{hatcher2005algebraic}, it involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\}_{j \in J} \), an open cover of \( X \) and $J$ an arbitrary index set, and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
 
 \begin{proposition}
 According to \cite[\S 2.21]{hatcher2005algebraic}, the inclusion \( \iota : C^{\mathcal{U}}_n(X) \hookrightarrow C_n(X) \) is a chain homotopy equivalence. There exists a chain map \( \rho : C_n(X) \to C^{\mathcal{U}}_n(X) \) such that the compositions \( \iota \circ \rho \) and \( \rho \circ \iota \) are chain homotopic to the identity, implying that \( \iota \) induces isomorphisms \( H^{\mathcal{U}}_n(X) \cong H_n(X) \) for all \( n \).
 \end{proposition}
 
 \begin{proof}
-TBD
+To prove this lemma, we use the technique of barycentric subdivision. The proof is divided into four elementary steps, which initially are geometric and become more algebraic over time.
+
+\paragraph{1. Barycentric Subdivision of Simplices:} We recall that the points of a $d$-simplex $[v_0, \ldots, v_d]$ are given by linear combinations of the form $\sum_{i} t_i v_i$ with $\sum_i t_i = 1$ and $t_i \geq 0$ for all $i$.
+
+\begin{definition}[Barycenter]
+The barycenter of a $d$-simplex $[v_0, \ldots, v_d]$ is the point $b = \sum_i t_i v_i$, where the barycentric coordinates are given by $t_i = \frac{1}{d+1}$ for all $i$.
+\end{definition}
+
+\begin{definition}[Barycentric Subdivision]
+The barycentric subdivision of $[v_0, \ldots, v_d]$ is the decomposition into $d$ simplices $[b, w_0, \ldots, w_{d-1}]$. $[w_0, \ldots, w_{d-1}]$ is a $(d-1)$-simplex in the barycentric subdivision of a face $[v_0, \ldots, \hat{v}_i, \ldots, v_d]$.
+\end{definition}
+
+The base case for $d=0$ is the barycentric subdivision of $[v_0]$, which is simply $[v_0]$ itself. Inductively, it follows that the barycentric subdivision of $[v_0, \ldots, v_d]$ includes the barycenters of all $k$-dimensional faces $[v_{i_0}, \ldots, v_{i_k}]$ of $[v_0, \ldots, v_d]$ for $0 \leq k \leq d$. If $k=0$, we obtain the original vertices $v_i$, as the barycenter of a $0$-simplex is the $0$-simplex itself. The barycenter of $[v_{i_0}, \ldots, v_{i_k}]$ has coordinates
+\begin{align}
+    t_i = \begin{cases}
+    \frac{1}{k+1}, & \text{if } i = i_0, \ldots, i_k,\\
+    0, & \text{otherwise}.
+    \end{cases}
+\end{align}
+
 \end{proof}
 
 Finally, we can proof the Excision Theorem.
