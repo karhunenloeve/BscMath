@@ -67,12 +67,11 @@ ensuring that \( g \) is well-defined because \( \sum_{i=0}^{d-1} y_{i}^{2} \leq
 \end{proof}
 
 Furthermore, it is important to note that $\sigma^{(d)}$ represents the convex hull\index{convex
-hull}
-of the points $X = \{x_{0}, x_{1}, \ldots, x_{d}\}$, defined as the smallest convex
+hull} of the points $X = \{x_{0}, x_{1}, \ldots, x_{d}\}$, defined as the smallest convex
 subset of $\mathbb{R}^{n}$ that contains all of these points. The faces of the
 simplex $\sigma^{(d)}$, with vertex set\index{vertex set} $X$, are formed by the simplices
 corresponding to subsets of $X$. A $d$-face of a simplex consists of a subset of
-the vertices with cardinality $d+1$. The faces of a $d$-simplex with dimensions
+the vertices with cardinality $d+1$. The faces of a $d$-simplex with dimension
 less than $d$ are known as its proper faces\index{proper faces}. Two simplices
 are considered properly situated\index{properly situated} if their intersection is
 either empty or a face of both simplices. By identifying simplices along entire
@@ -143,49 +142,20 @@ realization\index{natural realization}.
 \end{proposition}
 
 \begin{proof}
-	Consider two geometric realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of
-	the abstract simplicial complex $\tilde{K}$. Each realization
-	$|\tilde{K}|_{i}$ is constructed by mapping the vertices of $\tilde{K}$ to
-	points in $\mathbb{R}^{d}$, and by identifying each simplex in $\tilde{K}$ with
-	the convex hull of its image under this mapping. By construction, each simplex
-	in $|\tilde{K}|_{i}$ corresponds homeomorphically to a standard $l$-simplex in
-	$\mathbb{R}^{d}$ for the appropriate $l$ for integers $0 \leq l \leq d$.
+	Consider two geometrical realisations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of the abstract simplicial complex $\tilde{K}$. Each realisation $|\tilde{K}|_{i}$, $i \in \{1,2\}$, is constructed by mapping the vertices of $\tilde{K}$ to points in $\mathbb{R}^{d}$, and identifying each simplex in $\tilde{K}$ with the convex hull of its image under that mapping. By construction, each simplex in $|\tilde{K}|_{i}$ corresponds homeomorphically to a standard $l$-simplex in $\mathbb{R}^{d}$ for the appropriate $l$ for integers $0 \leq l \leq d$.
 
-	To establish a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$,
-	define a map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ that acts on each vertex
-	$v$ of $\tilde{K}$ by mapping it from its image in $|\tilde{K}|_{1}$ to its
-	image in $|\tilde{K}|_{2}$. Extend $f$ linearly to each simplex in $|\tilde{K}|
-	_{1}$, where a simplex is represented as a convex combination of the images of
-	its vertices. Given the two geometric realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$
-	of $\tilde{K}$, where vertices $v_{i}$ in $|\tilde{K}|_{1}$ are mapped to points
-	$p_{i}$ in $\mathbb{R}^{d}$ and in $|\tilde{K}|_{2}$ to points $q_{i}$, the
-	map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ is defined such that for each
-	vertex $v_{i}$, corresponding to $p_{i}$ in $|\tilde{K}|_{1}$, we set
-	$f(p_{i}) = q_{i}$. This map is linearly extended across each simplex in $|\tilde
-	{K}|_{1}$.
+	To create a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$, define a map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ which acts on each vertex $v$ of $\tilde{K}$ by mapping it from its image in $|\tilde{K}|_{1}$ to its image in $|\tilde{K}|_{2}$. Extend $f$ linearly to each simplex in $|\tilde{K}|_{1}$, where a simplex is represented as a convex combination of the images of its vertices. Given the two geometric realisations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of $\tilde{K}$, where vertices $v_{i}$ in $|\tilde{K}|_{1}$ are mapped to points $p_{i}$ in $\mathbb{R}^{d}$ and in $|\tilde{K}|_{2}$ to points $q_{i}$, the map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ is defined so that for each vertex $v_{i}$ corresponding to $p_{i}$ in $|\tilde{K}|_{1}$ we set $f(p_{i}) = q_{i}$. This map is linearly extended over each simplex in $|\tilde {K}|_{1}$.
 
-	Specifically, for a point $x$ and an integer $0 \leq k \leq d$ within a simplex of $|\tilde{K}|_{1}$, expressed
-	as a convex combination $x = \sum_{j=1}^{k}\lambda_{j} p_{i_j}$,
-	where $\{v_{i_1}, v_{i_2}, \ldots, v_{i_k}\}$ denote the vertices of the simplex
-	and $\lambda_{j} \geq 0$ with $\sum_{j=1}^{k}\lambda_{j} = 1$, the function
-	$f$ is defined by $f(x) = \sum_{j=1}^{k}\lambda_{j} q_{i_j}$.
+	Specifically, for a point $x$ and an integer $0, \leq k \leq d$ within a simplex of $|\tilde{K}|_{1}$, expressed as a convex combination $x = \sum_{j=1}^{k}\lambda_{j} p_{i_j}$, where $\{v_{i_1}, v_{i_2}, \ldots, v_{i_k}\}$ denote the vertices of the simplex and $\lambda_{j} 
+	\geq 0$ with $\sum_{j=1}^{k}\lambda_{j} = 1$, the function $f$ is defined by $f(x) = \sum_{j=1}^{k}\lambda_{j} q_{i_j}$.
+
+	This ensures that $f$ is a continuous and bijective map, preserving the simplicial structure and thus establishing $f$ as a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. 
 	
-	This ensures that $f$ is a continuous and bijective map, preserving
-	the simplicial structure and thereby establishing $f$ as a homeomorphism between
-	$|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. $f$ is continuous on each simplex because it represents a linear transformation
-	on compact convex subsets in $\mathbb{R}^{d}$. Since both $|\tilde{K}|_{1}$
-	and $|\tilde{K}|_{2}$ are topologized by the quotient of their respective
-	disjoint unions of simplices under an equivalence relation that glues them
-	along common faces, and since $f$ preserves these gluing conditions, $f$ is
-	continuous globally. Each simplex and its face structure in $|\tilde{K}|_{1}$ maps
-	uniquely onto a corresponding simplex and face structure in $|\tilde{K}|_{2}$,
-	rendering $f$ bijective.
+	$f$ is continuous on each simplex because it is a linear transformation on compact convex subsets in $\mathbb{R}^{d}$. Since both $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are topologised by the quotient of their respective disjoint unions of simplices under an equivalence relation that glues them along common faces, and since $f$ preserves these gluing conditions, $f$ is globally continuous. Every simplex and its face structure in $|\tilde{K}|_{1}$ maps uniquely onto a corresponding simplex and face structure in $|\tilde{K}|_{2}$, making $f$ bijective.
 
-	Similarly, the inverse map $g: |\tilde{K}|_{2} \to |\tilde{K}|_{1}$ can be constructed
-	by reversing the roles of $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. It also
-	maintains continuity for analogous reasons to $f$.
+	Similarly, the inverse map $g: |\tilde{K}|_{2} \to |\tilde{K}|_{1}$ can be constructed by reversing the roles of $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. It also maintains continuity for analogous reasons to $f$.
 
-	Thus, $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are homeomorphic.
+	So $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are homeomorphic.
 \end{proof}
 
 Furthermore, it has been proven that any finite abstract simplicial complex of dimension
@@ -381,7 +351,7 @@ A subcomplex is a subset \( S \) of the simplices belonging to a complex \( K \)
 \end{definition}
 
 \begin{definition}
-The collection of all simplices in a complex \( K \) with dimensions less than or equal to \( d \) is referred to as the \( d \)-skeleton of \( K \).
+The collection of all simplices in a complex \( K \) with dimension less than or equal to \( d \) is referred to as the \( d \)-skeleton of \( K \).
 \end{definition}
 
 By definition, the \( d \)-skeleton forms a subcomplex.
