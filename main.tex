@@ -77,128 +77,104 @@ title=Index]
 \date{\today}
 
 \begin{document}
-	\input{titlepage}
-	\input{abstract}
-	We begin this work with a brief motivation from an applied context that inspired
-	this thesis. Much of the research in persistence theory has been driven by the
-	goal of utilizing persistent homology for data analysis. However, we restrict
-	ourselves to providing an illustrative context and then proceed strictly to
-	the theory of topological spaces. This thesis addresses the theory of topological
-	spaces (\ref{TopologicalSpaces}) and the theoretical foundations of persistence
-	theory (\ref{PersistentHomology}). We discuss chain complexes (\ref{ChainComplex})
-	and the associated simplicial homology groups (\ref{SimplicialHomology}), as well
-	as their connection to singular homology theory (\ref{SingularHomology}).
-	Additionally, we introduce classical tools of algebraic topology, such as
-	exact and short exact sequences (\ref{ExactandShortExactSequences}), and relative
-	homology groups obtained by quotienting with subspaces of a topological space (\ref{RelativeHomology}).
-	These tools are used to prove the Excision Theorem \ref{ExcisionTheorem} in
-	algebraic topology. We then use this theorem to demonstrate the equivalence of
-	simplicial and singular homology for triangulable topological spaces, i.e.,
-	those topological spaces that admit a simplicial structure (\ref{HomologicalEquivalence}).
-	This allows for the use of a more general theory of homology in the investigation
-	of topological methods through theoretical considerations.
+\input{titlepage}
+\input{abstract}
+We begin this work with a brief motivation from an applied context that was the inspiration for this work.  Much research in persistence theory has been driven by the goal of using persistent homology for data analysis. However, we will stick strictly to the theory of topological spaces, limiting ourselves to providing an illustrative context. This paper deals with the theory of topological spaces (\ref{TopologicalSpaces}) and the theoretical foundations of persistence theory (\ref{PersistentHomology}). We discuss chain complexes (\ref{ChainComplex}) and the associated simplicial homology groups (\ref{SimplicialHomology}), as well as their connection to singular homology theory (\ref{SingularHomology}). We also introduce classical tools of algebraic topology, such as exact and short exact sequences (\ref{ExactandShortExactSequences}), and relative homology groups obtained by quotient with subspaces of a topological space (\ref{RelativeHomology}). These tools are used to prove the excision theorem \ref{ExcisionTheorem} in algebraic topology. We then use this theorem to prove the equivalence of simplicial and singular homology for triangulable topological spaces, i.e. those topological spaces which admit a simplicial structure (\ref{HomologicalEquivalence}). This allows a more general theory of homology to be used in the study of topological methods through theoretical considerations.
 
-	In the chapter on homological persistence (\ref{PersistentHomology}), we consistently use these tools. We develop the theory of persistent homology, the homology of filtrations of
-	topological spaces (\ref{FiltrationsofComplexes}, \ref{PersistentHomologyonComplexes}), and the corresponding dual concept of persistent cohomology (\ref{TheFourStandardPersistenceModules}, \ref{Persistent(Co)homology}). Finally, we generalize both theories into zigzag persistence (\ref{ZigzagPersistence}). Zigzag modules allow for the treatment of maps in both directions along a filtration, making them highly useful for local applications. This work aims to provide mathematicians with a solid foundation for productively engaging with
-	the aforementioned theories. Most of the proofs have been rewritten to clarify
-	the relationships between the discussed technology. The novelty of this
-	contribution lies in the canonical presentation of persistence theory and
-	its ideas through rigorous mathematical treatment for triangulable topological
-	spaces.
-	\chapter*{Dedication}
+In the chapter on homological persistence (\ref{PersistentHomology}) we use these tools throughout. We develop the theory of persistent homology, the homology of filtrations of topological spaces (\ref{FiltrationsofComplexes}, \ref{PersistentHomologyonComplexes}), and the corresponding dual concept of persistent cohomology (\ref{TheFourStandardPersistenceModules}, \ref{Persistent(Co)homology}). Finally, we generalise both theories into zigzag persistence (\ref{ZigzagPersistence}). Zigzag modules allow the treatment of maps in both directions along a filtration, making them very useful for local applications.This work aims to provide mathematicians with a solid foundation for productive engagement with the with the above-mentioned theories.Most of the proofs have been rewritten to clarify the relationships between the the relationships between the techniques discussed. The novelty of this
+contribution lies in the canonical presentation of persistence theory and the ideas through a rigorous mathematical treatment for triangulable topological spaces. spaces.
 
-	This thesis is dedicated with deep appreciation to those closest to me, whose
-	support was indispensable in writing these pages and undertaking this journey.
+\chapter*{Dedication}
+This thesis is dedicated with deep appreciation to those closest to me, whose
+support was indispensable in writing these pages and undertaking this journey.
 
-	My academic path took me through studies in German and Italian, then to a major
-	in Information Science with a focus on Media Informatics, culminating in a
-	Master’s degree from Regensburg. A three-year doctoral stint in Computer Science
-	at Erlangen followed, after which I shifted my focus to theoretical
-	mathematics. Throughout, I grappled with whether I was truly satisfied with my
-	choices, always drawn to the underlying structures of language and computing.
-	It is with joy that I reflect on these discoveries.
+My academic path took me through studies in German and Italian, then to a major
+in Information Science with a focus on Media Informatics, culminating in a
+Master’s degree from Regensburg. A three-year doctoral stint in Computer Science
+at Erlangen followed, after which I shifted my focus to theoretical
+mathematics. Throughout, I grappled with whether I was truly satisfied with my
+choices, always drawn to the underlying structures of language and computing.
+It is with joy that I reflect on these discoveries.
 
-	I am grateful to my mother, Beata, who, despite initial reservations,
-	supported my decisions wholeheartedly once they were made.
+I am grateful to my mother, Beata, who, despite initial reservations,
+supported my decisions wholeheartedly once they were made.
 
-	A special thanks to my late father, Domenico, who taught me to value the past
-	more than the future.
+A special thanks to my late father, Domenico, who taught me to value the past
+more than the future.
 
-	Thanks also to my sister, Dominique, who never ceased to engage me in
-	discussions about physics whenever she had the chance.
+Thanks also to my sister, Dominique, who never ceased to engage me in
+discussions about physics whenever she had the chance.
 
-	To Luciana, who brought joy and laughter back into my life during challenging times.
+To Luciana, who brought joy and laughter back into my life during challenging times.
 
-	And to all those unnamed, if these words strike a chord, you have touched my life
-	in significant ways.
+And to all those unnamed, if these words strike a chord, you have touched my life
+in significant ways.
 
-	I have learned much from each of you.
+I have learned much from each of you.
 
-	\chapter*{Declaration}
+\chapter*{Declaration}
+I hereby declare that I
 
-	I hereby declare that I
+\begin{itemize}
+	\item alone wrote the submitted Bachelor's thesis without illicit or improper
+	      assistance.
+	      
+	\item did not use any materials other than those listed in the bibliography and
+	      that all passages taken from these sources in part or in full have been marked
+	      as citations and their sources cited individually in the thesis. Citations
+	      include the version (edition and year of publication), the volume and page
+	      numbers of the cited work.
+	      
+	\item have not submitted this Bachelor's thesis to another institution and that
+	      it has never been used for other purposes or to fulfill other requirements,
+	      in part or in full.
+\end{itemize}
 
-	\begin{itemize}
-		\item alone wrote the submitted Bachelor's thesis without illicit or improper
-			assistance.
+\vspace{2cm}
+\begin{tabular}{@{}p{3.5in}p{2in}p{2in}@{}}
+	\hrulefill                 &   & Erlangen, \today \\
+	Luciano Melodia M.A., B.A. &   &                  \\
+	Friedrich-Alexander University \\
+	Erlangen-Nürnberg
+\end{tabular}
 
-		\item did not use any materials other than those listed in the bibliography and
-			that all passages taken from these sources in part or in full have been marked
-			as citations and their sources cited individually in the thesis. Citations
-			include the version (edition and year of publication), the volume and page
-			numbers of the cited work.
+\chapter*{Acknowledgements}
+I extend heartfelt thanks to Prof. Dr. Catherine Meusburger, who not only teached
+me the rigors of the Bachelor's program in Mathematics but also illuminated the
+more complex concepts of Linear Algebra I and II. Her invaluable assistance
+during our early sessions, where we dissected exercise sheets in the study room,
+was crucial. I am particularly grateful for the moments she joined us after a refreshing
+cup of coffee, skillfully translating challenging problems into clear
+solutions on the blackboard with swift strokes of chalk.
 
-		\item have not submitted this Bachelor's thesis to another institution and that
-			it has never been used for other purposes or to fulfill other requirements,
-			in part or in full.
-	\end{itemize}
+My special gratitude is due to my supervisor, Prof. Dr. Kang Li. His readiness
+to engage in discussions was a beacon of motivation, especially when I was lost
+in the dense forest of scientific papers and theorems. Prof. Li's adeptness in
+distilling sprawling research into manageable segments for my bachelor's thesis
+was invaluable, and his excellent guidance has been a cornerstone of my still
+early academic journey in Mathematics.
 
-	\vspace{2cm}
-	\begin{tabular}{@{}p{3.5in}p{2in}p{2in}@{}}
-		\hrulefill                    &  & Erlangen, \today \\
-		Luciano Melodia M.A., B.A.    &  &                  \\
-		Friedrich-Alexander University \\
-		Erlangen-Nürnberg
-	\end{tabular}
+Last but not least, I owe a tremendous debt of gratitude to some my friends and colleagues - Luciana
+Diaconescu, Philipp Gäbelein, Marie-Louise Isenberg, Michael Schleich, Sarah Wiesend,
+Adrian Hieber, Moritz Lanz, Sebastian Müller, Thomas Büttner, Anton Rechenauer, Tobias Simon, Michael Preeg, Constantin Winkler and Anton Hoof. Their companionship sweetened my days, their support was unwavering, and their presence essential to my achievements. Wherever they may find themselves now, I wish them every success and hope they know I am always here for them.
 
-	\chapter*{Acknowledgements}
+\newpage
+\tableofcontents
 
-	I extend heartfelt thanks to Prof. Dr. Catherine Meusburger, who not only teached
-	me the rigors of the Bachelor's program in Mathematics but also illuminated the
-	more complex concepts of Linear Algebra I and II. Her invaluable assistance
-	during our early sessions, where we dissected exercise sheets in the study room,
-	was crucial. I am particularly grateful for the moments she joined us after a refreshing
-	cup of coffee, skillfully translating challenging problems into clear
-	solutions on the blackboard with swift strokes of chalk.
+\singlespacing
+\chapter{Motivation}
+\pagenumbering{arabic}
+\input{chapters/introduction}
 
-	My special gratitude is due to my supervisor, Prof. Dr. Kang Li. His readiness
-	to engage in discussions was a beacon of motivation, especially when I was lost
-	in the dense forest of scientific papers and theorems. Prof. Li's adeptness in
-	distilling sprawling research into manageable segments for my bachelor's thesis
-	was invaluable, and his excellent guidance has been a cornerstone of my still
-	early academic journey in Mathematics.
+\chapter{Topological Spaces and Groups}
+\input{chapters/chapter02}
 
-	Last but not least, I owe a tremendous debt of gratitude to some my friends and colleagues - Luciana
-	Diaconescu, Philipp Gäbelein, Marie-Louise Isenberg, Michael Schleich, Sarah Wiesend,
-	Adrian Hieber, Moritz Lanz, Sebastian Müller, Thomas Büttner, Anton Rechenauer, Tobias Simon, Michael Preeg, Constantin Winkler and Anton Hoof. Their companionship sweetened my days, their support was unwavering, and their presence essential to my achievements. Wherever they may find themselves now, I wish them every success and hope they know I am always here for them.
+\chapter{Homological Persistence}
+\input{chapters/chapter03}
 
-	\newpage
-	\tableofcontents
+\singlespacing
+\printbibliography
 
-	\singlespacing
-	\chapter{Motivation}
-	\pagenumbering{arabic}
-	\input{chapters/introduction}
-
-	\chapter{Topological Spaces and Groups}
-	\input{chapters/chapter02}
-
-	\chapter{Homological Persistence}
-	\input{chapters/chapter03}
-
-	\singlespacing
-	\printbibliography
-
-	\newpage
-	\printindex
+\newpage
+\printindex
 \end{document}
