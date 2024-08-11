@@ -1,40 +1,9 @@
 \label{TopologicalSpaces}
-Topological persistence is deeply rooted in algebraic topology, which studies topological
-spaces and functions based on algebraic objects and their properties. An example
-of this are homotopy and homology theories, which are essential for understanding
-the construction and connectedness of surfaces, a central aspect of data
-analysis. Persistent homology, the central tool of topological persistence, extends
-classical homology to identify features across multiple scales. Introduced by
-Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations},
-persistent homology examines multi-scale topological features through a
-filtration process - an indexed family of nested spaces that starts with the
-empty set and progressively covers the entire space under study. Each stage of filtration
-represents a snapshot of the topological space at a different resolution and captures
-the appearance and disappearance of homology groups in different dimensions that
-encode topological properties such as connected components, holes and voids.
+Topological persistence is deeply rooted in algebraic topology. This is the study of topological spaces and functions based on algebraic objects and their properties. Examples include homotopy and homology theories, which are essential for understanding the construction and connectedness of surfaces, a central aspect of data analysis. Persistent homology, the central tool of topological persistence, extends classical homology to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology examines multi-scale topological features through a filtration process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each filtration stage represents a snapshot of topological space at different resolutions, capturing the appearance and disappearance of multidimensional homology groups encoding topological properties such as connected components, holes and voids.
 
-Mathematically, the persistence of homological features is visualized with the help
-of diagrams or barcode representations. These visual aids represent the
-emergence (birth) and vanishing (death) of topological features when the filter
-parameter changes. The duration of a feature's presence, represented by the
-length of its interval in the diagram, indicates its significance, with longer
-intervals suggesting features that represent the underlying data's likely true
-characteristics rather than mere noise. The robustness of persistent homology,
-in particular its resistance to minor perturbations in the data, is captured in the
-Stability Theorem. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer
-\cite{bendich2007inferring}, states that slight variations in the input data lead
-to slight changes in the persistence barcodes. This property is crucial for
-practical applications as it guarantees that the topological summaries are both
-reliable and meaningful for the actual underlying structures.
+Mathematically, the persistence of homological features is visualised using diagrams or barcode representations.  These visual aids represent the emergence (birth) and disappearance (death) of topological features as the filter parameter changes. The duration of a feature's presence, represented by the length of its interval in the barcode, indicates its significance, with longer intervals suggesting features that represent the likely true characteristics of the underlying data rather than mere noise. The robustness of persistent homology, in particular its resistance to small perturbations in the data, is captured in the stability theorem. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer \cite{bendich2007inferring}, states that small variations in the input data lead to small changes in the persistence barcodes. This property is crucial for practical applications, as it guarantees that the topological summaries are both reliable and meaningful for the actual underlying structures.
 
-We start with basic concepts such as topological spaces and groups, which are crucial
-for understanding and encoding connectedness and other invariants. The
-discussion extends to simplicial complexes, which are essential for modeling data
-structures in topological data analysis. We explore simplicial and singular
-homology groups to accurately quantify topological features, and dwell on singular
-chain complexes and exact sequences to deepen the algebraic aspects of persistence theory. This will be useful in some of the later proofs when we discuss the algebraic
-nature of the persistence module.
-
+We start with basic concepts such as topological spaces and groups, which are crucial for understanding and encoding connectedness and other invariants. The discussion extends to simplicial complexes, which are essential for modelling data structures in topological data analysis.  We explore simplicial and singular homology groups to accurately quantify topological features, and dwell on singular chain complexes and exact sequences to deepen the algebraic aspects of persistence theory. This will be useful in some of the later proofs when we discuss the algebraic nature of the persistence module.
 
 \section{Simplicial Complexes}
 \label{Simplicial Complexes} We note that a set of points
@@ -53,7 +22,7 @@ commonly called point cloud.
 	Formally, $\sigma^{(d)}$ is
 	defined by:
 	\begin{equation}
-		\sigma^{(d)}:= \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; | \; \sum_{i=0}^{d}\lambda
+		\sigma^{(d)}:= \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; \bigg\vert \; \sum_{i=0}^{d}\lambda
 		_{i} = 1, \; \lambda_{i} \geq 0\right\}.
 	\end{equation}
 \end{definition}
@@ -71,11 +40,11 @@ a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \begin{proof}
 Define the standard \( d \)-simplex \( \sigma^{(d)} \) as
 \begin{align}
-\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1} \mid \sum_{i=0}^{d} x_{i} = 1, \, x_{i} \geq 0\right\},
+\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1} \bigg\vert \sum_{i=0}^{d} x_{i} = 1, \, x_{i} \geq 0\right\},
 \end{align}
 and the \( d \)-dimensional disk \( D^{d} \) as
 \begin{align}
-D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \mid \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}.
+D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \bigg\vert \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}.
 \end{align}
 
 We construct a homeomorphism \( f: \sigma^{(d)} \rightarrow D^{d} \) by
@@ -101,7 +70,7 @@ Furthermore, it is important to note that $\sigma^{(d)}$ represents the convex h
 hull}
 of the points $X = \{x_{0}, x_{1}, \ldots, x_{d}\}$, defined as the smallest convex
 subset of $\mathbb{R}^{n}$ that contains all of these points. The faces of the
-simplex $\sigma^{(d)}$, with vertex set $X$, are formed by the simplices
+simplex $\sigma^{(d)}$, with vertex set\index{vertex set} $X$, are formed by the simplices
 corresponding to subsets of $X$. A $d$-face of a simplex consists of a subset of
 the vertices with cardinality $d+1$. The faces of a $d$-simplex with dimensions
 less than $d$ are known as its proper faces\index{proper faces}. Two simplices
@@ -123,13 +92,10 @@ complex}.
 	\end{enumerate}
 \end{definition}
 
-The dimension of a simplicial complex $K$ is defined as the highest dimension among
-its simplices. For a simplicial complex $K$ in $\mathbb{R}^{n}$, the underlying space
-$\vert K \vert$ is the union of all the simplices in $K$. The topology of $K$ is
-determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{n}$'s
-standard topology. Notably, when the vertex set is specified, a simplicial complex
+The dimension\index{dimension} of a simplicial complex\index{simplicial complex} $K$ is defined as the highest dimension among its simplices\index{simplex}. For a simplicial complex $K$ in $\mathbb{R}^{n}$, the underlying space\index{underlying space} $\vert K \vert$ is the union of all the simplices in $K$. The topology\index{topology} of $K$ is determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{n}$'s
+standard topology. Notably, when the vertex set\index{vertex set} is specified, a simplicial complex
 in $\mathbb{R}^{n}$ can be fully characterized by listing its simplices. Thus, it
-can be described purely in terms of combinatorics using abstract simplicial complexes.
+can be described purely in terms of combinatorics\index{combinatorics} using abstract simplicial complexes\index{abstract simplicial complex}.
 
 \begin{definition}
 	[Abstract Simplicial Complex]{\cite[\S 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
