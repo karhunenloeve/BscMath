@@ -1165,28 +1165,9 @@ Thus, we conclude that the excision property holds under the given conditions, c
 
 \section{Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)}
 \label{HomologicalEquivalence}
-We aim to establish the equivalence of the homology groups $H^{\Delta}_{d}(X)$
-and $H_{d}(X)$. Note that simplicial homology groups $H^{\Delta}_{d}(X)$ are defined
-solely for simplicial complexes, whereas singular homology groups $H_{d}(X)$ can
-be computed for any topological space. This generality is advantageous, as
-homeomorphic spaces have isomorphic singular homology groups, enabling the imposition
-of a simplicial structure on any trianguliable topological space. For the scope
-of this thesis, we restrict our attention to spaces representable as simplicial complexes.
+We want to establish the equivalence of the homology groups $H^{\Delta}_{d}(X)$ and $H_{d}(X)$. Note that simplicial homology groups $H^{\Delta}_{d}(X)$ are defined only for simplicial complexes, whereas singular homology groups $H_{d}(X)$ can be computed for any topological space. This generality is advantageous, since homeomorphic spaces have isomorphic singular homology groups, allowing the introduction of a simplicial structure into any triangulible topological space. For the scope of this work, we restrict our attention to spaces representable as simplicial complexes.
 
-To demonstrate the equivalence between $H_{d}(X)$ and $H^{\Delta}_{d}(X)$, we
-establish an isomorphism between these groups for all dimensions $d$. A homomorphism
-naturally arises from the map $C^{\Delta}_{d}(X) \rightarrow C_{d}(X)$, which
-sends each $d$-simplex in $X$ to a singular simplex via the mapping
-$\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from
-$H^{\Delta}_{d}(X)$ to $H_{d}(X)$.
-
-While simplicial and singular homologies originate from similar foundational ideas
-and are particularly useful in different contexts—simplicial homology in computational
-geometry and singular homology in proving theorems involving continuous maps—their
-equivalence is a significant theoretical result. This equivalence not only
-bridges computational and conceptual approaches in algebraic topology but also
-provides a robust framework for addressing a broad spectrum of mathematical
-challenges.
+To prove the equivalence between $H_{d}(X)$ and $H^{\Delta}_{d}(X)$, we establish an isomorphism between these groups for all dimensions $d$. A homomorphism naturally follows from the map $C^{\Delta}_{d}(X) \rightarrow C_{d}(X)$, which sends every $d$-simplex in $X$ to a singular simplex via the mapping $\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from $H^{\Delta}_{d}(X)$ to $H_{d}(X)$.
 
 \begin{theorem}[Equivalence of $H_{d}^{\Delta}$(X) and $H_{d}$(X)]{\cite[p.102f]{hatcher2005algebraic}}
 	For each integer $d$, the homomorphisms from the simplicial homology group
@@ -1196,34 +1177,39 @@ challenges.
 \end{theorem}
 
 \begin{proof}
-	Consider a simplicial complex $X$. For each $k$-skeleton $X^{k}$, the inclusion
-	$X^{k-1}\subset X^{k}$ leads to the following commutative diagram of exact sequences:
-	\begin{figure}[h]
-		\adjustbox{scale=.77}{%
-		\begin{tikzcd}H^\Delta_{d+1}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d-1}(X^{k-1}) \arrow[d] \\ H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})\end{tikzcd} }
-		\caption{Commutative diagram of exact sequences for homology and relative
-		homology of a trianguliable topological space $X$.}
-	\end{figure}
+Consider a simplicial complex $X$. For each $k$-skeleton $X^{k}$, the inclusion $X^{k-1} \subset X^{k}$ leads to the following commutative diagram of exact sequences:
 
-	Given that $X^{k}/X^{k-1}$ only contains simplices of dimension $k$,
-	$C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group for
-	$d = k$, with a basis formed by the $k$-simplices of $X$.
+\begin{figure}[h]
+    \centering
+    \adjustbox{scale=.77}{
+        \begin{tikzcd}
+            H^\Delta_{d+1}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k) \arrow[d] \arrow[r] & H^\Delta_{d}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\Delta_{d-1}(X^{k-1}) \arrow[d] \\
+            H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})
+        \end{tikzcd}
+    }
+    \caption{Commutative diagram of exact sequences for homology and relative homology of a triangulable topological space $X$.}
+\end{figure}
 
-	We define a characteristic map $\Phi: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}
-	_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism
-	$\Phi\star: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow
-	X^{k}/X^{k-1}$. By the Excision Theorem \ref{excisiontheorem},
-	$H_{d}(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})) \cong H_{d}(X^{k}, X
-	^{k-1}) \cong H_{d}(X^{k}/X^{k-1})$, establishing isomorphisms for $H_{d}(X^{k}
-	, X^{k-1})$.
+$X^{k}/X^{k-1}$ contains only simplices of dimension $k$, thus, $C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group for $d = k$, with a basis formed by the $k$-simplices of $X$.
 
-	Using induction and assuming that the necessary homology isomorphisms hold for
-	dimensions less than $k$, we extend the isomorphism to all dimensions:
-	\begin{equation}
-		H_{k}^{\Delta}(X^{k},X^{k-1}) \cong H_{k}(X^{k},X^{k-1})
-	\end{equation}
-	The Five Lemma \ref{fivelemma} supports the isomorphism between $H_{k}^{\Delta}
-	(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that $H_{d}^{\Delta}
-	(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})$ is an isomorphism for all $d$,
-	verifying the equivalence of simplicial and singular homology for all $k$.
+We define a characteristic map $\Phi: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism
+\[
+\Phi_\ast: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow X^{k}/X^{k-1}.
+\]
+By the Excision Theorem, 
+\[
+H_{d}\left(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})\right) \cong H_{d}(X^{k}, X^{k-1}) \cong H_{d}(X^{k}/X^{k-1}),
+\]
+establishing isomorphisms for $H_{d}(X^{k}, X^{k-1})$.
+
+Using induction and assuming that the necessary homology isomorphisms hold for dimensions less than $k$, we extend the isomorphism to all dimensions:
+\begin{equation}
+    H_{k}^{\Delta}(X^{k},X^{k-1}) \cong H_{k}(X^{k},X^{k-1}).
+\end{equation}
+
+The Five Lemma supports the isomorphism between $H_{k}^{\Delta}(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that 
+\[
+H_{d}^{\Delta}(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})
+\]
+is an isomorphism for all $d$, verifying the equivalence of simplicial and singular homology for all $k$.
 \end{proof}
