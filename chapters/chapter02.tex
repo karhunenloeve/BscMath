@@ -1,5 +1,5 @@
 \label{TopologicalSpaces}
-Topological persistence\index{Topological persistence} is deeply rooted in algebraic topology\index{algebraic topology}. This is the study of topological spaces\index{topological spaces} and functions based on algebraic objects and their properties. Examples include homotopy\index{homotopy} and homology\index{homology} theories, which are essential for understanding the construction and connectedness\index{connectedness} of surfaces, a central aspect of data analysis. Persistent homology\index{Persistent homology}\index{homology}, the central tool of topological persistence, extends classical homology\index{homology} to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology\index{homology} examines multi-scale\index{multi-scale} topological features\index{multi-scale\index{multi-scale} topological features} through a filtration\index{filtration} process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each filtration\index{filtration} stage represents a snapshot of topological space at different resolutions, capturing the appearance and disappearance of multidimensional homology\index{homology} groups encoding topological properties such as connected components, holes and voids.
+Topological persistence is deeply rooted in algebraic topology\index{algebraic topology}. This is the study of topological spaces\index{topological spaces} and functions based on algebraic objects and their properties. Examples include homotopy\index{homotopy} and homology\index{homology} theories, which are essential for understanding the construction and connectedness\index{connectedness} of surfaces, a central aspect of data analysis. Persistent homology\index{homology}, the central tool of topological persistence, extends classical homology\index{homology} to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology\index{homology} examines multi-scale\index{multi-scale} topological features\index{multi-scale\index{multi-scale} topological features} through a filtration\index{filtration} process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each filtration\index{filtration} stage represents a snapshot of topological space at different resolutions, capturing the appearance and disappearance of multidimensional homology\index{homology} groups encoding topological properties such as connected components, holes and voids.
 
 Mathematically, the persistence of homological features is visualised using diagrams or barcode representations.  These visual aids represent the emergence (birth) and disappearance (death) of topological features as the filter parameter changes. The duration of a feature's presence, represented by the length of its interval in the barcode, indicates its significance, with longer intervals suggesting features that represent the likely true characteristics of the underlying data rather than mere noise. The robustness of persistent homology\index{homology}, in particular its resistance to small perturbations in the data, is captured in the stability theorem. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer \cite{bendich2007inferring}, states that small variations in the input data lead to small changes in the persistence barcodes. This property is crucial for practical applications, as it guarantees that the topological summaries are both reliable and meaningful for the actual underlying structures.
 
@@ -643,9 +643,9 @@ where \( Z_{1}(S^{1}) \) is the group of \( 1 \)-cycles and \( B_{1}(S^{1}) \) i
 
 \subsection{Singular Chain Complexes}
 \label{SingularChainComplexes}
-To establish the equivalence between the groups \( H_{d}^{\Delta} \) and \( H_{d} \), we will introduce some concepts that will aid us in our proof.
+In order to demonstrate the equivalence of \( H_{d}^{\Delta} \) and \( H_{d} \), we will introduce a few concepts that will assist us in our proof.
 
-Since the maps \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex always has a path-connected image in \( X \). Thus, we can express \( C_{d}(X) \) as the direct sum of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \), where each subgroup corresponds to a distinct path-component of \( X \). This decomposition is preserved by the boundary map \( \partial \), which is a homomorphism. Thus, both \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also split, leading to the conclusion that \( H_{d}(X) \) is isomorphic to
+Since \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex has a path-connected image in \( X \). Thus, we can express \( C_{d}(X) \) as the direct sum of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \), where each subgroup corresponds to a distinct path-component of \( X \). This decomposition is preserved by the boundary map \( \partial \), which is a homomorphism. Thus, both \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also split, leading to the conclusion that \( H_{d}(X) \) is isomorphic to
 \begin{align}
 H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}).
 \end{align}
@@ -675,7 +675,7 @@ where \(\partial_{n-1} \circ \partial_n = 0\).
 	^{(B)})$ is a collection of maps $f_{d}: A_{d} \rightarrow B_{d}$ such that for
 	each $d$, the following condition holds:
 	\begin{equation}
-		\partial^{(B)}_{d-1}\circ f_{d} = f_{d-1}\circ \partial^{(A)}_{d}.
+		\partial^{(B)}_{d}\circ f_{d} = f_{d-1}\circ \partial^{(A)}_{d}.
 	\end{equation}
 \end{definition}
 
@@ -698,7 +698,7 @@ where \(\partial_{n-1} \circ \partial_n = 0\).
 \begin{proof}
 Given a chain map \( f \) between two chain complexes \( (A, \partial^{(A)}) \) and \( (B, \partial^{(B)}) \), we want to show that \( f \) induces a homomorphism \( f_{\star}: H_{d}(A) \rightarrow H_{d}(B) \).
 
-By definition of a chain map, we have \( f \circ \partial^{(A)} = \partial^{(B)} \circ f \). Let \([c] \in Z_{d}(A)\) be a cycle in \( A \), i.e., \( \partial^{(A)}_{d}(c) = 0 \). Applying \( f \) to this equation, we obtain:
+By definition of a chain map, we have \( f_{d-1} \circ \partial^{(A)}_d = \partial^{(B)}_d \circ f_d \). Let \([c] \in Z_{d}(A)\) be a cycle in \( A \), i.e., \( \partial^{(A)}_{d}(c) = 0 \). Applying \( f \) to this equation, we obtain:
 \begin{align}
 f_{d-1}(\partial^{(A)}_{d}(c)) = \partial^{(B)}_{d}(f_{d}(c)).
 \end{align}
@@ -729,15 +729,13 @@ Since \( f_{d}(c_{1}) \) and \( f_{d}(c_{2}) \) are cycles in \( B \), we have:
 [f_{d}(c_{1} + c_{2})] = [f_{d}(c_{1})] + [f_{d}(c_{2})].
 \end{align}
 Therefore, \( f_{\star}([c_{1}] + [c_{2}]) = f_{\star}([c_{1}]) + f_{\star}([c_{2}]) \).
-
-Thus, we have shown that the chain map \( f \) induces a homomorphism \( f_{\star}: H_{d}(A) \rightarrow H_{d}(B) \).
 \end{proof}
 
 \subsection{Exact and Short Exact Sequences}
 \label{ExactandShortExactSequences}
 We can apply Theorem \ref{chainmaps} to the case of singular homology. Consider two topological spaces \( X \) and \( Y \). For any map \( f: X \rightarrow Y \), we can define an induced homomorphism \( f_{\star}: C_{d}(X) \rightarrow C_{d}(Y) \) by composing singular \( d \)-simplices \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow X \) with \( f \). Specifically, we have
 \begin{align}
-f_{\star} \circ \tilde{\sigma}^{(d)} = f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y.
+f_{\star} \circ \tilde{\sigma}^{(d)} := f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y.
 \end{align}
 
 We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \( C_{d}(X) \). This gives us the following commutative diagram:
@@ -777,12 +775,12 @@ is referred to as an exact sequence when the \( A_{i} \) are abelian groups and 
 		\item $A \xrightarrow{a}B \rightarrow 0$ is exact $\Longleftrightarrow$ $\mathrm{im}
 			(a) = B$, or $a$ is surjective.
 
-		\item $0 \xrightarrow{}A \xrightarrow{a}B \xrightarrow 0$ is exact if and only
+		\item $0 \xrightarrow{}A \xrightarrow{a}B \rightarrow 0$ is exact if and only
 			if $a$ is an isomorphism.
 
 		\item A sequence of the form
 			\begin{equation}
-				0 \xrightarrow{}A \xrightarrow{a}B \xrightarrow{}0
+				0 \xrightarrow{}A \xrightarrow{a}B \xrightarrow{b}0
 			\end{equation}
 			is said to be exact if and only if the following conditions hold:
 			\begin{itemize}
@@ -795,14 +793,9 @@ is referred to as an exact sequence when the \( A_{i} \) are abelian groups and 
 				\item The kernel of $b$ is equal to the image of $a$, i.e.,
 					$\ker(b) = \mathrm{im}(a)$.
 
-				\item In this case, the map $b$ induces an isomorphism
-					$C \cong B/\mathrm{im}(a)$, where $C$ is the quotient of $B$ by the image
-					of $a$.
+				\item If $a: A \hookrightarrow B$ is an inclusion, then $B/\mathrm{im}(a) \cong B/A$.
 			\end{itemize}
-			If the map $a: A \hookrightarrow B$ is an inclusion, then $C \cong B/A$,
-			where $B/A$ denotes the quotient of $B$ by the subgroup $A$. This type of exact
-			sequence is commonly referred to as a short exact sequence\index{short
-			exact sequence}.
+			These exact sequences are called short exact sequences\index{short exact sequence}.
 	\end{enumerate}
 \end{proposition}
 
@@ -820,9 +813,9 @@ is referred to as an exact sequence when the \( A_{i} \) are abelian groups and 
 
     Conversely, suppose \(a\) is an isomorphism, meaning \(a\) is both injective (no kernel) and surjective (maps onto \(B\)). Thus, \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact, satisfying \(\mathrm{im}(0) = \ker(a)\) and \(\mathrm{im}(a) = \ker(0)\).
 
-    \item Assume the sequence \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact. \(a\) is injective, and \(\mathrm{im}(a) = \ker(b)\) where \(b\) maps \(B\) to 0. As \(b\) is the zero map and surjective, \( B/\mathrm{im}(a) = 0 \), implying \( B = \mathrm{im}(a) \). Therefore, \(a\) is an isomorphism, establishing \( B \cong A \).
+    \item Assume the sequence \( 0 \rightarrow A \xrightarrow{a} B \xrightarrow{b} 0 \) is exact. \(a\) is injective, and \(\mathrm{im}(a) = \ker(b)\). As \(b\) is the zero map and surjective, \( B/\mathrm{im}(a) = 0 \), implying \( B = \mathrm{im}(a) \). Therefore, \(a\) is an isomorphism, thus \( B \cong A \).
 
-    Conversely, if \(a\) is an isomorphism, \(\ker(a) = 0\) and \(\mathrm{im}(a) = B\). Therefore, the sequence \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact by definition.
+    Conversely, if \(a\) is an isomorphism, \(\ker(a) = 0\) and \(\mathrm{im}(a) = B\).
 \end{enumerate}
 \end{proof}
 
@@ -882,9 +875,9 @@ with the connecting homomorphism \(\delta\).
 \end{lemma}
 
 \begin{proof}
-Consider \( x'' \in \ker(a'') \subseteq A'' \). Since \( f \) is surjective, there exists \( x \in A \) such that \( f(x) = x'' \). We have \( a''(x'') = 0 \), hence \( a''(f(x)) = 0 \). By commutativity, \( g(a(x)) = 0 \), so \( a(x) \in \ker(g) = \operatorname{im}(g') \). Thus, there exists \( y' \in B' \) such that \( g'(y') = a(x) \). Set \( \delta(x'') = \operatorname{cl}(y') \in \operatorname{coker}(a') \).
+Consider \( x'' \in \ker(a'') \subseteq A'' \). Since \( f \) is surjective, there exists \( x \in A \) such that \( f(x) = x'' \). We have \( a''(x'') = 0 \), hence \( a''(f(x)) = 0 \). By commutativity, \( g(a(x)) = 0 \), so \( a(x) \in \ker(g) = \operatorname{im}(g') \). Thus, there exists \( y' \in B' \) such that \( g'(y') = a(x) \).
 
-If \( x'' = f(x_1'') \), choose \( x \) such that \( f(x) = x'' \), then \( a(x) = g'(y_1') \) and \( \delta(x'') = \operatorname{cl}(y_1') \). If \( x = x_2 + f(x_1) \), then \( a(x) = a(x_2) + a(f(x_1)) \), with \( g(a(x_1)) = 0 \) and \( a(f(x_1)) \in \operatorname{im}(g') \), so \( \delta \) is independent of the choice of \( x \). Linear maps remain linear under \( \delta \).
+Set \( \delta(x'') = \operatorname{cl}(y') \in \operatorname{coker}(a') \). If \( x'' = f(x_1'') \), choose \( x \) such that \( f(x) = x'' \), then \( a(x) = g'(y_1') \) and \( \delta(x'') = \operatorname{cl}(y_1') \). If \( x = x_2 + f(x_1) \), then \( a(x) = a(x_2) + a(f(x_1)) \), with \( g(a(x_1)) = 0 \) and \( a(f(x_1)) \in \operatorname{im}(g') \), so \( \delta \) is independent of the choice of \( x \). Linear maps remain linear under \( \delta \).
 
 Suppose \( y'' \in \ker(\delta) \). This means \( y'' \in \ker(a'') \) and \( \delta(y'') = 0 \). There exists \( x \in A \) such that \( f(x) = y'' \) and \( a(x) = g'(z') \) for some \( z' \in B' \). Since \( \delta(y'') = \operatorname{cl}(z') = 0 \), we have \( z' \in \operatorname{im}(a') \), so \( z' = a'(w') \) for some \( w' \in A' \). Hence, \( a(x) = g'(a'(w')) = a(g(w')) \), so \( x - g(w') \in \ker(a) \). Therefore, \( y'' = f(x) = f(x - g(w')) \in \operatorname{im}(f) \), showing that \( \ker(\delta) = \operatorname{im}(\ker(a) \rightarrow \ker(a'')) \).
 
