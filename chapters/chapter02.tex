@@ -690,7 +690,7 @@ where \(\partial_{n-1} \circ \partial_n = 0\).
 			& A_{d-1} \arrow[r, "\partial^{(A)}_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\
 			\cdots \arrow[r, "\partial^{(B)}_{d+2}"] & B_{d+1} \arrow[r, "\partial^{(B)}_{d+1}"]
 			& B_d \arrow[r, "\partial^{(B)}_d"] & B_{d-1} \arrow[r, "\partial^{(B)}_{d-1}"]
-			& \cdots
+			& \cdots.
 		\end{tikzcd}
 	\end{equation}
 \end{theorem}
@@ -742,7 +742,7 @@ We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \
 \begin{equation}
 \begin{tikzcd}
 \cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d, "f_{d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_d"] & C_{d-1}(X) \arrow[r, "\partial_{d-1}"] \arrow[d, "f_{d-1}"] & \cdots \\ 
-\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r, "\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots
+\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r, "\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots.
 \end{tikzcd}
 \end{equation}
 
@@ -825,7 +825,7 @@ The concept we will now discuss is that of relative homology groups. Let \( X \)
 
 Since the boundary operator \( \partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X) \) also maps \( C_{d}(A) \) to \( C_{d-1}(A) \), a natural boundary map on the quotient group \( \partial_{d}: C_{d}(X, A) \rightarrow C_{d-1}(X, A) \) is obtained. This gives rise to the following sequence:
 \begin{align}
-\cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots
+\cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots.
 \end{align}
 This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A) \) as the homology groups of this chain complex.
 
@@ -863,7 +863,7 @@ Consider the following commutative diagram with exact rows:
 \begin{equation}
 \begin{tikzcd}
 0 \arrow[r] & A' \arrow[r, "f'"] \arrow[d, "a'"] & A \arrow[r, "f"] \arrow[d, "a"] & A'' \arrow[r] \arrow[d, "a''"] & 0 \\
-0 \arrow[r] & B' \arrow[r, "g'"] & B \arrow[r, "g"] & B'' \arrow[r] & 0
+0 \arrow[r] & B' \arrow[r, "g'"] & B \arrow[r, "g"] & B'' \arrow[r] & 0.
 \end{tikzcd}
 \end{equation}
 There exists an exact sequence:
@@ -1016,16 +1016,9 @@ The exactness of the entire sequence thus results from the properties of the cha
 
 \section{Excision Theorem}
 \label{ExcisionTheorem}
-Additionally, we refer to the Excision Theorem, a foundational result in
-algebraic topology. Simply put, the Excision Theorem allows for the analysis of
-the homology of a space by effectively "excising", or removing, a smaller
-subspace, under specific topological conditions. These conditions usually
-involve the smaller subspace being "negligible" in a certain sense, such as being
-contained in the interior of another subspace. Essentially, this theorem guarantees
-that, given these conditions, the homology of the original space is preserved when
-compared to the homology of the space with the smaller subspace removed.
+In addition, we refer to the Excision Theorem, a fundamental result in algebraic topology. Simply put, the Excision Theorem allows one to analyse the homology of a space by effectively 'excising' or removing a smaller subspace under certain topological conditions. These conditions usually involve the smaller subspace being 'negligible' in some sense, such as being contained within another subspace. Essentially, this theorem guarantees that, given these conditions, the homology of the original space is preserved compared to the homology of the space with the smaller subspace removed.
 
-We will need the famous five lemma to prove the Excision Theorem.
+To prove the Excision Theorem, we will need the famous Five Lemma.
 
 \begin{lemma}[The Five Lemma]{\cite[p.120]{hatcher2005algebraic}}
 	\label{fivelemma} Consider a commutative diagram with exact rows:
@@ -1034,7 +1027,7 @@ We will need the famous five lemma to prove the Excision Theorem.
 			A \arrow[r, "i"] \arrow[d, "\alpha"] & B \arrow[r, "j"] \arrow[d, "\beta"]
 			& C \arrow[r, "k"] \arrow[d, "\gamma"] & D \arrow[r, "l"] \arrow[d, "\delta"]
 			& E \arrow[d, "\epsilon"] \\ A' \arrow[r, "i'"] & B' \arrow[r, "j'"] & C'
-			\arrow[r, "k'"] & D' \arrow[r, "l'"] & E'
+			\arrow[r, "k'"] & D' \arrow[r, "l'"] & E'.
 		\end{tikzcd}
 	\end{equation}
 	If $\alpha, \beta, \delta, \epsilon$ are isomorphisms, then $\gamma$ is also an
@@ -1060,8 +1053,6 @@ We will need the famous five lemma to prove the Excision Theorem.
 			$b = i(a)$ for some $a \in A$, giving $c = j(i(a)) = 0$. Therefore, $\gamma$
 			has a trivial kernel and is injective.
 	\end{itemize}
-
-	Thus, $\gamma$ is both surjective and injective, proving it is an isomorphism.
 \end{proof}
 
 \begin{theorem}[Excision Theorem]
@@ -1076,14 +1067,14 @@ We will need the famous five lemma to prove the Excision Theorem.
 	\]
 \end{theorem}
 
-The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). Following Hatcher's proof \cite[§2.20]{hatcher2005algebraic}, it involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\}_{j \in J} \), an open cover of \( X \) and $J$ an arbitrary index set, and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
+The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). The proof involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\}_{j \in J} \), an open cover of \( X \) and $J$ an arbitrary index set, and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
 
 \begin{proposition}
 According to \cite[\S 2.21]{hatcher2005algebraic}, the inclusion \( \iota : C^{\mathcal{U}}_n(X) \hookrightarrow C_n(X) \) is a chain homotopy equivalence. There exists a chain map \( \rho : C_n(X) \to C^{\mathcal{U}}_n(X) \) such that the compositions \( \iota \circ \rho \) and \( \rho \circ \iota \) are chain homotopic to the identity, implying that \( \iota \) induces isomorphisms \( H^{\mathcal{U}}_n(X) \cong H_n(X) \) for all \( n \).
 \end{proposition}
 
 \begin{proof}
-To prove this lemma, we use the technique of barycentric subdivision following \cite[§2.21]{hatcher2005algebraic}. The proof is divided into four elementary steps, which initially are geometric and become more algebraic over time.
+We follow Hatcher's proof \cite[\S 2.21]{hatcher2005algebraic}. The proof is divided into four elementary steps, which initially are geometric and become more algebraic over time.
 
 \paragraph{1. Barycentric Subdivision of Simplices:} We recall that the points of a $d$-simplex $[v_0, \ldots, v_d]$ are given by linear combinations of the form $\sum_{i} t_i v_i$ with $\sum_i t_i = 1$ and $t_i \geq 0$ for all $i$.
 
