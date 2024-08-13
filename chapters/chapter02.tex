@@ -1057,14 +1057,14 @@ To prove the Excision Theorem, we will need the famous Five Lemma.
 
 \begin{theorem}[Excision Theorem]
 	{\cite[\S 2.20]{hatcher2005algebraic} \label{excisiontheorem} Given subspaces $Z \subset A \subset X$ such that $\overline{Z}\subseteq \operatorname{int}(A)$, the inclusion $(X\setminus Z, A\setminus Z) \hookrightarrow (X, A)$ induces isomorphisms in homology}:
-	\[
+	\begin{align}
 		H_{n}(X\setminus Z, A\setminus Z) \to H_{n}(X, A) \quad \text{for all }n.
-	\]
+	\end{align}
 	Equivalently, for subspaces $A, B \subset X$ whose interiors cover $X$, the
 	inclusion $(B, A \cap B) \hookrightarrow (X, A)$ induces isomorphisms:
-	\[
+	\begin{align}
 		H_{n}(B, A \cap B) \to H_{n}(X, A) \quad \text{for all }n.
-	\]
+	\end{align}
 \end{theorem}
 
 The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X \setminus B \), thereby \( A \cap B = A \setminus Z \). The condition \( \overline{Z} \subseteq \operatorname{int}(A) \) translates to \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \). The proof involves barycentric subdivision, which aids in the computation of homology groups using small singular simplices. In metric spaces, 'smallness' is determined by the diameters of simplices, while in general topological spaces, it is defined by their containment within elements of a cover \( \mathcal{U} \). Define \( \mathcal{U} = \{U_{j}\}_{j \in J} \), an open cover of \( X \) and $J$ an arbitrary index set, and let \( C^{\mathcal{U}}_{n}(X) \) be the subgroup of \( C_{n}(X) \) consisting of chains\index{chains} \( \sum_{i} n_{i} \sigma_{i} \) with each \( \sigma_{i} \) contained within one of the \( U_{j} \). The boundary\index{boundary} operator \( \partial: C_{n}(X) \to C_{n-1}(X) \) preserves this containment, forming a chain complex \( C^{\mathcal{U}}_{n}(X) \to C^{\mathcal{U}}_{n-1}(X) \). The homology groups of this complex are denoted by \( H^{\mathcal{U}}_{n}(X) \).
@@ -1095,19 +1095,21 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	The \(n\)-simplices thus form the structure of a simplicial complex.
 		
-	The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_n]\). The distance between these two points satisfies the inequality
-	\begin{align*}
+	The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_n]\).
+
+	The distance between these two points satisfies the inequality
+	\begin{align}
 		\left\lvert v - \sum_i t_i v_i \right\rvert & = \left\lvert \sum_i t_i(v - v_i) \right\rvert          \\
 		                                            & \leq \sum_i t_i \left\lvert v - v_i \right\rvert        \\
 		                                            & \leq \sum_i t_i \max_i \left\lvert v - v_i \right\rvert \\
 		                                            & = \max_i \left\lvert v - v_i \right\rvert.              
-	\end{align*}
+	\end{align}
 	This inequality holds due to the convex combination of the vertices and the properties of the norm. Therefore, the distance between any point within the simplex and any of its vertices is bounded above by the maximum distance between the vertices of the simplex.
 		
 	Let \(b_i\) denote the barycenter of the face \([v_0, \ldots, \hat{v_i}, \ldots, v_n]\), where the barycentric coordinates are equal to \(\frac{1}{n}\) for each vertex except for \(v_i\), which has \(t_i = 0\). It follows that \(b = \frac{1}{n+1} v_i + \frac{n}{n+1} b_i\). The sum of the coefficients is 1, so \(b\) lies on the line segment \([v_i, b_i]\), and the distance from \(b\) to \(v_i\) is \(\frac{n}{n+1}\) times the length of \([v_i, b_i]\). Therefore, the distance from \(b\) to \(v_i\) is bounded by \(\frac{n}{n+1}\) times the diameter of \([v_0, \ldots, v_n]\). This bound is independent of the shape of the simplex. If two points \(w_j\) and \(w_k\) in a simplex are not the barycenter, then these points lie on a proper face of \([v_0, \ldots, v_n]\). Thus, the same bound applies inductively to all \(0\)-simplices. For the repeated \(r\)-fold barycentric subdivision, we obtain
-	\[
+	\begin{align}
 		\left(\frac{n}{n+1}\right)^r \xrightarrow[]{r \rightarrow \infty} 0,
-	\]
+	\end{align}
 	which implies that the barycentric subdivision can be made with an arbitrarily small diameter.
 		
 	\paragraph{2. Barycentric Subdivision of Linear Chains \cite[\S 2.21 (2)]{hatcher2005algebraic}:} We construct now the subdivision operator $S: C_n(X) \rightarrow C_n(X)$ and show, that it is chain homotopic to the identity map.
@@ -1115,37 +1117,29 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	For a convex set \(Y\) in Euclidean space, the linear maps \(\lambda: \Delta^n \rightarrow Y\) generate a subgroup of \(C_n(Y)\), which we denote by \(LC_n(Y)\), the so-called linear chains\index{chains}. The boundary\index{boundary} operator \(\partial: C_n(Y) \rightarrow C_{n-1}(Y)\) maps \(LC_n(Y)\) to \(LC_{n-1}(Y)\), hence the linear chains\index{chains} form a subcomplex of the singular chain complex of \(Y\). We define the unique map \(\lambda: \Delta^n \rightarrow Y\) by \([w_0, \ldots, w_n]\), where \(w_i\) is the image of the \(i\)-th vertex of \(\Delta^n\) under \(\lambda\). To avoid the constant case distinction regarding the \(0\)-simplices, we complete the complex \(LC(Y)\) by defining \(LC_{-1}(Y) = \mathbb{Z}\), generated by the equivalence class of the empty simplex \([\emptyset]\), with \(\partial[w_0] = [\emptyset]\) for all \(0\)-simplices \([w_0]\).
 		
 	Let us now go into more detail. Consider the \(n\)-simplex \(\Delta^n\), defined as the convex hull of its vertices \(\{v_0, \ldots, v_n\}\) in Euclidean space. A linear map \(\lambda: \Delta^n \rightarrow Y\) is determined by the images of the vertices \(v_i\), and thus \(\lambda\) is entirely defined by the points \(w_i = \lambda(v_i)\) in \(Y\). The image \(\lambda(\Delta^n)\) is a linear simplex in \(Y\), and the subgroup \(LC_n(Y)\) consists of formal sums of such linear simplices. The boundary\index{boundary} of a linear simplex \([w_0, \ldots, w_n]\) is given by the alternating sum
-	\[
+	\begin{align}
 		\partial[w_0, \ldots, w_n] = \sum_{i=0}^n (-1)^i [w_0, \ldots, \hat{w_i}, \ldots, w_n],
-	\]
+	\end{align}
 	where \(\hat{w_i}\) denotes the omission of the vertex \(w_i\). Since each face of a linear simplex is itself a linear simplex, \(\partial\) maps \(LC_n(Y)\) into \(LC_{n-1}(Y)\), ensuring that \(LC_\bullet(Y)\) is a subcomplex of the singular chain complex \(C_\bullet(Y)\).
 		
-	Finally, to extend the chain complex to include negative degrees, we define the group \(LC_{-1}(Y)\) to be the integers \(\mathbb{Z}\), generated by the empty simplex \([\emptyset]\). The boundary\index{boundary} of any \(0\)-simplex \([w_0]\) is defined to be the empty simplex, i.e.,
-	\[
-		\partial[w_0] = [\emptyset],
-	\]
-	for all \(0\)-simplices \([w_0]\). This extension allows us to treat the boundary\index{boundary} operator uniformly across all dimensions, including the trivial case where the simplex has no vertices.
+	Finally, to extend the chain complex to include negative degrees, we define the group \(LC_{-1}(Y)\) to be the integers \(\mathbb{Z}\), generated by the empty simplex \([\emptyset]\). The boundary\index{boundary} of any \(0\)-simplex \([w_0]\) is defined to be the empty simplex, i.e., $\partial[w_0] = [\emptyset]$, for all \(0\)-simplices \([w_0]\). This extension allows us to treat the boundary\index{boundary} operator uniformly across all dimensions, including the trivial case where the simplex has no vertices.
 		
-	Each point \(b \in Y\) defines a homomorphism \(b: LC_n(Y) \rightarrow LC_{n+1}(Y)\) on the basis elements, given by 
-	\[
-		b([w_0, \ldots, w_n]) \mapsto [b, w_0, \ldots, w_n].
-	\]
-	Now, applying the boundary\index{boundary} operator \(\partial\) to \(b(\alpha)\), we obtain
-	\[
+	Each point \(b \in Y\) defines a homomorphism \(b: LC_n(Y) \rightarrow LC_{n+1}(Y)\) on the basis elements, given by $b([w_0, \ldots, w_n]) \mapsto [b, w_0, \ldots, w_n]$. Now, applying the boundary\index{boundary} operator \(\partial\) to \(b(\alpha)\), we obtain
+	\begin{align}
 		\partial b([w_0, \ldots, w_n]) = [w_0, \ldots, w_n] - b(\partial [w_0, \ldots, w_n]).
-	\]
+	\end{align}
 	Due to linearity, it follows that 
-	\[
+	\begin{align}
 		\partial b(\alpha) = \alpha - b(\partial \alpha) \quad \text{for any } \alpha \in LC_n(Y).
-	\]
+	\end{align}
 	This shows the equivalence of the equations \(\partial b(\alpha) = \alpha - b(\partial \alpha)\) and \(\partial b + b \partial = \text{id}\), meaning that \(b\) is a chain homotopy between the identity map and the zero map of the completed complex \(LC(Y)\).
 	
 	As a consequence, the subdivision homomorphism $S: LC_n(Y) \rightarrow LC_n(Y)$ can be defined inductively over $n$. Now let $\Delta^n$ be a generator of $LC_n(Y)$, and let $b_\lambda$ be the image of the barycentre of $\Delta^n$ under $\lambda$. We define the value of $S(\lambda)$ as $b_\lambda(S\partial\lambda)$, such that $b_\lambda: LC_{n-1}(Y) \rightarrow LC_n(Y)$. 
 	
 	The beginning of the induction shows that $S([\emptyset]) = [\emptyset]$ applies, so that $S$ is the identity on $LC_{-1}(Y)$. Consequently, this mapping is also the identity on $LC_0(Y)$, as the following applies for $n=0$: 
-	\[
+	\begin{align}
 		S([w_0]) = w_0(S(\partial[w_0])) = w_0(S([\emptyset])) = w_0([\emptyset]) = w_0.
-	\]
+	\end{align}
 	Provided that $\lambda$ is an embedding with $\text{ran}(\lambda) = [w_0, \ldots, w_n]$, $S(\lambda)$ can be defined as the sum of the $n$-simplices in the barycentric subdivision of $[w_0, \ldots, w_n]$. Since $S = \mathbb{I}$ applies to $LC_0(Y)$ and $LC_{-1}(Y)$, it follows for all further $n \in \mathbb{N}$ that
 	\begin{align}
 		\partial S\lambda & = \partial b_\lambda(S\partial\lambda),                                                                                                                    \\
@@ -1165,14 +1159,10 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		}
 	\end{equation}
 	
-	We define $T$ on $LC_n(Y)$ inductively by setting $T=0$ for $n=-1$ and $T\lambda = b_\lambda(\lambda-T\partial\lambda)$ for $n \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\Delta^n \times \mathbb{I}$ obtained by the union of all simplices in $\Delta^n \times \{0\} \cup \partial \Delta^n \times \mathbb{I}$ to the barycentre of $\Delta^n \times \{1\}$. The chain homotopy formula is 
-	\[
-		\partial T + T\partial = \mathbb{I} - S.
-	\]
-	This is trivial for $LC_{-1}(Y)$, where $T=0$ and $S=\mathbb{I}$. We prove the formula for $LC_n(Y)$ for all $n \geq 0$ by the following calculation:
+	We define $T$ on $LC_n(Y)$ inductively by setting $T=0$ for $n=-1$ and $T\lambda = b_\lambda(\lambda-T\partial\lambda)$ for $n \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\Delta^n \times \mathbb{I}$ obtained by the union of all simplices in $\Delta^n \times \{0\} \cup \partial \Delta^n \times \mathbb{I}$ to the barycentre of $\Delta^n \times \{1\}$. The chain homotopy formula is $\partial T + T\partial = \mathbb{I} - S$. This is trivial for $LC_{-1}(Y)$, where $T=0$ and $S=\mathbb{I}$. The formula for $LC_n(Y)$ for all $n \geq 0$ is given by:
 	\begin{align}
 		\partial T\lambda & = \partial b_\lambda(\lambda - T\partial\lambda),                                         \\
-		                  & = \lambda - T\partial\lambda - b_\lambda\partial(\lambda - T\partial\lambda               \\
+		                  & = \lambda - T\partial\lambda - b_\lambda\partial(\lambda - T\partial\lambda)               \\
 		                  & = \lambda - T\partial\lambda - b_\lambda[\partial\lambda - \partial T(\partial\lambda)]   \\
 		                  & = \lambda - T\partial\lambda - b_\lambda[S(\partial\lambda) + T\partial(\partial\lambda)] \\
 		                  & = \lambda - T\partial\lambda - S\lambda.                                                  
@@ -1185,10 +1175,9 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	
 	We will now prove that \( S \) is a chain map, i.e., that \( S \) commutes with the boundary operator\index{operator}, \( S\partial = \partial S \). For a singular \( n \)-simplex\index{simplex} \( \sigma \), we compute:
 	\begin{align}
-		\partial S\sigma & = \partial (\sigma_\sharp S\Delta^n) = \sigma_\sharp \partial (S\Delta^n),                  \\
-		                 & = \sigma_\sharp S(\partial \Delta^n) = \sigma_\sharp S\left(\sum_i (-1)^i \Delta^n_i\right) \\
-		                 & = \sum_i (-1)^i \sigma_\sharp S(\Delta^n_i) = \sum_i (-1)^i S(\sigma \vert \Delta^n_i)      \\
-		                 & = S\left(\sum_i (-1)^i \sigma \vert \Delta^n_i\right) = S(\partial \sigma).                 
+		\partial S\sigma & = \partial (\sigma_\sharp S\Delta^n) = \sigma_\sharp \partial (S\Delta^n) = \sigma_\sharp S(\partial \Delta^n) \\
+						 & = \sigma_\sharp S\left(\sum_i (-1)^i \Delta^n_i\right)  = \sum_i (-1)^i \sigma_\sharp S(\Delta^n_i) \\ 
+						 &= \sum_i (-1)^i S(\sigma \vert \Delta^n_i) = S\left(\sum_i (-1)^i \sigma \vert \Delta^n_i\right) = S(\partial \sigma).                 
 	\end{align}
 	Next, define the operator\index{operator} \( T \) on \( C_n(X) \) by \( T\sigma = \sigma_\sharp T\Delta^n \), where \( \sigma_\sharp \) denotes the pullback by \( T\Delta^n \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T\partial + \partial T = \mathbb{I} - S \). The verification is as follows:
 	\begin{align}
@@ -1231,11 +1220,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	where the last equality follows from \( \partial D_{m(\sigma)} + D_{m(\sigma)} \partial = \mathbb{I} - S_{m(\sigma)} \).
 	
-	The term \( S_{m(\sigma)}(\sigma) \) lies in \( C_n^{\mathcal{U}}(X) \) by the definition of \( m(\sigma) \). The remaining terms, \( D_{m(\sigma)}(\partial \sigma) - D(\partial \sigma) \), are linear combinations of terms of the form \( D_{m(\sigma)}(\sigma_j) - D_{m(\sigma_j)}(\sigma_j) \), where \( \sigma_j \) denotes the restriction of \( \sigma \) to a face of \( \Delta^n \). Since \( m(\sigma_j) \leq m(\sigma) \), the difference \( D_{m(\sigma)}(\sigma_j) - D_{m(\sigma_j)}(\sigma_j) \) consists of terms \( T S^i(\sigma_j) \) with \( i \geq m(\sigma_j) \). These terms lie in \( C_n^{\mathcal{U}}(X) \) because the operator\index{operator} \( T \) maps \( C_{n-1}^{\mathcal{U}}(X) \) into \( C_n^{\mathcal{U}}(X) \). Viewing \( \rho \) as a chain map from \( C_n(X) \) to \( C_n^{\mathcal{U}}(X) \), the equation
-	\[
-		\partial D + D \partial = \mathbb{I} - \iota \rho
-	\]
-	holds, where \( \iota : C_n^{\mathcal{U}}(X) \hookrightarrow C_n(X) \) is the inclusion map. Moreover, \( \rho \iota = \mathbb{I} \) since \( D \) is identically zero on \( C_n^{\mathcal{U}}(X) \). This follows because \( m(\sigma) = 0 \) for any \( \sigma \in C_n^{\mathcal{U}}(X) \), implying that the sum defining \( D\sigma \) is empty. Consequently, \( \rho \) is a chain homotopy inverse to \( \iota \).
+	The term \( S_{m(\sigma)}(\sigma) \) lies in \( C_n^{\mathcal{U}}(X) \) by the definition of \( m(\sigma) \). The remaining terms, \( D_{m(\sigma)}(\partial \sigma) - D(\partial \sigma) \), are linear combinations of terms of the form \( D_{m(\sigma)}(\sigma_j) - D_{m(\sigma_j)}(\sigma_j) \), where \( \sigma_j \) denotes the restriction of \( \sigma \) to a face of \( \Delta^n \). Since \( m(\sigma_j) \leq m(\sigma) \), the difference \( D_{m(\sigma)}(\sigma_j) - D_{m(\sigma_j)}(\sigma_j) \) consists of terms \( T S^i(\sigma_j) \) with \( i \geq m(\sigma_j) \). These terms lie in \( C_n^{\mathcal{U}}(X) \) because the operator\index{operator} \( T \) maps \( C_{n-1}^{\mathcal{U}}(X) \) into \( C_n^{\mathcal{U}}(X) \). Viewing \( \rho \) as a chain map from \( C_n(X) \) to \( C_n^{\mathcal{U}}(X) \), the equation $\partial D + D \partial = \mathbb{I} - \iota \rho$ holds, where \( \iota : C_n^{\mathcal{U}}(X) \hookrightarrow C_n(X) \) is the inclusion map. Moreover, \( \rho \iota = \mathbb{I} \) since \( D \) is identically zero on \( C_n^{\mathcal{U}}(X) \). This follows because \( m(\sigma) = 0 \) for any \( \sigma \in C_n^{\mathcal{U}}(X) \), implying that the sum defining \( D\sigma \) is empty. Consequently, \( \rho \) is a chain homotopy inverse to \( \iota \).
 \end{proof}
 
 We may now prove the Excision Theorem, which states that for a space \( X = A \cup B \), the inclusion map induces an isomorphism \( H_n(B, A \cap B) \cong H_n(X, A) \).
