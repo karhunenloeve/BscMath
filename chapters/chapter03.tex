@@ -2,7 +2,7 @@
 The focus of this chapter is on persistent homology and shows how it identifies multiscale topological features using filtrations of complexes on point clouds. We discuss barcode isomorphisms and persistence modules that
 visualise and explain the stability of the detected features within a filtration against perturbations of the data. The chapter concludes with persistent chain complexes and the cohomology of these structures, which improve our understanding of the evolution of the topology of filtrations on point clouds. We also explore distances between persistence modules and the stability theorem to provide metrics for comparing topological features and ensure the statistical robustness of persistent homology.
 
-\subsection{Filtrations of Complexes}
+\section{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
 In the following individual (co)homology groups are defined with coefficients in a fixed field $\F$ and form a graded module over $\F[x]$. Replacing the field $\F$ by the ring $\mathbb{Z}$ leads to substantial problems, but most results still hold for principal ideal domains, as discussed in \cite[\S 3.1]{zomorodian2004computing}.
 
@@ -52,14 +52,45 @@ We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
 	In this sequence, the cell $\sigma_{1}$ symbolizes the initial point. The set $S_{2}$ incorporates two distinct points. In $S_{3}$, a path connecting $\sigma_{1}$ and $\sigma_{2}$ is introduced. $S_{4}$ augments this path with its reverse — from $\sigma_{2}$ to $\sigma_{1}$ — clearly distinguishing it from $\sigma_{3}$. Finally, $S_{5}$ and $S_{6}$ progressively differentiate between cells that represent the upper and lower halves of the sphere, respectively.
 \end{example}
 
-\subsection{Persistence Modules}
+\section{Persistence Modules}
 \label{PersistenceModules}
+The persistent homology is obtained by applying the homology functor to a filtration of a topological space. This section will examine the concept of persistent modules, which serve to describe persistent homology from a mathematical perspective. Similarly, as filtrations describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology vector spaces or modules, the dimension or rank of the associated homomorphisms is the Betti number, which indicates the number of $k$-dimensional holes of a topological space in the intuitive sense.
 
-\subsubsection{Interval-Decomposable Modules}
-\label{Interval-DecomposableModules}
+\begin{definition}[Persistence Module]{\cite[\S 1.1]{chazal2016structure}}
+A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
+\begin{align}
+\phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r \leq s,
+\end{align}
+such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{V_r}$ for all $r \leq s \leq t$.
+\end{definition}
 
-\subsubsection{Interval-Indecomposable Modules}
-\label{Interval-IndecomposableModules}
+We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules. Persistence modules have a decomposition into interval modules, which cannot be further decomposed. Therefore, an interval modulus is a persistence module that cannot be decomposed.
+
+Let $\F$ be a field and $\text{Vect}_\F$ the category of finite dimensional vector spaces over $\F$. The real numbers are a partially ordered category $(\R, \leq)$. In the following we consider the real persistence module.
+
+\begin{definition}[Persistence module]{\cite[\S 1.3]{chazal2016structure}}
+A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, so that the diagram commutes:
+\begin{equation}
+\begin{tikzcd}
+V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
+V_t. \arrow[ru, "{\phi_{t}^{s}}" description]                                      &    
+\end{tikzcd}
+\end{equation}
+A morphism of persistence modules is a natural transformation. This can be written as $f_r: V_r \rightarrow V'_r$, which is compatible with the mappings $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules.
+\end{definition}
+
+The category of persistence modules is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, vector spaces over other fields. It is also possible to consider persistence modules over cochain complexes in place of vector spaces. In the following section, we will make a number of simplifying assumptions:
+
+\begin{itemize}
+	\item[a)] For all $r \in \R\backslash S$, where $S$ is a finite subset, there exists a neighbourhood $U_r$ of $r$ such that the map $\phi_u^{u'}$ is an isomorphism for all $u \leq u'$ in $U_r$.
+	\item[b)] $V_u = 0$ for $u$ sufficiently small.
+	\item[c)] For all $t \in \R$ and for all $s \leq t$ with $t-s$ sufficiently small, the mapping $\phi_s^t$ is an isomorphism.
+\end{itemize}
+
+The conditions a) and b) are referred to as finite type conditions. Condition a) implies that there is a finite number of 'jumps', while we have that $V_u = V_\infty$ for $u$ large enough. Condition c) is called semi-continuity and can be visualised by the following indecomposable interval modules:
+
+\subsubsection{Normal Form}
+\label{normalform}
 
 \subsection{Persistent Homology on Complexes}
 \label{PersistentHomologyonComplexes}
