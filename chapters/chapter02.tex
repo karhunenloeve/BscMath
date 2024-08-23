@@ -366,11 +366,11 @@ By definition, the \( d \)-skeleton forms a subcomplex.
 \begin{proof}
 	Suppose \( K \) is path-connected. Assume for contradiction that \( K \) can be expressed as the disjoint union of two non-empty subcomplexes \( L \) and \( M \). Since \( K \) is path-connected, there exists a path of \( 1 \)-simplices between any two vertices in \( K \). Let \( l \in L \) and \( m \in M \) be any two vertices. By path-connectedness\index{connectedness}, there is a path from \( l \) to \( m \), which contradicts the assumption that \( L \) and \( M \) are disjoint. Therefore, \( K \) is connected.
 			
-	Suppose \( K \) is connected. Pick any vertex \( v \in K \). Let \( L \) denote the subcomplex of \( K \) containing all vertices reachable from \( v \) via paths of \( 1 \)-simplices. If \( L \neq K \), then \( L \) and \( K \setminus L \) form a disjoint union of two non-empty subcomplexes, contradicting the connectedness\index{connectedness} of \( K \). Hence, \( L = K \), and \( K \) is path-connected.
+	Suppose \( K \) is connected. Pick any vertex \( v \in K \). Let \( L \) denote the subcomplex of \( K \) containing all vertices reachable from \( v \) via paths of \( 1 \)-simplices. If \( L \neq K \), then \( L \) and \( K \setminus L \) form a disjoint union of two non-empty subcomplexes, contradicting the connectedness\index{connectedness} of \( K \). Hence, \( L = K \).
 \end{proof}
 
 \begin{theorem}{\cite[p.105ff]{hatcher2005algebraic}}
-	Let \( K_{1}, \ldots, K_{p} \) be the collection of all connected components of a complex \( K \). Furthermore, let \( H^{\Delta}_{d_i} \) represent the \( d \)-th simplicial homology\index{homology} group of \( K_{i} \), and \( H^{\Delta}_{d} \) denote the \( d \)-th simplicial homology\index{homology} group of \( K \). In this context, we can establish that \( H^{\Delta}_{d} \) is isomorphic to the direct sum \( H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p} \).
+	Let \( K_{1}, \ldots, K_{p} \) be the collection of all connected components of a complex \( K \). Furthermore, let \( H^{\Delta}_{d_i} \) represent the \( d \)-th simplicial homology\index{homology} group of \( K_{i} \), and \( H^{\Delta}_{d} \) denote the \( d \)-th simplicial homology\index{homology} group of \( K \). Then, \( H^{\Delta}_{d} \) is isomorphic to the direct sum \( H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p} \).
 \end{theorem}
 
 \begin{proof}
@@ -438,7 +438,7 @@ By definition, the \( d \)-skeleton forms a subcomplex.
 \begin{proof}
 	From Proposition \ref{decomp}, we know that if \( K \) is a connected complex, then the zeroth simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \).
 			
-	Now, consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) can be expressed as the direct sum\index{direct sum} of the $0$-dimensional homology\index{homology} groups of its connected components\index{connected components}:
+	Consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) can be expressed as the direct sum\index{direct sum} of the $0$-dimensional homology\index{homology} groups of its connected components\index{connected components}:
 	\begin{align}
 		H^{\Delta}_{0}(K, \mathbb{Z}) = H^{\Delta}_{0}(K_1, \mathbb{Z}) \oplus H^{\Delta}_{0}(K_2, \mathbb{Z}) \oplus \cdots \oplus H^{\Delta}_{0}(K_p, \mathbb{Z}). 
 	\end{align}
@@ -447,8 +447,6 @@ By definition, the \( d \)-skeleton forms a subcomplex.
 	\begin{align}
 		H^{\Delta}_{0}(K, \mathbb{Z}) \cong \bigoplus_{i=1}^p \mathbb{Z} = \mathbb{Z}^{p}. 
 	\end{align}
-			
-	Thus, the $0$-dimensional simplicial\index{simplicial} homology\index{homology} group of \( K \) over \( \mathbb{Z} \) is represented as \( \mathbb{Z}^{p} \), where \( p \) denotes the number of connected components\index{connected components} present in \( K \).
 \end{proof}
 
 \begin{example}
