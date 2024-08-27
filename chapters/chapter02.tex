@@ -1181,20 +1181,20 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		
 	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial T + T\partial = \mathbb{I} - S$ still holds since $T$ is zero for $LC_{-1}(Y)$.
 		
-	3. Barycentric Subdivision of General Chains \cite[\S 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_n(X) \). Define the operator\index{operator} \( S: C_n(X) \to C_n(X) \) by \( S\sigma = \sigma_\star S\sigma^{(n)} \), where \( \sigma: \sigma^{(n)} \to X \) is a singular \( n \)-simplex\index{simplex}, and \( S\sigma^{(n)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( n \)-simplex\index{simplex} \( \sigma^{(n)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(n)} \) is a signed sum of the \( n \)-simplices that make up the subdivision of \( \sigma^{(n)} \).
+	3. Barycentric Subdivision of General Chains \cite[\S 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_n(X) \). Define the operator\index{operator} \( S: C_n(X) \to C_n(X) \) by \( S\tilde{\sigma}^{(n)} = \sigma_\star S\sigma^{(n)} \), where \( \tilde{\sigma}^{(n)}: \sigma^{(n)} \to X \) is a singular \( n \)-simplex\index{simplex}, and \( S\sigma^{(n)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( n \)-simplex\index{simplex} \( \sigma^{(n)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(n)} \) is a signed sum of the \( n \)-simplices that make up the subdivision of \( \sigma^{(n)} \).
 		
-	We will now prove that \( S \) is a chain map, i.e., that \( S \) commutes with the boundary operator\index{operator}, \( S\partial = \partial S \). For a singular \( n \)-simplex\index{simplex} \( \sigma \), we compute:
+	We will now prove that \( S \) is a chain map, i.e., that \( S \) commutes with the boundary operator\index{operator}, \( S\partial = \partial S \):
 	\begin{align}
-		\partial S\sigma & = \partial (\sigma_\star S\sigma^{(n)}) = \sigma_\star \partial (S\sigma^{(n)}) = \sigma_\star S(\partial \sigma^{(n)})        \\
+		\partial S\tilde{\sigma}^{(n)} & = \partial (\sigma_\star S\sigma^{(n)}) = \sigma_\star \partial (S\sigma^{(n)}) = \sigma_\star S(\partial \sigma^{(n)})        \\
 		                 & = \sigma_\star S\left(\sum_i (-1)^i \sigma^{(n)}_i\right)  = \sum_i (-1)^i \sigma_\star S(\sigma^{(n)}_i)                      \\ 
-		                 & = \sum_i (-1)^i S(\sigma \vert \sigma^{(n)}_i) = S\left(\sum_i (-1)^i \sigma \vert \sigma^{(n)}_i\right) = S(\partial \sigma). 
+		                 & = \sum_i (-1)^i S(\tilde{\sigma}^{(n)} \vert \sigma^{(n)}_i) = S\left(\sum_i (-1)^i \tilde{\sigma}^{(n)} \vert \sigma^{(n)}_i\right) = S(\partial \tilde{\sigma}^{(n)}). 
 	\end{align}
-	Next, define the operator\index{operator} \( T \) on \( C_n(X) \) by \( T\sigma = \sigma_\star T\sigma^{(n)} \), where \( \sigma_\star \) denotes the pullback by \( T\sigma^{(n)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T\partial + \partial T = \mathbb{I} - S \). The verification is as follows:
+	Next, define the operator\index{operator} \( T \) on \( C_n(X) \) by \( T\tilde{\sigma}^{(n)} = \sigma_\star T\sigma^{(n)} \), where \( \sigma_\star \) denotes the pullback by \( T\sigma^{(n)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T\partial + \partial T = \mathbb{I} - S \). The verification is as follows:
 	\begin{align}
-		\partial T\sigma & = \partial (\sigma_\star T\sigma^{(n)}) = \sigma_\star (\partial T\sigma^{(n)}) \\
+		\partial T\tilde{\sigma}^{(n)} & = \partial (\sigma_\star T\sigma^{(n)}) = \sigma_\star (\partial T\sigma^{(n)}) \\
 		                 & = \sigma_\star (\sigma^{(n)} - S\sigma^{(n)} - T\partial \sigma^{(n)})          \\
-		                 & = \sigma - S\sigma - \sigma_\star T\partial \sigma^{(n)}                        \\
-		                 & = \sigma - S\sigma - T(\partial \sigma).                                        
+		                 & = \tilde{\sigma}^{(n)} - S\tilde{\sigma}^{(n)} - \sigma_\star T\partial \sigma^{(n)}                        \\
+		                 & = \tilde{\sigma}^{(n)} - S\tilde{\sigma}^{(n)} - T(\partial \tilde{\sigma}^{(n)}).                                        
 	\end{align}
 		
 	4. Iterated Barycentric Subdivision \cite[\S 2.21 (4)]{hatcher2005algebraic}: A chain homotopy between the identity map \( \mathbb{I} \) and the iterate \( S^m \) is given by the operator\index{operator} $D_m = \sum_{0 \leq i < m} T S^i$. The following calculation verifies this:
