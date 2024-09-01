@@ -81,34 +81,23 @@ Here, the indexing set is \(\{1, 2, \ldots, n\}\). Additionally, associated real
 We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
 
 \begin{example}
-	\label{filteredsphere} The chosen illustrative example involves a cellular filtration
-	of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex
-	and introduces an ordering among the cells to facilitate differentiation between
-	them. The development of the filtration can be articulated as follows
-	\cite[\S 2.2]{de2011dualities}:
-
+	\label{filteredsphere}
+	The following illustrative example is a cellular filtration of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. The development of the filtration can be expressed as follows, as proposed by \cite[\S 2.2]{de2011dualities}:
 	\begin{itemize}
 		\item[$\mathcal{S}^{2}:$] $\emptyset$
-
 		\item[$\subset$] $S_{1} = \{\sigma_{1}\}$
-
 		\item[$\subset$] $S_{2} = \{\sigma_{1}, \sigma_{2}\}$
-
 		\item[$\subset$] $S_{3} = \{\sigma_{1}, \sigma_{2}, \sigma_{3} := (\sigma_{1}, \sigma_{2})\}$
-
 		\item[$\subset$] $S_{4} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4} := (\sigma_{2}, \sigma_{1})\}$
-
 		\item[$\subset$] $S_{5} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4}, \sigma_{5} := (\sigma_{3}, \sigma_{4})\}$
-
 		\item[$\subset$] $S_{6} = \{\sigma_{1}, \sigma_{2}, \sigma_{3}, \sigma_{4}, \sigma_{5}, \sigma_{6} := (\sigma_{4}, \sigma_{3})\}.$
 	\end{itemize}
-
-	In this sequence, the cell $\sigma_{1}$ symbolizes the initial point. The set $S_{2}$ incorporates two distinct points. In $S_{3}$, a path connecting $\sigma_{1}$ and $\sigma_{2}$ is introduced. $S_{4}$ augments this path with its reverse — from $\sigma_{2}$ to $\sigma_{1}$ — clearly distinguishing it from $\sigma_{3}$. Finally, $S_{5}$ and $S_{6}$ progressively differentiate between cells that represent the upper and lower halves of the sphere, respectively.
+	In this sequence, the cell $\sigma_{1}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}$ and $\sigma_{2}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}$ to $\sigma_{1}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 \end{example}
 
 \section{Persistence Modules}
 \label{PersistenceModules}
-The persistent homology is obtained by applying the homology functor to a filtration of a topological space. This section will examine the concept of persistent modules, which serve to describe persistent homology from a mathematical perspective. Similarly, as filtrations describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology vector spaces or modules, the dimension or rank of the associated homomorphisms is the Betti number, which indicates the number of $k$-dimensional holes of a topological space in the intuitive sense.
+Persistent homology is derived by applying the homology functor to a filtration of a topological space. This section will examine the concept of persistent modules, which serve to describe persistent homology from an algebraic perspective. Similarly, as filtrations describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology vector spaces or modules, the dimension or rank of the associated homomorphisms is the Betti number, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
 
 \begin{definition}[Persistence Module]{\cite[\S 1.1]{chazal2016structure}}
 A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
