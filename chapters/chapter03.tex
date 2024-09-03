@@ -701,46 +701,10 @@ TBD
 	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
 \end{remark}
 
-In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a filtration of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes \( C(X_i) \) over \( \mathbb{F} \).
-
-\begin{corollary}
-$H(C, \partial) \; \widehat{=} \; \text{persistent absolute homology of } X$.
-\end{corollary}
-
-\begin{proof}
-The persistence module \( \mathcal{C} \) is the direct sum of chain complexes:
-\[
-\mathcal{C} = \bigoplus_{i} C(X_i) = \bigoplus_{i} C_i,
-\]
-where each \( C_i \) is a graded \( \F[t] \)-module corresponding to the \( i \)-th filtration level. The boundary map \( \partial: C \to C \) acts as a graded module homomorphism and is given by the boundary maps \( \partial_i: C_i \to C_{i-1} \) that respect the inclusions \( X_i \subseteq X_{i+1} \). The absolute homology of the chain complex \( (\mathcal{C}, \partial) \) is defined by the homology groups $H_n(\mathcal{C}, \partial) = \ker(\partial_n) / \operatorname{im}(\partial_{n+1})$.
-
-Persistent absolute homology tracks the evolution of homology classes in \( H_n(X_i) \) across the filtration: $H_n(X_i) = \ker(\partial^i_n) / \operatorname{im}(\partial^i_{n+1})$, where \( \partial^i \) denotes the boundary map restricted to the subcomplex \( X_i \).
-
-Since \( \mathcal{C} \) is the direct sum of chain complexes \( C(X_i) \) for all filtration levels \( i \), we immediately get $H_n(\mathcal{C}, \partial) = \bigoplus_{i} H_n(X_i)$.
-\end{proof}
-
-\begin{corollary}
-$H(\mathcal{C}^\flat, \delta) \; \widehat{=} \; \text{persistent absolute cohomology of } X$.
-\end{corollary}
-
-\begin{proof}
-The dual persistence module \( \mathcal{C}^\flat \) is the direct sum
-\[
-\mathcal{C}^\flat = \bigoplus_{i} \operatorname{Hom}_k(C(X_i), k) = \bigoplus_{i} C_i^\flat,
-\]
-where each \( C_i^\flat = \operatorname{Hom}_k(C_i, k) \) is the dual space of the chain group \( C_i \) associated with the \( i \)-th filtration level. The induced coboundary map \( \delta: \mathcal{C}^\flat \to \mathcal{C}^\flat \) is 
-\[
-\delta(f)(c) = f(\partial(c)), \quad \text{for all } f \in C^\flat, \, c \in C.
-\]
-This makes \( \delta \) a graded module homomorphism acting on the dual complexes.
-
-The cohomology of the dual chain complex \( (\mathcal{C}^\flat, \delta) \) is given by the cohomology groups $H^n(\mathcal{C}^\flat, \delta) = \ker(\delta_n) / \operatorname{im}(\delta_{n-1})$.
-
-Persistent absolute cohomology tracks the evolution of cohomology classes in \( H^n(X_i) \) across the filtration $H^n(X_i) = \ker(\delta^i) / \operatorname{im}(\delta^{i-1})$, where \( \delta^i \) denotes the coboundary map restricted to the subcomplex \( X_i \).
-
-Since \( \mathcal{C}^\flat \) is the direct sum of cochain complexes \( \operatorname{Hom}_k(C_i, k) \) for all filtration levels \( i \), we obtain $H^n(\mathcal{C}^\flat, \delta) = \bigoplus_{i} H^n(X_i)$.
-\end{proof}
-
+In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a filtration of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $n$ generators $\sigma_1, \ldots, \sigma_n$, where $\sigma_i$ has degree $i$. The boundary operator $\partial: \mathcal{C} \rightarrow \mathcal{C}$ is a homomorphism of graded modules. We define the pointwise dual as the dual to the ground field $\F$ as
+\begin{align}
+r
+\end{align}
 
 
 \subsection{Cohomology of Chain Complexes}
