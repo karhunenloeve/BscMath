@@ -1,20 +1,15 @@
 \label{PersistentHomology}
 This chapter aims to provide an introduction to persistent homology, demonstrating how it can be used to identify multiscale topological features through the application of filtrations to complex data sets represented as point clouds. It discusses barcode isomorphisms and persistence modules that visualise and explain the stability of the detected features within a filtration against perturbations of the data. 
-The stability theorem will not be discussed in this thesis \cite{chazal2016structure}, as it falls outside the scope of the subject under examination. The chapter concludes with a discussion of persistent chain complexes and the cohomology of these structures, which contribute to a deeper understanding of the evolution of the topology of filtrations on point clouds. We conclude with a generalisation of persistent homology and cohomology into zigzag persistence, which provides the ideal framework for the working mathematician.
+The stability theorem will not be discussed in this thesis \cite{chazal2016structure}, as it falls outside the scope of the subject under examination. The chapter concludes with a discussion of persistent chain complexes and the cohomology of these structures, which contribute to a deeper understanding of the evolution of the topology of filtrations on point clouds.
 
 \section{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
-The following individual (co)homology groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$.
+The following individual (co)homology groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[\S 3.1]{zomorodian2004computing}.
 
-Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, as discussed in \cite[\S 3.1]{zomorodian2004computing}.
-
-The first step is to define the cell complex, whereupon it is proven that every simplicial complex is a cell complex. This represents a generalisation of the given situation.
+The first step is to define the cell complex. It is proven that every simplicial complex is a cell complex. This represents a generalisation of the given situation.
 
 \begin{definition}[\(n\)-cell]
-An \(n\)-cell is a topological space that is homeomorphic to the open \(n\)-dimensional ball
-\begin{align}
-\mathbb{B}^n = \{ x \in \mathbb{R}^n \; \vert \; \|x\| < 1 \}.
-\end{align}
+An \(n\)-cell is a topological space that is homeomorphic to the open \(n\)-dimensional ball $\mathbb{B}^n = \{ x \in \mathbb{R}^n \; \vert \; \|x\| < 1 \}$.
 \end{definition}
 
 \begin{example}\noindent
@@ -41,19 +36,22 @@ such that:
     where each \(e^n_\alpha \cong \mathbb{B}^n\) and \(e^n_\alpha \cap X^{n-1} = \varphi_\alpha(S^{n-1})\).
     \item The topology on \(X\) is the weak topology with respect to the cells \(\{e^n_\alpha\}\).
 \end{enumerate}
+\end{definition}
+
+\begin{remark}
 A cell complex satisfies the following conditions:
 \begin{itemize}
-    \item Closure-finite: The closure \(\overline{e^n_\alpha}\) intersects only finitely many cells \(e^m_\beta\) for \(m \leq n\).
-    \item Weak topology: A set \(A \subseteq X\) is closed if and only if \(A \cap X^n\) is closed in \(X^n\) for all \(n\).
+    \item The closure \(\overline{e^n_\alpha}\) intersects only finitely many cells \(e^m_\beta\) for \(m \leq n\).
+    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^n\) is closed in \(X^n\) for all \(n\).
 \end{itemize}
-\end{definition}
+\end{remark}
 
 \begin{proposition}
 A simplicial complex is a cell complex.
 \end{proposition}
 
 \begin{proof}
-Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by defining a filtration
+Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 \begin{align}
 K^0 \subseteq K^1 \subseteq K^2 \subseteq \cdots \subseteq K = \bigcup_{n=0}^{\infty} K^n,
 \end{align}
@@ -61,22 +59,10 @@ where \(K^n\) is the \(n\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of
 
 To form \(K^n\), we attach each \(n\)-simplex \(\sigma^n \in K\) to \(K^{n-1}\) via a map \(\varphi_\sigma : \partial \sigma^n \to K^{n-1}\), where \(\partial \sigma^n\) is the boundary of \(\sigma^n\). Each \(\sigma^n\) is homeomorphic to an open \(n\)-ball \(\mathbb{B}^n\), and \(\partial \sigma^n\) is homeomorphic to the \((n-1)\)-sphere \(S^{n-1}\).
 
-The topology on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology with respect to the simplices, thereby satisfying the topology condition of a cell complex.
-
-The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices.
+The topology on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology with respect to the simplices, thereby satisfying the topology condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices.
 \end{proof}
 
-We investigate the persistent topology of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex. This structure is defined by a sequence \(\mathcal{X}\) of cell complexes:
-\begin{equation}
-	\mathcal{X}: \emptyset \subset X_{1} \subset X_{2} \subset \cdots \subset X_{n} = X_{\infty},
-\end{equation}
-where \(X_{1}\) starts with a single vertex \(\sigma_{1}\), and each subsequent complex \(X_{i}\) is constructed by adding a single cell to the previous complex:
-
-\begin{equation}
-	X_{i} := X_{i-1} \cup \sigma_{i}.
-\end{equation}
-
-Here, the indexing set is \(\{1, 2, \ldots, n\}\). Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{n}\). This formulation clearly delineates the stepwise enlargement of the complex, illustrating the dynamic evolution of its topology as new cells are incrementally incorporated.
+We investigate the persistent topology of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{1} \subset X_{2} \subset \cdots \subset X_{n} = X_{\infty}$, where \(X_{1}\) starts with a single vertex \(\sigma_{1}\), and each subsequent complex \(X_{i}\) is constructed by adding a single cell to the previous complex	$X_{i} := X_{i-1} \cup \sigma_{i}$. Here, the indexing set is \(\{1, 2, \ldots, n\}\). Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{n}\).
 
 We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
 
@@ -97,40 +83,47 @@ We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
 
 \section{Persistence Modules}
 \label{PersistenceModules}
-Persistent homology is derived by applying the homology functor to a filtration of a topological space. This section will examine the concept of persistent modules, which serve to describe persistent homology from an algebraic perspective. Similarly, as filtrations describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology vector spaces or modules, the dimension or rank of the associated homomorphisms is the Betti number, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
+Persistent homology is derived by applying the homology functor to a filtration of a topological space. This section will examine the concept of persistent modules, which serve to describe persistent homology from an algebraic perspective. Similarly, as filtrations describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology vector spaces or modules, the dimension or rank of the associated homomorphisms are the $k$th Betti numbers, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
 
 \begin{definition}[Persistence Module]{\cite[\S 1.1]{chazal2016structure}}
 A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
 \begin{align}
-\phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r \leq s,
+\phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r,s \in I: r \leq s,
 \end{align}
 such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{V_r}$ for all $r \leq s \leq t$.
 \end{definition}
 
-We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules. Persistence modules have a decomposition into interval modules, which cannot be further decomposed. Therefore, an interval module is a persistence module that cannot be decomposed.
+We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules. Persistence modules have a decomposition into interval modules, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable.
 
-Let $\F$ be a field and $\text{Vect}_\F$ the category of finite dimensional vector spaces over $\F$. The real numbers are a partially ordered category $(\R, \leq)$. In the following we consider the real persistence module.
+Let $\text{Vect}_\F$ the category of finite dimensional vector spaces over $\F$. The real numbers are a partially ordered category $(\R, \leq)$. Let's consider the real persistence module.
 
-\begin{definition}[Persistence module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the diagram commutes:
+\begin{definition}[Persistence Module]{\cite[\S 1.3]{chazal2016structure}}
+A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the diagram commutes:
 \begin{equation}
 \begin{tikzcd}
 V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
 V_t. \arrow[ru, "{\phi_{t}^{s}}" description]                                      &    
 \end{tikzcd}
 \end{equation}
-A morphism of persistence modules is a natural transformation. This can be written as $f_r: V_r \rightarrow V'_r$, which is compatible with the mappings $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules.
 \end{definition}
 
-The category of persistence modules is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, vector spaces over other fields. It is also possible to consider persistence modules over cochain complexes in place of vector spaces. In the following section, we will make a number of simplifying assumptions:
+\begin{remark}
+A morphism of persistence modules is a natural transformation. This can be written as $f_r: V_r \rightarrow V'_r$, which is compatible with the mappings $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules.
+\end{remark}
 
-\begin{itemize}
-	\item[a)] For all $r \in \R\backslash S$, where $S$ is a finite subset, there exists a neighbourhood $U_r$ of $r$ such that the map $\phi_u^{u'}$ is an isomorphism for all $u \leq u'$ in $U_r$.
-	\item[b)] $V_u = 0$ for $u$ sufficiently small.
-	\item[c)] For all $t \in \R$ and for all $s \leq t$ with $t-s$ sufficiently small, the mapping $\phi_s^t$ is an isomorphism.
-\end{itemize}
+The category of persistence modules is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, (in)finite dimensional vector spaces over other fields. It is also possible to consider persistence modules over cochain complexes in place of vector spaces.
 
-The conditions a) and b) are referred to as finite type conditions. Condition a) implies that there is a finite number of 'jumps', while we have that $V_u = V_\infty$ for $u$ large enough. Condition c) is called semi-continuity and can be visualised by the following indecomposable interval modules:
+In the following, we will make a number of simplifying assumptions:
+
+\begin{assume}\noindent
+\begin{enumerate}
+	\item For all $r \in \R\backslash S$, where $S$ is a finite subset, there exists a neighbourhood $U_r$ of $r$ such that the map $\phi_u^{u'}$ is an isomorphism for all $u \leq u'$ in $U_r$.
+	\item $V_u = 0$ for $u$ sufficiently small.
+	\item For all $t \in \R$ and for all $s \leq t$ with $t-s$ sufficiently small, the mapping $\phi_s^t$ is an isomorphism.
+\end{enumerate}
+\end{assume}
+
+The assumptions 1, 2 are referred to as finite type conditions. Assumption 1 implies that there is a finite number of 'jumps', while we have that $V_u = V_\infty$ for $u$ large enough. Assumption 3 is called semi-continuity and can be visualised by the following indecomposable interval modules:
 
 \begin{definition}[Interval Module]
 Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
@@ -154,7 +147,7 @@ The structure maps $f_{s,t}: \mathbb{F}(I)_s \to \mathbb{F}(I)_t$ for $s \leq t$
 \subsection{Decomposition of Persistence Modules}
 The following theorem describes the decomposition of any persistence module:
 
-\begin{theorem}[Decomposition of Persistence Modules]
+\begin{theorem}[Decomposition]{\cite[\S 7]{EdelsbrunnerHarer2010}}
 \label{decompositionPersistenceModules}
 Every persistence module $V$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules:
 \begin{align}
@@ -175,9 +168,11 @@ Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the struct
 \begin{align}
 	M \cong \bigoplus_{i=0}^n T^{\alpha_i} \mathbb{F}[t] \oplus \bigoplus_j T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}).
 \end{align}
-$T^{\alpha_i} \mathbb{F}[t]$ corresponds to interval modules of the form $(\alpha_i, \infty)$, and $T^{\gamma_j} \mathbb{F}[t] / (t^{n_j})$ corresponds to interval modules of the form $(\gamma_j, \gamma_j + n_j]$. This establishes the existence of the desired decomposition.
+Here, \( T^{\alpha_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( \alpha_i \), meaning \( (T^{\alpha_i} \mathbb{F}[t])_n = \mathbb{F}[t]_{n - \alpha_i} \). This corresponds to interval modules of the form \( (\alpha_i, \infty) \). 
 
-For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)_t \to \mathbb{F}(I)_t$ must be a linear map. Since $\mathbb{F}(I)_t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Thus, any linear endomorphism must be a scalar multiple of the identity. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s,t}$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
+Similarly, \( T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( \gamma_j \), defined by \( (T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}))_n = \mathbb{F}[t]_{n - \gamma_j} / (t^{n_j}) \). This corresponds to interval modules of the form \( (\gamma_j, \gamma_j + n_j] \). 
+
+For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)_t \to \mathbb{F}(I)_t$ must be a linear map. Since $\mathbb{F}(I)_t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s,t}$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
 
 Now, suppose we have two decompositions:
 \begin{align}
@@ -185,11 +180,8 @@ Now, suppose we have two decompositions:
 \end{align}
 Consider the composition of morphisms:
 \begin{align}
-	f_{ij}: \mathbb{F}(I_i) \hookrightarrow V \cong V' \twoheadrightarrow \mathbb{F}(J_j)
-\end{align}
-and
-\begin{align}
-	g_{ij}: \mathbb{F}(J_j) \hookrightarrow V' \cong V \twoheadrightarrow \mathbb{F}(I_i).
+	f_{ij}: &\mathbb{F}(I_i) \hookrightarrow V \cong V' \twoheadrightarrow \mathbb{F}(J_j),\\
+	g_{ij}: &\mathbb{F}(J_j) \hookrightarrow V' \cong V \twoheadrightarrow \mathbb{F}(I_i).
 \end{align}
 The equation $\sum_{i,j} g_{ij}f_{ij} = 1$ implies that at least one of the compositions $f_{ij}g_{ij} \neq 0$, yielding an isomorphism between $\mathbb{F}(I_i)$ and $\mathbb{F}(J_j)$ for some $i, j$. Since the interval modules are indecomposable and distinct intervals $I_i$ and $J_j$ cannot yield non-trivial morphisms between each other, this forces $I_i = J_j$ and $m_i = m_j$. 
 
@@ -231,14 +223,12 @@ to a filtration of a complex $\mathcal{X}$ yields a sequence of algebraic struct
 	\to \mathsf{H}(X_{n}),
 \end{equation}
 where $\mathsf{H}(-)$ generally represents either the $k$-th dimensional
-homology, denoted by $H_{k}(-;\F)$, or the total homology, expressed as $H
+homology, denoted by $H_{k}(-;\F)$, or the absolute homology, expressed as $H
 _{\bullet}(-;\F)$. Here, this diagram characterizes a sequence of abelian
-groups or finite-dimensional vector spaces, interconnected through vector space
-homomorphisms, forming a persistence module.
+groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module.
 
 Persistence modules are central to understanding how the features of a space evolve
-over time. They can typically be decomposed into a direct sum of interval
-modules \cite[\S 8]{EdelsbrunnerHarer2010}. Each interval module is associated with an
+over time. According to Theorem \ref{decompositionPersistenceModules}, they can be decomposed into interval modules. Each interval module is associated with an
 ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq n$, within a finite
 filtration. These pairs $(p,q)$ signify topological features that persist over an
 index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally,
@@ -258,11 +248,11 @@ In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted
 as they represent ephemeral topological features.
 
 \begin{example}
-    In the further elaboration of the example \cite[\S 2.2]{de2011dualities}, we consider the topological subspaces $S_{1}$,
+    In the further elaboration of our example \cite[\S 2.2]{de2011dualities}, we consider the topological subspaces $S_{1}$,
     $S_{3}$, $S_{5}$, all of which are contractible. Meanwhile,
     $S_{2}$, $S_{4}$, $S_{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
     respectively. This structural distinction leads to four distinct intervals in
-    the persistence diagram of the total homology of a sphere, specifically $\mathcal{S}^{2}$:
+    the persistence diagram of the absolute homology of a sphere, specifically $\mathcal{S}^{2}$:
     \begin{align}
         \textbf{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \\
                                                     & = \{(1,\infty)_{0}, (2,3)_{0}, (4,5)_{1}, (6, \infty)_{2} \}.
@@ -273,13 +263,11 @@ as they represent ephemeral topological features.
 
 \subsection{The Four Standard Persistence Modules}
 \label{TheFourStandardPersistenceModules}
-The standard module of persistent homology, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology groups
+The standard module of absolute persistent homology, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology groups
 $H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
 can be made by considering the absolute cohomology groups $H^{\bullet}(X_{i})$,
 the relative homology groups $H_{\bullet}(X_{n}, X_{i})$, and the relative cohomology
-groups $H^{\bullet}(X_{n}, X_{i})$ \cite[\S 2.4]{de2011dualities}.
-
-The persistence diagram for absolute cohomology is represented as a multiset of integer
+groups $H^{\bullet}(X_{n}, X_{i})$ \cite[\S 2.4]{de2011dualities}. The persistence diagram for absolute cohomology is represented as a multiset of integer
 pairs $(p,q)$, where $1 \leq p \leq q \leq n$ for a finite filtration. For relative
 homology and cohomology, the persistence diagram consists of a multiset of
 tuples $(p,q)$ where $0 \leq p \leq q \leq n-1$ for a finite filtration. In each
@@ -415,11 +403,7 @@ for $f \in \operatorname{Hom}(C_{n+1}(X), G)$. This leads to the cohomology grou
 \begin{align}
 H^{n}(X; G) := \ker(\delta^{n}) / \operatorname{im}(\delta^{n-1}).
 \end{align}
-We consider the projective resolution of $C_{\bullet}(X)$ to effectively apply the $\operatorname{Ext}$ functor. Recall that for any abelian group $A$,
-\begin{align}
-\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G),
-\end{align}
-where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[\S 2.7]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[p.39f]{Weibel1994}:
+We consider the projective resolution of $C_{\bullet}(X)$ to effectively apply the $\operatorname{Ext}$ functor. Recall that for any abelian group $A$, $\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G)$, where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[\S 2.7]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[p.39f]{Weibel1994}:
 \begin{align}
 \cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0,
 \end{align}
@@ -427,7 +411,7 @@ where each $P_{i}$ is a projective abelian group. Then we can apply the functor 
 \begin{align}
 0 \to \operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}(P_{2}, G) \to \cdots.
 \end{align}
-This sequence is exact on the left because $\operatorname{Hom}(-, G)$ is left exact and each $P_{i}$ is projective. The first right derived functor $R^{1}\operatorname{Hom}(A, G)$ is defined as the cohomology of this sequence at the location corresponding to $P_{1}$:
+This sequence is exact on the left because $\operatorname{Hom}(-, G)$ is left exact and each $P_{i}$ is projective. The first right derived functor $R^{1}\operatorname{Hom}(A, G)$ is defined as the cohomology of this sequence at $P_{1}$:
 \begin{align}
 R^{1} \operatorname{Hom}(A, G) = \frac{\ker(\operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}(P_{2}, G))}{\operatorname{im}(\operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G))}.
 \end{align}
@@ -435,16 +419,12 @@ The group $\operatorname{Ext}^{1}(A, G)$ classifies extensions of $A$ by $G$, eq
 \begin{align}
 \operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G).
 \end{align}
-Given $H_{n}(X; \mathbb{Z})$, consider the short exact sequence obtained from the projective resolution of $\mathbb{Z}$:
-\begin{align}
-0 \rightarrow \mathbb{Z} \rightarrow F \rightarrow H_{n}(X; \mathbb{Z}) \rightarrow 0,
-\end{align}
-where $F$ is free. Applying $\operatorname{Hom}(-, G)$ gives
+Given $H_{n}(X; \mathbb{Z})$, consider the short exact sequence obtained from the projective resolution of $\mathbb{Z}$: $0 \rightarrow \mathbb{Z} \rightarrow F \rightarrow H_{n}(X; \mathbb{Z}) \rightarrow 0$, where $F$ is free. Applying $\operatorname{Hom}(-, G)$ gives
 \begin{align}
 0 \rightarrow &\operatorname{Hom}(H_{n}(X; \mathbb{Z}), G) \rightarrow \operatorname{Hom}(F, G) \rightarrow \cdots \\
 \cdots \rightarrow &\operatorname{Hom}(\mathbb{Z}, G) \rightarrow \operatorname{Ext}^{1}(H_{n}(X; \mathbb{Z}), G) \rightarrow 0.
 \end{align}
-We apply $\operatorname{Ext}^{\bullet}$, which gives rise to the long exact sequence of $\operatorname{Ext}$ groups:
+We apply $\operatorname{Ext}^{1}$, which gives rise to the long exact sequence of $\operatorname{Ext}$ groups:
 \begin{align}
 0 \rightarrow &\operatorname{Hom}(H_{n}(X; \mathbb{Z}), G) \rightarrow H^{n}(X; G) \rightarrow \cdots \\
 \cdots \rightarrow &\operatorname{Ext}^{1}(H_{n-1}(X; \mathbb{Z}), G) \rightarrow 0.
@@ -485,7 +465,6 @@ For this concatenated sequence, the indices are denoted as
 using the $\flat$ symbol to indicate relative homology part of the sequence.
 
 This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
-
 
 \begin{itemize}
 	\item $(p, q)$ where $1 \leq p \leq q < n$, denoted as
@@ -687,6 +666,7 @@ reverse direction.
 	starting as a cycle at $p$ and terminating as a boundary at $n$.
 \end{proof}
 
+\begin{remark}
 In \ref{persistence partition} the index sets are defined as follows \cite[p.8]{de2011dualities}:
 \begin{itemize}
 	\item $P$ identifies the positive simplices that remain unpaired,
@@ -695,12 +675,12 @@ In \ref{persistence partition} the index sets are defined as follows \cite[p.8]{
 
 	\item $N$ identifies the negative simplices.
 \end{itemize}
-
 The vectors $\hat{\sigma}_{p}$ and $\hat{\sigma}_{n}$ are cycles characterized by
 their leading terms $\sigma_{p}$ and $\sigma_{n}$ respectively, while the vector
 $\hat{\sigma}_{n}$ is a chain with leading term $\sigma_{n}$. This chain 'kills'
 the homology class of its paired cycle $\hat{\sigma}_{p}$ through the boundary relation
 $\partial \hat{\sigma}_{n} = \hat{\sigma}_{p}$.
+\end{remark}
 
 \begin{theorem}
 	For all integers $d \geq 0$ it holds that \cite[\S 2.4]{de2011dualities}:
@@ -721,24 +701,47 @@ TBD
 	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
 \end{remark}
 
+In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a filtration of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes \( C(X_i) \) over \( \mathbb{F} \).
+
+\begin{corollary}
+$H(C, \partial) \; \widehat{=} \; \text{persistent absolute homology of } X$.
+\end{corollary}
+
+\begin{proof}
+The persistence module \( \mathcal{C} \) is the direct sum of chain complexes:
+\[
+\mathcal{C} = \bigoplus_{i} C(X_i) = \bigoplus_{i} C_i,
+\]
+where each \( C_i \) is a graded \( \F[t] \)-module corresponding to the \( i \)-th filtration level. The boundary map \( \partial: C \to C \) acts as a graded module homomorphism and is given by the boundary maps \( \partial_i: C_i \to C_{i-1} \) that respect the inclusions \( X_i \subseteq X_{i+1} \). The absolute homology of the chain complex \( (\mathcal{C}, \partial) \) is defined by the homology groups $H_n(\mathcal{C}, \partial) = \ker(\partial_n) / \operatorname{im}(\partial_{n+1})$.
+
+Persistent absolute homology tracks the evolution of homology classes in \( H_n(X_i) \) across the filtration: $H_n(X_i) = \ker(\partial^i_n) / \operatorname{im}(\partial^i_{n+1})$, where \( \partial^i \) denotes the boundary map restricted to the subcomplex \( X_i \).
+
+Since \( \mathcal{C} \) is the direct sum of chain complexes \( C(X_i) \) for all filtration levels \( i \), we immediately get $H_n(\mathcal{C}, \partial) = \bigoplus_{i} H_n(X_i)$.
+\end{proof}
+
+\begin{corollary}
+$H(\mathcal{C}^\flat, \delta) \; \widehat{=} \; \text{persistent absolute cohomology of } X$.
+\end{corollary}
+
+\begin{proof}
+The dual persistence module \( \mathcal{C}^\flat \) is the direct sum
+\[
+\mathcal{C}^\flat = \bigoplus_{i} \operatorname{Hom}_k(C(X_i), k) = \bigoplus_{i} C_i^\flat,
+\]
+where each \( C_i^\flat = \operatorname{Hom}_k(C_i, k) \) is the dual space of the chain group \( C_i \) associated with the \( i \)-th filtration level. The induced coboundary map \( \delta: \mathcal{C}^\flat \to \mathcal{C}^\flat \) is 
+\[
+\delta(f)(c) = f(\partial(c)), \quad \text{for all } f \in C^\flat, \, c \in C.
+\]
+This makes \( \delta \) a graded module homomorphism acting on the dual complexes.
+
+The cohomology of the dual chain complex \( (\mathcal{C}^\flat, \delta) \) is given by the cohomology groups $H^n(\mathcal{C}^\flat, \delta) = \ker(\delta_n) / \operatorname{im}(\delta_{n-1})$.
+
+Persistent absolute cohomology tracks the evolution of cohomology classes in \( H^n(X_i) \) across the filtration $H^n(X_i) = \ker(\delta^i) / \operatorname{im}(\delta^{i-1})$, where \( \delta^i \) denotes the coboundary map restricted to the subcomplex \( X_i \).
+
+Since \( \mathcal{C}^\flat \) is the direct sum of cochain complexes \( \operatorname{Hom}_k(C_i, k) \) for all filtration levels \( i \), we obtain $H^n(\mathcal{C}^\flat, \delta) = \bigoplus_{i} H^n(X_i)$.
+\end{proof}
+
+
+
 \subsection{Cohomology of Chain Complexes}
 
-\section{Zigzag Persistence}
-\label{ZigzagPersistence}
-The zigzag persistence framework is initiated by constructing a zigzag diagram of topological or vector spaces. This diagram consists of a sequence of spaces \( S_1, S_2, \ldots, S_n \), where each adjacent pair \( (S_i, S_{i+1}) \) is connected by a map \( S_i \to S_{i+1} \) or \( S_i \leftarrow S_{i+1} \) \cite[\S 1]{carlsson2010zigzag}. In contrast to the classical approach to persistent homology, the linking maps can now point in arbitrary directions. The major limitation of traditional persistence is its reliance on a nested family \(\{S_t\}_{t \in [0,\infty]}\), where \(S_t \subseteq S_{t'}\) whenever \(t \leq t'\). This constraint applies to both the theoretical framework and the algorithms. Zigzag persistence overcomes this limitation. When the variable \(t\) is discretized to a finite set, the family of simplicial complexes can be represented as a diagram of spaces: $S_1 \to S_2 \to \cdots \to S_n$, where the arrows denote inclusion maps. Applying the \(k\)-dimensional homology functor \(H_k(-; \F)\) with coefficients in a field \(\F\), we obtain a diagram of vector spaces: $V_1 \to V_2 \to \cdots \to V_n$, where \(V_i = H_k(S_i; \F)\), the persistence module. Persistence is effective because persistence modules can be classified up to isomorphism, with each barcode corresponding to an isomorphism type.
-
-Zigzag persistence aims to achieve a similar classification for diagrams where the arrows may point in either direction, thereby generalizing the framework of traditional persistence. In this section, we follow the work of Carlsson and de Silva \cite[\S 2.1]{carlsson2010zigzag}.
-
-\subsection{Zigzag Modules}
-\label{ZigtagModules}
-We consider a sequence of vector spaces and linear maps of length \(n\), which point in both directions:
-\begin{align}
-    \mathsf{V}: \quad V_1 \xlongleftrightarrow{p_1} V_2 \xlongleftrightarrow{p_2} \cdots \xlongleftrightarrow{p_{n-1}} V_n.
-\end{align}
-Each \(\xlongleftrightarrow{p_i}\) represents either a forward map \(\xrightarrow{f_i}\) or a backward map \(\xleftarrow{g_i}\). We call the sequence \(\mathsf{V}\) a zigzag diagram of vector spaces or a zigzag module over \(\mathbb{F}\). The sequence of symbols \(f\) and \(g\) is called the type of \(\mathsf{V}\). For example, a diagram of type \(\tau = fgg\) would be \(V_1 \xrightarrow{f_1} V_2 \xleftarrow{g_2} V_3 \xleftarrow{g_3} V_4\). The length of a type \(\tau\) is the length of the diagram of type \(\tau\). Thus, \(fgg\) has length 4. If the length and type of a zigzag module are known, it is called a \(\tau\)-module of length \(n\) and is included in the class \(\tau\text{Mod}\) of \(\tau\)-modules.
-
-\subsection{Decompositions of Zigzag Modules}
-\label{DecompositionsofZigzagModules}
-
-\subsection{Zigzag Modules and Filtrations}
-\label{ZigzagModulesandFiltrations}
