@@ -8,9 +8,7 @@ This treatise addresses the theory of topological spaces and the foundations of 
 
 The chapter on homological persistence makes use of these tools throughout. We develop the theory of persistent homology, the homology of filtrations of topological spaces, and the corresponding dual concept of persistent cohomology. This work aims to provide mathematicians with a robust foundation for productive engagement with the aforementioned theories. The majority of the proofs have been rewritten to clarify the relationships between the techniques discussed. The novel aspect of this contribution is the canonical presentation of persistence theory and the associated ideas through a rigorous mathematical treatment for triangulable topological spaces.
 
-## Zusammenfassung
-
-## 📄 Download My Thesis
+## 📄 Download
 
 You can download the full thesis as a PDF by clicking the link below:
 
