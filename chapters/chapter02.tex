@@ -148,34 +148,12 @@ Extend $\phi$ to a map $f: K_1 \to K_2$ on simplices. Let $\sigma^{(k)} = [p_{i_
 Furthermore, it has been proven that any finite abstract simplicial complex of dimension
 $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
 
-\begin{theorem}[Realizations into $\mathbb{R}^{2d+1}$]
-	Any finite abstract simplicial complex of dimension $d$ can be realized as a simplicial
-	complex in $\mathbb{R}^{2d+1}$.
+\begin{theorem}
+Any finite abstract simplicial complex of dimension $d$ can be realized as a simplicial complex in $\mathbb{R}^{2d+1}$.
 \end{theorem}
 
 \begin{proof}
-	Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We
-	will construct an injective geometric realization
-	$f: \tilde{K}\to \mathbb{R}^{2d+1}$.
-				
-	First, define an injective map $\tilde{f}: V(\tilde{K}) \to \mathbb{R}^{2d+1}$
-	for the vertex set $V(\tilde{K})$ of $\tilde{K}$. Since $V(\tilde{K})$ is
-	finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality, injectivity is guaranteed.
-	Adjust $\tilde{f}$ if necessary to ensure the images of the vertices of each
-	simplex $\sigma \in \tilde{K}$ are affinely independent. This can be achieved by
-	slight perturbations within $\mathbb{R}^{2d+1}$, leveraging the ample
-	dimensionality to avoid overlaps. We extend $\tilde{f}$ to a map $f: \tilde{K}\to \mathbb{R}^{2d+1}$ by defining
-	it on each simplex $\sigma = [v_{0}, \ldots, v_{k}]$ through the unique affine
-	map $v_{i} \mapsto \tilde{f}(v_{i})$. The injective and affine properties of $\tilde
-	{f}$ on vertices guarantee that $f$ is injective over each simplex and preserves
-	the simplicial structure. Specifically, for any simplices $\sigma, \tau \in \tilde
-	{K}$, we have:
-	\begin{align}
-		f(|\sigma| \cap |\tau|) = f(|\sigma|) \cap f(|\tau|). 
-	\end{align}
-				
-	Thus, $f$ provides an injective geometric realization of $\tilde{K}$ as a simplicial
-	complex in $\mathbb{R}^{2d+1}$.
+Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$.  Let $V(\tilde{K})$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(\tilde{K}) \to \mathbb{R}^{2d+1}$, which is possible because $V(\tilde{K})$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
 \end{proof}
 
 \section{Simplicial Homology}
