@@ -1,7 +1,7 @@
 \label{TopologicalSpaces}
-Topological persistence is deeply rooted in algebraic topology\index{algebraic topology}. This is the study of topological spaces\index{topological spaces} and functions based on algebraic objects and their properties. Examples include homotopy\index{homotopy} and homology theories, which are essential for understanding the construction and connectedness\index{connectedness} of surfaces, a central aspect of data analysis. Persistent homology, the central tool of topological persistence, extends classical homology to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology examines multi-scale\index{multi-scale} topological features\index{multi-scale\index{multi-scale} topological features} through a filtration\index{filtration} process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each filtration\index{filtration} stage represents a snapshot of some topological space at a certain resolutions, capturing the appearance and disappearance of multidimensional homology groups encoding topological properties such as connected components, holes and voids. Mathematically, the persistence of homological features is visualised using diagrams or barcode representations.  These visual aids represent the emergence (birth) and disappearance (death) of topological features as the filter parameter changes. The duration of a feature's presence, represented by the length of its interval in the barcode, indicates its significance, with longer intervals suggesting features that represent the likely true characteristics of the underlying data rather than mere noise. The robustness of persistent homology, in particular its resistance to small perturbations in the data, is captured in the stability theorem. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer \cite{bendich2007inferring}, states that small variations in the input data lead to small changes in the persistence barcodes. This property is crucial for practical applications, as it guarantees that the topological summaries are both reliable and meaningful for the actual underlying structures.
+Topological persistence is deeply rooted in algebraic topology\index{algebraic topology}. This is the study of topological spaces\index{topological spaces} and functions based on algebraic objects and their properties. Examples include homotopy\index{homotopy} and homology theories, which are essential for understanding the construction and connectedness\index{connectedness} of surfaces, a central aspect of data analysis. Persistent homology, the central tool of topological persistence, extends classical homology to identify features across multiple scales. Introduced by Edelsbrunner et al. in their seminal paper \cite{edelsbrunner2000triangulations}, persistent homology examines multi-scale\index{multi-scale} topological features\index{multi-scale\index{multi-scale} topological features} through a filtration\index{filtration} process - an indexed family of nested spaces that starts with the empty set and progressively covers the entire space under study. Each filtration\index{filtration} stage represents a snapshot of some topological space at a certain resolutions, capturing the appearance and disappearance of multidimensional homology groups encoding topological properties such as connected components, holes and voids. Mathematically, the persistence of homological features is visualised using diagrams or barcode representations.  These visual aids represent the emergence (birth) and disappearance (death) of topological features as the filter parameter changes. The duration of a feature's presence, represented by the length of its interval in the barcode, indicates its significance, with longer intervals suggesting features that represent the likely true characteristics of the underlying data rather than mere noise. The robustness of persistent homology, in particular its resistance to small perturbations in the data, is captured in the Stability Theorem \cite[\S 3.1]{Cohen-Steiner2007}. This theorem, proved by Cohen-Steiner, Edelsbrunner and Harer \cite[\S 3]{bendich2007inferring}, states that small variations in the input data lead to small changes in the persistence barcodes. This property is crucial for practical applications, as it guarantees that the topological summaries are both reliable and meaningful for the actual underlying structures.
 
-We start with basic concepts such as topological spaces\index{topological spaces} and groups, which are crucial for understanding and encoding connectedness\index{connectedness} and other invariants. The discussion extends to simplicial complexes, which are essential for modelling data structures in topological data analysis.  We explore simplicial and singular homology groups to accurately quantify topological features, and dwell on singular chain complexes and exact sequences to deepen the algebraic aspects of persistence theory. This will be useful in some of the later proofs when we discuss the algebraic nature of the persistence module.
+We start with basic concepts such as topological spaces\index{topological spaces} and groups, which are crucial for understanding and encoding connectedness\index{connectedness} and other invariants. The discussion extends to simplicial complexes, which are essential for modelling data structures in topological data analysis.  We explore simplicial and singular homology groups to accurately quantify topological features, and dwell on singular chain complexes and exact sequences to deepen the algebraic aspects of persistence theory. This will turn useful with regard to the algebra of persistence modules.
 
 \section{Simplicial Complexes}
 \label{Simplicial Complexes} We note that a set of points
@@ -11,7 +11,7 @@ subspace}
 of dimension less than $d$ contains all the points in $X$. Such a set of points is
 commonly called point cloud.
 
-\begin{definition}[$d$-Simplex]{\cite[\S 2.1]{boissonnat2018geometric}}
+\begin{definition}[$d$-simplex]{\cite[Definition 2.1]{boissonnat2018geometric}}
 	\label{d-simplex} A $d$-dimensional
 	simplex $\sigma^{(d)}$, or $d$-simplex\index{$d$-simplex}, is the set of all convex combinations
 	of $X = \{x_{0}, x_{1}, \ldots, x_{d}\} \subset \mathbb{R}^{n}$, where
@@ -31,7 +31,7 @@ corresponds to a single point, a $1$-simplex to a line segment between two
 points, a $2$-simplex to a triangle, and a $3$-simplex to a tetrahedron. Notably,
 a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 
-\begin{theorem}[$d$-Disk to $d$-Simplex]
+\begin{theorem}[$d$-disk to $d$-simplex]
 	The $d$-simplex $\sigma^{(d)}$ is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \end{theorem}
 
@@ -77,7 +77,7 @@ faces, we can construct the corresponding simplicial complexes\index{simplicial
 complex}.
 
 \begin{definition}
-	[Simplicial Complex]{\cite[\S 2.2]{boissonnat2018geometric}} \label{simplicialcomplex}
+	[Simplicial complex]{\cite[Definition 2.2]{boissonnat2018geometric}} \label{simplicialcomplex}
 	A simplicial complex $K$ is a finite collection of simplices that satisfies the
 	following properties:
 	\begin{enumerate}
@@ -95,7 +95,7 @@ in $\mathbb{R}^{n}$ can be fully characterized by listing its simplices. Thus, i
 can be described purely in terms of combinatorics\index{combinatorics} using abstract simplicial complexes\index{abstract simplicial complex}.
 
 \begin{definition}
-	[Abstract Simplicial Complex]{\cite[\S 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
+	[Abstract simplicial complex]{\cite[Definition 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
 	Consider a finite set $V = \{v_{0}, \ldots, v_{d}\}$. An abstract simplicial
 	complex\index{abstract simplicial complex} $\tilde{K}$ with vertex set $V$ is a
 	collection of finite subsets of $V$ that satisfies the following conditions:
