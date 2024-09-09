@@ -603,8 +603,7 @@ reverse direction.
 \end{figure}
 
 \begin{theorem}
-	{(Persistence Partition) \cite[\S 2.6]{de2011dualities}} \label{persistence
-	partition} Let $\mathcal{C}$ be given and $\partial$ as above, then there
+	{(Persistence Partition) \cite[\S 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}$ be given and $\partial$ as above, then there
 	exists a partition
 	\begin{align*}
 		\{1,2, \ldots, d\} = P^{\Join} \sqcup P \sqcup N
@@ -776,4 +775,79 @@ where \( \partial^{\circ\dagger}_k: C_k(X_i) \to C_{k-1}(X_{i+1}) \). To establi
 \end{proof}
 
 \subsection{Cohomology of Chain Complexes}
+Persistent relative cohomology is structurally similar to persistent absolute homology \cite[\S 2.7]{de2011dualities}. We adopt Morozov's notation for the reversed sequence:
+\begin{align}
+	(C_n / \mathcal{C})^\sharp &: \quad C_n^\sharp \leftarrow (C_n / C_1)^\sharp \leftarrow \cdots \leftarrow (C_n / C_{n-1})^\sharp, \\
+	\mathcal{C}^\perp &: \quad C_1^\perp \rightarrow C_2^\perp \rightarrow \cdots \rightarrow C_n^\perp,
+\end{align}
+where we set \( C_i^\perp := (C_n / C_{n-i})^\sharp \). It is already known that \( \sigma_1^\sharp, \ldots, \sigma_n^\sharp \) form a basis of \( C_n^\sharp \), dual to the generators \( \sigma_1, \ldots, \sigma_n \) of \( C_n \). We define \( \tau_i = \sigma^\sharp_{n+1-i} \), leading to
+\begin{align}
+	C_i^\perp = \langle \sigma_n^\sharp, \sigma_{n-1}^\sharp, \ldots, \sigma_{n+1-i}^\sharp \rangle = \langle \tau_1, \tau_2, \ldots, \tau_i \rangle
+\end{align}
+through elementary linear algebra, as can be seen in Example \ref{chaincomplexcohomology}.
 
+\begin{proposition}
+Let \( \partial \) be the boundary operator in homology. If \( \partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i \), then the corresponding coboundary operator \( \delta \) in cohomology is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$, where \( D_{ij}^\perp = D_{(n-j),(n-i)} \) is the transposed and reversed version of the matrix \( D_{ij} \). 
+\end{proposition}
+
+\begin{proof}
+Recall the duality between homology and cohomology. The boundary operator \( \partial \) in homology is defined by its action on the basis elements \( \sigma_j \in C_n \) as $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$, where \( D_{ij} \) are the coefficients of the boundary map. The corresponding coboundary operator \( \delta \) in cohomology acts on the dual space \( C_n^\sharp \), which is spanned by the dual basis \( \{\sigma_1^\sharp, \ldots, \sigma_n^\sharp\} \), where \( \sigma_i^\sharp(\sigma_k) = \delta_{ik} \). Define \( \tau_i = \sigma^\sharp_{n+1-i} \), which reverses the index order in the dual space. The coboundary operator \( \delta \) is the adjoint of the boundary operator \( \partial \), meaning that for any \( \tau_j \in C_n^\sharp \), we have $\delta \tau_j (\sigma_k) = \tau_j(\partial \sigma_k)$. Substituting the expression for \( \partial \sigma_j \), we get $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$, and thus:
+\begin{align}
+\delta \tau_j (\sigma_k) = \tau_j\left( \sum_{i < j} D_{ij} \sigma_i \right) = \sum_{i < j} D_{ij} \tau_j(\sigma_i).
+\end{align}
+By definition of the dual basis, \( \tau_j(\sigma_i) = \delta_{n+1-j,i} \), which means the action of \( \delta \) on \( \tau_j \) depends on the corresponding entries of the boundary matrix \( D_{ij} \). The coboundary operator \( \delta \) is thus governed by the transposed and index-reversed matrix \( D^\perp \), where $D_{ij}^\perp = D_{(n-j),(n-i)}$. Therefore, the action of \( \delta \) on \( \tau_j \) is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$. \end{proof}
+
+\begin{remark}{\cite[\S 2.7]{de2011dualities}}
+Due to the structural similarity of \( \mathcal{C}^\perp \) and \( \mathcal{C} \), persistent absolute cohomology is interpreted as 'relative persistent relative cohomology'.
+\end{remark}
+
+\begin{example}
+\label{chaincomplexcohomology}
+Consider the construction explicitly for \( C_3 \) with basis \( \{\sigma_1, \sigma_2, \sigma_3\} \). The dual basis vectors in \( C_3^\sharp \) are \( \{\sigma_1^\sharp, \sigma_2^\sharp, \sigma_3^\sharp\} \), and we set \( \tau_1 = \sigma_3^\sharp \), \( \tau_2 = \sigma_2^\sharp \), and \( \tau_3 = \sigma_1^\sharp \). For \( C_2^\perp \), we obtain:
+\[
+	C_2^\perp = \langle \sigma_3^\sharp, \sigma_2^\sharp \rangle = \langle \tau_1, \tau_2 \rangle.
+\]
+If the boundary map for \( \partial \sigma_3 \) is given by:
+\[
+	\partial \sigma_3 = D_{31} \sigma_1 + D_{32} \sigma_2,
+\]
+then the coboundary operator \( \delta \) acts on \( \tau_1 \) as:
+\[
+	\delta \tau_1 = D_{32}^\perp \tau_2 + D_{31}^\perp \tau_3,
+\]
+where \( D_{32}^\perp = D_{23} \) and \( D_{31}^\perp = D_{13} \) are the transposed entries.
+\end{example}
+
+\begin{proposition}{\cite[Proposition 2.8]{de2011dualities}}
+The persistence module $(C_n^\perp/\mathcal{C}^\perp)$ is the reverse of $\mathcal{C}^\sharp$, and the respective coboundary maps agree.
+\end{proposition}
+
+\begin{proof}
+Each submodule \( C_i^\perp \) is defined as the dual of the quotient \( C_n / C_{n-i} \), i.e., $C_i^\perp = (C_n / C_{n-i})^\sharp$. Thus, the persistence module \( (C_n^\perp / \mathcal{C}^\perp) \) is constructed by taking the quotient of \( C_n^\perp \) by \( \mathcal{C}^\perp \), which gives the reversed filtration:
+\begin{align}
+C_n^\sharp \leftarrow (C_n / C_1)^\sharp \leftarrow \cdots \leftarrow (C_n / C_{n-1})^\sharp.
+\end{align}
+This is the filtration of \( \mathcal{C}^\sharp \), but in reverse order. Therefore, the persistence module \( (C_n^\perp / \mathcal{C}^\perp) \) is the reverse of \( \mathcal{C}^\sharp \).
+
+Consider the boundary operator \( \partial \) on the chain complex \( C_n \), given by $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$, where \( D_{ij} \) are the coefficients of the boundary operator. In the dual space \( C_n^\sharp \), the coboundary operator \( \delta \) acts on the dual basis elements \( \tau_j = \sigma^\sharp_{n+1-j} \). The coboundary map is induced by the transposed and reversed matrix of the boundary operator $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$, where \( D_{ij}^\perp = D_{(n-j),(n-i)} \), the transposed and index-reversed version of the boundary matrix \( D_{ij} \). Since the filtration in \( (C_n^\perp / \mathcal{C}^\perp) \) corresponds to the reverse of \( \mathcal{C}^\sharp \), and the coboundary operators are induced by the same transposed matrix \( D^\perp \).
+\end{proof}
+
+\begin{corollary}{\cite[Proposition 2.10]{de2011dualities}}
+Let \( \hat{\sigma}_1^\sharp, \ldots, \hat{\sigma}_n^\sharp \) be the dual of \( \hat{\sigma}_1, \ldots, \hat{\sigma}_n \), where $C_i = \langle \hat{\sigma}_1, \ldots, \hat{\sigma}_i \rangle$ for $1 \leq i \leq n$. Then \( \hat{\tau}_i = \hat{\sigma}_{n+1-i}^\sharp \) for all \( i \).
+\end{corollary}
+
+\begin{proof}
+We use Theorem \ref{persistencepartition} and obtain a partition of indices \( \{1, 2, \ldots, n\} = R \sqcup S \sqcup T \) for \( \mathcal{C}^\perp \) and new generators \( \hat{\tau}_i \), where:
+\begin{align}
+\delta \hat{\tau}_i = 0 \quad \text{for } i \in R \sqcup T, \quad \delta \hat{\tau}_t = \hat{\tau}_s \quad \text{for pairs } (s,t) \in \text{Pairs}(\mathcal{C}^\perp, \delta).
+\end{align}
+Now, let \( \hat{\sigma}_1^\sharp, \ldots, \hat{\sigma}_n^\sharp \) denote the dual basis of \( \hat{\sigma}_1, \ldots, \hat{\sigma}_n \), such that:
+\begin{align}
+\hat{\sigma}_i^\sharp(\hat{\sigma}_j) = \delta_{ij} \quad \text{for all } i,j.
+\end{align}
+Since \( \mathcal{C}^\perp \) is the dual filtration of \( \mathcal{C} \), we observe that the filtration structure in \( \mathcal{C}^\perp \) is reversed. Specifically, the duality induces the relationship between the generators \( \hat{\tau}_i \) and the elements of the dual basis:
+\begin{align}
+\hat{\tau}_i = \hat{\sigma}_{n+1-i}^\sharp.
+\end{align}
+This indexing reversal arises naturally from the dual filtration structure. The coboundary operator \( \delta \) respects this duality, so that for any pair \( (s,t) \in \text{Pairs}(\mathcal{C}^\perp, \delta) \), we have $\delta \hat{\tau}_t = \hat{\tau}_s$, preserving the dual pairing structure of the persistence module. Thus, for each \( i \), the relation \( \hat{\tau}_i = \hat{\sigma}_{n+1-i}^\sharp \) holds, completing the proof.
+\end{proof}
