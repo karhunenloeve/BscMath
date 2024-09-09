@@ -133,27 +133,16 @@ Pay attention, that this result is in particular interesting for data analysis, 
 The specific realization mentioned above is referred to as the natural
 realization\index{natural realization}.
 
-\begin{proposition}[Equivalence of geometric realizations]
-	Let $\tilde{K}$ be an abstract simplicial complex. Then any two geometric
-	realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of $\tilde{K}$ are
-	homeomorphic.
+\begin{proposition}
+Let $\tilde{K}$ be an abstract simplicial complex. Any two geometric realizations $K_1$ and $K_2$ of $\tilde{K}$ are homeomorphic.
 \end{proposition}
 
 \begin{proof}
-	Consider two geometrical realisations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of the abstract simplicial complex $\tilde{K}$. Each realisation $|\tilde{K}|_{i}$, $i \in \{1,2\}$, is constructed by mapping the vertices of $\tilde{K}$ to points in $\mathbb{R}^{d}$, and identifying each simplex in $\tilde{K}$ with the convex hull of its image under that mapping. By construction, each simplex in $|\tilde{K}|_{i}$ corresponds homeomorphically to a standard $l$-simplex in $\mathbb{R}^{d}$ for the appropriate $l$ for integers $0 \leq l \leq d$.
-				
-	To create a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$, define a map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ which acts on each vertex $v$ of $\tilde{K}$ by mapping it from its image in $|\tilde{K}|_{1}$ to its image in $|\tilde{K}|_{2}$. Extend $f$ linearly to each simplex in $|\tilde{K}|_{1}$, where a simplex is represented as a convex combination of the images of its vertices. Given the two geometric realisations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of $\tilde{K}$, where vertices $v_{i}$ in $|\tilde{K}|_{1}$ are mapped to points $p_{i}$ in $\mathbb{R}^{d}$ and in $|\tilde{K}|_{2}$ to points $q_{i}$, the map $f: |\tilde{K}|_{1} \to |\tilde{K}|_{2}$ is defined so that for each vertex $v_{i}$ corresponding to $p_{i}$ in $|\tilde{K}|_{1}$ we set $f(p_{i}) = q_{i}$. This map is linearly extended over each simplex in $|\tilde {K}|_{1}$.
-				
-	Specifically, for a point $x$ and an integer $0 \leq k \leq d$ within a simplex of $|\tilde{K}|_{1}$, expressed as a convex combination $x = \sum_{j=1}^{k}\lambda_{j} p_{i_j}$, where $\{v_{i_1}, v_{i_2}, \ldots, v_{i_k}\}$ denote the vertices of the simplex and $\lambda_{j} 
-	\geq 0$ with $\sum_{j=1}^{k}\lambda_{j} = 1$, the function $f$ is defined by $f(x) = \sum_{j=1}^{k}\lambda_{j} q_{i_j}$.
-				
-	This ensures that $f$ is a continuous and bijective map, preserving the simplicial structure and thus establishing $f$ as a homeomorphism between $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. 
-					
-	$f$ is continuous on each simplex because it is a linear transformation on compact convex subsets in $\mathbb{R}^{d}$. Since both $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are topologised by the quotient of their respective disjoint unions of simplices under an equivalence relation that glues them along common faces, and since $f$ preserves these gluing conditions, $f$ is globally continuous. Every simplex and its face structure in $|\tilde{K}|_{1}$ maps uniquely onto a corresponding simplex and face structure in $|\tilde{K}|_{2}$, making $f$ bijective.
-				
-	Similarly, the inverse map $g: |\tilde{K}|_{2} \to |\tilde{K}|_{1}$ can be constructed by reversing the roles of $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$. It also maintains continuity for analogous reasons to $f$.
-				
-	So $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ are homeomorphic.
+Let $K_1$ and $K_2$ be two geometric realizations of the abstract simplicial complex $\tilde{K}$ in $\mathbb{R}^d$. Let the vertices of $\tilde{K}$ be $\{v_1, \dots, v_n\}$. Each vertex $v_i$ is mapped to a point $p_i$ in $K_1$ and to a point $q_i$ in $K_2$. There is a bijection between the vertices of $K_1$ and $K_2$: 
+\begin{align}
+\phi: \{p_1, \dots, p_n\} \to \{q_1, \dots, q_n\}, \quad \phi(p_i) = q_i \text{ for each } i.
+\end{align}
+Extend $\phi$ to a map $f: K_1 \to K_2$ on simplices. Let $\sigma^{(k)} = [p_{i_0}, \dots, p_{i_{k}}]$ be a $k$-simplex in $K_1$, corresponding to the simplex $\tau^{(k)} = [q_{i_0}, \dots, q_{i_{k}}]$ in $K_2$. For $x \in \sigma^{(k)}$, write $x = \sum_{j=0}^{k} \lambda_j p_{i_j}$ with $\sum_{j=0}^{k} \lambda_j = 1$, and define $f(x) = \sum_{j=0}^{k} \lambda_j q_{i_j}$. This defines $f$ linearly on simplices. Since $f$ respects face relations and is continuous on each simplex, $f$ is globally continuous. The map $f$ is bijective, as it maps each vertex $p_i$ to the corresponding $q_i$, and the linear extension preserves this correspondence on simplices. Hence, $f$ is a homeomorphism. Similarly, the inverse map $f^{-1}: K_2 \to K_1$ is continuous by the same construction.
 \end{proof}
 
 Furthermore, it has been proven that any finite abstract simplicial complex of dimension
