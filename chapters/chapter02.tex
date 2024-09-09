@@ -16,11 +16,11 @@ commonly called point cloud.
 	simplex $\sigma^{(d)}$, or $d$-simplex\index{$d$-simplex}, is the set of all convex combinations
 	of $X = \{x_{0}, x_{1}, \ldots, x_{d}\} \subset \mathbb{R}^{n}$, where
 	$X$ consists of $d+1$ affinely independent points.
-					
+						
 	Formally, $\sigma^{(d)}$ is
 	defined by:
 	\begin{equation}
-		\sigma^{(d)}:= \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; \bigg\vert \; \sum_{i=0}^{d}\lambda
+		\sigma^{(d)}:= [x_0, \ldots, x_d] = \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; \bigg\vert \; \sum_{i=0}^{d}\lambda
 		_{i} = 1, \; \lambda_{i} \geq 0\right\}.
 	\end{equation}
 \end{definition}
@@ -44,7 +44,7 @@ a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 	\begin{align}
 		D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \bigg\vert \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}. 
 	\end{align}
-				
+					
 	We construct a homeomorphism \( f: \sigma^{(d)} \rightarrow D^{d} \) by
 	\begin{align}
 		f(x_{0}, \ldots, x_{d}) = (\sqrt{x_{0}}, \ldots, \sqrt{x_{d-1}}), 
@@ -53,7 +53,7 @@ a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 	\begin{align}
 		\sum_{i=0}^{d-1} (\sqrt{x_{i}})^{2} = \sum_{i=0}^{d-1} x_{i} \leq 1. 
 	\end{align}
-				
+					
 	The inverse \( g: D^{d} \rightarrow \sigma^{(d)} \) is given by
 	\begin{align}
 		g(y_{0}, \ldots, y_{d-1}) = (y_{0}^{2}, \ldots, y_{d-1}^{2}, 1 - \sum_{i=0}^{d-1} y_{i}^{2}), 
@@ -83,7 +83,7 @@ complex}.
 	\begin{enumerate}
 		\item For every simplex $\sigma^{(d)}$ in $K$, and every face $\tau^{(k)}$
 		      of $\sigma^{(d)}$ with $k < d$, it follows that $\tau^{(k)}$ is also in $K$.
-		      		      		      		      
+		      		      		      		      		      
 		\item Any two simplices $\sigma^{(d)}$ and $\tau^{(k)}$ in $K$ are properly situated;
 		      that is, their intersection is either empty or a face of both simplices.
 	\end{enumerate}
@@ -102,7 +102,7 @@ can be described purely in terms of combinatorics\index{combinatorics} using abs
 	\begin{enumerate}
 		\item Every singleton set $\{v_{i}\}$, where $v_{i} \in V$, is included in $\tilde
 		      {K}$.
-		      		      		      		      
+		      		      		      		      		      
 		\item If a set $\sigma^{(d)}$ is in $\tilde{K}$ and $\tau^{(k)}$ is a subset
 		      of $\sigma^{(d)}$, then $\tau^{(k)}$ must also be in $\tilde{K}$.
 	\end{enumerate}
@@ -122,8 +122,8 @@ complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\in
 \begin{proof}
 	Let $\{v_{0}, v_{1}, \ldots, v_{d}\}$ denote the vertex set of $\tilde{K}$,
 	with $0 \leq d < n$ representing the number of vertices in $\tilde{K}$. Consider $\sigma^{(d-1)}
-	\subset \mathbb{R}^{n}$, the simplex formed by the span of
-	$\{e_{1}, e_{2}, \ldots, e_{d}\}$, where $e_{i}$ represents the $i$-th unit vector.
+	\subset \mathbb{R}^{n}$, the simplex
+	$[e_{1}, e_{2}, \ldots, e_{d}]$, where $e_{i}$ represents the $i$-th unit vector.
 	In this context, $K$ refers to the subcomplex of $\sigma^{(d-1)}$ such that $[e
 		_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ with $0 \leq l \leq d$ if and only if $[v_{i_0}, \ldots
 	, v_{i_l}]$ is a simplex of $\tilde{K}$.
@@ -133,7 +133,7 @@ Pay attention, that this result is in particular interesting for data analysis, 
 The specific realization mentioned above is referred to as the natural
 realization\index{natural realization}.
 
-\begin{proposition}[Equivalence of Geometric Realizations]
+\begin{proposition}[Equivalence of geometric realizations]
 	Let $\tilde{K}$ be an abstract simplicial complex. Then any two geometric
 	realizations $|\tilde{K}|_{1}$ and $|\tilde{K}|_{2}$ of $\tilde{K}$ are
 	homeomorphic.
