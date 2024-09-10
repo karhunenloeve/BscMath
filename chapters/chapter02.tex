@@ -173,7 +173,7 @@ Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents 
 
 \begin{definition}[$d$-Chain]{\cite[\S 2.3]{zomorodian2004computing}}
 	\label{d-Chain}
-	Given a set \(\{\sigma_{1}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \(G\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
+	Given a set \(\{\sigma_{0}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \(G\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
 	\begin{align}
 		c := g_{0}\sigma^{(d)}_{0} + g_{1}\sigma^{(d)}_{1} + \ldots + g_{k}\sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i}\sigma^{(d)}_{i}. 
 	\end{align}
@@ -193,7 +193,7 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 				
 	The sum of two chains is defined as:
 	\begin{align}
-		c + c' = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=1}^{l} g'_{j} \sigma_{j}^{(d)}, 
+		c + c' = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)}, 
 	\end{align}
 	which simplifies to:
 	\begin{align}
@@ -216,10 +216,10 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 	Thus, \( (C^{\Delta}_{d}, +) \) is an abelian group\index{abelian group}.
 \end{proof}
 
-\begin{definition}[Boundary]{\cite[p.106]{hatcher2005algebraic}} 
+\begin{definition}[Boundary]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
 	Let \( \sigma^{(d)} \) be an oriented \( d \)-simplex in a complex \( K \). The boundary of \( \sigma^{(d)} \) is defined as the simplicial \( (d-1) \)-chain of \( K \) with coefficients in the abelian group\index{abelian group} \( G \), given by
 	\begin{align}
-		\partial(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^{i} \sigma^{(d-1)}_{i}, 
+		\partial_d(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^{i} \sigma^{(d-1)}_{i}, 
 	\end{align}
 	where \( \sigma^{(d-1)}_{i} \) is a \( (d-1) \)-face of \( \sigma^{(d)} \). If \( d = 0 \), we define \( \partial(\sigma^{(0)}) = 0 \).
 \end{definition}
@@ -229,27 +229,25 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 \begin{lemma}
 	The boundary operator is a group homomorphism
 	\begin{align}
-		\partial: C^{\Delta}_{d} \to C^{\Delta}_{d-1}. 
+		\partial_d: C^{\Delta}_{d} \to C^{\Delta}_{d-1}. 
 	\end{align}
 \end{lemma}
 
 \begin{proof}
 	We define the boundary operator for a \( d \)-chain \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \):
 	\begin{align}
-		\partial(c) & = \sum_{i=0}^{k} g_{i} \partial(\sigma_{i}^{(d)})                    \\
-		            & = \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{i,j}^{(d-1)}  \\
-		            & = \sum_{i=0}^{k} \sum_{j=0}^{d} g_{i} (-1)^{j} \sigma_{i,j}^{(d-1)}, 
+		\partial_d(c) & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)})                    \\
+		            & = \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{ij}^{(d-1)}  \\
+		            & = \sum_{i=0}^{k} \sum_{j=0}^{d} g_{i} (-1)^{j} \sigma_{ij}^{(d-1)}, 
 	\end{align}
-	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{i,j}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \).
-				
-	To verify that \( \partial \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute:
+	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ without loss of generality:
 	\begin{align}
 		\partial(c + c') & = \partial\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+		                 & = \partial\left( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial(\sigma_{j}^{(d)})    \\
 		                 & = \sum_{i=0}^{k} g_{i} \partial(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial(\sigma_{j}^{(d)})    \\
 		                 & = \partial(c) + \partial(c').                                                                           
 	\end{align}
-				
-	Thus, \( \partial \) is a group homomorphism.
 \end{proof}
 
 \begin{example}
@@ -262,8 +260,8 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 				
 	Now, let's proceed with the computation:
 	\begin{align}
-		\partial(\partial(\sigma^{(2)})) & = \partial(e_{0} + e_{1} + e_{2})                                          \\
-		                                 & = \partial(e_{0}) + \partial(e_{1}) + \partial(e_{2})                      \\
+		\partial(\partial(\sigma^{(2)})) & = \partial_d(e_{0} + e_{1} + e_{2})                                          \\
+		                                 & = \partial_d(e_{0}) + \partial(e_{1}) + \partial(e_{2})                      \\
 		                                 & = \partial(v_{1}, v_{2}) + \partial(v_{2}, v_{0}) + \partial(v_{0}, v_{1}) \\
 		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})]          \\
 		                                 & = 0.                                                                       
