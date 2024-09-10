@@ -242,8 +242,8 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 	\end{align}
 	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ w.l.o.g.:
 	\begin{align}
-		\partial_d(c + c') & = \partial_d\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
-		                 & = \partial_d\left( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+		\partial_d(c + c') & = \partial_d( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} ) \\
+		                 & = \partial_d( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} ) \\
 		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial_d(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
 		                 & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
 		                 & = \partial_d(c) + \partial_d(c').                                                                           
