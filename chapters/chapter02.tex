@@ -484,18 +484,18 @@ In the context of lower dimensions, there is an intuitive understanding of when 
 
 In order to achieve this objective, it is necessary to develop a methodology for comparing homology groups. However, it is not immediately evident how this can be accomplished with the tools that have been developed thus far. Indeed, this represents a significant challenge. To address this issue, we propose the introduction of the concept of singular homology. The fundamental principles underlying this concept are analogous to those that have been previously explored.
 
-To compute \( Z_{d}(X) \), we need to find the group of \( d \)-cycles in \( X \). Since \( X \) is obtained by identifying opposite faces of \( \partial_{d} \sigma^{(d)} \), a \( d \)-cycle in \( X \) corresponds to a \( d \)-cycle in \( \partial_{d} \sigma^{(d)} \), which is not a boundary of a \( (d+1) \)-dimensional face of \( \sigma^{(d)} \).
-
 \begin{definition}
 	A singular \( d \)-simplex in a topological\index{topological} space \( X \) is a continuous map \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \).
 \end{definition}
 
-We define the boundary map \( \partial_{d} \) in a similar manner as before. The boundary map, denoted as \( \partial_{d} \), is a function that operates on the chain group \( C_{d}(X) \) and maps it to the chain group \( C_{d-1}(X) \). It is defined as follows: For any singular \( d \)-simplex \( \tilde{\sigma}^{(d)} \) in \( X \), the boundary map \( \partial_{d}(\tilde{\sigma}^{(d)}) \) is obtained by summing over all the \( (d-1) \)-simplices that are obtained by removing one vertex from \( \tilde{\sigma}^{(d)} \). Each term in the sum is multiplied by \( (-1)^{i} \), where \( i \) represents the index of the removed vertex. In other words, if \( v_{i} \) represents the \( 0 \)-simplex (vertex) of \( \tilde{\sigma}^{(d)} \), then the boundary map can be expressed as:
+We define the boundary map \( \partial_{d} \) in a similar manner as before. The singular boundary map, also denoted as \( \partial_{d} \) as we won't need any distinction, is a function that operates on the chain group \( C_{d}(X) \) and maps it to the chain group \( C_{d-1}(X) \). It is defined as follows: For any singular \( d \)-simplex \( \tilde{\sigma}^{(d)} \) in \( X \), the boundary map \( \partial_{d}(\tilde{\sigma}^{(d)}) \) is obtained by summing over all the \( (d-1) \)-simplices that are obtained by removing one vertex from \( \tilde{\sigma}^{(d)} \). Each term in the sum is multiplied by \( (-1)^{i} \), where \( i \) represents the index of the removed vertex. In other words, if \( v_{i} \) represents the \( 0 \)-simplex (vertex) of \( \tilde{\sigma}^{(d)} \), then the boundary map can be expressed as:
 \begin{align}
 	\partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i} (-1)^{i} \tilde{\sigma}^{(d)}\vert_{[v_0, \ldots, v_{i-1}, v_{i+1}, \ldots, v_d]}. 
 \end{align}
 
 Here, \( v_{i} \) is a map that takes the \( 0 \)-simplex \( \sigma^{(0)} \) to the corresponding vertex in \( X \), such that \( v_{i}: \sigma^{(0)} \to X \) is continuous.
+
+To compute \( Z_{d}(X) \), we need to find the group of \( d \)-cycles in \( X \). Since \( X \) is obtained by identifying opposite faces of \( \partial_{d} \sigma^{(d)} \), a \( d \)-cycle in \( X \) corresponds to a \( d \)-cycle in \( \partial_{d} \sigma^{(d)} \), which is not a boundary of a \( (d+1) \)-dimensional face of \( \sigma^{(d)} \).
 
 As mentioned earlier, when we apply the boundary map twice to a \( d \)-chain \( c \), denoted as \( \partial^{2}(c) \) or \( \partial_{d-1}(\partial_{d}(c)) \), the result is always zero. This observation leads us to the idea of defining the singular homology groups in a similar way to the simplicial\index{simplicial} homology groups.
 
