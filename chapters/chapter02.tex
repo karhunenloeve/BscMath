@@ -260,21 +260,21 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 				
 	Now, let's proceed with the computation:
 	\begin{align}
-		\partial(\partial(\sigma^{(2)})) & = \partial_d(e_{0} + e_{1} + e_{2})                                          \\
-		                                 & = \partial_d(e_{0}) + \partial(e_{1}) + \partial(e_{2})                      \\
-		                                 & = \partial(v_{1}, v_{2}) + \partial(v_{2}, v_{0}) + \partial(v_{0}, v_{1}) \\
+		\partial_1(\partial_2(\sigma^{(2)})) & = \partial_1(e_{0} + e_{1} + e_{2})                                          \\
+		                                 & = \partial_1(e_{0}) + \partial_1(e_{1}) + \partial_1(e_{2})                      \\
+		                                 & = \partial_1(v_{1}, v_{2}) + \partial_1(v_{2}, v_{0}) + \partial_1(v_{0}, v_{1}) \\
 		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})]          \\
 		                                 & = 0.                                                                       
 	\end{align}
 				
 	We observe that \( C^{\Delta}_{0} \) is an abelian group\index{abelian group} and that oppositely oriented simplices cancel each other out, resulting in:
 	\begin{align}
-		\partial(\partial(\sigma^{(2)})) = 0. 
+		\partial_{1}(\partial_2(\sigma^{(2)})) = 0. 
 	\end{align}
 				
-	This property can be generalized to higher dimensions through induction. Therefore, since \( \partial \) is a linear operator and the chain \( c \) is a sum of \( d \)-simplices, we can conclude that:
+	This property can be generalized to higher dimensions through induction. Therefore, since \( \partial_d \) is a linear operator and the chain \( c \) is a sum of \( d \)-simplices, we can conclude that for $d \geq 1$:
 	\begin{align}
-		\partial^{2}(c) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\Delta}_{d}. 
+		\partial^{2}(c) := \partial_{d-1}(\partial_{d}(c)) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\Delta}_{d}. 
 	\end{align}
 				
 	Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
