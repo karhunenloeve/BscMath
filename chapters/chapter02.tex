@@ -171,7 +171,7 @@ Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents 
 	\tau_{i}^{(d-1)} = (-1)^{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}).
 \end{equation}
 
-\begin{definition}[$d$-Chain]{\cite[\S 2.3]{zomorodian2004computing}}
+\begin{definition}[$d$-chain]{\cite[\S 2.3]{zomorodian2004computing}}
 	\label{d-Chain}
 	Given a set \(\{\sigma_{0}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \(G\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
 	\begin{align}
@@ -280,7 +280,7 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 	Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
 \end{example}
 
-\begin{definition}[$d$-Cycle]{\cite[\S 2, p. 106]{hatcher2005algebraic}}
+\begin{definition}[$d$-cycle]{\cite[\S 2, p. 106]{hatcher2005algebraic}}
 	A $d$-chain is called a $d$-cycle if its boundary is equal to zero.
 \end{definition}
 
@@ -291,7 +291,7 @@ We denote the set of \( d \)-cycles of a complex \( K \) over an abelian group $
 
 A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if it can be expressed as the boundary of a \( (d+1) \)-chain in \( K \), where \( d = 0, 1, \ldots, k-1 \). In other words, a cycle is considered a boundary if it can be 'filled in' by a higher-dimensional chain. This equivalence relation is denoted as \( c \sim 0 \).
 
-\begin{definition}[Boundary Group]{\cite[\S 2.3]{zomorodian2004computing}}
+\begin{definition}[Boundary group]{\cite[\S 2.3]{zomorodian2004computing}}
 	The subgroup of $Z^{\Delta}_{d}$ consisting of boundaries is referred to as the simplicial boundary group $B^{\Delta}_{d}$.
 \end{definition}
 
@@ -300,7 +300,7 @@ It is worth noting that \( B^{\Delta}_{d} \) is equal to the image of the bounda
 	H^{\Delta}_{d} := Z^{\Delta}_{d} / B^{\Delta}_{d}. 
 \end{align}
 
-\begin{definition}[Simplicial Homology Group]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
+\begin{definition}[Simplicial homology group]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
 	The group \( H^{\Delta}_{d} \) represents the \( d \)-dimensional simplicial homology\index{homology} group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
 	\begin{align}
 		H^{\Delta}_{d} := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
@@ -484,7 +484,7 @@ In the context of lower dimensions, there is an intuitive understanding of when 
 
 In order to achieve this objective, it is necessary to develop a methodology for comparing homology groups. However, it is not immediately evident how this can be accomplished with the tools that have been developed thus far. Indeed, this represents a significant challenge. To address this issue, we propose the introduction of the concept of singular homology. The fundamental principles underlying this concept are analogous to those that have been previously explored.
 
-\begin{definition}
+\begin{definition}[Singular $d$-simplex]
 	A singular \( d \)-simplex in a topological\index{topological} space \( X \) is a continuous map \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \).
 \end{definition}
 
