@@ -379,16 +379,14 @@ The index of a chain $c = \sum_{i=0}^{k} g_i \sigma_i^{(d)}$ is defined as $I(c)
 \begin{proof}
 	Let \( \sigma^{(1)} = (v_{0}, v_{1}) \) be a \( 1 \)-simplex. For the chain \( c = \partial_{1}(g \sigma^{(1)}) = g v_{1} - g v_{0} \), we have \( c \sim 0 \), and it is clear that \( I(c) = g - g = 0 \). Since \( I(c + c') = I(c) + I(c') \), \( I \) is a group homomorphism. For any \( 1 \)-chain \( c \in C^{\Delta}_{1} \) of the form \( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(1)} \), where \( \sigma_{i}^{(1)} = (v_{i}, v_{i+1}) \), we have:
 	\begin{align}
-		c = \partial_{1}(c) \sim 0 \implies I(c) = I(\partial_{1}(c)) = 0. 
+		c = \partial_{1}(c) \implies c \sim 0 \implies I(c) = I(\partial_{1}(c)) = 0. 
 	\end{align}
 				
 	Consider two vertices \( v \) and \( w \) in \( K \). Since \( K \) is connected, there exists a path between \( v \) and \( w \) consisting of \( 1 \)-simplices \( \sigma_{i}^{(1)} = (v_{i}, v_{i+1}) \), \( i = 0, \ldots, k-1 \), where \( v_{0} = v \) and \( v_{k} = w \). The boundary of the chain \( c = \sum_{i=0}^{k} g \sigma_{i}^{(1)} \) is given by:
 	\begin{align}
-		\partial_{1}(c) = \sum_{i=0}^{k} g \partial_{1}(\sigma_{i}^{(1)}) = \sum_{i=0}^{k} g [(v_{i+1}) - (v_{i})] = g w - g v. 
+		\partial_{1}(c) = \sum_{i=0}^{k} g \partial_{1}(\sigma_{i}^{(1)}) = \sum_{i=0}^{k} g \left(\left(v_{i+1}) - (v_{i}\right)\right) = g w - g v. 
 	\end{align}
-	Since \( \partial_{1}(c) \) is a boundary, we have \( c = \partial_{1}(c) \sim 0 \). Thus, \( (g w - g v) \sim 0 \), implying \( g w \sim g v \). Therefore, any \( 0 \)-chain \( c \) in \( K \) is homologous to the chain \( g v \). We observe that homologous chains have equal indices, i.e., \( I(c) = I(g v) = g \). Thus, \( c \sim g v \implies c \sim I(c) v \). This shows that if \( I(c) = 0 \), then \( c \sim 0 \). Hence, \( I(c) = 0 \) is equivalent to \( c \sim 0 \).
-				
-	Since \( I \) is a homomorphism from \( C^{\Delta}_{0} = Z^{\Delta}_{0} \) to \( \mathbb{Z} \), for any \( 0 \)-simplex \( c \) and \( g \in \mathbb{Z} \), the chain \( g c \in C^{\Delta}_{0} \) is a cycle with \( I(g c) = g \). Therefore, \( I(Z^{\Delta}_{0}) = \mathbb{Z} \). Since \( I(c) = 0 \) is equivalent to \( c \sim 0 \), we have \( B^{\Delta}_{0} = \ker(I) \). This implies that:
+	Since \( \partial_{1}(c) \) is a boundary, we have \( c = \partial_{1}(c) \sim 0 \). Thus, \( (g w - g v) \sim 0 \), implying \( g w \sim g v \). Therefore, any \( 0 \)-chain \( c \) in \( K \) is homologous to the chain \( g v \). We observe that homologous chains have equal indices, i.e., \( I(c) = I(g v) = g \). Thus, \( c \sim g v \implies c \sim I(c) v \). This shows that if \( I(c) = 0 \), then \( c \sim 0 \). Hence, \( I(c) = 0 \) is equivalent to \( c \sim 0 \). Since \( I \) is a homomorphism from \( C^{\Delta}_{0} = Z^{\Delta}_{0} \) to \( \mathbb{Z} \), for any \( 0 \)-simplex \( c \) and \( g \in \mathbb{Z} \), the chain \( g c \in C^{\Delta}_{0} \) is a cycle with \( I(g c) = g \). Therefore, \( I(Z^{\Delta}_{0}) = \mathbb{Z} \). Since \( I(c) = 0 \) is equivalent to \( c \sim 0 \), we have \( B^{\Delta}_{0} = \ker(I) \). This implies that:
 	\begin{align}
 		H^{\Delta}_{0} = Z^{\Delta}_{0} / B^{\Delta}_{0} \cong \mathbb{Z}. 
 	\end{align}
