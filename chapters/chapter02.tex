@@ -398,16 +398,15 @@ The index of a chain $c = \sum_{i=0}^{k} g_i \sigma_i^{(d)}$ is defined as $I(c)
 \end{corollary}
 
 \begin{proof}
-	From Proposition \ref{decomp}, we know that if \( K \) is a connected complex, then the zeroth simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \).
+	From Proposition \ref{decomp}, we know that if \( K \) is a connected complex, then the zeroth simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K; \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \).
 				
-	Consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) can be expressed as the direct sum\index{direct sum} of the $0$-dimensional homology\index{homology} groups of its connected components\index{connected components}:
+	Consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\Delta}_{0}(K; \mathbb{Z}) \) can be expressed as the direct sum\index{direct sum} of the $0$-dimensional homology\index{homology} groups of its connected components\index{connected components}:
 	\begin{align}
-		H^{\Delta}_{0}(K, \mathbb{Z}) = H^{\Delta}_{0}(K_1, \mathbb{Z}) \oplus H^{\Delta}_{0}(K_2, \mathbb{Z}) \oplus \cdots \oplus H^{\Delta}_{0}(K_p, \mathbb{Z}). 
-	\end{align}
-				
-	Since each \( K_i \) is a connected component, by Proposition \ref{decomp}, each \( H^{\Delta}_{0}(K_i, \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \). Therefore, we have:
+		H^{\Delta}_{0}(K; \mathbb{Z}) = H^{\Delta}_{0}(K_1; \mathbb{Z}) \oplus H^{\Delta}_{0}(K_2; \mathbb{Z}) \oplus \cdots \oplus H^{\Delta}_{0}(K_p; \mathbb{Z}). 
+	\end{align}	
+	Since each \( K_i \) is a connected component, by Proposition \ref{decomp}, each \( H^{\Delta}_{0}(K_i; \mathbb{Z}) \) is isomorphic to \( \mathbb{Z} \). Therefore, we have:
 	\begin{align}
-		H^{\Delta}_{0}(K, \mathbb{Z}) \cong \bigoplus_{i=1}^p \mathbb{Z} = \mathbb{Z}^{p}. 
+		H^{\Delta}_{0}(K; \mathbb{Z}) \cong \bigoplus_{i=1}^p \mathbb{Z} = \mathbb{Z}^{p}. 
 	\end{align}
 \end{proof}
 
