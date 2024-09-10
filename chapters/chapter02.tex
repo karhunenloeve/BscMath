@@ -240,7 +240,7 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 		            & = \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{ij}^{(d-1)}  \\
 		            & = \sum_{i=0}^{k} \sum_{j=0}^{d} g_{i} (-1)^{j} \sigma_{ij}^{(d-1)}, 
 	\end{align}
-	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ without loss of generality:
+	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ w.l.o.g.:
 	\begin{align}
 		\partial(c + c') & = \partial\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
 		                 & = \partial\left( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
@@ -367,7 +367,7 @@ By definition, the \( d \)-skeleton forms a subcomplex.
 	\end{align}
 \end{proof}
 
-\begin{proposition}{\cite[p.108f]{hatcher2005algebraic}}
+\begin{proposition}{\cite[Proposition 2.7]{hatcher2005algebraic}}
 	\label{decomp}
 	If \( K \) is a connected complex and \( c \) is a \( 0 \)-chain with \( I(c) = 0 \), then \( I(c) = 0 \) is equivalent to \( c \sim 0 \), where \( \sim \) denotes homology\index{homology} equivalence. Furthermore, in this case, the zeroth simplicial homology\index{homology} group \( H^{\Delta}_{0}(K, \mathbb{Z}) \) is isomorphic to the integers \( \mathbb{Z} \).
 \end{proposition}
