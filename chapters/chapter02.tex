@@ -297,17 +297,17 @@ A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if
 
 It is worth noting that \( B^{\Delta}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\Delta}_{d} \) is a subgroup of \( Z^{\Delta}_{d} \) and \( Z^{\Delta}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\Delta}_{d} \) is normal. Therefore, we can construct the group quotient:
 \begin{align}
-	H^{\Delta}_{d} = Z^{\Delta}_{d} / B^{\Delta}_{d}. 
+	H^{\Delta}_{d} := Z^{\Delta}_{d} / B^{\Delta}_{d}. 
 \end{align}
 
-\begin{definition}[Simplicial Homology Group]{\cite[\S 2.1]{hatcher2005algebraic}} 
+\begin{definition}[Simplicial Homology Group]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
 	The group \( H^{\Delta}_{d} \) represents the \( d \)-dimensional simplicial homology\index{homology} group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
 	\begin{align}
-		H^{\Delta}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
+		H^{\Delta}_{d} := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
 	\end{align}
 \end{definition}
 
-Next, we want to examine the structure of this homology\index{homology} group by shedding light on its connection to the connected components of a simplicial complex. We will find that the homology\index{homology} groups of the connected components of the complex, which in turn form a complex themselves, yield the direct sum of the homology\index{homology} group of the entire complex.
+Next, we want to examine the structure of this homology\index{homology} group by shedding light on its relationship to the connected components of a simplicial complex. We will find that the homology\index{homology} groups of the connected components of the complex, which in turn form a complex themselves, yield the direct sum of the homology\index{homology} group of the entire complex.
 
 \begin{definition}
 	A subcomplex is a subset \( S \) of the simplices belonging to a complex \( K \), where \( S \) itself forms a complex.
@@ -320,7 +320,7 @@ Next, we want to examine the structure of this homology\index{homology} group by
 By definition, the \( d \)-skeleton forms a subcomplex.
 
 \begin{definition}
-	A complex \( K \) is considered connected if it cannot be expressed as the disjoint union of two or more non-empty subcomplexes. A geometric complex is path-connected if there exists a path consisting of \( 1 \)-simplices connecting any vertex to any other vertex.
+	A complex \( K \) is considered connected if it cannot be expressed as the disjoint union of two or more non-empty subcomplexes. A geometric complex is path-connected if there exists a path of \( 1 \)-simplices connecting any vertex to any other one.
 \end{definition}
 
 \begin{lemma}
