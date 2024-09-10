@@ -518,6 +518,13 @@ This equivalence serves as the counterpart to Proposition \ref{decomp}.
 	\end{align}
 \end{proof}
 
+\begin{definition}[Index]
+	The index is defined as a map \( I: C_{0}(X) \to \mathbb{Z} \) through
+	\begin{align}
+		I(c) = \sum_{i} g_{i} \quad \text{for } c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \in C_{0}(X). 
+	\end{align}
+\end{definition}
+
 \begin{proposition}
 	The \( 0 \)-dimensional homology group of a space \( X \) is the direct sum\index{direct sum} of \(\mathbb{Z}\) copies, with each copy corresponding to a distinct path-component of \( X \).
 \end{proposition}
@@ -527,14 +534,7 @@ This equivalence serves as the counterpart to Proposition \ref{decomp}.
 	\begin{align}
 		H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}). 
 	\end{align}
-			
-	Define the map \( I: C_{0}(X) \to \mathbb{Z} \) by:
-	\begin{align}
-		I(c) = \sum_{i} g_{i} \quad \text{for } c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \in C_{0}(X). 
-	\end{align}
-	Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \).
-			
-	Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain:
+	Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \). Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain:
 	\begin{align}
 		c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \quad \text{implying } c \sim 0. 
 	\end{align}
