@@ -534,22 +534,9 @@ This equivalence serves as the counterpart to Proposition \ref{decomp}.
 	\begin{align}
 		H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}). 
 	\end{align}
-	Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \). Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain:
-	\begin{align}
-		c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \quad \text{implying } c \sim 0. 
-	\end{align}
-			
-	If \( c \sim 0 \), then \( c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \) for some \( 1 \)-chain \( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \). By linearity of \( I \), we have:
-	\begin{align}
-		I(c) = I \left( \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \right) = 0. 
-	\end{align}
-			
-	Thus, \( I \) induces an isomorphism between \( H_{0}(X) \) and \( \mathbb{Z} \) when \( X \) is path-connected.
-			
-	For the general case where \( X \) has \( p \) path-components \( X_{1}, \ldots, X_{p} \), we apply the above argument to each component. Therefore, \( H_{0}(X) \) is isomorphic to the direct sum\index{direct sum}:
-	\begin{align}
-		H_{0}(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}. 
-	\end{align}
+	Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \). Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain $c = \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)})$ implying $c \sim 0$. If \( c \sim 0 \), then \( c = \partial_{1} \left( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \right) \) for some \( 1 \)-chain \( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \). By linearity of \( I \), we have	$I(c) = I( \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)} )) = 0$. Thus, \( I \) induces an isomorphism between \( H_{0}(X) \) and \( \mathbb{Z} \) when \( X \) is path-connected.
+	
+	For the general case where \( X \) has \( p \) path-components \( X_{1}, \ldots, X_{p} \), we apply the above argument to each component. Therefore, \( H_{0}(X) \) is isomorphic to the direct sum\index{direct sum} $H_{0}(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}$.
 \end{proof}
 
 This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
