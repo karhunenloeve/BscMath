@@ -260,8 +260,8 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 				
 	Now, let's proceed with the computation:
 	\begin{align}
-		\partial_1(\partial_2(\sigma^{(2)})) & = \partial_1(e_{0} + e_{1} + e_{2})                                          \\
-		                                 & = \partial_1(e_{0}) + \partial_1(e_{1}) + \partial_1(e_{2})                      \\
+		\partial_1(\partial_2(\sigma^{(2)})) & = \partial_1(\partial_2(e_{0} + e_{1} + e_{2}))                                          \\
+		                                 & = \partial_1(\partial_2(e_{0})) + \partial_1(\partial_2(e_{1})) + \partial_1(\partial_2(e_{2}))                      \\
 		                                 & = \partial_1(v_{1}, v_{2}) + \partial_1(v_{2}, v_{0}) + \partial_1(v_{0}, v_{1}) \\
 		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})]          \\
 		                                 & = 0.                                                                       
@@ -334,9 +334,9 @@ By definition, the \( d \)-skeleton forms a subcomplex.
 	Suppose \( K \) is connected. Pick any vertex \( v \in K \). Let \( L \) denote the subcomplex of \( K \) containing all vertices reachable from \( v \) via paths of \( 1 \)-simplices. If \( L \neq K \), then \( L \) and \( K \setminus L \) form a disjoint union of two non-empty subcomplexes, contradicting the connectedness\index{connectedness} of \( K \). Hence, \( L = K \).
 \end{proof}
 
-\begin{theorem}{\cite[p.105ff]{hatcher2005algebraic}}
+\begin{proposition}{\cite[Proposition 2.6]{hatcher2005algebraic}}
 	Let \( K_{1}, \ldots, K_{p} \) be the collection of all connected components of a complex \( K \). Furthermore, let \( H^{\Delta}_{d_i} \) represent the \( d \)-th simplicial homology\index{homology} group of \( K_{i} \), and \( H^{\Delta}_{d} \) denote the \( d \)-th simplicial homology\index{homology} group of \( K \). Then, \( H^{\Delta}_{d} \) is isomorphic to the direct sum \( H^{\Delta}_{d_1} \oplus \cdots \oplus H^{\Delta}_{d_p} \).
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 	Let \( C^{\Delta}_{d} \) represent the group of simplicial \( d \)-chains of \( K \), and let \( K_{i} \) denote the \( i \)-th component of \( K \). Define \( C^{\Delta}_{d_i} \) as the group of simplicial \( d \)-chains of \( K_{i} \). It is evident that \( C^{\Delta}_{d_i} \) is a subgroup of \( C^{\Delta}_{d} \). Furthermore, we observe that \( C^{\Delta}_{d} \) can be expressed as the direct sum of \( C^{\Delta}_{d_1}, \ldots, C^{\Delta}_{d_p} \):
