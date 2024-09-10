@@ -242,11 +242,11 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 	\end{align}
 	which is an element of \( C^{\Delta}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ w.l.o.g.:
 	\begin{align}
-		\partial(c + c') & = \partial\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
-		                 & = \partial\left( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
-		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial(\sigma_{j}^{(d)})    \\
-		                 & = \sum_{i=0}^{k} g_{i} \partial(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial(\sigma_{j}^{(d)})    \\
-		                 & = \partial(c) + \partial(c').                                                                           
+		\partial_d(c + c') & = \partial_d\left( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+		                 & = \partial_d\left( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} \right) \\
+		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial_d(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
+		                 & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
+		                 & = \partial_d(c) + \partial_d(c').                                                                           
 	\end{align}
 \end{proof}
 
@@ -496,25 +496,23 @@ This sum, however, can be a series, as we can take limits on simplices. The bary
 
 As mentioned earlier, when we apply the boundary map twice to a \( d \)-chain \( c \), denoted as \( \partial^{2}(c) \) or \( \partial_{d-1}(\partial_{d}(c)) \), the result is always zero. This observation leads us to the idea of defining the singular homology groups in a similar way to the simplicial\index{simplicial} homology groups.
 
-\begin{definition}
-	The singular homology group \( H_{d}(X) \) is the quotient:
+\begin{definition}[Singular homology]
+	The singular homology group \( H_{d}(X) \) is
 	\begin{align}
 		H_{d}(X) = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
 	\end{align}
 \end{definition}
 
-In the following section, we will explore how this definition of homology allows us to establish a simple relationship between homeomorphic spaces and their corresponding homology groups. This relationship becomes apparent when we consider the fact that the definitions of \( H_{d} \) and \( H^{\Delta}_{d} \) are analogous. Intuitively, we would expect these two groups to be the same for triangulable topological\index{topological} spaces. However, this is not immediately obvious. One reason for this is that \( H^{\Delta}_{d} \) is finitely generated, while the chain group \( C_{d}(X) \), from which we derived \( H_{d} \), is uncountable.
+In the following section, we will explore how this definition of homology allows us to establish a simple relationship between homeomorphic spaces and their corresponding homology groups. This relationship becomes apparent when we consider the fact that the definitions of \( H_{d} \) and \( H^{\Delta}_{d} \) are analogous. Intuitively, we would expect these two groups to be the same for triangulable topological\index{topological} spaces. However, this is not immediately obvious. One reason for this is that \( H^{\Delta}_{d} \) is finitely generated, while the chain group \( C_{d}(X) \), from which we derived \( H_{d} \), is uncountable. Interestingly, for spaces where both simplicial\index{simplicial} and singular homology groups can be calculated, these two groups are indeed equivalent. We will provide a proof for this later on. But before we do, let us present some facts about singular homology that support the intuition that \( H_{d} \) is isomorphic to \( H^{\Delta}_{d} \).
 
-Interestingly, for spaces where both simplicial\index{simplicial} and singular homology groups can be calculated, these two groups are indeed equivalent. We will provide a proof for this later on. But before we do, let us present some facts about singular homology that support the intuition that \( H_{d} \) is isomorphic to \( H^{\Delta}_{d} \).
-
-\begin{proposition}{\cite[p.108f]{hatcher2005algebraic}}
+\begin{proposition}{\cite[Proposition 2.6]{hatcher2005algebraic}}
 	In the context of a topological\index{topological} space \( X \), \( H_{d}(X) \) is isomorphic to the direct sum\index{direct sum} \( H_{d}(X_{1}) \oplus \cdots \oplus H_{d}(X_{p}) \), where \( X_{i} \) represents the path-connected components\index{connected components} of \( X \).
 \end{proposition}
 
 This equivalence serves as the counterpart to Proposition \ref{decomp}.
 
 \begin{proof}
-	As the maps \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex always has a path-connected image in \( X \). Consequently, \( C_{d}(X) \) can be expressed as the direct sum\index{direct sum} of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \). The boundary map \( \partial \) functions as a homomorphism, thereby preserving this decomposition. Consequently, \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also decompose:
+	As the maps \( \tilde{\sigma}^{(d)} \) are continuous, a singular simplex always has a path-connected image in \( X \). Consequently, \( C_{d}(X) \) can be expressed as the direct sum\index{direct sum} of subgroups \( C_{d}(X_{1}) \oplus \cdots \oplus C_{d}(X_{p}) \). The boundary map \( \partial_d \) functions as a homomorphism, thereby preserving this decomposition. Consequently, \( \ker(\partial_{d}) \) and \( \operatorname{im}(\partial_{d+1}) \) also decompose:
 	\begin{align}
 		H_{d}(X) \cong H_{d}(X_{1}) \oplus H_{d}(X_{2}) \oplus \cdots \oplus H_{d}(X_{p}). 
 	\end{align}
@@ -557,7 +555,12 @@ This equivalence serves as the counterpart to Proposition \ref{decomp}.
 This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
 
 \begin{example}
-	Alternative proof that \( H_{d}(S^{d}) \cong \mathbb{Z} \). To prove that the \( d \)-th homology group of the \( d \)-sphere is isomorphic to \(\mathbb{Z}\), we utilize the singular\index{singular} homology approach. The \( d \)-th singular\index{singular} chain group \( C_{d}(S^{d}) \) consists of formal linear combinations of singular\index{singular} \( d \)-simplices\index{simplices} in \( S^{d} \) with integer coefficients. First, we observe that \( S^{d} \) is a connected\index{connected} and compact\index{compact} topological\index{topological} space. According to the Hurewicz\index{Hurewicz} theorem, we have \( H_{d}(S^{d}) \cong \pi_{d}(S^{d}) \), where \( \pi_{d}(S^{d}) \) denotes the \( d \)-th homotopy group of \( S^{d} \). Since \( S^{d} \) is simply connected\index{connected} for \( d \geq 2 \), it follows that \( \pi_{d}(S^{d}) = 0 \) for \( d \geq 2 \). However, for \( d = 1 \), \( \pi_{1}(S^{1}) \cong \mathbb{Z} \).
+	\begin{proposition}
+	\( H_{d}(S^{d}) \cong \mathbb{Z} \).
+	\end{proposition}
+
+	\begin{proof}
+	To prove that the \( d \)-th homology group of the \( d \)-sphere is isomorphic to \(\mathbb{Z}\), we utilize the singular\index{singular} homology approach. The \( d \)-th singular\index{singular} chain group \( C_{d}(S^{d}) \) consists of formal linear combinations of singular\index{singular} \( d \)-simplices\index{simplices} in \( S^{d} \) with integer coefficients. First, we observe that \( S^{d} \) is a connected\index{connected} and compact\index{compact} topological\index{topological} space. According to the Hurewicz\index{Hurewicz} theorem, we have \( H_{d}(S^{d}) \cong \pi_{d}(S^{d}) \), where \( \pi_{d}(S^{d}) \) denotes the \( d \)-th homotopy group of \( S^{d} \). Since \( S^{d} \) is simply connected\index{connected} for \( d \geq 2 \), it follows that \( \pi_{d}(S^{d}) = 0 \) for \( d \geq 2 \). However, for \( d = 1 \), \( \pi_{1}(S^{1}) \cong \mathbb{Z} \).
 			
 	Now, to establish the isomorphism between \( \pi_{1}(S^{1}) \) and \( H_{1}(S^{1}) \), consider the singular\index{singular} \( 1 \)-chain group \( C_{1}(S^{1}) \), which consists of formal linear combinations of singular\index{singular} \( 1 \)-simplices\index{simplices} in \( S^{1} \) with integer coefficients. Let \( c \) be a singular\index{singular} \( 1 \)-chain in \( C_{1}(S^{1}) \) expressed as:
 	\begin{align}
@@ -582,6 +585,7 @@ This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
 		H_{1}(S^{1}) = Z_{1}(S^{1}) / B_{1}(S^{1}) \cong \mathbb{Z}, 
 	\end{align}
 	where \( Z_{1}(S^{1}) \) is the group of \( 1 \)-cycles and \( B_{1}(S^{1}) \) is the group of \( 1 \)-boundaries. In conclusion, \( H_{d}(S^{d}) \cong \pi_{d}(S^{d}) = 0 \) for \( d \geq 2 \), and \( H_{1}(S^{1}) \cong \pi_{1}(S^{1}) \cong \mathbb{Z} \). Thus, the \( d \)-th homology group of the \( d \)-sphere is isomorphic to \(\mathbb{Z}\).
+	\end{proof}
 \end{example}
 
 
