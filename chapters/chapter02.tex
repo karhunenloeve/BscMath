@@ -652,27 +652,24 @@ We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \
 	\end{tikzcd}
 \end{equation}
 
-The chain map \( f_{d} \) gives rise to a homomorphism \( f_{\star}: H_{d}(X) \rightarrow H_{d}(Y) \). It becomes evident that if \( X \) and \( Y \) are homeomorphic, meaning there exists a homeomorphism \( f: X \rightarrow Y \), then the induced map \( f_{\star} \) is an isomorphism.
+The chain map \( f_{d} \) gives rise to a homomorphism \( f_{\star}: H_{d}(X) \rightarrow H_{d}(Y) \). It becomes evident that if \( X \) and \( Y \) are homeomorphic, then the induced map \( f_{\star} \) is an isomorphism. To formalize the relationships between the homology groups of a topological\index{topological} space \( X \), a subset \( A \subset X \), and the quotient space \( X/A \), we introduce the concept of exact sequences.
 
-To formalize the relationships between the homology groups of a topological\index{topological} space \( X \), a subset \( A \subset X \), and the quotient space \( X/A \), we introduce the concept of exact sequences.
-
-\begin{definition}[Exact Sequences]
+\begin{definition}[Exact sequences]
 	An arrangement of elements in the form
 	\begin{equation}
 		\cdots \rightarrow A_{d+1}\xrightarrow{\alpha_{d+1}}A_{d}\xrightarrow{\alpha_d} A_{d-1}\xrightarrow{}\cdots
 	\end{equation}
-	is referred to as an exact sequence when the \( A_{i} \) are abelian groups and the \( \alpha_{i} \) are homomorphisms, and it satisfies the condition that \( \ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1}) \) for all \( d \).
+	is referred to as an exact sequence when the \( A_{i} \) are abelian groups and the \( \alpha_{i} \) are homomorphisms, and it satisfies the condition that \( \mathrm{im}(\alpha_{d+1}) = \ker(\alpha_{d})\) for all \( d \).
 \end{definition}
 
 \begin{remark}\noindent
 	\begin{itemize}
-		\item The condition \( \ker(\alpha_{d}) = \mathrm{im}(\alpha_{d+1}) \) implies that \( \mathrm{im}(\alpha_{d+1}) \) is a subset of \( \ker(\alpha_{d}) \), which is equivalent to \( \alpha_{d} \circ \alpha_{d+1} = 0 \). Therefore, an exact sequence can be seen as a chain complex.
-		      		      		      
-		\item Since \( \ker(\alpha_{d}) \) is a subset of \( \mathrm{im}(\alpha_{d+1}) \), the homology groups of an exact sequence are trivial.
+		\item The condition \( \mathrm{im}(\alpha_{d+1}) = \ker(\alpha_{d}) \) implies that \( \mathrm{im}(\alpha_{d+1}) \) is a subset of \( \ker(\alpha_{d}) \), which is equivalent to \( \alpha_{d} \circ \alpha_{d+1} = 0 \). Thus, an exact sequence is a chain complex.      		      
+		\item Since \( \ker(\alpha_{d}) \subseteq \mathrm{im}(\alpha_{d+1}) \), the homology groups of an exact sequence are trivial.
 	\end{itemize}
 \end{remark}
 
-\begin{proposition}{\cite[\S 1.3.1]{Weibel1994}}
+\begin{proposition}
 	We can establish the following equivalences:
 	\begin{enumerate}
 		\item $0 \xrightarrow{}A \xrightarrow{a}B$ is exact $\Longleftrightarrow$ $\ker
@@ -705,23 +702,12 @@ To formalize the relationships between the homology groups of a topological\inde
 	\end{enumerate}
 \end{proposition}
 
-\begin{proof}
+\begin{proof}\noindent
 	\begin{enumerate}
-		\item Assume \( 0 \rightarrow A \xrightarrow{a} B \) is exact. This means \(\mathrm{im}(0) = \ker(a)\), which implies \(\ker(a) = 0\) since the image of the zero map is always the trivial group. Therefore, \(a\) is injective.
-		      		      		      
-		      Conversely, suppose \(\ker(a) = 0\). We need to show \(\mathrm{im}(0) = \ker(a)\). Since \(\ker(a) = 0\), the only element mapped to the identity in \(B\) is the zero element of \(A\). Thus, the sequence \(0 \rightarrow A \xrightarrow{a} B\) is exact.
-		      		      		          
-		\item Assume \( A \xrightarrow{a} B \rightarrow 0 \) is exact. This means \(\mathrm{im}(a) = \ker(0)\), which implies \(\mathrm{im}(a) = B\) since the kernel of the zero map is always the entire group. Therefore, \(a\) is surjective.
-		      		      		      
-		      Conversely, suppose \(\mathrm{im}(a) = B\). We need to show \(\mathrm{im}(a) = \ker(0)\). Since \(\mathrm{im}(a) = B\), every element in \(B\) has a preimage in \(A\) under the map \(a\). Thus, the sequence \( A \xrightarrow{a} B \rightarrow 0 \) is exact.
-		      		      		      
-		\item Assume \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact. From the exactness, we have \(\ker(a) = \mathrm{im}(0) = 0\) and \(\mathrm{im}(a) = \ker(0) = B\). Therefore, \(a\) is both injective and surjective, hence an isomorphism.
-		      		      		      
-		      Conversely, suppose \(a\) is an isomorphism, meaning \(a\) is both injective (no kernel) and surjective (maps onto \(B\)). Thus, \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact, satisfying \(\mathrm{im}(0) = \ker(a)\) and \(\mathrm{im}(a) = \ker(0)\).
-		      		      		      
-		\item Assume the sequence \( 0 \rightarrow A \xrightarrow{a} B \xrightarrow{b} 0 \) is exact. \(a\) is injective, and \(\mathrm{im}(a) = \ker(b)\). As \(b\) is the zero map and surjective, \( B/\mathrm{im}(a) = 0 \), implying \( B = \mathrm{im}(a) \). Therefore, \(a\) is an isomorphism, thus \( B \cong A \).
-		      		      		      
-		      Conversely, if \(a\) is an isomorphism, \(\ker(a) = 0\) and \(\mathrm{im}(a) = B\).
+		\item Assume \( 0 \rightarrow A \xrightarrow{a} B \) is exact. This means \(\mathrm{im}(0) = \ker(a)\), which implies \(\ker(a) = 0\) since the image of the zero map is always the trivial group. Therefore, \(a\) is injective. Conversely, suppose \(\ker(a) = 0\). We need to show \(\mathrm{im}(0) = \ker(a)\). Since \(\ker(a) = 0\), the only element mapped to the identity in \(B\) is the zero element of \(A\). Thus, the sequence \(0 \rightarrow A \xrightarrow{a} B\) is exact.
+		\item Assume \( A \xrightarrow{a} B \rightarrow 0 \) is exact. This means \(\mathrm{im}(a) = \ker(0)\), which implies \(\mathrm{im}(a) = B\) since the kernel of the zero map is always the entire group. Therefore, \(a\) is surjective. Conversely, suppose \(\mathrm{im}(a) = B\). We need to show \(\mathrm{im}(a) = \ker(0)\). Since \(\mathrm{im}(a) = B\), every element in \(B\) has a preimage in \(A\) under the map \(a\). Thus, the sequence \( A \xrightarrow{a} B \rightarrow 0 \) is exact.
+		\item Assume \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact. From the exactness, we have \(\ker(a) = \mathrm{im}(0) = 0\) and \(\mathrm{im}(a) = \ker(0) = B\). Therefore, \(a\) is both injective and surjective, hence an isomorphism. Conversely, suppose \(a\) is an isomorphism, meaning \(a\) is both injective (no kernel) and surjective (maps onto \(B\)). Thus, \( 0 \rightarrow A \xrightarrow{a} B \rightarrow 0 \) is exact, satisfying \(\mathrm{im}(0) = \ker(a)\) and \(\mathrm{im}(a) = \ker(0)\).    		      		      
+		\item Assume the sequence \( 0 \rightarrow A \xrightarrow{a} B \xrightarrow{b} 0 \) is exact. \(a\) is injective, and \(\mathrm{im}(a) = \ker(b)\). As \(b\) is the zero map and surjective, \( B/\mathrm{im}(a) = 0 \), implying \( B = \mathrm{im}(a) \). Therefore, \(a\) is an isomorphism, thus \( B \cong A \). Conversely, if \(a\) is an isomorphism, \(\ker(a) = 0\) and \(\mathrm{im}(a) = B\).
 	\end{enumerate}
 \end{proof}
 
