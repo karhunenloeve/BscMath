@@ -910,7 +910,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 
 \begin{proposition}{\cite[Proposition 2.21]{hatcher2005algebraic}}
 	\label{baryproof}
-	The inclusion \( \iota : C^{\mathcal{U}}_n(X) \hookrightarrow C_n(X) \) is a chain homotopy equivalence. There exists a chain map \( \rho : C_n(X) \to C^{\mathcal{U}}_n(X) \) such that the compositions \( \iota \circ \rho \) and \( \rho \circ \iota \) are chain homotopic to the identity, implying that \( \iota \) induces isomorphisms \( H^{\mathcal{U}}_n(X) \cong H_n(X) \) for all \( n \).
+	The inclusion \( \iota : C^{\mathcal{U}}_d(X) \hookrightarrow C_d(X) \) is a chain homotopy equivalence. There exists a chain map \( \rho : C_d(X) \to C^{\mathcal{U}}_d(X) \) such that the compositions \( \iota \circ \rho \) and \( \rho \circ \iota \) are chain homotopic to the identity, implying that \( \iota \) induces isomorphisms \( H^{\mathcal{U}}_d(X) \cong H_d(X) \) for all \( d \).
 \end{proposition}
 
 \begin{proof}
@@ -934,7 +934,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		0,             & \text{otherwise}.                
 		\end{cases}
 	\end{align}
-	The \(n\)-simplices thus form the structure of a simplicial complex. The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_n]\). The distance between these two points satisfies the inequality
+	The \(d\)-simplices thus form the structure of a simplicial complex. The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_d]\). The distance between these two points satisfies the inequality
 	\begin{align}
 		\left\lvert v - \sum_i t_i v_i \right\rvert & = \left\lvert \sum_i t_i(v - v_i) \right\rvert          \\
 		                                            & \leq \sum_i t_i \left\lvert v - v_i \right\rvert        \\
@@ -943,9 +943,9 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	This inequality holds due to the convex combination of the vertices and the properties of the norm.
 			
-	Let \(b_i\) denote the barycenter of the face \([v_0, \ldots, \hat{v_i}, \ldots, v_n]\), where the barycentric coordinates are equal to \(\frac{1}{n}\) for each vertex except for \(v_i\), which has \(t_i = 0\). It follows that \(b = \frac{1}{n+1} v_i + \frac{n}{n+1} b_i\). The sum of the coefficients is 1, so \(b\) lies on the line segment \([v_i, b_i]\), and the distance from \(b\) to \(v_i\) is \(\frac{n}{n+1}\) times the length of \([v_i, b_i]\). Therefore, the distance from \(b\) to \(v_i\) is bounded by \(\frac{n}{n+1}\) times the diameter of \([v_0, \ldots, v_n]\). This bound is independent of the shape of the simplex. If two points \(w_j\) and \(w_k\) in a simplex are not the barycenter, then these points lie on a proper face of \([v_0, \ldots, v_n]\). Thus, the same bound applies inductively to all \(0\)-simplices. For the repeated \(r\)-fold barycentric subdivision, we obtain
+	Let \(b_i\) denote the barycenter of the face \([v_0, \ldots, \hat{v_i}, \ldots, v_d]\), where the barycentric coordinates are equal to \(\frac{1}{d}\) for each vertex except for \(v_i\), which has \(t_i = 0\). It follows that \(b = \frac{1}{d+1} v_i + \frac{d}{d+1} b_i\). The sum of the coefficients is 1, so \(b\) lies on the line segment \([v_i, b_i]\), and the distance from \(b\) to \(v_i\) is \(\frac{d}{d+1}\) times the length of \([v_i, b_i]\). Therefore, the distance from \(b\) to \(v_i\) is bounded by \(\frac{d}{d+1}\) times the diameter of \([v_0, \ldots, v_d]\). This bound is independent of the shape of the simplex. If two points \(w_j\) and \(w_k\) in a simplex are not the barycenter, then these points lie on a proper face of \([v_0, \ldots, v_d]\). Thus, the same bound applies inductively to all \(0\)-simplices. For the repeated \(r\)-fold barycentric subdivision, we obtain
 	\begin{align}
-		\left(\frac{n}{n+1}\right)^r \xrightarrow[]{r \rightarrow \infty} 0, 
+		\left(\frac{d}{d+1}\right)^r \xrightarrow[]{r \rightarrow \infty} 0, 
 	\end{align}
 	thus, barycentric subdivision can be made with arbitrarily small diameter.
 			
