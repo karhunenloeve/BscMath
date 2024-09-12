@@ -713,17 +713,13 @@ The chain map \( f_{d} \) gives rise to a homomorphism \( f_{\star}: H_{d}(X) \r
 
 \section{Relative Homology}
 \label{RelativeHomology}
-The concept we will now discuss is that of relative homology groups. Let \( X \) be a topological\index{topological} space and \( A \) a subspace of \( X \). We define \( C_{d}(X, A) \) as the quotient group \( C_{d}(X) / C_{d}(A) \). This means that chains in \( A \) are considered equivalent to the trivial chains in \( C_{d}(X) \).
-
-Since the boundary operator \( \partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X) \) also maps \( C_{d}(A) \) to \( C_{d-1}(A) \), a natural boundary map on the quotient group \( \partial_{d}: C_{d}(X, A) \rightarrow C_{d-1}(X, A) \) is obtained. This gives rise to the following sequence:
+The concept we will now discuss is that of relative homology groups. Let \( X \) be a topological\index{topological} space and \( A \) a subspace of \( X \). We define \( C_{d}(X, A) \) as the quotient group \( C_{d}(X) / C_{d}(A) \). This means that chains in \( A \) are considered equivalent to the trivial chains in \( C_{d}(X) \). Since the boundary operator \( \partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X) \) also maps \( C_{d}(A) \) to \( C_{d-1}(A) \), a natural boundary map on the quotient group \( \partial_{d}: C_{d}(X, A) \rightarrow C_{d-1}(X, A) \) is obtained. This gives rise to the following sequence:
 \begin{align}
 	\cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots. 
 \end{align}
-This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A) \) as the homology groups of this chain complex.
+This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A) \) as the homology groups of this chain complex. We propose two important facts about \( H_{d}(X, A) \):
 
-We propose two important facts about \( H_{d}(X, A) \):
-
-\begin{proposition}{\cite[\S 2.1]{hatcher2005algebraic}}
+\begin{proposition}{\cite[\S 2.1, p. 115]{hatcher2005algebraic}}
 	\begin{enumerate}
 		\item Elements in \( H_{d}(X, A) \) are represented by relative cycles, which are \( d \)-chains \( c \) in \( C_{d}(X) \) such that \( \partial_{d}(c) \in C_{d-1}(A) \).
 		\item A relative cycle \( c \) is trivial in \( H_{d}(X, A) \) if and only if it is a relative boundary, i.e., \( c \) is the sum of a chain in \( C_{d}(A) \) and the boundary of a chain in \( C_{d+1}(X) \).
@@ -732,17 +728,12 @@ We propose two important facts about \( H_{d}(X, A) \):
 
 \begin{proof}
 	\begin{enumerate}
-		\item Assume \([c] \in H_{d}(X, A)\) represents a homology class of a chain \( c \in C_{d}(X) \). Since \([c]\) is a class in the relative homology group, \( \partial_{d}(c) \in C_{d-1}(A) \), implying that \( c \) is a relative cycle because its boundary maps into \( A \).
-		      		      		      
-		      Conversely, if \( \partial_{d}(c) \in C_{d-1}(A) \), then \( c \) qualifies as a relative cycle by definition, and any chain homologous to \( c \) in \( C_{d}(X) \) that differs from \( c \) by a boundary in \( C_{d}(A) \) will also have its boundary in \( C_{d-1}(A) \), confirming \([c]\) as an element of \( H_{d}(X, A) \).
-		      		      		      
+		\item Assume \([c] \in H_{d}(X, A)\) represents a homology class of a chain \( c \in C_{d}(X) \). Since \([c]\) is a class in the relative homology group, \( \partial_{d}(c) \in C_{d-1}(A) \), implying that \( c \) is a relative cycle because its boundary maps into \( A \). Conversely, if \( \partial_{d}(c) \in C_{d-1}(A) \), then \( c \) qualifies as a relative cycle by definition, and any chain homologous to \( c \) in \( C_{d}(X) \) that differs from \( c \) by a boundary in \( C_{d}(A) \) will also have its boundary in \( C_{d-1}(A) \), confirming \([c] \in H_{d}(X, A) \).
 		\item For a chain \( c \) in \( C_{d}(X) \) to be a relative boundary, it must be expressible as \( c = a + \partial_{d+1}(b) \) where \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \). Applying the boundary operator, we have:
-		      \begin{align}
-		      	\partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial_{d}(a) + 0 = \partial_{d}(a). 
-		      \end{align}
-		      Since \( \partial_{d}(a) \in C_{d-1}(A) \) and \( \partial_{d+1}\partial_{d} = 0 \) (as boundaries of boundaries are zero), \( c \) is a cycle relative to \( A \), making it trivial in \( H_{d}(X, A) \).
-		      		      		      
-		      Conversely, if a relative cycle \( c \) is trivial in \( H_{d}(X, A) \), then it must be homologous to a boundary in \( C_{d}(A) \), meaning there exists \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \) such that \( c = a + \partial_{d+1}(b) \).
+		\begin{align}
+		    \partial_{d}(c) = \partial_{d}(a) + \partial_{d}(\partial_{d+1}(b)) = \partial_{d}(a) + 0 = \partial_{d}(a). 
+		\end{align}
+		Since \( \partial_{d}(a) \in C_{d-1}(A) \) and \( \partial_{d+1}\partial_{d} = 0 \), \( c \) is a cycle relative to \( A \), making it trivial in \( H_{d}(X, A) \). Conversely, if a relative cycle \( c \) is trivial in \( H_{d}(X, A) \), then it must be homologous to a boundary in \( C_{d}(A) \), meaning there exists \( a \in C_{d}(A) \) and \( b \in C_{d+1}(X) \) such that \( c = a + \partial_{d+1}(b) \).
 	\end{enumerate}
 \end{proof}
 
