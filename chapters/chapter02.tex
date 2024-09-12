@@ -941,7 +941,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		                                            & \leq \sum_i t_i \max_i \left\lvert v - v_i \right\rvert \\
 		                                            & = \max_i \left\lvert v - v_i \right\rvert.              
 	\end{align}
-	This inequality holds due to the convex combination of the vertices and the properties of the norm. Therefore, the distance between any point within the simplex and any of its vertices is bounded above by the maximum distance between the vertices of the simplex.
+	This inequality holds due to the convex combination of the vertices and the properties of the norm.
 			
 	Let \(b_i\) denote the barycenter of the face \([v_0, \ldots, \hat{v_i}, \ldots, v_n]\), where the barycentric coordinates are equal to \(\frac{1}{n}\) for each vertex except for \(v_i\), which has \(t_i = 0\). It follows that \(b = \frac{1}{n+1} v_i + \frac{n}{n+1} b_i\). The sum of the coefficients is 1, so \(b\) lies on the line segment \([v_i, b_i]\), and the distance from \(b\) to \(v_i\) is \(\frac{n}{n+1}\) times the length of \([v_i, b_i]\). Therefore, the distance from \(b\) to \(v_i\) is bounded by \(\frac{n}{n+1}\) times the diameter of \([v_0, \ldots, v_n]\). This bound is independent of the shape of the simplex. If two points \(w_j\) and \(w_k\) in a simplex are not the barycenter, then these points lie on a proper face of \([v_0, \ldots, v_n]\). Thus, the same bound applies inductively to all \(0\)-simplices. For the repeated \(r\)-fold barycentric subdivision, we obtain
 	\begin{align}
