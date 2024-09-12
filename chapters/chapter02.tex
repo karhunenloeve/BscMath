@@ -990,7 +990,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{equation}
 	We define $T$ on $LC_d(Y)$ inductively by setting $T=0$ for $d=-1$ and $T\lambda = b_\lambda(\lambda-T\partial_d\lambda)$ for $d \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\sigma^{(d)} \times \mathbb{I}$ obtained by the union of all simplices in $\sigma^{(d)} \times \{0\} \cup \partial \sigma^{(d)} \times \mathbb{I}$ to the barycentre of $\sigma^{(d)} \times \{1\}$. The chain homotopy formula is $\partial_{d+1} T + T\partial_d = \mathbb{I} - S$. This is trivial for $LC_{-1}(Y)$, where $T=0$ and $S=\mathbb{I}$. The formula for $LC_d(Y)$ for all $d \geq 0$ is given by:
 	\begin{align}
-		\partial_{d+1} T_d\lambda & = \partial_{d+1} b_\lambda(\lambda - T\partial_{d
+		\partial_{d+1} T_d\lambda & = \partial_{d+1} b_\lambda(\lambda - T_{d-1}\partial_{d
 		}\lambda),                                         \\
 		                  & = \lambda - T_{d-1}\partial_{d}\lambda - b_\lambda\partial_d(\lambda - T_{d-1}\partial_{d}\lambda)              \\
 		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[\partial_d\lambda - \partial_d T_{d-1}(\partial_d\lambda)]   \\
