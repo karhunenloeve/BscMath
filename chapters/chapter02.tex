@@ -798,25 +798,14 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 		B_{\bullet} & = \{C_{d}(X), \partial_{d}\}_{d \in \mathbb{N}},    \\
 		C_{\bullet} & = \{C_{d}(X, A), \partial_{d}\}_{d \in \mathbb{N}}. 
 	\end{align}
-	The vertical maps \(i\) and \(j\) are chain maps and thus induce homomorphisms on homology groups \(i_{\star}: H_{d}(A) \rightarrow H_{d}(X)\) and \(j_{\star}: H_{d}(X) \rightarrow H_{d}(X, A)\). The exactness of the rows implies that \(\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})\).
-			
-	The connecting homomorphism \(\partial: H_{d}(X, A) \rightarrow H_{d-1}(A)\) can be defined as follows: for any class \([c] \in H_{d}(X, A)\) represented by a cycle \(c \in C_{d}(X)\) with \(\partial_{d}(c) \in C_{d-1}(A)\), choose a chain \(b \in C_{d}(X)\) such that \(j(b) = c\). Since \(c\) is a cycle, \(\partial_{d}(b) \in \mathrm{ker}(j) = \mathrm{im}(i)\), so there exists a chain \(a \in C_{d-1}(A)\) such that \(\partial_{d}(b) = i(a)\). Define \(\partial([c]) = [a] \in H_{d-1}(A)\).
-			
-	We need to verify that the map \(\partial\) is well-defined:
-	\begin{itemize}
-		\item Uniqueness: If \(b\) and \(b'\) both map to \(c\) via \(j\), then \(b - b' \in \mathrm{ker}(j) = \mathrm{im}(i)\). Thus, there exists \(a' \in C_{d-1}(A)\) such that \(b - b' = i(a')\). Hence,
-		      \begin{align}
-		      	\partial_{d}(b) = \partial_{d}(b') + \partial_{d}(i(a')) = \partial_{d}(b') + i(\partial_{d-1}(a')). 
-		      \end{align}
-		      So, \([a] = [a']\) in \(H_{d-1}(A)\), ensuring the uniqueness of \(\partial([c])\).
-		      		      		      
-		\item Homologous chains: If \(c\) and \(c'\) are homologous in \(H_{d}(X, A)\), then \(c - c' = \partial_{d}(c'')\) for some \(c'' \in C_{d+1}(X, A)\). Thus, \(b - b' = \partial_{d+1}(c'')\) in \(C_{d}(X)\), and the same argument as above applies.
-	\end{itemize}
-			
-	This establishes the long exact sequence:
+	The vertical maps \(i\) and \(j\) are chain maps and thus induce homomorphisms on homology groups \(i_{\star}: H_{d}(A) \rightarrow H_{d}(X)\) and \(j_{\star}: H_{d}(X) \rightarrow H_{d}(X, A)\). The exactness of the rows implies that \(\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})\). The connecting homomorphism \(\partial: H_{d}(X, A) \rightarrow H_{d-1}(A)\) can be defined as follows: for any class \([c] \in H_{d}(X, A)\) represented by a cycle \(c \in C_{d}(X)\) with \(\partial_{d}(c) \in C_{d-1}(A)\), choose a chain \(b \in C_{d}(X)\) such that \(j(b) = c\). Since \(c\) is a cycle, \(\partial_{d}(b) \in \mathrm{ker}(j) = \mathrm{im}(i)\), so there exists a chain \(a \in C_{d-1}(A)\) such that \(\partial_{d}(b) = i(a)\). Define \(\partial([c]) = [a] \in H_{d-1}(A)\). We need to verify that the map \(\partial\) is well-defined: If \(b\) and \(b'\) both map to \(c\) via \(j\), then \(b - b' \in \mathrm{ker}(j) = \mathrm{im}(i)\). Thus, there exists \(a' \in C_{d-1}(A)\) such that \(b - b' = i(a')\). Hence,
 	\begin{align}
-		\cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
-		\cdots \rightarrow H_{0}(X, A) \rightarrow 0.                                                                      
+		\partial_{d}(b) = \partial_{d}(b') + \partial_{d}(i(a')) = \partial_{d}(b') + i(\partial_{d-1}(a')). 
+	\end{align}
+	So, \([a] = [a']\) in \(H_{d-1}(A)\), ensuring the uniqueness of \(\partial([c])\). If \(c\) and \(c'\) are homologous in \(H_{d}(X, A)\), then \(c - c' = \partial_{d}(c'')\) for some \(c'' \in C_{d+1}(X, A)\). Thus, \(b - b' = \partial_{d+1}(c'')\) in \(C_{d}(X)\), and the same argument as above applies. This establishes the long exact sequence:
+	\begin{align}
+		\cdots &\rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
+		\cdots &\rightarrow H_{0}(X, A) \rightarrow 0.                                                                      
 	\end{align}
 \end{proof}
 
