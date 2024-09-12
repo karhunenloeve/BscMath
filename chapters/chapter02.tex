@@ -983,14 +983,11 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		
 	Next, we define a chain homotopy $T: LC_d(Y) \rightarrow LC_{d+1}(Y)$ between $S$ and the identity, such that the following diagram commutes:
 	\begin{equation}
-		\adjustbox{scale=.77}{
-			\begin{tikzcd}
+			\begin{tikzcd}[row sep=3em, column sep = 1em]
 				\cdots \arrow[r] & LC_2(Y) \arrow[r] \arrow[d, "S"] & LC_1(Y) \arrow[r] \arrow[ld, "T"] \arrow[d, "S"] & LC_0(Y) \arrow[r] \arrow[ld, "T"] \arrow[d, "{S,\mathbb{I}}"] & LC_{-1}(Y) \arrow[r] \arrow[ld, "{T,0}"] \arrow[d, "{S,\mathbb{I}}"] & 0 \\
 				\cdots \arrow[r] & LC_2(Y) \arrow[r]                & LC_1(Y) \arrow[r]                                & LC_0(Y) \arrow[r]                                             & LC_{-1}(Y) \arrow[r]                                                 & 0.
 			\end{tikzcd}
-		}
 	\end{equation}
-		
 	We define $T$ on $LC_n(Y)$ inductively by setting $T=0$ for $n=-1$ and $T\lambda = b_\lambda(\lambda-T\partial\lambda)$ for $n \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\sigma^{(n)} \times \mathbb{I}$ obtained by the union of all simplices in $\sigma^{(n)} \times \{0\} \cup \partial \sigma^{(n)} \times \mathbb{I}$ to the barycentre of $\sigma^{(n)} \times \{1\}$. The chain homotopy formula is $\partial T + T\partial = \mathbb{I} - S$. This is trivial for $LC_{-1}(Y)$, where $T=0$ and $S=\mathbb{I}$. The formula for $LC_n(Y)$ for all $n \geq 0$ is given by:
 	\begin{align}
 		\partial T\lambda & = \partial b_\lambda(\lambda - T\partial\lambda),                                         \\
@@ -999,8 +996,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		                  & = \lambda - T\partial\lambda - b_\lambda[S(\partial\lambda) + T\partial(\partial\lambda)] \\
 		                  & = \lambda - T\partial\lambda - S\lambda.                                                  
 	\end{align}
-		
-	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial T + T\partial = \mathbb{I} - S$ still holds since $T$ is zero for $LC_{-1}(Y)$.
+	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_d T + T\partial_{d+1} = \mathbb{I} - S$ still holds since $T$ is zero for $LC_{-1}(Y)$.
 		
 	\item Barycentric Subdivision of General Chains \cite[\S 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_n(X) \). Define the operator\index{operator} \( S: C_n(X) \to C_n(X) \) by \( S\tilde{\sigma}^{(n)} = \sigma_\star S\sigma^{(n)} \), where \( \tilde{\sigma}^{(n)}: \sigma^{(n)} \to X \) is a singular \( n \)-simplex\index{simplex}, and \( S\sigma^{(n)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( n \)-simplex\index{simplex} \( \sigma^{(n)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(n)} \) is a signed sum of the \( n \)-simplices that make up the subdivision of \( \sigma^{(n)} \).
 		
