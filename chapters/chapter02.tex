@@ -968,11 +968,11 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	This shows the equivalence of the equations \(\partial_{d+1} b(\alpha) = \alpha - b(\partial_d \alpha)\) and \(\partial_{d+1} b + b \partial_d = \text{id}\), meaning that \(b\) is a chain homotopy between the identity map and the zero map of the chain complex \(\mathcal{LC}(Y)\).
 		
-	As a consequence, the subdivision homomorphism $S: LC_d(Y) \rightarrow LC_d(Y)$ can be defined inductively over $d$. Now let $\tilde{\sigma}^{(d)}$ be a generator of $LC_d(Y)$, and let $b_\lambda$ be the image of the barycentre of $\tilde{\sigma}^{(n)}$ under $\lambda$. We define the value of $S(\lambda)$ as $b_\lambda(S\partial_d\lambda)$, such that $b_\lambda: LC_{d-1}(Y) \rightarrow LC_d(Y)$. The beginning of the induction shows that $S([\emptyset]) = [\emptyset]$ applies, so that $S$ is the identity on $LC_{-1}(Y)$. Consequently, this mapping is also the identity on $LC_0(Y)$, as the following applies for $n=0$: 
+	As a consequence, the subdivision homomorphism $S: LC_d(Y) \rightarrow LC_d(Y)$ can be defined inductively over $d$. Now let $\tilde{\sigma}^{(d)}$ be a generator of $LC_d(Y)$, and let $b_\lambda$ be the image of the barycentre of $\tilde{\sigma}^{(d)}$ under $\lambda$. We define the value of $S(\lambda)$ as $b_\lambda(S\partial_{d-1}\lambda)$, such that $b_\lambda: LC_{d-1}(Y) \rightarrow LC_d(Y)$. The beginning of the induction shows that $S([\emptyset]) = [\emptyset]$ applies, so that $S$ is the identity on $LC_{-1}(Y)$. Consequently, this mapping is also the identity on $LC_0(Y)$, as the following applies for $d=0$: 
 	\begin{align}
-		S([w_0]) = w_0(S(\partial[w_0])) = w_0(S([\emptyset])) = w_0([\emptyset]) = w_0. 
+		S([w_0]) = w_0(S(\partial_0[w_0])) = w_0(S([\emptyset])) = w_0([\emptyset]) = w_0. 
 	\end{align}
-	Provided that $\lambda$ is an embedding with $\text{ran}(\lambda) = [w_0, \ldots, w_n]$, $S(\lambda)$ can be defined as the sum of the $n$-simplices in the barycentric subdivision of $[w_0, \ldots, w_n]$. Since $S = \mathbb{I}$ applies to $LC_0(Y)$ and $LC_{-1}(Y)$, it follows for all further $n \in \mathbb{N}$ that
+	Provided that $\lambda$ is an embedding with $\text{ran}(\lambda) = [w_0, \ldots, w_d]$, $S(\lambda)$ can be defined as the sum of the $d$-simplices in the barycentric subdivision of $[w_0, \ldots, w_d]$. Since $S = \mathbb{I}$ applies to $LC_0(Y)$ and $LC_{-1}(Y)$, it follows for all further $d \in \mathbb{N}$ that
 	\begin{align}
 		\partial S\lambda & = \partial b_\lambda(S\partial\lambda),                                                                                                                    \\
 		                  & = S\partial\lambda - b_\lambda\partial(S\partial\lambda) \quad \text{since } \partial b_\lambda = \mathbb{I} - b_\lambda\partial,                          \\
