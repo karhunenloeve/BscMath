@@ -835,11 +835,11 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 \end{lemma}
 
 \begin{proof}
-	We need to show that the sequence is exact at each point. 
-	\begin{enumerate}
-		\item Exactness at \(H_{d}(B)\): We need to show that \(\ker(j_\star) = \operatorname{im}(i_\star)\). Since \(j \circ i = 0\), it follows that \(j_\star \circ i_\star = 0\), so \(\operatorname{im}(i_\star) \subseteq \ker(j_\star)\).
+	We need to show that the sequence is exact at each stage. 
+	\begin{itemize}
+		\item Exactness at \(H_{d}(B)\): We show that \(\ker(j_\star) = \operatorname{im}(i_\star)\). Since \(j \circ i = 0\), it follows that \(j_\star \circ i_\star = 0\), so \(\operatorname{im}(i_\star) \subseteq \ker(j_\star)\).
 		\item Exactness at \(H_{d}(C)\): We need to show that \(\ker(\partial_d) = \operatorname{im}(j_\star)\). By definition, if \([b] \in \operatorname{im}(j_\star)\), then \(j_\star([b]) = [c] \in H_{d}(C)\) where \(c\) is a cycle. Therefore, \(\partial_d([c]) = 0\), and thus \(\operatorname{im}(j_\star) \subseteq \ker(\partial_d)\).
-		\item Exactness at \(H_{d-1}(A)\): We need to show that \(\ker(i_\star) = \operatorname{im}(\partial_d)\). If \([c] \in \operatorname{im}(\partial_d)\), then \(c\) is a relative boundary\index{boundary}. This implies that there exists \(b \in B_{d}\) such that \(c = j(b)\). Since \(\partial_d(b) = 0\), it follows that \(i_\star([c]) = 0\), thus \(\operatorname{im}(\partial_d) \subseteq \ker(i_\star)\).
+		\item Exactness at \(H_{d-1}(A)\): We that \(\ker(i_\star) = \operatorname{im}(\partial_d)\). If \([c] \in \operatorname{im}(\partial_d)\), then \(c\) is a relative boundary\index{boundary}. This implies that there exists \(b \in B_{d}\) such that \(c = j(b)\). Since \(\partial_d(b) = 0\), it follows that \(i_\star([c]) = 0\), thus \(\operatorname{im}(\partial_d) \subseteq \ker(i_\star)\).
 		\item Exactness at \(H_{d}(A)\): Let \([b] \in \ker(j_\star)\), meaning \(j_\star([b]) = [c] = 0\) in \(H_{d}(C)\). This implies that \(c\) is a boundary\index{boundary}, i.e., there exists a chain \(c' \in C_{d+1}\) such that \(c = \partial_{d+1}(c')\). Since \(j\) is surjective, \(c' = j(b')\) for some \(b' \in B_{d+1}\). Thus, \(j(b) = \partial_{d+1}(c') = \partial_{d+1}\circ j(b')\), which leads to:
 		      \begin{align}
 		      	j(b - \partial_{d+1}(b')) = 0. 
@@ -851,7 +851,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 		      given that \(b\) is a cycle. Thus, \(i_\star([a]) = [b]\), and \(\operatorname{im}(i_\star) = \ker(j_\star)\).
 		\item Exactness at \(H_{d}(C)\): Let \([c] \in \ker(\partial_d)\). This means that \(c\) is a relative cycle such that \(\partial_d([c]) = 0\). Hence, there exists \(b \in B_{d}\) such that \(j(b) = c\). Therefore, \(\ker(\partial_d) \subseteq \operatorname{im}(j_\star)\).
 		\item Exactness at \(H_{d-1}(A)\): Let \([a] \in \ker(i_\star)\), meaning \(i_\star([a]) = 0\) in \(H_{d-1}(B)\). Thus, \(i(a) = \partial_d(b)\) for some \(b \in B_d\). Since \(\partial_d(j(b)) = j(\partial_d(b)) = j \circ i(a) = 0\), \(j(b)\) is a cycle. Therefore, \(\partial_d([j(b)]) = [a]\), which demonstrates that \(\ker(i_\star) \subseteq \operatorname{im}(\partial_d)\).
-	\end{enumerate}
+	\end{itemize}
 \end{proof}
 
 \begin{proposition}{\cite[p.117f]{hatcher2005algebraic}}
