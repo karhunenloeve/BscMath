@@ -917,13 +917,13 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	We follow Hatcher's proof \cite[Proposition 2.21]{hatcher2005algebraic}. The proof is divided into four steps, which initially are geometric and become more algebraic over time.
 	
 	\begin{enumerate}
-	\item Barycentric Subdivision of Simplices \cite[\S 2.21 (1)]{hatcher2005algebraic}: We recall that the points of a $d$-simplex $[v_0, \ldots, v_d]$ are given by linear combinations of the form $\sum_{i} t_i v_i$ with $\sum_i t_i = 1$ and $t_i \geq 0$ for all $i$.
+	\item Barycentric Subdivision of Simplices \cite[Proposition 2.21 (1)]{hatcher2005algebraic}: We recall that the points of a $d$-simplex $[v_0, \ldots, v_d]$ are given by linear combinations of the form $\sum_{i} t_i v_i$ with $\sum_i t_i = 1$ and $t_i \geq 0$ for all $i$.
 			
 	\begin{definition}[Barycenter]
-		The barycenter of a $d$-simplex $[v_0, \ldots, v_d]$ is the point $b = \sum_i t_i v_i$, where the barycentric coordinates are given by $t_i = \frac{1}{d+1}$ for all $i$.
+		The barycenter of a $d$-simplex $[v_0, \ldots, v_d]$ is the point $b = \sum_i t_i v_i$, where the barycentric coordinates are $t_i = \frac{1}{d+1}$ for all $i$.
 	\end{definition}
 			
-	\begin{definition}[Barycentric Subdivision]
+	\begin{definition}[Barycentric subdivision]
 		The barycentric subdivision of a $d$-simplex $[v_0, \ldots, v_d]$ is the decomposition into $d$ simplices $[b, w_0, \ldots, w_{d-1}]$. The $(d-1)$-simplex $[w_0, \ldots, w_{d-1}]$ is a face in the barycentric subdivision of $[v_0, \ldots, \hat{v}_i, \ldots, v_d]$.
 	\end{definition}
 			
@@ -934,11 +934,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		0,             & \text{otherwise}.                
 		\end{cases}
 	\end{align}
-	The \(n\)-simplices thus form the structure of a simplicial complex.
-			
-	The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_n]\).
-	
-	The distance between these two points satisfies the inequality
+	The \(n\)-simplices thus form the structure of a simplicial complex. The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_n]\). The distance between these two points satisfies the inequality
 	\begin{align}
 		\left\lvert v - \sum_i t_i v_i \right\rvert & = \left\lvert \sum_i t_i(v - v_i) \right\rvert          \\
 		                                            & \leq \sum_i t_i \left\lvert v - v_i \right\rvert        \\
