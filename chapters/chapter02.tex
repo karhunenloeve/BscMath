@@ -770,10 +770,10 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 \end{lemma}
 
 \begin{proof}
-	Consider \( x'' \in \ker(a'') \subseteq A'' \). Since \( f \) is surjective, there exists \( x \in A \) such that \( f(x) = x'' \). We have \( a''(x'') = 0 \), hence \( a''(f(x)) = 0 \). By commutativity, \( g(a(x)) = 0 \), so \( a(x) \in \ker(g) = \operatorname{im}(g') \). Thus, there exists \( y' \in B' \) such that \( g'(y') = a(x) \). Set \( \delta(x'') = \operatorname{cl}(y') \in \operatorname{coker}(a') \). If \( x'' = f(x_1'') \), choose \( x \) such that \( f(x) = x'' \), then \( a(x) = g'(y_1') \) and \( \delta(x'') = \operatorname{cl}(y_1') \). If \( x = x_2 + f(x_1) \), then \( a(x) = a(x_2) + a(f(x_1)) \), with \( g(a(x_1)) = 0 \) and \( a(f(x_1)) \in \operatorname{im}(g') \), so \( \delta \) is independent of the choice of \( x \). Linear maps remain linear under \( \delta \). Suppose \( y'' \in \ker(\delta) \). This means \( y'' \in \ker(a'') \) and \( \delta(y'') = 0 \). There exists \( x \in A \) such that \( f(x) = y'' \) and \( a(x) = g'(z') \) for some \( z' \in B' \). Since \( \delta(y'') = \operatorname{cl}(z') = 0 \), we have \( z' \in \operatorname{im}(a') \), so \( z' = a'(w') \) for some \( w' \in A' \). Hence, \( a(x) = g'(a'(w')) = a(g(w')) \), so \( x - g(w') \in \ker(a) \). Therefore, \( y'' = f(x) = f(x - g(w')) \in \operatorname{im}(f) \), showing that \( \ker(\delta) = \operatorname{im}(\ker(a) \rightarrow \ker(a'')) \). Suppose \( y \in \operatorname{coker}(a) \) such that \( y \in \ker(\operatorname{coker}(a) \rightarrow \operatorname{coker}(a'')) \). This means \( y = \operatorname{cl}(z) \) for some \( z \in B \) with \( a(z) = g'(w') \) for some \( w' \in B' \). Since \( z \in \ker(g) \), we have \( z = g(x) \) for some \( x \in A \). Thus, \( y = \operatorname{cl}(z) = \operatorname{cl}(g(x)) = 0 \), showing exactness.
+	Consider \( x'' \in \ker(a'') \subseteq A'' \). Since \( f \) is surjective, there exists \( x \in A \) such that \( f(x) = x'' \). We have \( a''(x'') = 0 \), hence \( a''(f(x)) = 0 \). By commutativity, \( g(a(x)) = 0 \), so \( a(x) \in \ker(g) = \operatorname{im}(g') \). Thus, there exists \( y' \in B' \) such that \( g'(y') = a(x) \). Set \( \delta(x'') = \operatorname{cl}(y') \in \operatorname{coker}(a') \). If \( x'' = f(x_1'') \), choose \( x \) such that \( f(x) = x'' \), then \( a(x) = g'(y_1') \) and \( \delta(x'') = \operatorname{cl}(y_1') \). If \( x = x_2 + f(x_1) \), then \( a(x) = a(x_2) + a(f(x_1)) \), with \( g(a(x_1)) = 0 \) and \( a(f(x_1)) \in \operatorname{im}(g') \), so \( \delta \) is independent of the choice of \( x \). Linear maps remain linear under \( \delta \). Suppose \( y'' \in \ker(\delta) \). This means \( y'' \in \ker(a'') \) and \( \delta(y'') = 0 \). There exists \( x \in A \) such that \( f(x) = y'' \) and \( a(x) = g'(z') \) for some \( z' \in B' \). Since \( \delta(y'') = \operatorname{cl}(z') = 0 \), we have \( z' \in \operatorname{im}(a') \), so \( z' = a'(w') \) for some \( w' \in A' \). Hence, \( a(x) = g'(a'(w')) = a(g(w')) \), so \( x - g(w') \in \ker(a) \). Therefore, \( y'' = f(x) = f(x - g(w')) \in \operatorname{im}(f) \), showing that \( \ker(\delta) = \operatorname{im}(\ker(a) \rightarrow \ker(a'')) \). Suppose \( y \in \operatorname{coker}(a) \) such that \( y \in \ker(\operatorname{coker}(a) \rightarrow \operatorname{coker}(a'')) \). This means \( y = \operatorname{cl}(z) \) for some \( z \in B \) with \( a(z) = g'(w') \) for some \( w' \in B' \). Since \( z \in \ker(g) \), we have \( z = g(x) \) for some \( x \in A \). Thus, \( y = \operatorname{cl}(z) = \operatorname{cl}(g(x)) = 0 \).
 \end{proof}
 
-\begin{theorem}{\cite[p.115ff]{hatcher2005algebraic}}
+\begin{theorem}{\cite[p. 115 f.]{hatcher2005algebraic}}
 	The relative homology groups \( H_{d}(X, A) \) are part of the exact sequence:
 	\begin{align}
 		  & \cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
@@ -851,7 +851,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 	\end{align}
 \end{proof}
 
-\begin{lemma}{\cite[p.115ff]{hatcher2005algebraic}}
+\begin{lemma}{\cite[Theorem 2.16]{hatcher2005algebraic}}
 	\label{exacthomsequence}
 	The given sequence,
 	\begin{align}
