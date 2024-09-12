@@ -888,24 +888,9 @@ In addition, we refer to the Excision Theorem, a fundamental result in algebraic
 \end{lemma}
 
 \begin{proof}
-	Commutativity of the diagram ensures that $\gamma$ is a homomorphism. To show
-	that $\gamma$ is bijective, we consider:
-			
-	\begin{itemize}
-		\item Surjectivity: Let $c' \in C'$. Since $\delta$ is surjective, there
-		      exists $d \in D$ such that $k'(c') = \delta(d)$. Because $\epsilon$ is injective,
-		      $\epsilon(l(d)) = l'(\delta(d)) = l'(k'(c')) = 0$, thus $l(d) = 0$. By
-		      exactness, $d = k(c)$ for some $c \in C$. Therefore, $k'(c' - \gamma(c)) =
-		      0$, and exactness implies $c' - \gamma(c) = j'(b')$ for some $b' \in B'$. With
-		      $\beta$ surjective, $b' = \beta(b)$ for some $b \in B$, hence $\gamma(c + j
-		      (b)) = c'$, proving surjectivity of $\gamma$.
+	Commutativity of the diagram ensures that $\gamma$ is a homomorphism. We show that $\gamma$ is bijective. Let $c' \in C'$. Since $\delta$ is surjective, there exists $d \in D$ such that $k'(c') = \delta(d)$. Because $\epsilon$ is injective, $\epsilon(l(d)) = l'(\delta(d)) = l'(k'(c')) = 0$, thus $l(d) = 0$. By exactness, $d = k(c)$ for some $c \in C$. Therefore, $k'(c' - \gamma(c)) = 0$, and exactness implies $c' - \gamma(c) = j'(b')$ for some $b' \in B'$. With $\beta$ surjective, $b' = \beta(b)$ for some $b \in B$, hence $\gamma(c + j(b)) = c'$, proving surjectivity of $\gamma$.
 		      		      		      
-		\item Injectivity: Assume $\gamma(c) = 0$. Injectivity of $\delta$ and exactness
-		      yield $\delta(k(c)) = 0$ and $k(c) = 0$, thus $c = j(b)$ for some
-		      $b \in B$. Since $\gamma(j(b)) = j'(\beta(b)) = 0$ and $\beta$ is injective,
-		      $b = i(a)$ for some $a \in A$, giving $c = j(i(a)) = 0$. Therefore, $\gamma$
-		      has a trivial kernel and is injective.
-	\end{itemize}
+	Assume $\gamma(c) = 0$. Injectivity of $\delta$ and exactness yield $\delta(k(c)) = 0$ and $k(c) = 0$, thus $c = j(b)$ for some $b \in B$. Since $\gamma(j(b)) = j'(\beta(b)) = 0$ and $\beta$ is injective, $b = i(a)$ for some $a \in A$, giving $c = j(i(a)) = 0$. Therefore, $\gamma$ has a trivial kernel and is injective.
 \end{proof}
 
 \begin{theorem}[Excision Theorem]
