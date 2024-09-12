@@ -814,27 +814,11 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 \end{proposition}
 
 \begin{proof}
-	Let \([c_{1}], [c_{2}] \in H_{d}(C)\) be two homology classes, where \(c_{1}, c_{2} \in C_{d}(X, A)\) are cycles\index{cycles}. By definition, let \([a_{1}] = \partial_{d}([c_{1}])\) and \([a_{2}] = \partial_{d}([c_{2}])\). This means that \(c_{1}\) and \(c_{2}\) are represented by chains\index{chains} \(b_{1}, b_{2} \in C_{d}(X)\) such that \(j(b_{1}) = c_{1}\) and \(j(b_{2}) = c_{2}\).
-			
-	Since \(b_{1}\) and \(b_{2}\) are cycles\index{cycles} modulo \(A\), we have:
-	\begin{align}
-		\partial_{d}(b_{1}) = i(a_{1}) \quad \text{and} \quad \partial_{d}(b_{2}) = i(a_{2}). 
-	\end{align}
-			
-	We need to show that:
-	\begin{align}
-		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1}] + [a_{2}]. 
-	\end{align}
-			
-	Consider the sum \(c_{1} + c_{2} \in C_{d}(X, A)\). By the properties of the quotient map \(j\) we yield:
-	\begin{align}
-		j(b_{1} + b_{2}) = j(b_{1}) + j(b_{2}) = c_{1} + c_{2}. 
-	\end{align}
-	Thus, \(b_{1} + b_{2} \in C_{d}(X)\) is a preimage of \(c_{1} + c_{2}\) under the quotient map \(j\). Furthermore, the boundary\index{boundary} of \(b_{1} + b_{2}\) is:
+	Let \([c_{1}], [c_{2}] \in H_{d}(C)\) be two homology classes, where \(c_{1}, c_{2} \in C_{d}(X, A)\) are cycles\index{cycles}. By definition, let \([a_{1}] = \partial_{d}([c_{1}])\) and \([a_{2}] = \partial_{d}([c_{2}])\). This means that \(c_{1}\) and \(c_{2}\) are represented by chains\index{chains} \(b_{1}, b_{2} \in C_{d}(X)\) such that \(j(b_{1}) = c_{1}\) and \(j(b_{2}) = c_{2}\). Since \(b_{1}\) and \(b_{2}\) are cycles\index{cycles} modulo \(A\), we have $\partial_{d}(b_{1}) = i(a_{1}) \quad \text{and} \quad \partial_{d}(b_{2}) = i(a_{2})$. We need to show that $\partial_{d}([c_{1}] + [c_{2}]) = [a_{1}] + [a_{2}]$. Consider the sum \(c_{1} + c_{2} \in C_{d}(X, A)\). By the properties of the quotient map \(j\) we yield $j(b_{1} + b_{2}) = j(b_{1}) + j(b_{2}) = c_{1} + c_{2}$. Thus, \(b_{1} + b_{2} \in C_{d}(X)\) is a preimage of \(c_{1} + c_{2}\) under the quotient map \(j\). Furthermore, the boundary\index{boundary} of \(b_{1} + b_{2}\) is:
 	\begin{align}
 		\partial_{d}(b_{1} + b_{2}) = \partial_{d}(b_{1}) + \partial_{d}(b_{2}) = i(a_{1}) + i(a_{2}) = i(a_{1} + a_{2}). 
 	\end{align}
-	Therefore, the cycle \(c_{1} + c_{2}\) maps to the cycle \(a_{1} + a_{2}\) under \(\partial_{d}\), which implies on the respective equivalence classes:
+	Therefore, the cycle \(c_{1} + c_{2}\) maps to the cycle \(a_{1} + a_{2}\) under \(\partial_{d}\), which implies on the respective equivalence classes
 	\begin{align}
 		\partial_{d}([c_{1}] + [c_{2}]) = [a_{1} + a_{2}] = [a_{1}] + [a_{2}]. 
 	\end{align}
