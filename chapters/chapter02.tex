@@ -973,12 +973,12 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		S_0([w_0]) = w_0(S_{-1}(\partial_0[w_0])) = w_0(S_{-1}([\emptyset])) = w_0([\emptyset]) = w_0. 
 	\end{align}
 	Provided that $\lambda$ is an embedding with $\text{ran}(\lambda) = [w_0, \ldots, w_d]$, $S_d(\lambda)$ can be defined as the sum of the $d$-simplices in the barycentric subdivision of $[w_0, \ldots, w_d]$. Since $S = \mathbb{I}$ applies to $LC_0(Y)$ and $LC_{-1}(Y)$, it follows for all further $d \in \mathbb{N}$ that
-	\begin{align}
+	\begin{align*}
 		\partial_{d} S_d\lambda & = \partial_d b_\lambda(S_{d-1}\partial_{d}\lambda),                                                                                                                    \\
 		                  & = S_{d-1}\partial_d\lambda - b_\lambda\partial_d(S_{d-1}\partial_d\lambda) \quad \text{since } \partial_d b_\lambda = \mathbb{I} - b_\lambda\partial_d,                          \\
 		                  & = S_{d-1}\partial_d\lambda - b_\lambda S_{d-1}(\partial^2_d\lambda) \quad \text{since } \partial_{d-1} S_{d-1}(\partial_d\lambda) = S(\partial^2_d\lambda) \text{ for all } d, \\
 		                  & = S_{d-1}\partial_d\lambda.                                                                                     
-	\end{align}
+	\end{align*}
 	Thus, the chain map $S: \mathcal{LC}(Y) \rightarrow \mathcal{LC}(Y)$ satisfies $\partial S = S\partial$.
 		
 	Next, we define a chain homotopy $T: LC_d(Y) \rightarrow LC_{d+1}(Y)$ between $S$ and the identity, such that the following diagram commutes:
