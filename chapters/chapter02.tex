@@ -976,7 +976,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\begin{align*}
 		\partial_{d} S_d\lambda & = \partial_d b_\lambda(S_{d-1}\partial_{d}\lambda),                                                                                                                    \\
 		                  & = S_{d-1}\partial_d\lambda - b_\lambda\partial_d(S_{d-1}\partial_d\lambda) \quad \text{since } \partial_d b_\lambda = \mathbb{I} - b_\lambda\partial_d,                          \\
-		                  & = S_{d-1}\partial_d\lambda - b_\lambda S_{d-1}(\partial^2_d\lambda) \quad \text{since } \partial_{d-1} S_{d-1}(\partial_d\lambda) = S(\partial^2_d\lambda) \text{ for all } d, \\
+		                  & = S_{d-1}\partial_d\lambda - b_\lambda S_{d-1}(\partial^2_d\lambda) \quad \text{since } \partial_{d-1} S_{d-1}(\partial_d\lambda) = S_{d-1}(\partial^2_d\lambda),\\
 		                  & = S_{d-1}\partial_d\lambda.                                                                                     
 	\end{align*}
 	Thus, the chain map $S: \mathcal{LC}(Y) \rightarrow \mathcal{LC}(Y)$ satisfies $\partial S = S\partial$.
@@ -984,11 +984,11 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	Next, we define a chain homotopy $T_d: LC_d(Y) \rightarrow LC_{d+1}(Y)$ between $S_d$ and the identity, such that the following diagram commutes:
 	\begin{equation}
 			\begin{tikzcd}[row sep=3em, column sep = 1em]
-				\cdots \arrow[r] & LC_2(Y) \arrow[r] \arrow[d, "S_2"] & LC_1(Y) \arrow[r] \arrow[ld, "T_1"] \arrow[d, "S_1"] & LC_0(Y) \arrow[r] \arrow[ld, "T_0"] \arrow[d, "{S_0,\mathbb{I}}"] & LC_{-1}(Y) \arrow[r] \arrow[ld, "{T_{-1},0}"] \arrow[d, "{S_{-1},\mathbb{I}}"] & 0 \\
+				\cdots \arrow[r] & LC_2(Y) \arrow[r] \arrow[d, "S_2"] & LC_1(Y) \arrow[r] \arrow[ld, "T_1"] \arrow[d, "S_1"] & LC_0(Y) \arrow[r] \arrow[ld, "T_0"] \arrow[d, "{S_0,\mathbb{I}}"] & LC_{-1}(Y) \arrow[r] \arrow[ld, "{T_{-1,0}}"] \arrow[d, "{S_{-1},\mathbb{I}}"] & 0 \\
 				\cdots \arrow[r] & LC_2(Y) \arrow[r]                & LC_1(Y) \arrow[r]                                & LC_0(Y) \arrow[r]                                             & LC_{-1}(Y) \arrow[r]                                                 & 0.
 			\end{tikzcd}
 	\end{equation}
-	We define $T$ on $LC_d(Y)$ inductively by setting $T=0$ for $d=-1$ and $T\lambda = b_\lambda(\lambda-T\partial_d\lambda)$ for $d \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\sigma^{(d)} \times \mathbb{I}$ obtained by the union of all simplices in $\sigma^{(d)} \times \{0\} \cup \partial \sigma^{(d)} \times \mathbb{I}$ to the barycentre of $\sigma^{(d)} \times \{1\}$. The chain homotopy formula is $\partial_{d+1} T + T\partial_d = \mathbb{I} - S$. This is trivial for $LC_{-1}(Y)$, where $T=0$ and $S=\mathbb{I}$. The formula for $LC_d(Y)$ for all $d \geq 0$ is given by:
+	We define $T_d$ on $LC_d(Y)$ inductively by setting $T_{-1}=0$ and $T_d\lambda = b_\lambda(\lambda-T_{d-1}\partial_d\lambda)$ for $d \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\sigma^{(d)} \times \mathbb{I}$ obtained by the union of all simplices in $\sigma^{(d)} \times \{0\} \cup \partial \sigma^{(d)} \times \mathbb{I}$ to the barycentre of $\sigma^{(d)} \times \{1\}$. The chain homotopy formula is $\partial_{d+1} T_{d+1} + T_{d}\partial_{d+1} = \mathbb{I} - S_{d}$. This is trivial for $LC_{-1}(Y)$, where $T_{-1}=0$ and $S_{-1}=\mathbb{I}$. The formula for $LC_d(Y)$ for all $d \geq 0$ is given by:
 	\begin{align}
 		\partial_{d+1} T_d\lambda & = \partial_{d+1} b_\lambda(\lambda - T_{d-1}\partial_{d
 		}\lambda),                                         \\
@@ -997,27 +997,33 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[S_d(\partial_d\lambda) + T_{d-1}\partial^2_d(\lambda)] \\
 		                  & = \lambda - T_{d-1}\partial_d\lambda - S_d\lambda.                                                  
 	\end{align}
-	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d} + T_{d-1}\partial_{d} = \mathbb{I} - S$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
+	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d+1} + T_{d}\partial_{d+1} = \mathbb{I} - S_d$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
 		
 	\item Barycentric subdivision of general chains \cite[Proposition 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_d(X) \). Define the operator\index{operator} \( S_d: C_d(X) \to C_d(X) \) by \( S_d\tilde{\sigma}^{(d)} := \sigma_\star S_d\sigma^{(d)} \), where \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \) is a singular \( d \)-simplex\index{simplex}, and \( S\sigma^{(d)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( d \)-simplex\index{simplex} \( \sigma^{(d)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(d)} \) is a signed sum of the \( d \)-simplices that make up the subdivision of \( \sigma^{(d)} \). We will now prove that \( S_d \) is a chain map, i.e., that \( S_d \) commutes with the boundary operator\index{operator}, \( S_{d-1}\partial_{d} = \partial_d S_d \):
 	\begin{align}
-		\partial S\tilde{\sigma}^{(n)} & = \partial (\sigma_\star S\sigma^{(n)}) = \sigma_\star \partial (S\sigma^{(n)}) = \sigma_\star S(\partial \sigma^{(n)})        \\
-		                 & = \sigma_\star S\left(\sum_i (-1)^i \sigma^{(n)}_i\right)  = \sum_i (-1)^i \sigma_\star S(\sigma^{(n)}_i)                      \\ 
-		                 & = \sum_i (-1)^i S(\tilde{\sigma}^{(n)} \vert \sigma^{(n)}_i) = S\left(\sum_i (-1)^i \tilde{\sigma}^{(n)} \vert \sigma^{(n)}_i\right) = S(\partial \tilde{\sigma}^{(n)}). 
+		\partial_d S_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star S_d\sigma^{(d)}) = \sigma_\star \partial_d (S_d\sigma^{(d)}) = \sigma_\star S_{d-1}(\partial_d \sigma^{(d)})        \\
+		                 & = \sigma_\star S_{d-1}\left(\sum_i (-1)^i \sigma^{(d-1)}_i\right)  \\
+		                 & = \sum_i (-1)^i \sigma_\star S_{d-1}(\sigma^{(d-1)}_i)                      \\ 
+		                 & = \sum_i (-1)^i S_{d-1}\left(\tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \\
+		                 & = S_{d-1}\left(\sum_i (-1)^i \tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \\
+		                 & = S_{d-1}(\partial_{d} \tilde{\sigma}^{(d)}). 
 	\end{align}
-	Next, define the operator\index{operator} \( T \) on \( C_n(X) \) by \( T\tilde{\sigma}^{(n)} = \sigma_\star T\sigma^{(n)} \), where \( \sigma_\star \) denotes the pullback by \( T\sigma^{(n)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T\partial + \partial T = \mathbb{I} - S \). The verification is as follows:
+	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} := \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \). The verification is as follows:
 	\begin{align}
-		\partial T\tilde{\sigma}^{(n)} & = \partial (\sigma_\star T\sigma^{(n)}) = \sigma_\star (\partial T\sigma^{(n)}) \\
-		                 & = \sigma_\star (\sigma^{(n)} - S\sigma^{(n)} - T\partial \sigma^{(n)})          \\
-		                 & = \tilde{\sigma}^{(n)} - S\tilde{\sigma}^{(n)} - \sigma_\star T\partial \sigma^{(n)}                        \\
-		                 & = \tilde{\sigma}^{(n)} - S\tilde{\sigma}^{(n)} - T(\partial \tilde{\sigma}^{(n)}).                                        
+		\partial_d T_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_d T_d\sigma^{(d)}) \\
+		                 & = \sigma_\star (\sigma^{(d-1)} - S_{d-1}\sigma^{(d-1)} - T_{d-1}\partial_{d} \sigma^{(d)})          \\
+		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - \sigma_\star T_{d-1}\partial_{d} \sigma^{(d)}                        \\
+		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - T_{d-1}(\partial_d \tilde{\sigma}^{(d)}).                                        
 	\end{align}
 		
-	\item Iterated Barycentric Subdivision \cite[\S 2.21 (4)]{hatcher2005algebraic}: A chain homotopy between the identity map \( \mathbb{I} \) and the iterate \( S^m \) is given by the operator\index{operator} $D_m = \sum_{0 \leq i < m} T S^i$. The following calculation verifies this:
+	\item Iterated barycentric subdivision \cite[Proposition 2.21 (4)]{hatcher2005algebraic}: A chain homotopy between the identity map \( \mathbb{I} \) and the iterate \( S^m_d \) is given by the operator\index{operator} $D^m_d = \sum_{0 \leq i < m} T_d S_d^i$. The following calculation verifies this:
 	\begin{align}
-		\partial D_m + D_m \partial & = \sum_{0 \leq i < m} (\partial T S^i + T S^i \partial) = \sum_{0 \leq i < m} (\partial T S^i + T \partial S^i) \\
-		                            & = \sum_{0 \leq i < m} (\partial T + T \partial) S^i = \sum_{0 \leq i < m} (\mathbb{I} - S) S^i                  \\
-		                            & = \sum_{0 \leq i < m} (S^i - S^{i+1}) = \mathbb{I} - S^m.                                                       
+		\partial_d D^m_d + D^m_{d-1} \partial_{d} & = \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} S_{d-1}^i \partial_{d}) \\
+		&= \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} \partial_{d} S_{d}^i) \\
+		& = \sum_{0 \leq i < m} (\partial_d T_d + T_{d-1} \partial_d) S_{d-1}^i \\
+		&= \sum_{0 \leq i < m} (\mathbb{I} - S_{d-1}) S_{d-1}^i \\
+		& = \sum_{0 \leq i < m} (S_{d-1}^i - S_{d-1}^{i+1}) \\
+		&= \mathbb{I} - S^m_{d-1}.                                                       
 	\end{align}
 	In the calculation, we use the fact that \( \partial T + T \partial = \mathbb{I} - S \), which shows that \( D_m \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m \). For each singular \( n \)-simplex\index{simplex} \( \tilde{\sigma}^{(n)} : \sigma^{(n)} \to X \), there exists an integer \( m \) such that \( S^m(\sigma) \) lies in \( C_n^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( C_n^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m(\sigma^{(n)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(n)} \) by the open sets \( (\tilde{\sigma}^{(n)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(n)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(n)} \), we define \( m(\tilde{\sigma}^{(n)}) \) as the smallest integer such that \( S^m(\tilde{\sigma}^{(n)}) \) lies in \( C_n^{\mathcal{U}}(X) \).}
 		
