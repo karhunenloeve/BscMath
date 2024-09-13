@@ -1025,7 +1025,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		& = \sum_{0 \leq i < m} (S_{d-1}^i - S_{d-1}^{i+1}) \\
 		&= \mathbb{I} - S^m_{d-1}.                                                       
 	\end{align}
-	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\sigma^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( C_d^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D^d_{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
+	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\sigma^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( C_d^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D_d{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
 	\begin{align}
 		\partial_{d+1} D_{d+1} + D_{d} \partial_{d+1}= \mathbb{I} - \rho. 
 	\end{align}
@@ -1082,51 +1082,36 @@ We may now prove the Excision Theorem, which states that for a space \( X = A \c
 	\end{align}
 \end{proof}
 
-\section{Equivalence of $H_{d}^{\triangle}(X)$ and $H_{d}(X)$}
+\section{$H_{d}^{\triangle}(X) \cong H_{d}(X)$}
 \label{HomologicalEquivalence}
-We want to establish the equivalence of the homology group\index{group}s $H^{\triangle}_{d}(X)$ and $H_{d}(X)$. Note that simplicial homology group\index{group}s $H^{\triangle}_{d}(X)$ are defined only for simplicial complexes, whereas singular homology group\index{group}s $H_{d}(X)$ can be computed for any topological space. This generality is advantageous, since homeomorphic spaces have isomorphic singular homology group\index{group}s, allowing the introduction of a simplicial structure into any triangulible topological space.
+We want to establish the equivalence of the homology group\index{group}s $H^{\triangle}_{d}(X)$ and $H_{d}(X)$. Note that simplicial homology group\index{group}s $H^{\triangle}_{d}(X)$ are defined only for simplicial complexes, whereas singular homology group\index{group}s $H_{d}(X)$ can be computed for any topological space. This generality is advantageous, since homeomorphic spaces have isomorphic singular homology group\index{singular homology group}. To prove the equivalence between $H^{\triangle}_{d}(X)$ and $H_{d}(X)$, we establish an isomorphism between these group\index{group}s for all dimensions $d$. A homomorphism naturally follows from the map $C^{\triangle}_{d}(X) \rightarrow C_{d}(X)$, which sends every $d$-simplex\index{simplex} in $X$ to a singular simplex\index{simplex} via the mapping $\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from $H^{\triangle}_{d}(X)$ to $H_{d}(X)$.
 
-To prove the equivalence between $H^{\triangle}_{d}(X)$ and $H_{d}(X)$, we establish an isomorphism between these group\index{group}s for all dimensions $d$. A homomorphism naturally follows from the map $C^{\triangle}_{d}(X) \rightarrow C_{d}(X)$, which sends every $d$-simplex\index{simplex} in $X$ to a singular simplex\index{simplex} via the mapping $\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from $H^{\triangle}_{d}(X)$ to $H_{d}(X)$.
-
-\begin{theorem}[$H_{d}^{\triangle}(X) \cong H_{d}(X)$]{\cite[p.102f]{hatcher2005algebraic}}
+\begin{theorem}[$H_{d}^{\triangle}(X) \cong H_{d}(X)$]{\cite[Theorem 2.27]{hatcher2005algebraic}}
 	For each integer $d$, the homomorphisms from the simplicial homology group\index{group}
 	$H^{\triangle}_{d}(X)$ to the singular homology group\index{group} $H_{d}(X)$ are isomorphisms.
-	Hence, the simplicial and singular homology group\index{group}s are equivalent for all
-	dimensions.
+	Hence, $H_{d}^{\triangle}(X) \cong H_{d}(X)$ for all $d$.
 \end{theorem}
 
 \begin{proof}
 	Consider a simplicial complex $X$. For each $k$-skeleton $X^{k}$, the inclusion $X^{k-1} \subset X^{k}$ leads to the following commutative diagram of exact sequences:
-			
-	\begin{figure}[htb]
-		\centering
+	\begin{equation*}		
 		\begin{tikzcd}[row sep=3em, column sep = 1em]
 			H^\triangle_{d+1}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\triangle_{d}(X^{k-1}) \arrow[d] \arrow[r] & H^\triangle_{d}(X^k) \arrow[d] \arrow[r] & H^\triangle_{d}(X^k,X^{k-1}) \arrow[d] \arrow[r] & H^\triangle_{d-1}(X^{k-1}) \arrow[d] \\
 			H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})
 		\end{tikzcd}
-		\caption{Commutative diagram of exact sequences for homology and relative homology of a triangulable topological space $X$.}
-	\end{figure}
-			
-	$X^{k}/X^{k-1}$ contains only simplices of dimension $k$, thus, $C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group\index{group} for $d = k$, with a basis formed by the $k$-simplices of $X$.
-			
-	We define a characteristic map $\varsigma: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism
-	\[
-		\varsigma_\ast: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow X^{k}/X^{k-1}.
-	\]
-	By the Excision Theorem, 
-	\[
-		H^\triangle_{d}\left(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})\right) \cong H_{d}(X^{k}, X^{k-1}) \cong H_{d}(X^{k}/X^{k-1}),
-	\]
-	establishing isomorphisms for $H_{d}(X^{k}, X^{k-1})$.
-			
-	Using induction and assuming that the necessary homology isomorphisms hold for dimensions less than $k$, we extend the isomorphism to all dimensions:
+	\end{equation*}			
+	$X^{k}/X^{k-1}$ contains only simplices of dimension $k$, thus, $C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group\index{group} for $d = k$, with a basis formed by the $k$-simplices of $X$. We define a characteristic map $\varsigma: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism $\varsigma_\ast: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow X^{k}/X^{k-1}$. By Excision \ref{excisiontheorem} we get 
+	\begin{align}
+		H^\triangle_{d}\left(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})\right) &\cong H_{d}(X^{k}, X^{k-1}) \\
+		&\cong H_{d}(X^{k}/X^{k-1}),
+	\end{align}
+	establishing isomorphisms for $H_{d}(X^{k}, X^{k-1})$. Using induction and assuming that the necessary homology isomorphisms hold for dimensions less than $k$, we extend the isomorphism to all dimensions:
 	\begin{equation}
 		H_{k}^{\triangle}(X^{k},X^{k-1}) \cong H_{k}(X^{k},X^{k-1}).
 	\end{equation}
-			
-	The Five Lemma supports the isomorphism between $H_{k}^{\triangle}(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that 
-	\[
+	The Five Lemma \ref{fivelemma} supports the isomorphism between $H_{k}^{\triangle}(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that 
+	\begin{align}
 		H_{d}^{\triangle}(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})
-	\]
-	is an isomorphism for all $d$, verifying the equivalence of simplicial and singular homology for all $k$.
+	\end{align}
+	is an isomorphism for all $d$, verifying the equivalence of simplicial and singular homology for all $k$ and for all $d$.
 \end{proof}
