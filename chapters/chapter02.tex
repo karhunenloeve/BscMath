@@ -90,17 +90,17 @@ complex}.
 \end{definition}
 
 The dimension\index{dimension} of a simplicial complex\index{simplicial complex} $K$ is defined as the highest dimension among its simplices\index{simplex}. For a simplicial complex $K$ in $\mathbb{R}^{n}$, the underlying space\index{underlying space} $\vert K \vert$ is the union of all the simplices in $K$. The topology\index{topology} of $K$ is determined by the topology induced on $\vert K \vert$ by $\mathbb{R}^{n}$'s
-standard topology. Notably, when the vertex set\index{vertex set} is specified, a simplicial complex
+standard topology. Notably, when the vertex set\index{vertex set} $V(K)$ is specified, a simplicial complex
 in $\mathbb{R}^{n}$ can be fully characterized by listing its simplices. Thus, it
 can be described purely in terms of combinatorics\index{combinatorics} using abstract simplicial complexes\index{abstract simplicial complex}.
 
 \begin{definition}
 	[Abstract simplicial complex]{\cite[Definition 2.3]{boissonnat2018geometric}} \label{abstractsimplicialcomplex}
-	Consider a finite set $V = \{v_{0}, \ldots, v_{d}\}$. An abstract simplicial
-	complex\index{abstract simplicial complex} $\tilde{K}$ with vertex set $V$ is a
-	collection of finite subsets of $V$ that satisfies the following conditions:
+	Consider a finite set $V(K) = \{v_{0}, \ldots, v_{d}\}$ for some simplicial complex $K$. An abstract simplicial
+	complex\index{abstract simplicial complex} $\tilde{K}$ with vertex set $V(K)$ is a
+	collection of finite subsets of $V(K)$ that satisfies the following conditions:
 	\begin{enumerate}
-		\item Every singleton set $\{v_{i}\}$, where $v_{i} \in V$, is included in $\tilde
+		\item Every singleton set $\{v_{i}\}$, where $v_{i} \in V(K)$, is included in $\tilde
 		      {K}$.
 		      		      		      		      		      
 		\item If a set $\sigma^{(d)}$ is in $\tilde{K}$ and $\tau^{(k)}$ is a subset
@@ -153,7 +153,7 @@ Any finite abstract simplicial complex of dimension $d$ can be realized as a sim
 \end{theorem}
 
 \begin{proof}
-Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$.  Let $V(\tilde{K})$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(\tilde{K}) \to \mathbb{R}^{2d+1}$, which is possible because $V(\tilde{K})$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
+Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$.  Let $V(K)$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(K) \to \mathbb{R}^{2d+1}$, which is possible because $V(K)$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma^(k) = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
 \end{proof}
 
 \section{Simplicial Homology}
@@ -193,27 +193,19 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 				
 	The sum of two chains is defined as:
 	\begin{align}
-		c + c' = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)}, 
+		c + c' &= \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \\
+			   &= \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + 
+				\begin{cases}
+				\sum_{j=\min(k, l)+1}^{\max(k, l)} g_{j} \sigma_{j}^{(d)}  & \text{if } k > l, \\
+				0                                                          & \text{if } k = l, \\
+				\sum_{j=\min(k, l)+1}^{\max(k, l)} g'_{j} \sigma_{j}^{(d)} & \text{if } k < l. 
+				\end{cases}
 	\end{align}
-	which simplifies to:
-	\begin{align}
-		c + c' = \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + 
-		\begin{cases}
-		\sum_{j=\min(k, l)+1}^{\max(k, l)} g_{j} \sigma_{j}^{(d)}  & \text{if } k > l, \\
-		0                                                          & \text{if } k = l, \\
-		\sum_{j=\min(k, l)+1}^{\max(k, l)} g'_{j} \sigma_{j}^{(d)} & \text{if } k < l. 
-		\end{cases}
-	\end{align}
-	Hence, \( c + c' \in C^{\triangle}_{d} \).
-				
-	The associativity of the group operation in \( C^{\triangle}_{d} \) follows directly from
-	the associativity of the group operation in \( G \).
-				
-	The inverse element is given by:
+	Hence, \( c + c' \in C^{\triangle}_{d} \). The associativity of the group operation in \( C^{\triangle}_{d} \) follows directly from
+	the associativity of the group operation in \( G \). The inverse is
 	\begin{align}
 		c + (-c) = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{i=0}^{k} (-g_{i}) \sigma_{i}^{(d)} = \sum_{i=0}^{k} (g_{i} - g_{i}) \sigma_{i}^{(d)} = e_{C^{\triangle}_d}. 
 	\end{align}
-	Thus, \( (C^{\triangle}_{d}, +) \) is an abelian group\index{abelian group}.
 \end{proof}
 
 \begin{definition}[Boundary]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
