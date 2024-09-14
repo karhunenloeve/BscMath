@@ -699,9 +699,12 @@ The chain map \( f_{d} \) gives rise to a homomorphism \( f_{\star}: H_{d}(X) \r
 \label{RelativeHomology}
 The concept we will now discuss is that of relative homology groups. Let \( X \) be a topological\index{topological} space and \( A \) a subspace of \( X \). We define \( C_{d}(X, A) \) as the quotient group \( C_{d}(X) / C_{d}(A) \). This means that chains in \( A \) are considered equivalent to the trivial chains in \( C_{d}(X) \). Since the boundary operator \( \partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X) \) also maps \( C_{d}(A) \) to \( C_{d-1}(A) \), a natural boundary map on the quotient group \( \partial_{d}: C_{d}(X, A) \rightarrow C_{d-1}(X, A) \) is obtained. This gives rise to the following sequence:
 \begin{align}
-	\cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots. 
+	\mathcal{C}(X,A): \quad \cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots. 
 \end{align}
-This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A) \) as the homology groups of this chain complex. We propose two important facts about \( H_{d}(X, A) \):
+This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A)\) as the homology groups of this chain complex and $\mathsf{H}(\mathcal{C}(X,A))$ as the homology of the entire chain complex, this becomes important in the Chapter \ref{PersistentHomology} on persistent homology.
+
+We propose two important facts about \( H_{d}(X, A) \):
+\newpage
 
 \begin{proposition}{\cite[\S 2.1, p. 115]{hatcher2005algebraic}}
 	\begin{enumerate}
