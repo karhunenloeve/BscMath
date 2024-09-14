@@ -521,13 +521,7 @@ This equivalence serves as the counterpart to Proposition \ref{decomp}.
 \end{proposition}
 
 \begin{proof}
-	To establish the isomorphism \( H_{0}(X) \cong \mathbb{Z} \), it is sufficient to consider the case where \( X \) is path-connected. For a \( 0 \)-chain \( c \), the boundary operator \( \partial_{0}(c) \) is always zero since the boundary of any \( 0 \)-simplex vanishes. Consequently, \( \ker(\partial_{0}) = C_{0}(X) \), which implies that:
-	\begin{align}
-		H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1}). 
-	\end{align}
-	Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \). Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain $c = \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)})$ implying $c \sim 0$. If \( c \sim 0 \), then \( c = \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)}) \) for some \( 1 \)-chain \( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \). By linearity of \( I \), we have	$I(c) = I( \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)} )) = 0$. Thus, \( I \) induces an isomorphism between \( H_{0}(X) \) and \( \mathbb{Z} \) when \( X \) is path-connected.
-	
-	For the general case where \( X \) has \( p \) path-components \( X_{1}, \ldots, X_{p} \), we apply the above argument to each component. Therefore, \( H_{0}(X) \) is isomorphic to the direct sum\index{direct sum} $H_{0}(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}$.
+	To establish the isomorphism \( H_{0}(X) \cong \mathbb{Z} \), it is sufficient to consider the case where \( X \) is path-connected. For a \( 0 \)-chain \( c \), the boundary operator \( \partial_{0}(c) \) is always zero since the boundary of any \( 0 \)-simplex vanishes. Consequently, \( \ker(\partial_{0}) = C_{0}(X) \), which implies that $H_{0}(X) = C_{0}(X) / \operatorname{im}(\partial_{1})$. Our goal is to demonstrate that \( \ker(I) = \operatorname{im}(\partial_{1}) \). That is, for any \( 0 \)-chain \( c \), \( I(c) = 0 \) if and only if \( c \sim 0 \). Suppose \( I(c) = 0 \) for \( c = \sum_{i} g_{i} \tilde{\sigma}^{(0)} \). Since \( X \) is path-connected, we can express \( c \) as the boundary of a \( 1 \)-chain $c = \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)})$ implying $c \sim 0$. If \( c \sim 0 \), then \( c = \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)}) \) for some \( 1 \)-chain \( \sum_{j} g_{j} \tilde{\sigma}^{(1)} \). By linearity of \( I \), we have	$I(c) = I( \partial_{1} ( \sum_{j} g_{j} \tilde{\sigma}^{(1)} )) = 0$. Thus, \( I \) induces an isomorphism between \( H_{0}(X) \) and \( \mathbb{Z} \) when \( X \) is path-connected. For the general case where \( X \) has \( p \) path-components \( X_{1}, \ldots, X_{p} \), we apply the above argument to each component. Therefore, \( H_{0}(X) \) is isomorphic to the direct sum\index{direct sum} $H_{0}(X) \cong \bigoplus_{i=1}^{p} \mathbb{Z}$.
 \end{proof}
 
 This correspondence serves as the parallel to Corollary \ref{directsum0hom}.
@@ -556,18 +550,18 @@ In order to demonstrate the equivalence of \( H_{d}^{\triangle} \) and \( H_{d} 
 
 \begin{definition}[Chain complex]
 	\label{ChainComplex}
-	A chain complex is a sequence of abelian groups \(\{C_n\}_{n \in \mathbb{Z}}\) connected\index{connected} by homomorphisms \(\partial_n: C_n \to C_{n-1}\) (called boundary operators), such that the composition of any two consecutive maps is zero, i.e., \(\partial_{n-1} \circ \partial_n = 0\) for all \(n\). Formally, a chain complex is:
+	A chain complex $\mathcal{C}$ is a sequence of abelian groups \(\{C_d\}_{d \in \mathbb{Z}}\) connected\index{connected} by homomorphisms \(\partial_d: C_d \to C_{d-1}\) (called boundary operators), such that the composition of any two consecutive maps is zero, i.e., \(\partial_{d-1} \circ \partial_d = 0\) for all \(d\). Formally, a chain complex is:
 	\begin{align}
-		\cdots \xrightarrow{\partial_{n+2}} C_{n+1} \xrightarrow{\partial_{n+1}} C_n \xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots 
+		\mathcal{C}: \quad\cdots \xrightarrow{\partial_{d+2}} C_{d+1} \xrightarrow{\partial_{d+1}} C_d \xrightarrow{\partial_d} C_{d-1} \xrightarrow{\partial_{d-1}} \cdots 
 	\end{align}
-	where \(\partial_{n-1} \circ \partial_n = 0\).
+	where \(\partial_{d-1} \circ \partial_d = 0\).
 \end{definition}
 
 \begin{example}
 	The groups $C_{d}(X)$ represent the collection of singular\index{singular} $d$-chains that form
 	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimension:
 	\begin{align}
-		\cdots &\xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \nonumber\\
+		\mathcal{C}(X):\quad \cdots &\xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \nonumber\\
 		\cdots &\xrightarrow{}C_{1}(X) \xrightarrow{\partial_1} C_{0}(X) \xrightarrow{\partial_0}0.                              
 	\end{align}
 \end{example}
