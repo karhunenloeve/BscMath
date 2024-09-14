@@ -236,16 +236,16 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 \begin{proof}
 	We define the boundary operator for a \( d \)-chain \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \):
 	\begin{align}
-		\partial_d(c) & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)})                    \\
-		            & = \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{ij}^{(d-1)}  \\
+		\partial_d(c) & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)}) \nonumber \\
+		            & = \sum_{i=0}^{k} g_{i} \sum_{j=0}^{d} (-1)^{j} \sigma_{ij}^{(d-1)} \nonumber \\
 		            & = \sum_{i=0}^{k} \sum_{j=0}^{d} g_{i} (-1)^{j} \sigma_{ij}^{(d-1)}, 
 	\end{align}
 	which is an element of \( C^{\triangle}_{d-1} \), where \( \sigma_{ij}^{(d-1)} \) are the \( (d-1) \)-faces of the \( d \)-simplices \( \sigma_{i}^{(d)} \) in \( K \). To verify that \( \partial_d \) is a group homomorphism, consider two \( d \)-chains \( c = \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} \) and \( c' = \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \). We compute for $l > k$ w.l.o.g.:
 	\begin{align}
-		\partial_d(c + c') & = \partial_d( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} ) \\
-		                 & = \partial_d( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} ) \\
-		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial_d(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
-		                 & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \\
+		\partial_d(c + c') & = \partial_d( \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} ) \nonumber\\
+		                 & = \partial_d( \sum_{i=0}^{k} (g_{i} + g'_i) \sigma_{i}^{(d)} + \sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} ) \nonumber\\
+		                 & = \sum_{i=0}^{k} (g_{i}+g'_i) \partial_d(\sigma_{i}^{(d)}) + \sum_{j=k+1}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)})    \nonumber\\
+		                 & = \sum_{i=0}^{k} g_{i} \partial_d(\sigma_{i}^{(d)}) + \sum_{j=0}^{l} g'_{j} \partial_d(\sigma_{j}^{(d)}) \nonumber\\
 		                 & = \partial_d(c) + \partial_d(c').                                                                           
 	\end{align}
 	The compatibility with addition can in principle be seen by the definition of the boundary operator, already.
@@ -254,17 +254,17 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 \begin{example}
 	Let's consider the \(2\)-simplex \( \sigma^{(2)} \) with vertices \( v_{0}, v_{1}, \) and \( v_{2} \). The \( 1 \)-faces of this simplex are:
 	\begin{align}
-		e_{0} & = (v_{1}, v_{2}), \quad \text{connecting } v_{1} \text{ and } v_{2}, \\
-		e_{1} & = (v_{2}, v_{0}), \quad \text{connecting } v_{2} \text{ and } v_{0}, \\
+		e_{0} & = (v_{1}, v_{2}), \quad \text{connecting } v_{1} \text{ and } v_{2}, \nonumber\\
+		e_{1} & = (v_{2}, v_{0}), \quad \text{connecting } v_{2} \text{ and } v_{0}, \nonumber\\
 		e_{2} & = (v_{0}, v_{1}), \quad \text{connecting } v_{0} \text{ and } v_{1}. 
 	\end{align}
 				
 	Now, let's proceed with the computation:
 	\begin{align}
-		\partial_1(\partial_2(\sigma^{(2)})) & = \partial_1(\partial_2(e_{0} + e_{1} + e_{2}))                                          \\
-		                                 & = \partial_1(\partial_2(e_{0})) + \partial_1(\partial_2(e_{1})) + \partial_1(\partial_2(e_{2}))                      \\
-		                                 & = \partial_1(v_{1}, v_{2}) + \partial_1(v_{2}, v_{0}) + \partial_1(v_{0}, v_{1}) \\
-		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})]          \\
+		\partial_1(\partial_2(\sigma^{(2)})) & = \partial_1(\partial_2(e_{0} + e_{1} + e_{2})) \nonumber\\
+		                                 & = \partial_1(\partial_2(e_{0})) + \partial_1(\partial_2(e_{1})) + \partial_1(\partial_2(e_{2})) \nonumber\\
+		                                 & = \partial_1(v_{1}, v_{2}) + \partial_1(v_{2}, v_{0}) + \partial_1(v_{0}, v_{1}) \nonumber\\
+		                                 & = [(v_{2}) - (v_{1})] + [(v_{0}) - (v_{2})] + [(v_{1}) - (v_{0})] \nonumber\\
 		                                 & = 0.                                                                       
 	\end{align}
 				
@@ -575,7 +575,7 @@ In order to demonstrate the equivalence of \( H_{d}^{\triangle} \) and \( H_{d} 
 	The groups $C_{d}(X)$ represent the collection of singular\index{singular} $d$-chains that form
 	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimension:
 	\begin{align}
-		\cdots &\xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \\
+		\cdots &\xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \nonumber\\
 		\cdots &\xrightarrow{}C_{1}(X) \xrightarrow{\partial_1} C_{0}(X) \xrightarrow{\partial_0}0.                              
 	\end{align}
 \end{example}
@@ -761,7 +761,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 	\end{equation}
 	There exists an exact sequence:
 	\begin{align}
-		 \ker(a') &\xrightarrow{\delta} \ker(a) \xrightarrow{\delta} \ker(a'') \xrightarrow{\delta} \cdots                                                 \\
+		 \ker(a') &\xrightarrow{\delta} \ker(a) \xrightarrow{\delta} \ker(a'') \xrightarrow{\delta} \cdots \nonumber\\
 		 \cdots &\xrightarrow{\delta} \operatorname{coker}(a') \xrightarrow{\delta} \operatorname{coker}(a) \xrightarrow{\delta} \operatorname{coker}(a'') 
 	\end{align}
 	with the connecting homomorphism \(\delta\).
@@ -774,7 +774,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 \begin{theorem}{\cite[p. 115 f.]{hatcher2005algebraic}}
 	The relative homology groups \( H_{d}(X, A) \) are part of the exact sequence:
 	\begin{align}
-		  & \cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
+		  & \cdots \rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \nonumber\\
 		  & \cdots \rightarrow H_{0}(X, A) \rightarrow 0.                                                                      
 	\end{align}
 \end{theorem}
@@ -792,8 +792,8 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 			
 	To clarify, consider the chain complexes
 	\begin{align}
-		A_{\bullet} & = \{C_{d}(A), \partial_{d}\}_{d \in \mathbb{N}},    \\
-		B_{\bullet} & = \{C_{d}(X), \partial_{d}\}_{d \in \mathbb{N}},    \\
+		A_{\bullet} & = \{C_{d}(A), \partial_{d}\}_{d \in \mathbb{N}}, \nonumber\\
+		B_{\bullet} & = \{C_{d}(X), \partial_{d}\}_{d \in \mathbb{N}}, \nonumber\\
 		C_{\bullet} & = \{C_{d}(X, A), \partial_{d}\}_{d \in \mathbb{N}}. 
 	\end{align}
 	The vertical maps \(i\) and \(j\) are chain maps and thus induce homomorphisms on homology groups \(i_{\star}: H_{d}(A) \rightarrow H_{d}(X)\) and \(j_{\star}: H_{d}(X) \rightarrow H_{d}(X, A)\). The exactness of the rows implies that \(\mathrm{ker}(j_{\star}) = \mathrm{im}(i_{\star})\). The connecting homomorphism \(\partial_d: H_{d}(X, A) \rightarrow H_{d-1}(A)\) can be defined as follows: for any class \([c] \in H_{d}(X, A)\) represented by a cycle \(c \in C_{d}(X)\) with \(\partial_{d}(c) \in C_{d-1}(A)\), choose a chain \(b \in C_{d}(X)\) such that \(j(b) = c\). Since \(c\) is a cycle, \(\partial_{d}(b) \in \mathrm{ker}(j) = \mathrm{im}(i)\), so there exists a chain \(a \in C_{d-1}(A)\) such that \(\partial_{d}(b) = i(a)\). Define \(\partial([c]) = [a] \in H_{d-1}(A)\). We need to verify that the map \(\partial_d: H_{d}(X, A) \rightarrow H_{d-1}(A)\) is well-defined: If \(b\) and \(b'\) both map to \(c\) via \(j\), then \(b - b' \in \mathrm{ker}(j) = \mathrm{im}(i)\). Thus, there exists \(a' \in C_{d-1}(A)\) such that \(b - b' = i(a')\). Hence,
@@ -802,7 +802,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 	\end{align}
 	So, \([a] = [a']\) in \(H_{d-1}(A)\), ensuring the uniqueness of \(\partial([c])\). If \(c\) and \(c'\) are homologous in \(H_{d}(X, A)\), then \(c - c' = \partial_{d}(c'')\) for some \(c'' \in C_{d+1}(X, A)\). Thus, \(b - b' = \partial_{d+1}(c'')\) in \(C_{d}(X)\), and the same argument as above applies. Thus,
 	\begin{align}
-		\cdots &\rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \\
+		\cdots &\rightarrow H_{d}(A) \rightarrow H_{d}(X) \rightarrow H_{d}(X, A) \rightarrow H_{d-1}(A) \rightarrow \cdots \nonumber\\
 		\cdots &\rightarrow H_{0}(X, A) \rightarrow 0                                                                    
 	\end{align}
 	is a long exact sequence.
@@ -827,7 +827,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 	\label{exacthomsequence}
 	The given sequence,
 	\begin{align}
-		  & \cdots \rightarrow H_{d}(A) \xrightarrow{i_\star} H_{d}(B) \xrightarrow{j_\star} H_{d}(C) \xrightarrow{\partial_d} \cdots \\
+		  & \cdots \rightarrow H_{d}(A) \xrightarrow{i_\star} H_{d}(B) \xrightarrow{j_\star} H_{d}(C) \xrightarrow{\partial_d} \cdots \nonumber\\
 		  & \cdots \xrightarrow{\partial_d} H_{d-1}(A) \xrightarrow{i_\star} H_{d-1}(B) \rightarrow \cdots                            
 	\end{align}
 	is exact.
@@ -853,7 +853,7 @@ This is the set of all elements in \( B \) that differ from \( y \) by an elemen
 	The sequence
 	\begin{align}
 		  & \cdots \rightarrow H_{d}(A) \xrightarrow{i_\star}H_{d}(X) \xrightarrow{j_\star} 
-		H_{d}(X,A) \xrightarrow{\partial_d} \cdots \\
+		H_{d}(X,A) \xrightarrow{\partial_d} \cdots \nonumber\\
 		  & \cdots \xrightarrow{\partial_d} H_{d-1}(A) \rightarrow \cdots \rightarrow       
 		H_{0}(X,A) \rightarrow 0
 	\end{align}
@@ -936,9 +936,9 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	The \(d\)-simplices thus form the structure of a simplicial complex. The diameter of a simplex is defined as the maximum distance between its vertices. Consider a point \(v\) and a point of the form \(\sum_i t_i v_i\) within the simplex \([v_0, \ldots, v_d]\). The distance between these two points satisfies the inequality
 	\begin{align}
-		\left\lvert v - \sum_i t_i v_i \right\rvert & = \left\lvert \sum_i t_i(v - v_i) \right\rvert          \\
-		                                            & \leq \sum_i t_i \left\lvert v - v_i \right\rvert        \\
-		                                            & \leq \sum_i t_i \max_i \left\lvert v - v_i \right\rvert \\
+		\left\lvert v - \sum_i t_i v_i \right\rvert & = \left\lvert \sum_i t_i(v - v_i) \right\rvert \nonumber\\
+		                                            & \leq \sum_i t_i \left\lvert v - v_i \right\rvert \nonumber\\
+		                                            & \leq \sum_i t_i \max_i \left\lvert v - v_i \right\rvert \nonumber\\
 		                                            & = \max_i \left\lvert v - v_i \right\rvert.              
 	\end{align}
 	This inequality holds due to the convex combination of the vertices and the properties of the norm.
@@ -991,38 +991,38 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	We define $T_d$ on $LC_d(Y)$ inductively by setting $T_{-1}=0$ and $T_d\lambda = b_\lambda(\lambda-T_{d-1}\partial_d\lambda)$ for $d \geq 0$. This formula is an inductive definition of the barycentric subdivision of $\sigma^{(d)} \times \mathbb{I}$ obtained by the union of all simplices in $\sigma^{(d)} \times \{0\} \cup \partial \sigma^{(d)} \times \mathbb{I}$ to the barycentre of $\sigma^{(d)} \times \{1\}$. The chain homotopy formula is $\partial_{d+1} T_{d+1} + T_{d}\partial_{d+1} = \mathbb{I} - S_{d}$. This is trivial for $LC_{-1}(Y)$, where $T_{-1}=0$ and $S_{-1}=\mathbb{I}$. The formula for $LC_d(Y)$ for all $d \geq 0$ is given by:
 	\begin{align}
 		\partial_{d+1} T_d\lambda & = \partial_{d+1} b_\lambda(\lambda - T_{d-1}\partial_{d
-		}\lambda),                                         \\
-		                  & = \lambda - T_{d-1}\partial_{d}\lambda - b_\lambda\partial_d(\lambda - T_{d-1}\partial_{d}\lambda)              \\
-		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[\partial_d\lambda - \partial_d T_{d-1}(\partial_d\lambda)]   \\
-		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[S_d(\partial_d\lambda) + T_{d-1}\partial^2_d(\lambda)] \\
+		}\lambda), \nonumber\\
+		                  & = \lambda - T_{d-1}\partial_{d}\lambda - b_\lambda\partial_d(\lambda - T_{d-1}\partial_{d}\lambda) \nonumber\\
+		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[\partial_d\lambda - \partial_d T_{d-1}(\partial_d\lambda)] \nonumber\\
+		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[S_d(\partial_d\lambda) + T_{d-1}\partial^2_d(\lambda)] \nonumber\\
 		                  & = \lambda - T_{d-1}\partial_d\lambda - S_d\lambda.                                                  
 	\end{align}
 	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d+1} + T_{d}\partial_{d+1} = \mathbb{I} - S_d$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
 		
 	\item Barycentric subdivision of general chains \cite[Proposition 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_d(X) \). Define the operator\index{operator} \( S_d: C_d(X) \to C_d(X) \) by \( S_d\tilde{\sigma}^{(d)} := \sigma_\star S_d\sigma^{(d)} \), where \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \) is a singular \( d \)-simplex\index{simplex}, and \( S\sigma^{(d)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( d \)-simplex\index{simplex} \( \sigma^{(d)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(d)} \) is a signed sum of the \( d \)-simplices that make up the subdivision of \( \sigma^{(d)} \). We will now prove that \( S_d \) is a chain map, i.e., that \( S_d \) commutes with the boundary operator\index{operator}, \( S_{d-1}\partial_{d} = \partial_d S_d \):
 	\begin{align}
-		\partial_d S_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star S_d\sigma^{(d)}) = \sigma_\star \partial_d (S_d\sigma^{(d)}) = \sigma_\star S_{d-1}(\partial_d \sigma^{(d)})        \\
-		                 & = \sigma_\star S_{d-1}\left(\sum_i (-1)^i \sigma^{(d-1)}_i\right)  \\
-		                 & = \sum_i (-1)^i \sigma_\star S_{d-1}(\sigma^{(d-1)}_i)                      \\ 
-		                 & = \sum_i (-1)^i S_{d-1}\left(\tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \\
-		                 & = S_{d-1}\left(\sum_i (-1)^i \tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \\
+		\partial_d S_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star S_d\sigma^{(d)}) = \sigma_\star \partial_d (S_d\sigma^{(d)}) = \sigma_\star S_{d-1}(\partial_d \sigma^{(d)}) \nonumber\\
+		                 & = \sigma_\star S_{d-1}\left(\sum_i (-1)^i \sigma^{(d-1)}_i\right) \nonumber\\
+		                 & = \sum_i (-1)^i \sigma_\star S_{d-1}(\sigma^{(d-1)}_i) \nonumber\\ 
+		                 & = \sum_i (-1)^i S_{d-1}\left(\tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \nonumber\\
+		                 & = S_{d-1}\left(\sum_i (-1)^i \tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \nonumber\\
 		                 & = S_{d-1}(\partial_{d} \tilde{\sigma}^{(d)}). 
 	\end{align}
 	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} := \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \). The verification is as follows:
 	\begin{align}
-		\partial_d T_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_d T_d\sigma^{(d)}) \\
-		                 & = \sigma_\star (\sigma^{(d-1)} - S_{d-1}\sigma^{(d-1)} - T_{d-1}\partial_{d} \sigma^{(d)})          \\
-		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - \sigma_\star T_{d-1}\partial_{d} \sigma^{(d)}                        \\
+		\partial_d T_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_d T_d\sigma^{(d)}) \nonumber\\
+		                 & = \sigma_\star (\sigma^{(d-1)} - S_{d-1}\sigma^{(d-1)} - T_{d-1}\partial_{d} \sigma^{(d)}) \nonumber\\
+		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - \sigma_\star T_{d-1}\partial_{d} \sigma^{(d)} \nonumber\\
 		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - T_{d-1}(\partial_d \tilde{\sigma}^{(d)}).                                        
 	\end{align}
 		
 	\item Iterated barycentric subdivision \cite[Proposition 2.21 (4)]{hatcher2005algebraic}: A chain homotopy between the identity map \( \mathbb{I} \) and the iterate \( S^m_d \) is given by the operator\index{operator} $D^m_d = \sum_{0 \leq i < m} T_d S_d^i$. The following calculation verifies this:
 	\begin{align}
-		\partial_d D^m_d + D^m_{d-1} \partial_{d} & = \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} S_{d-1}^i \partial_{d}) \\
-		&= \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} \partial_{d} S_{d}^i) \\
-		& = \sum_{0 \leq i < m} (\partial_d T_d + T_{d-1} \partial_d) S_{d-1}^i \\
-		&= \sum_{0 \leq i < m} (\mathbb{I} - S_{d-1}) S_{d-1}^i \\
-		& = \sum_{0 \leq i < m} (S_{d-1}^i - S_{d-1}^{i+1}) \\
+		\partial_d D^m_d + D^m_{d-1} \partial_{d} & = \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} S_{d-1}^i \partial_{d}) \nonumber\\
+		&= \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} \partial_{d} S_{d}^i) \nonumber\\
+		& = \sum_{0 \leq i < m} (\partial_d T_d + T_{d-1} \partial_d) S_{d-1}^i \nonumber\\
+		&= \sum_{0 \leq i < m} (\mathbb{I} - S_{d-1}) S_{d-1}^i \nonumber\\
+		& = \sum_{0 \leq i < m} (S_{d-1}^i - S_{d-1}^{i+1}) \nonumber\\
 		&= \mathbb{I} - S^m_{d-1}.                                                       
 	\end{align}
 	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\sigma^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( C_d^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D_d{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
@@ -1036,18 +1036,17 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 		
 	We can easily verify that \( \rho \) is a chain map by calculating:
-	\begin{align}
-		\partial_d \rho(\tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial^2_{d+1} D\tilde{\sigma}^{(d)} - \partial_{d} D_{d-1} \partial_d \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)},  \\
+	\begin{align*}
+		\partial_d \rho(\tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial^2_{d+1} D_d\tilde{\sigma}^{(d)} - \partial_{d} D_{d-1} \partial_d \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)},  \\
 		\rho(\partial_d \tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)} - D_{d-2} \partial^2 \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)}. 
-	\end{align}
-		
+	\end{align*}
 	To ensure that \( \rho \) maps \( C_d(X) \) to \( C_d^{\mathcal{U}}(X) \), we compute \( \rho(\tilde{\sigma}^{(d)}) \):
 	\begin{align}
-		\rho(\tilde{\sigma}^{(n)}) & = \tilde{\sigma}^{(n)} - \partial D\tilde{\sigma}^{(n)} - D(\partial \tilde{\sigma}^{(n)}) \nonumber                                                 \\
-		                           & = \tilde{\sigma}^{(n)} - \partial D_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}) - D(\partial \tilde{\sigma}^{(n)}) \nonumber                     \\
-		                           & = S_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}) + D_{m(\tilde{\sigma}^{(n)})}(\partial \tilde{\sigma}^{(n)}) - D(\partial \tilde{\sigma}^{(n)}), 
+		\rho(\tilde{\sigma}^{(d)}) & = \tilde{\sigma}^{(d)} - \partial_{d+1} D_d\tilde{\sigma}^{(d)} - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \nonumber                                                 \\
+		                           & = \tilde{\sigma}^{(d)} - \partial_{d+1} D^{m(\tilde{\sigma}^{(d)})}_d(\tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \nonumber                     \\
+		                           & = S^{m(\tilde{\sigma}^{(n)})}_d(\tilde{\sigma}^{(d)}) + D_{d-1}^{m(\tilde{\sigma}^{(d)})}(\partial_d \tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}), 
 	\end{align}
-	where the last equality follows from \( \partial D_{m(\tilde{\sigma}^{(n)})} + D_{m(\tilde{\sigma}^{(n)})} \partial = \mathbb{I} - S_{m(\tilde{\sigma}^{(n)})} \).
+	where the last equality follows from \( \partial_{d+1} D_d^{m(\tilde{\sigma}^{(d)})} + D_{d-1}^{m(\tilde{\sigma}^{(d)})} \partial_d = \mathbb{I} - S^{m(\tilde{\sigma}^{(d)})}_d \).
 		
 	The term \( S_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}) \) lies in \( C_n^{\mathcal{U}}(X) \) by the definition of \( m(\tilde{\sigma}^{(n)}) \). The remaining terms, \( D_{m(\tilde{\sigma}^{(n)})}(\partial \tilde{\sigma}^{(n)}) - D(\partial \tilde{\sigma}^{(n)}) \), are linear combinations of terms of the form \( D_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}_j) - D_{m(\tilde{\sigma}^{(n)}_j)}(\tilde{\sigma}^{(n)}_j) \), where \( \tilde{\sigma}^{(n)}_j \) denotes the restriction of \( \tilde{\sigma}^{(n)} \) to a face of \( \sigma^{(n)} \). Since \( m(\tilde{\sigma}^{(n)}_j) \leq m(\tilde{\sigma}^{(n)}) \), the difference \( D_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}_j) - D_{m(\tilde{\sigma}^{(n)}_j)}(\tilde{\sigma}^{(n)}_j) \) consists of terms \( T S^i(\tilde{\sigma}^{(n)}_j) \) with \( i \geq m(\tilde{\sigma}^{(n)}_j) \). These terms lie in \( C_n^{\mathcal{U}}(X) \) because the operator\index{operator} \( T \) maps \( C_{n-1}^{\mathcal{U}}(X) \) into \( C_n^{\mathcal{U}}(X) \). Viewing \( \rho \) as a chain map from \( C_n(X) \) to \( C_n^{\mathcal{U}}(X) \), the equation $\partial D + D \partial = \mathbb{I} - \iota \rho$ holds, where \( \iota : C_n^{\mathcal{U}}(X) \hookrightarrow C_n(X) \) is the inclusion map. Moreover, \( \rho \iota = \mathbb{I} \) since \( D \) is identically zero on \( C_n^{\mathcal{U}}(X) \). This follows because \( m(\tilde{\sigma}^{(n)}) = 0 \) for any \( \tilde{\sigma}^{(n)} \in C_n^{\mathcal{U}}(X) \), implying that the sum defining \( D\tilde{\sigma}^{(n)} \) is empty. Consequently, \( \rho \) is a chain homotopy inverse to \( \iota \).
 \end{enumerate}
