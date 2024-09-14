@@ -213,7 +213,7 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 	\begin{align}
 		\partial_d(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^{i} \sigma^{(d-1)}_{i}, 
 	\end{align}
-	where \( \sigma^{(d-1)}_{i} \) is a \( (d-1) \)-face of \( \sigma^{(d)} \). If \( d = 0 \), we define \( \partial(\sigma^{(0)}) = 0 \).
+	where \( \sigma^{(d-1)}_{i} \) is a \( (d-1) \)-face of \( \sigma^{(d)} \). If \( d = 0 \), we define \( \partial_0(\sigma^{(0)}) = 0 \).
 \end{definition}
 
 Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) faces also have associated orientations. We extend the definition of the boundary linearly to elements of \( C^{\triangle}_{d} \).
@@ -267,7 +267,7 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 				
 	This property can be generalized to higher dimensions through induction. Therefore, since \( \partial_d \) is a linear operator and the chain \( c \) is a sum of \( d \)-simplices, we conclude for $d \geq 1$:
 	\begin{align}
-		\partial^{2}(c) := \partial_{d-1}(\partial_{d}(c)) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\triangle}_{d}. 
+		\partial^{2}_d(c) := \partial_{d-1}(\partial_{d}(c)) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\triangle}_{d}. 
 	\end{align}
 				
 	Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
@@ -288,15 +288,12 @@ A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if
 	The subgroup of $Z^{\triangle}_{d}$ consisting of boundaries is referred to as the simplicial boundary group $B^{\triangle}_{d}$.
 \end{definition}
 
-It is worth noting that \( B^{\triangle}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\triangle}_{d} \) is a subgroup of \( Z^{\triangle}_{d} \) and \( Z^{\triangle}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\triangle}_{d} \) is normal. Therefore, we can construct the group quotient:
-\begin{align}
-	H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d}. 
-\end{align}
+It is worth noting that \( B^{\triangle}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\triangle}_{d} \) is a subgroup of \( Z^{\triangle}_{d} \) and \( Z^{\triangle}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\triangle}_{d} \) is normal. Therefore, we can construct the group quotient $H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d}$. 
 
 \begin{definition}[Simplicial homology group]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
 	The group \( H^{\triangle}_{d} \) represents the \( d \)-dimensional simplicial homology\index{homology} group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
 	\begin{align}
-		H^{\triangle}_{d} := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
+		H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
 	\end{align}
 \end{definition}
 
@@ -366,7 +363,7 @@ The index of a chain $c = \sum_{i=0}^{k} g_i \sigma_i^{(d)}$ is defined as $I(c)
 
 \begin{proposition}{\cite[Proposition 2.7]{hatcher2005algebraic}}
 	\label{decomp}
-	If \( K \) is a connected complex and \( c \) is a \( 0 \)-chain with \( I(c) = 0 \), then \( I(c) = 0 \) is equivalent to \( c \sim 0 \), where \( \sim \) denotes homology\index{homology} equivalence. Furthermore, in this case, \( H^{\triangle}_{0}(K, \mathbb{Z}) \cong \mathbb{Z} \).
+	If \( K \) is a connected complex and \( c \) is a \( 0 \)-chain with \( I(c) = 0 \), then \( I(c) = 0 \) is equivalent to \( c \sim 0 \), where \( \sim \) denotes homology\index{homology equivalence} equivalence. Furthermore, in this case, \( H^{\triangle}_{0}(K; \mathbb{Z}) \cong \mathbb{Z} \).
 \end{proposition}
 
 \begin{proof}
