@@ -1037,11 +1037,11 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		
 	We can easily verify that \( \rho \) is a chain map by calculating:
 	\begin{align}
-		\partial \rho(\tilde{\sigma}^{(n)}) & = \partial \tilde{\sigma}^{(n)} - \partial^2 D\tilde{\sigma}^{(n)} - \partial D \partial \tilde{\sigma}^{(n)} = \partial \tilde{\sigma}^{(n)} - \partial D \partial \tilde{\sigma}^{(n)},  \\
-		\rho(\partial \tilde{\sigma}^{(n)}) & = \partial \tilde{\sigma}^{(n)} - \partial D \partial \tilde{\sigma}^{(n)} - D \partial^2 \tilde{\sigma}^{(n)} = \partial \tilde{\sigma}^{(n)} - \partial D \partial \tilde{\sigma}^{(n)}. 
+		\partial_d \rho(\tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial^2_{d+1} D\tilde{\sigma}^{(d)} - \partial_{d} D_{d-1} \partial_d \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)},  \\
+		\rho(\partial_d \tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)} - D_{d-2} \partial^2 \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)}. 
 	\end{align}
 		
-	To ensure that \( \rho \) maps \( C_n(X) \) to \( C_n^{\mathcal{U}}(X) \), we compute \( \rho(\tilde{\sigma}^{(n)}) \):
+	To ensure that \( \rho \) maps \( C_d(X) \) to \( C_d^{\mathcal{U}}(X) \), we compute \( \rho(\tilde{\sigma}^{(d)}) \):
 	\begin{align}
 		\rho(\tilde{\sigma}^{(n)}) & = \tilde{\sigma}^{(n)} - \partial D\tilde{\sigma}^{(n)} - D(\partial \tilde{\sigma}^{(n)}) \nonumber                                                 \\
 		                           & = \tilde{\sigma}^{(n)} - \partial D_{m(\tilde{\sigma}^{(n)})}(\tilde{\sigma}^{(n)}) - D(\partial \tilde{\sigma}^{(n)}) \nonumber                     \\
