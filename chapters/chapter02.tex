@@ -994,51 +994,53 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		                 & = S_{d-1}\left(\sum_i (-1)^i \tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \nonumber\\
 		                 & = S_{d-1}(\partial_{d} \tilde{\sigma}^{(d)}). 
 	\end{align}
-	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} := \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T \) provides a chain homotopy between the subdivision operator\index{operator} \( S \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \). The verification is as follows:
+	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} := \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T_d \) provides a chain homotopy between the subdivision operator\index{operator} \( S_d \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \). The verification is as follows:
 	\begin{align}
-		\partial_d T_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_d T_d\sigma^{(d)}) \nonumber\\
-		                 & = \sigma_\star (\sigma^{(d-1)} - S_{d-1}\sigma^{(d-1)} - T_{d-1}\partial_{d} \sigma^{(d)}) \nonumber\\
-		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - \sigma_\star T_{d-1}\partial_{d} \sigma^{(d)} \nonumber\\
-		                 & = \tilde{\sigma}^{(d-1)} - S_{d-1}\tilde{\sigma}^{(d-1)} - T_{d-1}(\partial_d \tilde{\sigma}^{(d)}).                                        
+		\partial_{d+1} T_d\tilde{\sigma}^{(d)} & = \partial_{d+1} (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_{d+1} T_d\sigma^{(d)}) \nonumber\\
+		                 & = \sigma_\star (\sigma^{(d)} - S_{d}\sigma^{(d)} - T_{d-1}\partial_{d} \sigma^{(d)}) \nonumber\\
+		                 & = \tilde{\sigma}^{(d)} - S_{d}\tilde{\sigma}^{(d)} - \sigma_\star T_{d-1}\partial_{d} \sigma^{(d)} \nonumber\\
+		                 & = \tilde{\sigma}^{(d)} - S_{d}\tilde{\sigma}^{(d)} - T_{d-1}(\partial_d \tilde{\sigma}^{(d)}).                                        
 	\end{align}
 		
 	\item Iterated barycentric subdivision \cite[Proposition 2.21 (4)]{hatcher2005algebraic}: A chain homotopy between the identity map \( \mathbb{I} \) and the iterate \( S^m_d \) is given by the operator\index{operator} $D^m_d = \sum_{0 \leq i < m} T_d S_d^i$. The following calculation verifies this:
 	\begin{align}
-		\partial_d D^m_d + D^m_{d-1} \partial_{d} & = \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} S_{d-1}^i \partial_{d}) \nonumber\\
-		&= \sum_{0 \leq i < m} (\partial_d T_d S_d^i + T_{d-1} \partial_{d} S_{d}^i) \nonumber\\
-		& = \sum_{0 \leq i < m} (\partial_d T_d + T_{d-1} \partial_d) S_{d-1}^i \nonumber\\
-		&= \sum_{0 \leq i < m} (\mathbb{I} - S_{d-1}) S_{d-1}^i \nonumber\\
-		& = \sum_{0 \leq i < m} (S_{d-1}^i - S_{d-1}^{i+1}) \nonumber\\
-		&= \mathbb{I} - S^m_{d-1}.                                                       
+		\partial_{d+1} D^m_d + D^m_{d-1} \partial_{d} & = \sum_{0 \leq i < m} (\partial_{d+1} T_d S_d^i + T_{d-1} S_{d-1}^i \partial_{d}) \nonumber\\
+		&= \sum_{0 \leq i < m} (\partial_{d+1} T_d S_d^i + T_{d-1} \partial_{d} S_{d}^i) \nonumber\\
+		& = \sum_{0 \leq i < m} (\partial_{d+1} T_d + T_{d-1} \partial_d) S_{d}^i \nonumber\\
+		&= \sum_{0 \leq i < m} (\mathbb{I} - S_{d}) S_{d}^i \nonumber\\
+		& = \sum_{0 \leq i < m} (S_{d}^i - S_{d}^{i+1}) \nonumber\\
+		&= \mathbb{I} - S^m_{d}.                                                       
 	\end{align}
-	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d} T_{d} = \mathbb{I} - S_{d-1} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\sigma^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( C_d^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D_d{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
+	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\sigma^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( \mathcal{C}^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D_d^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
 	\begin{align}
-		\partial_{d+1} D_{d+1} + D_{d} \partial_{d+1}= \mathbb{I} - \rho. 
+		\partial_{d+1} D_{d} + D_{d-1} \partial_{d}= \mathbb{I} - \rho. 
 	\end{align}
 		
 	A straightforward approach is to define \( \rho \) directly from this equation:
 	\begin{align}
-		\rho = \mathbb{I} - \partial_{d+1} D_{d+1} - D_d \partial_{d+1}. 
+		\rho = \mathbb{I} - \partial_{d+1} D_{d} - D_{d-1} \partial_{d}. 
 	\end{align}
 		
 	We can easily verify that \( \rho \) is a chain map by calculating:
-	\begin{align*}
-		\partial_d \rho(\tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial^2_{d+1} D_d\tilde{\sigma}^{(d)} - \partial_{d} D_{d-1} \partial_d \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)},  \\
-		\rho(\partial_d \tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)} - D_{d-2} \partial^2 \tilde{\sigma}^{(d)} = \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)}. 
-	\end{align*}
+	\begin{align}
+		\partial_d \rho(\tilde{\sigma}^{(d)}) & = \partial_d \tilde{\sigma}^{(d)} - \partial^2_{d+1} D_d\tilde{\sigma}^{(d)} - \partial_{d} D_{d-1} \partial_d \tilde{\sigma}^{(d)} \nonumber\\
+											  &	= \partial_d \tilde{\sigma}^{(d)} - \partial_d D_{d-1} \partial_d \tilde{\sigma}^{(d)},  \\
+		\rho(\partial_{d+1} \tilde{\sigma}^{(d+1)}) & = \partial_{d+1} \tilde{\sigma}^{(d+1)} - \partial_{d+1} D_{d} \partial_{d+1} \tilde{\sigma}^{(d+1)} - D_{d-1} \partial^2_{d+1} \tilde{\sigma}^{(d+1)} \nonumber\\
+													& = \partial_{d+1} \tilde{\sigma}^{(d+1)} - \partial_{d+1} D_{d} \partial_{d+1} \tilde{\sigma}^{(d+1)}. 
+	\end{align}
 	To ensure that \( \rho \) maps \( C_d(X) \) to \( C_d^{\mathcal{U}}(X) \), we compute \( \rho(\tilde{\sigma}^{(d)}) \):
 	\begin{align}
 		\rho(\tilde{\sigma}^{(d)}) & = \tilde{\sigma}^{(d)} - \partial_{d+1} D_d\tilde{\sigma}^{(d)} - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \nonumber                                                 \\
 		                           & = \tilde{\sigma}^{(d)} - \partial_{d+1} D^{m(\tilde{\sigma}^{(d)})}_d(\tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \nonumber                     \\
-		                           & = S^{m(\tilde{\sigma}^{(n)})}_d(\tilde{\sigma}^{(d)}) + D_{d-1}^{m(\tilde{\sigma}^{(d-1)})}(\partial_d \tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}), 
+		                           & = S^{m(\tilde{\sigma}^{(d)})}_d(\tilde{\sigma}^{(d)}) + D_{d-1}^{m(\tilde{\sigma}^{(d-1)})}(\partial_d \tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}), 
 	\end{align}
 	where the last equality follows from \( \partial_{d+1} D_d^{m(\tilde{\sigma}^{(d)})} + D_{d-1}^{m(\tilde{\sigma}^{(d)})} \partial_d = \mathbb{I} - S^{m(\tilde{\sigma}^{(d)})}_d \).
 		
-	The term \( S_d^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \) by the definition of \( m(\tilde{\sigma}^{(d)}) \). The remaining terms, \( D_{d-1}^{m(\tilde{\sigma}^{(d-1)})}(\partial_d \tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \), are linear combinations of terms of the form \( D^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}_j) - D^{m(\tilde{\sigma}^{(d)}_j)}(\tilde{\sigma}^{(d)}_j) \), where \( \tilde{\sigma}^{(d)}_j \) denotes the restriction of \( \tilde{\sigma}^{(d)} \) to a face of \( \sigma^{(d)} \). Since \( m(\tilde{\sigma}^{(d)}_j) \leq m(\tilde{\sigma}^{(d)}) \), the difference \( D^{m(\tilde{\sigma}^{(d)})}_d(\tilde{\sigma}^{(d)}_j) - D^{m(\tilde{\sigma}^{(d)}_j)}(\tilde{\sigma}^{(d)}_j) \) consists of terms \( T_{d-1} S^i_{d-1}(\tilde{\sigma}^{(d-1)}_j) \) with \( i \geq m(\tilde{\sigma}^{(d-1)}_j) \). These terms lie in \( C_d^{\mathcal{U}}(X) \) because the operator\index{operator} \( T_{d-1} \) maps \( C_{d-1}^{\mathcal{U}}(X) \) into \( C_d^{\mathcal{U}}(X) \). Viewing \( \rho \) as a chain map from \( C_d(X) \) to \( C_d^{\mathcal{U}}(X) \), the equation $\partial_{d+1} D_{d} + D_{d-1} \partial_{d} = \mathbb{I} - \iota \rho$ holds, where \( \iota : C_d^{\mathcal{U}}(X) \hookrightarrow C_d(X) \) is the inclusion map. Moreover, \( \rho \iota = \mathbb{I} \) since \( D_d \) is identically zero on \( C_d^{\mathcal{U}}(X) \). This follows because \( m(\tilde{\sigma}^{(d)}) = 0 \) for any \( \tilde{\sigma}^{(d)} \in C_d^{\mathcal{U}}(X) \), implying that the sum defining \( D_d\tilde{\sigma}^{(d)} \) is empty. Consequently, \( \rho \) is a chain homotopy inverse to \( \iota \).
+	The term \( S_d^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \) by the definition of \( m(\tilde{\sigma}^{(d)}) \). The remaining terms, \( D_{d-1}^{m(\tilde{\sigma}^{(d-1)})}(\partial_d \tilde{\sigma}^{(d)}) - D_{d-1}(\partial_d \tilde{\sigma}^{(d)}) \), are linear combinations of terms of the form \( D_{d-1}^{m(\tilde{\sigma}^{(d-1)})}(\tilde{\sigma}^{(d-1)}_j) - D_{d-1}^{m(\tilde{\sigma}^{(d-1)}_j)}(\tilde{\sigma}^{(d-1)}_j) \), where \( \tilde{\sigma}^{(d)}_j \) denotes the restriction of \( \tilde{\sigma}^{(d)} \) to a face of \( \sigma^{(d)} \). Since \( m(\tilde{\sigma}^{(d-1)}_j) \leq m(\tilde{\sigma}^{(d-1)}) \), the difference \( D^{m(\tilde{\sigma}^{(d-1)})}_{d-1}(\tilde{\sigma}^{(d-1)}_j) - D_{d-1}^{m(\tilde{\sigma}^{(d-1)}_j)}(\tilde{\sigma}^{(d-1)}_j) \) consists of terms \( T_{d-1} S^i_{d-1}(\tilde{\sigma}^{(d-1)}_j) \) with \( i \geq m(\tilde{\sigma}^{(d-1)}_j) \). These terms lie in \( C_d^{\mathcal{U}}(X) \) because the operator\index{operator} \( T_{d-1} \) maps \( C_{d-1}^{\mathcal{U}}(X) \) into \( C_d^{\mathcal{U}}(X) \). Viewing \( \rho \) as a chain map from \( C_d(X) \) to \( C_d^{\mathcal{U}}(X) \), the equation $\partial_{d+1} D_{d} + D_{d-1} \partial_{d} = \mathbb{I} - \iota \rho$ holds, where \( \iota : C_d^{\mathcal{U}}(X) \hookrightarrow C_d(X) \) is the inclusion. Moreover, \( \rho \iota = \mathbb{I} \) since \( D_d \) is zero on \( C_d^{\mathcal{U}}(X) \). This follows because \( m(\tilde{\sigma}^{(d)}) = 0 \) for any \( \tilde{\sigma}^{(d)} \in C_d^{\mathcal{U}}(X) \), implying that the sum defining \( D_d\tilde{\sigma}^{(d)} \) is empty. Consequently, \( \rho \) is a chain homotopy inverse to \( \iota \).
 \end{enumerate}
 \end{proof}
 
-We may now prove the Excision Theorem, which states that for a space \( X = A \cup B \), the inclusion map induces an isomorphism \( H_d(B, A \cap B) \cong H_d(X, A) \).
+We may now prove Excision, which states that for a space \( X = \operatorname{int}(A) \cup \operatorname{int}(B) \), the inclusion map induces an isomorphism \( H_d(B, A \cap B) \cong H_d(X, A) \).
 
 \begin{proof}
 	Consider the open cover \( \mathcal{U} = \{A, B\} \) of \( X \), and define the chain group \( C_d(A + B) \) as the subgroup\index{group} of \( C_d(X) \) generated by chains\index{chains} in \( A \) and chains\index{chains} in \( B \), i.e., \( C_d(A + B) = C_d(A) + C_d(B) \). The inclusion \( C_d(A + B) \subset C_d(X) \) induces a map on the quotient groups $C_d(A + B)/C_d(A) \to C_d(X)/C_d(A)$. Recall that we previously established the identities $\partial_{d+1} D_d + D_{d-1}\partial_d = \mathbb{I} - \iota\rho$ and $\rho\iota = \mathbb{I}$, where \( D_d \) is a chain homotopy, \( \iota \) denotes the inclusion, and \( \rho \) is the associated chain map. These identities persist after passing to the quotient groups, thus the inclusion induces an isomorphism on homology for the chain complex $H_d(\mathcal{C}(A + B)/\mathcal{C}(A)) \cong H_d(\mathcal{C}(X)/\mathcal{C}(A))$. Now, consider the quotient chain group \( C_d(B)/C_d(A \cap B) \). It is naturally isomorphic to \( C_d(A + B)/C_d(A) \) since both are spanned by singular \( d \)-simplices in \( B \) that are not entirely contained in \( A \). Therefore, the inclusion map induces an isomorphism $C_d(B)/C_d(A \cap B) \cong C_d(A + B)/C_d(A)$. Given that these quotient groups are free with bases consisting of singular \( d \)-simplices in \( B \) not contained in \( A \), the induced map is indeed an isomorphism. Consequently, the inclusion \( (B, A \cap B) \hookrightarrow (X, A) \) induces an isomorphism on homology $H_d(B, A \cap B) \cong H_d(X, A)$.
@@ -1046,7 +1048,7 @@ We may now prove the Excision Theorem, which states that for a space \( X = A \c
 
 \section{$H_{d}^{\triangle}(X) \cong H_{d}(X)$}
 \label{HomologicalEquivalence}
-We want to establish the equivalence of the homology group\index{group}s $H^{\triangle}_{d}(X)$ and $H_{d}(X)$. Note that simplicial homology group\index{group}s $H^{\triangle}_{d}(X)$ are defined only for simplicial complexes, whereas singular homology group\index{group}s $H_{d}(X)$ can be computed for any topological space. This generality is advantageous, since homeomorphic spaces have isomorphic singular homology group\index{singular homology group}. To prove the equivalence between $H^{\triangle}_{d}(X)$ and $H_{d}(X)$, we establish an isomorphism between these group\index{group}s for all dimensions $d$. A homomorphism naturally follows from the map $C^{\triangle}_{d}(X) \rightarrow C_{d}(X)$, which sends every $d$-simplex\index{simplex} in $X$ to a singular simplex\index{simplex} via the mapping $\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from $H^{\triangle}_{d}(X)$ to $H_{d}(X)$.
+We want to establish the equivalence of the homology group\index{group}s $H^{\triangle}_{d}(X)$ and $H_{d}(X)$. Note that simplicial homology group\index{group}s $H^{\triangle}_{d}(X)$ are defined only for simplicial complexes, whereas singular homology group\index{group}s $H_{d}(X)$ can be computed for any topological space. This generality is advantageous, since homeomorphic spaces have isomorphic singular homology groups\index{singular homology group}. To prove the equivalence between $H^{\triangle}_{d}(X)$ and $H_{d}(X)$, we establish an isomorphism between these group\index{group}s for all dimensions $d$. A homomorphism naturally follows from the map $C^{\triangle}_{d}(X) \rightarrow C_{d}(X)$, which sends every $d$-simplex\index{simplex} in $X$ to a singular simplex\index{simplex} via the mapping $\tilde{\sigma}^{(d)}: \sigma^{(d)}\rightarrow X$. This induces a homomorphism from $H^{\triangle}_{d}(X)$ to $H_{d}(X)$.
 
 \begin{theorem}[$H_{d}^{\triangle}(X) \cong H_{d}(X)$]{\cite[Theorem 2.27]{hatcher2005algebraic}}
 	For each integer $d$, the homomorphisms from the simplicial homology group\index{group}
@@ -1062,14 +1064,15 @@ We want to establish the equivalence of the homology group\index{group}s $H^{\tr
 			H_{d+1}(X^k,X^{k-1}) \arrow[r] & H_{d}(X^{k-1}) \arrow[r] & H_{d}(X^k) \arrow[r] & H_{d}(X^k,X^{k-1}) \arrow[r] & H_{d-1}(X^{k-1})
 		\end{tikzcd}
 	\end{equation*}			
-	$X^{k}/X^{k-1}$ contains only simplices of dimension $k$, thus, $C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group\index{group} for $d = k$, with a basis formed by the $k$-simplices of $X$. We define a characteristic map $\varsigma: \coprod_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism $\varsigma_\ast: \coprod_{i} \sigma^{(k)}_{i}/\coprod_{i} \sigma^{(k-1)}_{i} \rightarrow X^{k}/X^{k-1}$. By Excision \ref{excisiontheorem} we get 
+	$X^{k}/X^{k-1}$ contains only simplices of dimension $k$, thus, $C_{d}(X^{k}, X^{k-1})$ is trivial for $d \neq k$ and a free abelian group\index{group} for $d = k$, with a basis formed by the $k$-simplices of $X$. We define a characteristic map $\varsigma: \bigsqcup_{i}(\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i}) \rightarrow (X^{k}, X^{k-1})$, inducing a homeomorphism $\varsigma_\ast: \bigsqcup_{i} \sigma^{(k)}_{i}/\bigsqcup_{i} \sigma^{(k-1)}_{i} \rightarrow X^{k}/X^{k-1}$. By Excision \ref{excisiontheorem} we get 
 	\begin{align}
-		H^\triangle_{d}\left(\coprod_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})\right) &\cong H_{d}(X^{k}, X^{k-1}) \nonumber\\
+		\label{split}
+		H^\triangle_{d}\left(\bigsqcup_{i} (\sigma^{(k)}_{i}, \sigma^{(k-1)}_{i})\right) &\cong H_{d}(X^{k}, X^{k-1}) \nonumber\\
 		&\cong H_{d}(X^{k}/X^{k-1}),
 	\end{align}
 	establishing isomorphisms for $H_{d}(X^{k}, X^{k-1})$. Using induction and assuming that the necessary homology isomorphisms hold for dimensions less than $k$, we extend the isomorphism to all dimensions:
 	\begin{equation}
 		H_{k}^{\triangle}(X^{k},X^{k-1}) \cong H_{k}(X^{k},X^{k-1}).
 	\end{equation}
-	The Five Lemma \ref{fivelemma} supports the isomorphism between $H_{k}^{\triangle}(X^{k}, X^{k-1})$ and $H_{k}(X^{k}, X^{k-1})$. Thus, we conclude that $H_{d}^{\triangle}(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})$ is an isomorphism for all $d$, verifying the equivalence of simplicial and singular homology for all $k$ and for all $d$.
+	 Thus, we conclude that $H_{d}^{\triangle}(X^{k}, X^{k-1}) \rightarrow H_{d}(X^{k}, X^{k-1})$ is an isomorphism for all $d$. Up to now, the first and fourth arrow are isomorphisms. By Eq. \ref{split} and further induction we assume the second and fifth arrow to be isomorphisms. The Five Lemma \ref{fivelemma} supports then the isomorphism between $H_{k}^{\triangle}(X^{k})$ and $H_{k}(X^{k})$, verifying the equivalence of simplicial and singular homology for all $k$.
 \end{proof}
