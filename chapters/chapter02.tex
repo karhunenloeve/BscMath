@@ -980,10 +980,10 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		}\lambda), \nonumber\\
 		                  & = \lambda - T_{d-1}\partial_{d}\lambda - b_\lambda\partial_d(\lambda - T_{d-1}\partial_{d}\lambda) \nonumber\\
 		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[\partial_d\lambda - \partial_d T_{d-1}(\partial_d\lambda)] \nonumber\\
-		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[S_d(\partial_d\lambda) + T_{d-1}\partial^2_d(\lambda)] \nonumber\\
+		                  & = \lambda - T_{d-1}\partial_d\lambda - b_\lambda[S_{d-1}(\partial_d\lambda) + T_{d-2}\partial^2_d(\lambda)] \nonumber\\
 		                  & = \lambda - T_{d-1}\partial_d\lambda - S_d\lambda.                                                  
 	\end{align}
-	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d+1} + T_{d}\partial_{d+1} = \mathbb{I} - S_d$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
+	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d} + T_{d-1}\partial_{d} = \mathbb{I} - S_d$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
 		
 	\item Barycentric subdivision of general chains \cite[Proposition 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_d(X) \). Define the operator\index{operator} \( S_d: C_d(X) \to C_d(X) \) by \( S_d\tilde{\sigma}^{(d)} := \sigma_\star S_d\sigma^{(d)} \), where \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \) is a singular \( d \)-simplex\index{simplex}, and \( S\sigma^{(d)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( d \)-simplex\index{simplex} \( \sigma^{(d)} \). The barycentric\index{barycentric} subdivision \( S\sigma^{(d)} \) is a signed sum of the \( d \)-simplices that make up the subdivision of \( \sigma^{(d)} \). We will now prove that \( S_d \) is a chain map, i.e., that \( S_d \) commutes with the boundary operator\index{operator}, \( S_{d-1}\partial_{d} = \partial_d S_d \):
 	\begin{align}
