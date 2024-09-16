@@ -4,12 +4,10 @@ The stability theorem\index{stability theorem} will not be discussed in this the
 
 \section{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
-The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[\S 3.1]{zomorodian2004computing}.
+The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[\S 3.1]{zomorodian2004computing}. The first step is to define the cell complex. It is proven that every simplicial complex is a cell complex. This represents a generalisation of the given situation.
 
-The first step is to define the cell complex. It is proven that every simplicial complex is a cell complex. This represents a generalisation of the given situation.
-
-\begin{definition}[\(n\)-cell]
-An \(n\)-cell is a topological space that is homeomorphic to the open \(n\)-dimensional ball $\mathbb{B}^n = \{ x \in \mathbb{R}^n \; \vert \; \|x\| < 1 \}$.
+\begin{definition}[\(d\)-cell]
+A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimensional ball $\mathbb{B}^d = \{ x \in \mathbb{R}^d \; \vert \; \|x\| < 1 \}$.
 \end{definition}
 
 \begin{example}\noindent
@@ -21,28 +19,28 @@ An \(n\)-cell is a topological space that is homeomorphic to the open \(n\)-dime
 \end{itemize}
 \end{example}
 
-\begin{definition}[Cell Complex]
+\begin{definition}[Cell complex]
 A cell complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
 \begin{align}
-X^0 \subseteq X^1 \subseteq X^2 \subseteq \cdots \subseteq X = \bigcup_{n=0}^{\infty} X^n
+\mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subset X = \bigcup_{k=0}^{\infty} X^k
 \end{align}
 such that:
 \begin{enumerate}
     \item \(X^0\) is a discrete set of points.
-    \item For each \(n \geq 1\), \(X^n\) is obtained from \(X^{n-1}\) by attaching a collection of \(n\)-cells \(\{e^n_\alpha\}_{\alpha \in A_n}\) via continuous maps \(\varphi_\alpha : S^{n-1} \to X^{n-1}\), where \(A_n\) is an indexing set for the \(n\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(n\)-cells. Each \(\alpha \in A_n\) is an index that uniquely identifies an \(n\)-cell \(e^n_\alpha\) in the set of all \(n\)-cells of the complex. Specifically,
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_\alpha\}_{\alpha \in I_k}\) via continuous maps \(\varphi_\alpha : S^{k-1} \to X^{k-1}\), where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(\alpha \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_\alpha\) in the set of all \(k\)-cells of the complex. Specifically,
 \begin{align}
-    X^n = X^{n-1} \cup \bigcup_{\alpha \in A_n} e^n_\alpha,
+    X^k = X^{k-1} \cup \bigcup_{\alpha \in I_k} \sigma^{(k)}_\alpha,
 \end{align}
-    where each \(e^n_\alpha \cong \mathbb{B}^n\) and \(e^n_\alpha \cap X^{n-1} = \varphi_\alpha(S^{n-1})\).
-    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{e^n_\alpha\}\).
+    where each \(\sigma^{(k)}_\alpha \cong \mathbb{B}^k\) and \(\sigma^{(k)}_\alpha \cap X^{k-1} = \varphi_\alpha(S^{k-1})\).
+    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(k)}_\alpha\}\).
 \end{enumerate}
 \end{definition}
 
 \begin{remark}
 A cell complex satisfies the following conditions:
 \begin{itemize}
-    \item The closure \(\overline{e^n_\alpha}\) intersects only finitely many cells \(e^m_\beta\) for \(m \leq n\).
-    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^n\) is closed in \(X^n\) for all \(n\).
+    \item The closure \(\overline{\sigma^{(k)}_\alpha}\) intersects only finitely many cells \(\sigma^{(l)}_\beta\) for \(l \leq k\).
+    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}\).
 \end{itemize}
 \end{remark}
 
@@ -53,18 +51,12 @@ A simplicial complex is a cell complex.
 \begin{proof}
 Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 \begin{align}
-K^0 \subseteq K^1 \subseteq K^2 \subseteq \cdots \subseteq K = \bigcup_{n=0}^{\infty} K^n,
+\emptyset \subset K^0 \subset K^1 \subset K^2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K^k,
 \end{align}
-where \(K^n\) is the \(n\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the 0-simplices, which form a discrete set. Assume \(K^{n-1}\) is constructed.
-
-To form \(K^n\), we attach each \(n\)-simplex \(\sigma^n \in K\) to \(K^{n-1}\) via a map \(\varphi_\sigma : \partial \sigma^n \to K^{n-1}\), where \(\partial \sigma^n\) is the boundary of \(\sigma^n\). Each \(\sigma^n\) is homeomorphic to an open \(n\)-ball \(\mathbb{B}^n\), and \(\partial \sigma^n\) is homeomorphic to the \((n-1)\)-sphere \(S^{n-1}\).
-
-The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices.
+where \(K^k\) is the \(k\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K^{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{1} \subset X_{2} \subset \cdots \subset X_{n} = X_{\infty}$, where \(X_{1}\) starts with a single vertex \(\sigma_{1}\), and each subsequent complex \(X_{i}\) is constructed by adding a single cell to the previous complex	$X_{i} := X_{i-1} \cup \sigma_{i}$. Here, the indexing set is \(\{1, 2, \ldots, n\}\). Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{n}\).
-
-We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} := X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_\alpha\), $\alpha \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{\alpha \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(\alpha_{i}\) are assigned to these indices, satisfying \(\alpha_{1} \leq \alpha_{2} \leq \cdots \leq \alpha_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2]{de2011dualities}.
 
 \begin{example}
 	\label{filteredsphere}
