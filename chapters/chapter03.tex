@@ -22,7 +22,7 @@ A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimen
 \begin{definition}[Cell complex]
 A cell complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
 \begin{align}
-\mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subset X = \bigcup_{k=0}^{\infty} X^k
+\mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subset X = \bigcup_{k=0}^{\infty} X^k =: X^\infty
 \end{align}
 such that:
 \begin{enumerate}
@@ -249,17 +249,16 @@ pairs $(p,q)$, where $1 \leq p \leq q \leq n$ for a finite filtration\index{filt
 homology\index{homology} and cohomology\index{cohomology}, the persistence diagram consists of a multiset of
 tuples $(p,q)$ where $0 \leq p \leq q \leq n-1$ for a finite filtration\index{filtration}. In each
 case, we interpret $(p,q)$ as a half-open interval $[a_{p}, a_{q+1})$ with the
-convention that $a_{0} = -\infty$ and $a_{n+1} = \infty$
-\cite[\S 2.4]{de2011dualities}.
+convention that $a_{0} = -\infty$ and $a_{n+1} = \infty$.
 
 \begin{example}
 	For $\mathcal{S}^{2}$ we yield
 	\begin{align}
 		\mathrm{Pers}(H_{\bullet}(S_{6},\mathcal{S}^{2})) & = \{(0,0)_{0}, (2,2)_{1}, (4,4)_{2}, (0,5)_{2}\}               \\
-		                                                  & = \{[-\infty, 1)_{0}, [2,3)_{1}, [4,5)_{2}, [-\infty,6)_{3}\}.
+		                                                  & \cong \{[-\infty, 1)_{0}, [2,3)_{1}, [4,5)_{2}, [-\infty,6)_{3}\}.
 	\end{align}
 	At index $2$ there is a nontrivial element of $H_{1}(S_{6},S_{2})$ represented
-	by any arc connecting the two points of $S_{2}$ \cite[\S 2.4]{de2011dualities} --
+	by any arc connecting the two points of $S_{2}$ \cite[\S 2.4, Example]{de2011dualities} --
 	the homology\index{homology} class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}(S_{6},S_{3})$, thus we yield the interval $[2,3)$.
 \end{example}
 
