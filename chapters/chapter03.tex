@@ -4,7 +4,7 @@ The stability theorem\index{stability theorem} will not be discussed in this the
 
 \section{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
-The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[Theorem 2.1, \S 3.1]{zomorodian2004computing}. The first step is to define the cell complex, as every simplicial complex is a cell complex. This yields a generalisation of the given situation.
+The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[Theorem 2.1, \S 3.1]{zomorodian2004computing}. The first step is to define the cell complex, as every simplicial complex is a cell complex. In this section, we continue to examine the consequences of absolute and relative homology\index{homology} and cohomology\index{cohomology} groups for filtrations\index{filtrations} of cell complexes, such as the introduced simplicial complexes. In particular, we derive the theory in the context of filtered simplicial complexes upon sets of points, embedded into some metric space. While we can apply the entire theory to simplicial complexes and their (co)homology\index{homology}, cell complexes provide a much broader context and significantly simplify notation in many instances. This yields a generalisation of the given situation.
 
 \begin{definition}[\(d\)-cell]
 A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimensional ball $\mathbb{B}^d = \{ x \in \mathbb{R}^d \; \vert \; \|x\| < 1 \}$.
@@ -262,7 +262,7 @@ convention that $a_{0} = -\infty$ and $a_{d+1} = \infty$.
 	the homology\index{homology} class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}(S_{6},S_{3})$, thus we yield the interval $[2,3)$.
 \end{example}
 
-\begin{figure}
+\begin{figure}[htb!]
 	\begin{align*}
 		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d-1}) \rightarrow H_{\bullet}(X_{d}),             \\
 		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d-1}) \leftarrow H^{\bullet}(X_{d}),                \\
@@ -286,21 +286,10 @@ topological features\index{topological features} represented as intervals in a b
 diagram, crucial for understanding the presence and persistence of features such
 as holes or voids in topological spaces. This method is statistically robust and
 can provide both qualitative and quantitative insights into point sets, which we
-suspect to lie on some compact topological object \cite{chazal2014persistence,chazal2009proximity}.
-
-In this section, we continue to examine the consequences of absolute and relative
-homology\index{homology} and cohomology\index{cohomology} groups for filtrations\index{filtrations} of cell complexes, such as the introduced
-simplicial complexes. In particular, we derive the theory in the context of filtered
-simplicial complexes upon sets of points, embedded into some metric space. While
-we can apply the entire theory to simplicial complexes and their (co)homology\index{homology}, cell
-complexes provide a much broader context and significantly simplify notation in many
-instances.
-
-In particular, there are at least four naturally arising persistent objects that
+suspect to lie on some compact topological object \cite{chazal2014persistence,chazal2009proximity}. In particular, there are at least four naturally arising persistent objects that
 can be extracted from a filtration\index{filtration} of any topological space. We follow the results
 of de Silva, Morozov, and Vejdemo-Johansson for our explanations \cite[\S 1]{de2011dualities}.
 They are
-
 \begin{equation*}
 	\text{persistent}
 	\begin{Bmatrix}
@@ -312,7 +301,6 @@ They are
 		\text{cohomology\index{cohomology}}
 	\end{Bmatrix}.
 \end{equation*}
-
 We address the computation of barcodes for all four types of persistent
 objects. We demonstrate that both absolute and relative (co)homologies yield identical
 barcodes and that transitions between these states are facilitated by established
