@@ -392,7 +392,7 @@ H_{d}(X_{i}; \F) \rightarrow H_{d}(X_{j}; \F) \quad \text{and} \quad H^{d}(X_{i}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a filtration\index{filtration} $X_{1} \subset X_{2} \subset X_d \subset X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
+Consider a filtration\index{filtration} $X_{1} \subset X_{2} \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
 \begin{align}
 \{1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
 \end{align}
@@ -404,11 +404,11 @@ using the $\flat$ symbol to indicate relative homology\index{homology} part of t
 \end{enumerate}
 
 \begin{corollary}
-The barcode\index{barcode} $\mathrm{Pers}(H_{d}(\mathcal{X}) \rightarrow H_{d}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively, as discovered in \cite[Proposition 2.5]{de2011dualities}:
+The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively, as discovered in \cite[Proposition 2.5]{de2011dualities}:
 \begin{enumerate}
-    \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{d}(\mathcal{X}))$.
-    \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{d-1}(\mathcal{X}))$.
-    \item An interval $[a, a^{\flat})$ for every interval $[a, \infty)$ in $\mathrm{Pers}_{\infty}(H_{d}(\mathcal{X}))$.
+    \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k}(\mathcal{X}))$.
+    \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k-1}(\mathcal{X}))$.
+    \item An interval $[a, a^{\flat})$ for every interval $[a, \infty)$ in $\mathrm{Pers}_{\infty}(H_{k}(\mathcal{X}))$.
 \end{enumerate}
 \end{corollary}
 
@@ -424,21 +424,19 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{d}(\mathcal{X}) \rightarrow H_{d}(X
 	The third case requires examining intervals of the form $[a, b^{\flat})$ and
 	proving that they are invariably of the form $[a, a^{\flat})$, which means that
 	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\mathrm{Pers}_{\infty}(
-	H_{d}(\X))$ and $\mathrm{Pers}_{\infty}(H_{d}(X_{\infty}, \X))$ are restrictions
-	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[p.6]{de2011dualities}.
+	H_{k}(\X))$ and $\mathrm{Pers}_{\infty}(H_{k}(X_{\infty}, \X))$ are restrictions
+	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[Proposition 2.5, proof]{de2011dualities}.
 	To establish this, we compare the ascending filtration\index{filtration} defined by the images of
-	$H_{d}(X_{i})$ in $H_{d}(X_{n})$ for $i = 1, 2, \ldots, n-1$ (denoted as
-	$\text{Im}(H_{d}(X_{i}) \to H_{d}(X_{n}))$) with the descending filtration\index{filtration} defined
-	by the kernels of $H_{d}(X_{n})$ in $H_{d}(X_{\infty}, X)$ for $i = 1, 2, \ldots
-	, n-1$ (denoted as $\text{Ker}(H_{d}(X_{n}) \to H_{d}(X_{n}, X_{i}))$). This
+	$H_{k}(X_{i})$ in $H_{k}(X_{d})$ for $i = 1, 2, \ldots, d-1$ (denoted as
+	$\operatorname{im}(H_{k}(X_{i}) \to H_{k}(X_{d}))$) with the descending filtration\index{filtration} defined
+	by the kernels of $H_{k}(X_{d})$ in $H_{k}(X_{\infty}, X)$ for $i = 1, 2, \ldots
+	, d-1$ (denoted as $\ker(H_{k}(X_{d}) \to H_{k}(X_{d}, X_{i}))$). This
 	examination revolves around the fundamental properties of the homology\index{homology} groups
-	in a filtration\index{filtration} setting.
-
-	For each index $i$, the image and kernel correspond to the same subspace of $H_{d}
-	(X_{n})$. This equivalence is guaranteed by the homology\index{homology} long exact sequence
-	associated with the pair $(X_{n}, X_{i})$, which links the relative and absolute
-	homology\index{homology} groups. Specifically, the exact sequence implies that any cycle in $\text{Im}
-	(H_{d}(X_{i}) \to H_{d}(X_{n}))$ that becomes a boundary in $H_{d}(X_{n}, X_{i}
+	in a filtration\index{filtration} setting. For each index $i$, the image and kernel correspond to the same subspace of $H_{k}
+	(X_{d})$. This equivalence is guaranteed by the homology\index{homology} long exact sequence
+	associated with the pair $(X_{d}, X_{i})$, which links the relative and absolute
+	homology\index{homology} groups. Specifically, the exact sequence implies that any cycle in $\operatorname{im}
+	(H_{k}(X_{i}) \to H_{k}(X_{d}))$ that becomes a boundary in $H_{k}(X_{d}, X_{i}
 	)$ must vanish, thus equating the image and kernel. As a result, both
 	filtrations\index{filtrations} align perfectly, establishing that the third type of interval indeed
 	maps to self-closing intervals of the form $[a, a^{\flat})$.
