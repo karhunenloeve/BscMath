@@ -53,22 +53,22 @@ Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 \begin{align}
 \emptyset \subset K^0 \subset K^1 \subset K^2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K^k,
 \end{align}
-where \(K^k\) is the \(k\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K^{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices.
+where \(K^k\) is the \(k\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K^{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} := X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_\alpha\), $\alpha \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{\alpha \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(\alpha_{i}\) are assigned to these indices, satisfying \(\alpha_{1} \leq \alpha_{2} \leq \cdots \leq \alpha_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_\alpha\), $\alpha \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{\alpha \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(\alpha_{i}\) are assigned to these indices, satisfying \(\alpha_{1} \leq \alpha_{2} \leq \cdots \leq \alpha_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
 
 \begin{example}
 	\label{filteredsphere}
 	The following illustrative example is a cellular filtration\index{filtration} of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. The development of the filtration\index{filtration} can be expressed as follows, as proposed by \cite[\S 2.2, Example]{de2011dualities}:
 	\begin{itemize}
 		\item[$\mathcal{S}^{2}:$] $\emptyset$
-		\item[$\subset$] $S_{1} = \{\sigma_{1}^{(0)}\}$
-		\item[$\subset$] $S_{2} = \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}\}$
-		\item[$\subset$] $S_{3} = \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)} := (\sigma_{1}^{(0)}, \sigma_{2}^{(0)})\}$
-		\item[$\subset$] $S_{4} = \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)} := (\sigma_{2}^{(0)}, \sigma_{1}^{(0)})\}$
-		\item[$\subset$] $S_{5} = \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)} := (\sigma_{3}^{(1)}, \sigma_{4}^{(1)})\}$
-		\item[$\subset$] $S_{6} = \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)}, \sigma_{6}^{(2)} := (\sigma_{4}^{(1)}, \sigma_{3}^{(1)})\}.$
+		\item[$\subset$] $S_{1} := \{\sigma_{1}^{(0)}\}$
+		\item[$\subset$] $S_{2} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}\}$
+		\item[$\subset$] $S_{3} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)} := (\sigma_{1}^{(0)}, \sigma_{2}^{(0)})\}$
+		\item[$\subset$] $S_{4} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)} := (\sigma_{2}^{(0)}, \sigma_{1}^{(0)})\}$
+		\item[$\subset$] $S_{5} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)} := (\sigma_{3}^{(1)}, \sigma_{4}^{(1)})\}$
+		\item[$\subset$] $S_{6} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)}, \sigma_{6}^{(2)} := (\sigma_{4}^{(1)}, \sigma_{3}^{(1)})\}.$
 	\end{itemize}
 	In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 \end{example}
@@ -77,7 +77,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 \label{PersistenceModules}
 Persistent homology\index{homology}\index{persistent homology\index{homology}} is derived by applying the homology\index{homology} functor to a filtration\index{filtration} of a topological space. This section will examine the concept of persistent modules\index{modules}, which serve to describe persistent homology\index{homology}\index{persistent homology\index{homology}} from an algebraic perspective. Similarly, as filtrations\index{filtrations} describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology\index{homology} vector spaces or modules\index{modules}, the dimension or rank of the associated homomorphisms are the $k$th Betti numbers, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
 
-\begin{definition}[Persistence Module]{\cite[\S 1.1]{chazal2016structure}}
+\begin{definition}[Persistence module]{\cite[\S 1.1]{chazal2016structure}}
 A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
 \begin{align}
 \phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r,s \in I: r \leq s,
@@ -85,12 +85,10 @@ A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a
 such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{V_r}$ for all $r \leq s \leq t$.
 \end{definition}
 
-We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable.
-
-Let $\text{Vect}_\F$ the category of finite dimensional vector spaces over $\F$. The real numbers are a partially ordered category $(\R, \leq)$. Let's consider the real persistence module.
+We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\text{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence Module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the diagram commutes:
+A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
 V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
@@ -117,7 +115,7 @@ In the following, we will make a number of simplifying assumptions:
 
 The assumptions 1, 2 are referred to as finite type conditions. Assumption 1 implies that there is a finite number of 'jumps', while we have that $V_u = V_\infty$ for $u$ large enough. Assumption 3 is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
 
-\begin{definition}[Interval Module]
+\begin{definition}[Interval module]
 Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
 \begin{align}
 	\mathbb{F}(I)_t = 
@@ -126,9 +124,9 @@ Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b
 		0, & \text{otherwise}.
 	\end{cases}
 \end{align}
-The structure maps $f_{s,t}: \mathbb{F}(I)_s \to \mathbb{F}(I)_t$ for $s \leq t$ are defined as:
+The structure maps $f_{s}^t: \mathbb{F}(I)_s \to \mathbb{F}(I)_t$ for $s \leq t$ are defined as:
 \begin{align}
-	f_{s,t} = 
+	f_{s}^t = 
 	\begin{cases}
 		\mathrm{id}_{\mathbb{F}}, & \text{if } s, t \in I, \\
 		0, & \text{if } s \notin I \text{ or } t \notin I.
