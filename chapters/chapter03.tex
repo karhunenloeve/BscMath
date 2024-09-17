@@ -240,6 +240,15 @@ as they represent ephemeral topological features\index{topological features}.
 
 \subsection{The Four Standard Persistence Modules}
 \label{TheFourStandardPersistenceModules}
+\begin{figure}[htb!]
+	\begin{align*}
+		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d-1}) \rightarrow H_{\bullet}(X_{d}),             \\
+		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d-1}) \leftarrow H^{\bullet}(X_{d}),                \\
+		H_{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X_{d}) \rightarrow H_{\bullet}(X_{d},X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d},X_{d-1}), \\
+		H^{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X_{d}) \leftarrow H^{\bullet}(X_{d},X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d}, X_{d-1}).
+	\end{align*}
+	\caption{The four standard persistence modules are from top to bottom: persistent absolute homology, persistent absolute cohomology, persistent relative homology and persistent relative cohomology.}
+\end{figure}
 The standard module of absolute persistent homology\index{homology}\index{persistent homology\index{homology}}, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology\index{homology} groups
 $H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
 can be made by considering the absolute cohomology\index{cohomology} groups $H^{\bullet}(X_{i})$,
@@ -261,16 +270,6 @@ convention that $a_{0} = -\infty$ and $a_{d+1} = \infty$.
 	by any arc connecting the two points of $S_{2}$ \cite[\S 2.4, Example]{de2011dualities} --
 	the homology\index{homology} class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}(S_{6},S_{3})$, thus we yield the interval $[2,3)$.
 \end{example}
-
-\begin{figure}[htb!]
-	\begin{align*}
-		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d-1}) \rightarrow H_{\bullet}(X_{d}),             \\
-		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d-1}) \leftarrow H^{\bullet}(X_{d}),                \\
-		H_{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X_{d}) \rightarrow H_{\bullet}(X_{d},X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d},X_{d-1}), \\
-		H^{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X_{d}) \leftarrow H^{\bullet}(X_{d},X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d}, X_{d-1}).
-	\end{align*}
-	\caption{The four standard persistence modules.}
-\end{figure}
 
 \section{Persistent (Co)homology}
 \label{Persistent(Co)homology}
