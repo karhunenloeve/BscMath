@@ -345,29 +345,15 @@ which splits, though not canonically.
 \end{theorem}
 
 \begin{proof}
-Let $C_{\bullet}(X)$ be the singular chain complex of a topological space $X$ with integer coefficients. The homology\index{homology} groups $H_{n}(X; \mathbb{Z})$ are defined as:
+Let $C_{\bullet}(\mathcal{X})$ be the singular chain complex of a topological space $X$ with integer coefficients. The homology\index{homology} groups $H_{d}(X; \mathbb{Z})$ are defined as:
 \begin{align}
-H_{n}(X; \mathbb{Z}) := \ker(\partial_{n}) / \operatorname{im}(\partial_{n+1}),
+H_{d}(X; \mathbb{Z}) := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}),
 \end{align}
-where $\partial_{n}$ are the boundary maps in $C_{\bullet}(X)$. The chain group $C_{n}(X)$ consists of formal sums of singular $n$-simplices in $X$ with integer coefficients. The boundary maps $\partial_{n}: C_{n}(X) \rightarrow C_{n-1}(X)$ are defined by
+where $\partial_{d}$ are the boundary maps in $C_{\bullet}(\mathcal{X})$. The chain group $C_{d}(X)$ consists of formal sums of singular $d$-simplices in $X$ with integer coefficients. The boundary maps $\partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X)$ are defined by
 \begin{align}
-\partial_{n}(\sigma) = \sum_{i=0}^{n}(-1)^{i} \sigma|_{[v_0, \ldots, \hat{v}_i, \ldots, v_n]},
+\partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i=0}^{d}(-1)^{i} \tilde{\sigma}^{(d)}|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]},
 \end{align}
-where $\sigma: \triangle^{n} \rightarrow X$ is a singular simplex, and $\sigma|_{[v_0, \ldots, \hat{v}_i, \ldots, v_n]}$ denotes the restriction of $\sigma$ to the $i$-th face of the simplex, omitting the $i$-th vertex.
-
-The functor $\operatorname{Hom}(-, G)$ applied to $C_{n}(X)$ yields a group $\operatorname{Hom}(C_{n}(X), G)$, and the coboundary $\delta^{n}$ for the cochain complex $\operatorname{Hom}(C_{\bullet}(X), G)$ is 
-\begin{align}
-\delta^{n}(f) = f \circ \partial_{n+1}
-\end{align}
-for $f \in \operatorname{Hom}(C_{n+1}(X), G)$. This leads to the cohomology\index{cohomology} groups
-\begin{align}
-H^{n}(X; G) := \ker(\delta^{n}) / \operatorname{im}(\delta^{n-1}).
-\end{align}
-We consider the projective resolution of $C_{\bullet}(X)$ to effectively apply the $\operatorname{Ext}$ functor. Recall that for any abelian group $A$, $\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G)$, where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[\S 2.7]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[p.39f]{Weibel1994}:
-\begin{align}
-\cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0,
-\end{align}
-where each $P_{i}$ is a projective abelian group. Then we can apply the functor $\operatorname{Hom}(-, G)$ to the projective resolution:
+where $\tilde{\sigma}^{(d)}: \tilde{\sigma}^{d} \rightarrow X$ is a singular simplex, and $\tilde{\sigma}|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]}$ denotes the restriction of $\tilde{\sigma}$ to the $i$-th face of the simplex, omitting the $i$-th vertex. The functor $\operatorname{Hom}(-, G)$ applied to $C_{d}(X)$ yields a group $\operatorname{Hom}(C_{d}(X), G)$, and the coboundary $\delta^{d}$ for the cochain complex $\operatorname{Hom}(C_{\bullet}(X), G)$ is $\delta^{d}(f) = f \circ \partial_{d+1}$ for $f \in \operatorname{Hom}(C_{d+1}(X), G)$. This leads to the cohomology\index{cohomology groups} groups $H^{d}(X; G) := \ker(\delta^{d}) / \operatorname{im}(\delta^{d-1})$. We consider the projective resolution of $C_{\bullet}(\mathcal{X})$ to effectively apply the $\operatorname{Ext}^1$-functor. Recall that for any abelian group $A$, $\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G)$, where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[Vista 3.4.6, \S 3.5]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[Definition 2.2.4]{Weibel1994}: $\cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0$, where each $P_{i}$ is a projective abelian group. Then we can apply the functor $\operatorname{Hom}(-, G)$ to the projective resolution:
 \begin{align}
 0 \to \operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}(P_{2}, G) \to \cdots.
 \end{align}
