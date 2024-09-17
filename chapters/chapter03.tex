@@ -526,26 +526,16 @@ reverse direction.
 \newpage
 \begin{theorem}
 	{(Persistence Partition) \cite[\S 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}$ be given and $\partial$ as above, then there
-	exists a partition
-	\begin{align*}
-		\{1,2, \ldots, d\} = P^{\Join} \sqcup P \sqcup N
-	\end{align*}
-	with a bijective pairing $P \leftrightarrow N$, such that
-	\begin{align}
-		p \text{ is paired with }n \; \iff [p,n) \in \textbf{Pairs}(\mathcal{C}, \partial).
-	\end{align}
-	Furthermore, there is a basis
+	exists a partition $\{1,2, \ldots, d\} = P^{\Join} \sqcup P \sqcup N$ with a bijective pairing $P \leftrightarrow N$, such that $p$ is paired with $n$ if and only if $[p,n) \in \textbf{Pairs}(\mathcal{C}, \partial)$. Furthermore, there is a basis
 	$\hat{\sigma}_{1}, \hat{\sigma}_{2}, \ldots, \hat{\sigma}_{d}$ of $C_{d}$ such
 	that
-	\begin{enumerate}
+	\begin{itemize}
 		\item $C_{i} = \langle \hat{\sigma}_{1}, \ldots, \hat{\sigma}_{i} \rangle$ for
 			each $i$.
-
 		\item $\partial\hat{\sigma}_{p} = 0$ for all $p \in P^{\Join}$.
-
 		\item $\partial\hat{\sigma}_{n} = \hat{\sigma}_{p}$, and thus
 			$\partial\hat{\sigma}_{p} = 0$, for all $[p,n) \in \textbf{Pairs}$.
-	\end{enumerate}
+	\end{itemize}
 	It follows that the persistence diagram
 	$\mathrm{Pers}(H(\mathcal{C},\partial))$ consists of $[a_{p}, \infty)$ for
 	$p \in P^{\Join}$ together with intervals $[a_{p},a_{n})$ for
