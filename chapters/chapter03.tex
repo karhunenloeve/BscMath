@@ -27,19 +27,19 @@ A cell complex is a Hausdorff topological space \(X\) together with a filtration
 such that:
 \begin{enumerate}
     \item \(X^0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_\alpha\}_{\alpha \in I_k}\) via continuous maps \(\varphi_\alpha : S^{k-1} \to X^{k-1}\), where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(\alpha \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_\alpha\) in the set of all \(k\)-cells of the complex. Specifically,
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{k-1} \to X^{k-1}\), where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_a\) in the set of all \(k\)-cells of the complex. Specifically,
 \begin{align}
-    X^k = X^{k-1} \cup \bigcup_{\alpha \in I_k} \sigma^{(k)}_\alpha,
+    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(k)}_a,
 \end{align}
-    where each \(\sigma^{(k)}_\alpha \cong \mathbb{B}^k\) and \(\sigma^{(k)}_\alpha \cap X^{k-1} = \varphi_\alpha(S^{k-1})\).
-    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(k)}_\alpha\}\).
+    where each \(\sigma^{(k)}_a \cong \mathbb{B}^k\) and \(\sigma^{(k)}_a \cap X^{k-1} = \varphi_a(S^{k-1})\).
+    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(k)}_a\}\).
 \end{enumerate}
 \end{definition}
 
 \begin{remark}
 A cell complex satisfies the following conditions:
 \begin{itemize}
-    \item The closure \(\overline{\sigma^{(k)}_\alpha}\) intersects only finitely many cells \(\sigma^{(l)}_\beta\) for \(l \leq k\).
+    \item The closure \(\overline{\sigma^{(k)}_a}\) intersects only finitely many cells \(\sigma^{(l)}_b\) for \(l \leq k\).
     \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}\).
 \end{itemize}
 \end{remark}
@@ -56,7 +56,7 @@ Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 where \(K^k\) is the \(k\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K^{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_\alpha\), $\alpha \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{\alpha \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(\alpha_{i}\) are assigned to these indices, satisfying \(\alpha_{1} \leq \alpha_{2} \leq \cdots \leq \alpha_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_a\), $a \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{a \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
 
 \begin{example}
 	\label{filteredsphere}
@@ -137,32 +137,23 @@ The structure maps $f_{s}^t: \mathbb{F}(I)_s \to \mathbb{F}(I)_t$ for $s \leq t$
 \subsection{Decomposition of Persistence Modules}
 The following theorem describes the decomposition of any persistence module:
 
-\begin{theorem}[Decomposition]{\cite[\S 7]{EdelsbrunnerHarer2010}}
+\begin{theorem}[Decomposition]{\cite[\S 1.5]{chazal2016structure}}
 \label{decompositionPersistenceModules}
 Every persistence module $V$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
 \begin{align}
-	V \cong \bigoplus_{i=1}^{n} \mathbb{F}(I_i)^{m_i},
+	V \cong \bigoplus_{i=1}^{d} \mathbb{F}(I_i)^{m_i},
 \end{align}
 where $I_i \neq I_j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
 \end{theorem}
 
 \begin{proof}
-To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $V = \{V_t, f_{s,t}\}_{s \leq t}$, we map $V$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by:
+To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $V = \{V_t, f_{s}^t\}_{s \leq t}$, we map $V$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) = (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
 \begin{align}
-	t \cdot (v_0, v_1, \ldots) = (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots).
+	M = \bigoplus_{t \in \mathbb{R}} V_t \cong \bigoplus_{i=0}^d T^{\alpha_i} \mathbb{F}[t] \oplus \bigoplus_j T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}).
 \end{align}
+Here, \( T^{\alpha_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( \alpha_i \), meaning \( (T^{\alpha_i} \mathbb{F}[t])_d = \mathbb{F}[t]_{d - \alpha_i} \). This corresponds to interval modules\index{modules} of the form \( (\alpha_i, \infty) \). Similarly, \( T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( \gamma_j \), defined by \( (T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}))_d = \mathbb{F}[t]_{d - \gamma_j} / (t^{d_j}) \). This corresponds to interval modules\index{modules} of the form \( (\gamma_j, \gamma_j + d_j] \). 
 
-The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$.
-
-Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
-\begin{align}
-	M \cong \bigoplus_{i=0}^n T^{\alpha_i} \mathbb{F}[t] \oplus \bigoplus_j T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}).
-\end{align}
-Here, \( T^{\alpha_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( \alpha_i \), meaning \( (T^{\alpha_i} \mathbb{F}[t])_n = \mathbb{F}[t]_{n - \alpha_i} \). This corresponds to interval modules\index{modules} of the form \( (\alpha_i, \infty) \). 
-
-Similarly, \( T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( \gamma_j \), defined by \( (T^{\gamma_j} \mathbb{F}[t] / (t^{n_j}))_n = \mathbb{F}[t]_{n - \gamma_j} / (t^{n_j}) \). This corresponds to interval modules\index{modules} of the form \( (\gamma_j, \gamma_j + n_j] \). 
-
-For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)_t \to \mathbb{F}(I)_t$ must be a linear map. Since $\mathbb{F}(I)_t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s,t}$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
+For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)_t \to \mathbb{F}(I)_t$ must be a linear map. Since $\mathbb{F}(I)_t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s}^t$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
 
 Now, suppose we have two decompositions:
 \begin{align}
@@ -189,7 +180,7 @@ Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval m
 At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $V$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
 
 \begin{definition}[Spectrum]
-A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V$ if, for every neighborhood $U_t$ of $t$, there exist $s < r$ in $U_t$ such that the map $f_{s,t}$ is not an isomorphism. The (finite) spectrum of $V$ is defined as:
+A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V$ if, for every neighborhood $U_t$ of $t$, there exist $s < r$ in $U_t$ such that the map $f_{s}^t$ is not an isomorphism. The (finite) spectrum of $V$ is defined as:
 \begin{align}
 	\text{Spec}(V) := \{ \text{spectral points} \} \cup \{\infty\}.
 \end{align}
@@ -197,7 +188,7 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V
 
 \begin{remark}\noindent
 \begin{itemize}
-    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $s < r$ within this interval, the corresponding structure map $f_{s,r}$ of the persistence module $V$ is an isomorphism. A point $t$ becomes a spectral point if, within any neighborhood $U_t$ around $t$, there exists a pair $(s, r)$ such that the map $f_{s,r}$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
+    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $s < r$ within this interval, the corresponding structure map $f_{s}^r$ of the persistence module $V$ is an isomorphism. A point $t$ becomes a spectral point if, within any neighborhood $U_t$ around $t$, there exists a pair $(s, r)$ such that the map $f_{s}^r$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
     \item The barcode\index{barcode} $\mathcal{B}(V)$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $t$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
     \item The spectrum $\text{Spec}(V)$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
     \item Since the persistence module $V$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(V)$ represents the asymptotic behavior of $V$, capturing the intervals of the form $(a, \infty)$.
