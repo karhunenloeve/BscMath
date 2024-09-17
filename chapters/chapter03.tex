@@ -197,32 +197,28 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V
 
 \subsection{Persistent Homology on Complexes}
 \label{PersistentHomologyonComplexes}
-In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $\mathsf{H}$
+In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H$
 to a filtration\index{filtration} of a complex $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
-	\mathsf{H}(\mathcal{X}): \quad \mathsf{H}(X_{1}) \to \mathsf{H}(X_{2}) \to \cdots
-	\to \mathsf{H}(X_{n}),
+	H(\mathcal{X}): \quad H(X_{1}) \to H(X_{2}) \to \cdots
+	\to H(X_{n}),
 \end{equation}
-where $\mathsf{H}(-)$ generally represents either the $k$-th dimensional
+where $H(-)$ generally represents either the $k$-th dimensional
 homology\index{homology}, denoted by $H_{k}(-;\F)$, or the absolute homology\index{homology}, expressed as $H
 _{\bullet}(-;\F)$. Here, this diagram characterizes a sequence of abelian
-groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module.
-
-Persistence modules\index{modules}\index{persistence modules\index{modules}} are central to understanding how the features of a space evolve
+groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module. Persistence modules\index{modules}\index{persistence modules\index{modules}} are central to understanding how the features of a space evolve
 over time. According to Theorem \ref{decompositionPersistenceModules}, they can be decomposed into interval modules\index{modules}. Each interval module is associated with an
 ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq n$, within a finite
 filtration\index{filtration}. These pairs $(p,q)$ signify topological features\index{topological features} that persist over an
 index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally,
 these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_{n+1}
 = \infty$ being a customary notation when the sequence extends beyond the largest
-indexed space.
-
-The decomposition of a persistence module into its constituent interval modules\index{modules} is
+indexed space. The decomposition of a persistence module into its constituent interval modules\index{modules} is
 represented in a persistence diagram or a barcode\index{barcode}. This barcode\index{barcode} is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset
 of half-open intervals $[a_{p}, a_{q+1})$. This collection is formally expressed
-through the forgetful functor $\textbf{Pers}(-)$:
+through the forgetful functor $\mathrm{Pers}(-)$:
 \begin{align}
-    \textbf{Pers}(\mathsf{H}(\mathcal{X})) & = \{(p_{1},q_{1}), \ldots, (p_{m},q_{m})\}                    \\
+    \mathrm{Pers}(H(\mathcal{X})) & = \{(p_{1},q_{1}), \ldots, (p_{m},q_{m})\}                    \\
                                            & \cong \{[a_{p_1}, a_{q_1+1}), \ldots, [a_{p_m}, a_{q_m+1})\}.
 \end{align}
 In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted,
@@ -235,7 +231,7 @@ as they represent ephemeral topological features\index{topological features}.
     respectively. This structural distinction leads to four distinct intervals in
     the persistence diagram of the absolute homology\index{homology} of a sphere, specifically $\mathcal{S}^{2}$:
     \begin{align}
-        \textbf{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \\
+        \mathrm{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \\
                                                     & = \{(1,\infty)_{0}, (2,3)_{0}, (4,5)_{1}, (6, \infty)_{2} \}.
     \end{align}
     Here, the subscript $k$ in $(p,q)_{k}$ or $[a_{p}, a_{q+1})_{k}$ denotes a topological
@@ -259,7 +255,7 @@ convention that $a_{0} = -\infty$ and $a_{n+1} = \infty$
 \begin{example}
 	For $\mathcal{S}^{2}$ we yield
 	\begin{align}
-		\textbf{Pers}(H_{\bullet}(S_{6},\mathcal{S}^{2})) & = \{(0,0)_{0}, (2,2)_{1}, (4,4)_{2}, (0,5)_{2}\}               \\
+		\mathrm{Pers}(H_{\bullet}(S_{6},\mathcal{S}^{2})) & = \{(0,0)_{0}, (2,2)_{1}, (4,4)_{2}, (0,5)_{2}\}               \\
 		                                                  & = \{[-\infty, 1)_{0}, [2,3)_{1}, [4,5)_{2}, [-\infty,6)_{3}\}.
 	\end{align}
 	At index $2$ there is a nontrivial element of $H_{1}(S_{6},S_{2})$ represented
@@ -336,9 +332,9 @@ duality.
 \subsection{Barcode Isomorphisms}
 \label{BarcodeIsomorphisms}
 We characterise the multisets for persistence modules\index{modules}\index{persistence modules\index{modules}} that are decomposable into
-interval modules\index{modules}. The persistence diagram partitions into $\textbf{Pers}_{0}$,
-comprising finite intervals $[a, b)$ as per \cite[\S 2.3]{de2011dualities}, and $\textbf{Pers}_{\infty}$, consisting of intervals $[a, \infty)$. This leads to the decomposition
-$\textbf{Pers}= \textbf{Pers}_{0} \cup \textbf{Pers}_{\infty}$.
+interval modules\index{modules}. The persistence diagram partitions into $\mathrm{Pers}_{0}$,
+comprising finite intervals $[a, b)$ as per \cite[\S 2.3]{de2011dualities}, and $\mathrm{Pers}_{\infty}$, consisting of intervals $[a, \infty)$. This leads to the decomposition
+$\mathrm{Pers}= \mathrm{Pers}_{0} \cup \mathrm{Pers}_{\infty}$.
 
 In this chapter, we establish that persistent homology\index{homology}\index{persistent homology\index{homology}} and cohomology\index{cohomology} yield the
 same intervals, or barcodes, for both absolute and relative (co-)homology\index{homology}
@@ -418,8 +414,8 @@ In the generalization of the universal coefficient theorem to the case of module
 \begin{theorem}
 For all integers $d \geq 0$, it holds that \cite[\S 2.3]{de2011dualities}:
 \begin{align}
-\textbf{Pers}(H_{d}(\mathcal{X})) &= \textbf{Pers}(H^{d}(\mathcal{X})), \\
-\textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X})) &= \textbf{Pers}(H^{d}(X_{\infty}, \mathcal{X})).
+\mathrm{Pers}(H_{d}(\mathcal{X})) &= \mathrm{Pers}(H^{d}(\mathcal{X})), \\
+\mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X})) &= \mathrm{Pers}(H^{d}(X_{\infty}, \mathcal{X})).
 \end{align}
 \end{theorem}
 
@@ -459,30 +455,30 @@ This structure allows us to discuss the persistence diagram associated with this
 \end{itemize}
 
 \begin{corollary}
-The barcode\index{barcode} $\textbf{Pers}(H_{d}(\mathcal{X}) \rightarrow H_{d}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals \cite[\S 2.5]{de2011dualities}:
+The barcode\index{barcode} $\mathrm{Pers}(H_{d}(\mathcal{X}) \rightarrow H_{d}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals \cite[\S 2.5]{de2011dualities}:
 \begin{itemize}
-    \item An interval $[a, b)$ for every interval $[a, b)$ in $\textbf{Pers}_{0}(H_{d}(\mathcal{X}))$.
-    \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\textbf{Pers}_{0}(H_{d-1}(\mathcal{X}))$.
-    \item An interval $[a, a^{\flat})$ for every interval $[a, \infty)$ in $\textbf{Pers}_{\infty}(H_{d}(\mathcal{X}))$.
+    \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{d}(\mathcal{X}))$.
+    \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{d-1}(\mathcal{X}))$.
+    \item An interval $[a, a^{\flat})$ for every interval $[a, \infty)$ in $\mathrm{Pers}_{\infty}(H_{d}(\mathcal{X}))$.
 \end{itemize}
 \end{corollary}
 
 \begin{proof}
 	We begin by analyzing the first two types of intervals in the persistence diagram
-	$\textbf{Pers}(H_{d}(X) \to H_{d}(X_{\infty}, X))$.
+	$\mathrm{Pers}(H_{d}(X) \to H_{d}(X_{\infty}, X))$.
 	
 	These intervals either do
 	not intersect the intermediate term $H_{d}(X_{n})$ or terminate before it. Consequently,
-	they correspond precisely to the finite intervals in $\textbf{Pers}(H_{d}(X))$
-	and $\textbf{Pers}(H_{d}(X_{\infty}, X))$, clarifying the first two cases. The
+	they correspond precisely to the finite intervals in $\mathrm{Pers}(H_{d}(X))$
+	and $\mathrm{Pers}(H_{d}(X_{\infty}, X))$, clarifying the first two cases. The
 	correspondence
-	$\textbf{Pers}_{0}(H_{d}(X_{\infty}, X)) = \textbf{Pers}_{0}(H_{d-1}(X))$
+	$\mathrm{Pers}_{0}(H_{d}(X_{\infty}, X)) = \mathrm{Pers}_{0}(H_{d-1}(X))$
 	helps in mapping these relationships.
 
 	The third case requires examining intervals of the form $[a, b^{\flat})$ and
 	proving that they are invariably of the form $[a, a^{\flat})$, which means that
-	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\textbf{Pers}_{\infty}(
-	H_{d}(\X))$ and $\textbf{Pers}_{\infty}(H_{d}(X_{\infty}, \X))$ are restrictions
+	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\mathrm{Pers}_{\infty}(
+	H_{d}(\X))$ and $\mathrm{Pers}_{\infty}(H_{d}(X_{\infty}, \X))$ are restrictions
 	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[p.6]{de2011dualities}.
 	To establish this, we compare the ascending filtration\index{filtration} defined by the images of
 	$H_{d}(X_{i})$ in $H_{d}(X_{n})$ for $i = 1, 2, \ldots, n-1$ (denoted as
@@ -606,7 +602,7 @@ reverse direction.
 			$\partial\hat{\sigma}_{p} = 0$, for all $[p,n) \in \textbf{Pairs}$.
 	\end{enumerate}
 	It follows that the persistence diagram
-	$\textbf{Pers}(H(\mathcal{C},\partial))$ consists of $[a_{p}, \infty)$ for
+	$\mathrm{Pers}(H(\mathcal{C},\partial))$ consists of $[a_{p}, \infty)$ for
 	$p \in P^{\Join}$ together with intervals $[a_{p},a_{n})$ for
 	$[p,n) \in \textbf{Pairs}$.
 \end{theorem}
@@ -639,7 +635,7 @@ reverse direction.
 	$\hat{\sigma}_{p}$ born at $p$ becomes a boundary at $n$ and thus ceases to
 	contribute to homology\index{homology} past $n$.
 
-	Hence, the persistence diagram $\textbf{Pers}(H(\mathcal{C}, \partial))$ contains
+	Hence, the persistence diagram $\mathrm{Pers}(H(\mathcal{C}, \partial))$ contains
 	intervals $[a_{p}, \infty)$ for each $p \in P^{\Join}$, indicating persistent
 	homological features and intervals $[a_{p}, a_{n})$ for each
 	$[p, n) \in \textbf{Pairs}$, describing features with finite lifespans,
@@ -665,8 +661,8 @@ $\partial \hat{\sigma}_{n} = \hat{\sigma}_{p}$.
 \begin{theorem}
 	For all integers $d \geq 0$ it holds that \cite[\S 2.4]{de2011dualities}:
 	\begin{align*}
-		\textbf{Pers}(H_{d}(\mathcal{X}) \cong \textbf{Pers}(H_{d+1}(\mathcal{X}),                       \\
-		\textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X}) \cong \textbf{Pers}(H_{d}(X_{\infty}, \mathcal{X}).
+		\mathrm{Pers}(H_{d}(\mathcal{X}) \cong \mathrm{Pers}(H_{d+1}(\mathcal{X}),                       \\
+		\mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}) \cong \mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}).
 	\end{align*}
 \end{theorem}
 
@@ -676,7 +672,7 @@ TBD
 
 \begin{remark}
 	In this case, we get an isomorphism of multisets. This is due to the identification
-	of the intervals $[a,\infty) \leftrightarrow [-\infty, a)$ for $\textbf{Pers}_{\infty}$.
+	of the intervals $[a,\infty) \leftrightarrow [-\infty, a)$ for $\mathrm{Pers}_{\infty}$.
 	Thus, persistent homology\index{homology}\index{persistent homology\index{homology}} and relative homology\index{homology} barcodes carry the same information,
 	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
 \end{remark}
@@ -695,10 +691,10 @@ These are graded $\F[t]$ modules\index{modules} themselves. The operations $-^\c
 
 \begin{corollary}\noindent
 \begin{enumerate}
-\item \(\mathsf{H}(\mathcal{C}, \partial) \; \widehat{=} \; \text{persistent absolute homology\index{homology} of } \mathcal{X}.\)
-\item \(\mathsf{H}(\mathcal{C}^\dagger, \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
-\item \(\mathsf{H}(\mathcal{C}^\circ, \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
-\item \(\mathsf{H}(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \; \widehat{=} \; \text{persistent relative homology\index{homology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}, \partial) \; \widehat{=} \; \text{persistent absolute homology\index{homology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^\dagger, \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^\circ, \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \; \widehat{=} \; \text{persistent relative homology\index{homology} of } \mathcal{X}.\)
 \end{enumerate}
 \end{corollary}
 
@@ -712,45 +708,45 @@ where \( H_k(X_i) \) represents the \( k \)-th homology\index{homology} group of
 \[
 \partial(\sigma_i) \in C_{\bullet}(X_{i-1}) \subseteq C_{\bullet}(\mathcal{X}),
 \]
-ensuring \( \partial^2 = 0 \) and making \( \partial \) a graded map that commutes with multiplication by \( t \). The homology\index{homology} \( \mathsf{H}(\mathcal{C}, \partial) \) is computed as:
+ensuring \( \partial^2 = 0 \) and making \( \partial \) a graded map that commutes with multiplication by \( t \). The homology\index{homology} \( H(\mathcal{C}, \partial) \) is computed as:
 \[
-\mathsf{H}_k(\mathcal{C}, \partial) = \ker(\partial_k) / \ima(\partial_{k+1}),
+H_k(\mathcal{C}, \partial) = \ker(\partial_k) / \ima(\partial_{k+1}),
 \]
-where \( \partial_k: C_k(X_i) \to C_{k-1}(X_{i+1}) \). Thus, \( \mathsf{H}_k(\mathcal{C}, \partial) \) captures precisely the data of the persistent homology\index{homology}\index{persistent homology\index{homology}} groups \( H_k(X_i \subseteq X_j) \) for all \( i \leq j \). Thus,
+where \( \partial_k: C_k(X_i) \to C_{k-1}(X_{i+1}) \). Thus, \( H_k(\mathcal{C}, \partial) \) captures precisely the data of the persistent homology\index{homology}\index{persistent homology\index{homology}} groups \( H_k(X_i \subseteq X_j) \) for all \( i \leq j \). Thus,
 \[
-\mathsf{H}(\mathcal{C}, \partial) \cong \bigoplus_{0 \leq i \leq j \leq n} H_k(X_i \subseteq X_j).
+H(\mathcal{C}, \partial) \cong \bigoplus_{0 \leq i \leq j \leq n} H_k(X_i \subseteq X_j).
 \]
 \item The persistent cohomology\index{cohomology} groups for the filtration\index{filtration} are:
 \[
 H^k(X_i \subseteq X_j) = \ima\left( H^k(X_j) \to H^k(X_i) \right),
 \]
-where \( H^k(X_i) \) represents the \( k \)-th cohomology\index{cohomology} group of \( X_i \), and the map is induced by the inclusion \( X_i \subseteq X_j \). To define the dual chain complex, consider the dual module \( \mathcal{C}^\dagger = \Hom_\F(\mathcal{C}, \F) \). For a free module \( \mathcal{C} \) with generators \( \sigma_1, \ldots, \sigma_n \) corresponding to \( C(X_i) \), the dual basis \( \sigma_i^\dagger \in \mathcal{C}^\dagger \) is $\sigma_i^\dagger(\sigma_j) = \delta_{ij}$, with \( \delta_{ij} \) the Kronecker delta. The dual boundary operator \( \partial^\dagger: \mathcal{C}^\dagger \to \mathcal{C}^\dagger \) is $\partial^\dagger(\phi) = \phi \circ \partial$, for any \( \phi \in \mathcal{C}^\dagger \). \( \partial^\dagger \) is a graded map that increases the degree by one, satisfying \( (\partial^\dagger)^2 = 0 \). We compute \( \mathsf{H}(\mathcal{C}^\dagger, \partial^\dagger) \):
+where \( H^k(X_i) \) represents the \( k \)-th cohomology\index{cohomology} group of \( X_i \), and the map is induced by the inclusion \( X_i \subseteq X_j \). To define the dual chain complex, consider the dual module \( \mathcal{C}^\dagger = \Hom_\F(\mathcal{C}, \F) \). For a free module \( \mathcal{C} \) with generators \( \sigma_1, \ldots, \sigma_n \) corresponding to \( C(X_i) \), the dual basis \( \sigma_i^\dagger \in \mathcal{C}^\dagger \) is $\sigma_i^\dagger(\sigma_j) = \delta_{ij}$, with \( \delta_{ij} \) the Kronecker delta. The dual boundary operator \( \partial^\dagger: \mathcal{C}^\dagger \to \mathcal{C}^\dagger \) is $\partial^\dagger(\phi) = \phi \circ \partial$, for any \( \phi \in \mathcal{C}^\dagger \). \( \partial^\dagger \) is a graded map that increases the degree by one, satisfying \( (\partial^\dagger)^2 = 0 \). We compute \( H(\mathcal{C}^\dagger, \partial^\dagger) \):
 \[
-\mathsf{H}^k(\mathcal{C}^\dagger, \partial^\dagger) = \ker(\partial^\dagger_k) / \ima(\partial^\dagger_{k-1}),
+H^k(\mathcal{C}^\dagger, \partial^\dagger) = \ker(\partial^\dagger_k) / \ima(\partial^\dagger_{k-1}),
 \]
-where \( \partial^\dagger_k: C^k(X_i) \to C^{k+1}(X_{i+1}) \). To establish the isomorphism with persistent cohomology\index{cohomology}, we observe that \( \mathcal{C}^\dagger \) captures the algebraic structure of cochains under the action of inclusions \( f_{i,i+1} \) in the dual setting. The multiplication by \( t \) in \( \mathbb{F}[t] \) reflects these inclusions in the dual module, and \( \partial^\dagger \) acts compatibly. Thus, \( \mathsf{H}^k(\mathcal{C}^\dagger, \partial^\dagger) \) encodes the persistent cohomology\index{cohomology} groups \( H^k(X_i \subseteq X_j) \) for all \( 0 \leq i \leq j \leq n \). Hence,
+where \( \partial^\dagger_k: C^k(X_i) \to C^{k+1}(X_{i+1}) \). To establish the isomorphism with persistent cohomology\index{cohomology}, we observe that \( \mathcal{C}^\dagger \) captures the algebraic structure of cochains under the action of inclusions \( f_{i,i+1} \) in the dual setting. The multiplication by \( t \) in \( \mathbb{F}[t] \) reflects these inclusions in the dual module, and \( \partial^\dagger \) acts compatibly. Thus, \( H^k(\mathcal{C}^\dagger, \partial^\dagger) \) encodes the persistent cohomology\index{cohomology} groups \( H^k(X_i \subseteq X_j) \) for all \( 0 \leq i \leq j \leq n \). Hence,
 \[
-\mathsf{H}(\mathcal{C}^\dagger, \partial^\dagger) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X_i \subseteq X_j).
+H(\mathcal{C}^\dagger, \partial^\dagger) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X_i \subseteq X_j).
 \]
 \item The persistent relative cohomology\index{cohomology} groups for this filtration\index{filtration} are defined as:
 \[
 H^k(X_i, X_j) = \operatorname{coker} \left( H^k(X_j) \to H^k(X_i) \right),
 \]
-where \( H^k(X_i) \) represents the \( k \)-th cohomology\index{cohomology} group of \( X_i \), and the map is induced by the inclusion \( X_i \subseteq X_j \). The dual boundary operator \( \partial^\circ: \mathcal{C}^\circ \to \mathcal{C}^\circ \) is $\partial^\circ(\psi) = \psi \circ \partial$, for any \( \psi \in \mathcal{C}^\circ \), ensuring that \( \partial^\circ \) is a graded module homomorphism of degree 1. This definition maintains \( (\partial^\circ)^2 = 0 \) because \( \partial^2 = 0 \) in the original chain complex. We compute \( \mathsf{H}(\mathcal{C}^\circ, \partial^\circ) \):
+where \( H^k(X_i) \) represents the \( k \)-th cohomology\index{cohomology} group of \( X_i \), and the map is induced by the inclusion \( X_i \subseteq X_j \). The dual boundary operator \( \partial^\circ: \mathcal{C}^\circ \to \mathcal{C}^\circ \) is $\partial^\circ(\psi) = \psi \circ \partial$, for any \( \psi \in \mathcal{C}^\circ \), ensuring that \( \partial^\circ \) is a graded module homomorphism of degree 1. This definition maintains \( (\partial^\circ)^2 = 0 \) because \( \partial^2 = 0 \) in the original chain complex. We compute \( H(\mathcal{C}^\circ, \partial^\circ) \):
 \[
-\mathsf{H}^k(\mathcal{C}^\circ, \partial^\circ) = \ker(\partial^\circ_k) / \ima(\partial^\circ_{k-1}),
+H^k(\mathcal{C}^\circ, \partial^\circ) = \ker(\partial^\circ_k) / \ima(\partial^\circ_{k-1}),
 \]
-where \( \partial^\circ_k: C^k(X_i) \to C^{k+1}(X_{i+1}) \). To establish the isomorphism with persistent relative cohomology\index{cohomology}, we note that the module \( \mathcal{C}^\circ \) encodes the algebraic structure of cochains with coefficients in \( \mathbb{F}[t] \), reflecting the filtration\index{filtration}'s inclusions in a dual setting. The action of \( t \) in \( \mathbb{F}[t] \) within \( \mathcal{C}^\circ \) represents the inclusion maps \( f_{i,i+1} \) from \( X_i \) to \( X_{i+1} \), while \( \partial^\circ \) acts compatibly as a graded map. Thus, \( \mathsf{H}^k(\mathcal{C}^\circ, \partial^\circ) \) captures the persistent relative cohomology\index{cohomology} groups \( H^k(X_i, X_j) \) for all \( 0 \leq i \leq j \leq n \). Therefore,
+where \( \partial^\circ_k: C^k(X_i) \to C^{k+1}(X_{i+1}) \). To establish the isomorphism with persistent relative cohomology\index{cohomology}, we note that the module \( \mathcal{C}^\circ \) encodes the algebraic structure of cochains with coefficients in \( \mathbb{F}[t] \), reflecting the filtration\index{filtration}'s inclusions in a dual setting. The action of \( t \) in \( \mathbb{F}[t] \) within \( \mathcal{C}^\circ \) represents the inclusion maps \( f_{i,i+1} \) from \( X_i \) to \( X_{i+1} \), while \( \partial^\circ \) acts compatibly as a graded map. Thus, \( H^k(\mathcal{C}^\circ, \partial^\circ) \) captures the persistent relative cohomology\index{cohomology} groups \( H^k(X_i, X_j) \) for all \( 0 \leq i \leq j \leq n \). Therefore,
 \[
-\mathsf{H}(\mathcal{C}^\circ, \partial^\circ) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X_i, X_j).
+H(\mathcal{C}^\circ, \partial^\circ) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X_i, X_j).
 \]
-\item We define the double dual complex \( \mathcal{C}^{\circ\dagger} = \Hom_\F(\mathcal{C}^\circ, \F) \), where \( \mathcal{C}^\circ = \Hom_{\mathbb{F}[t]}(\mathcal{C}, \mathbb{F}[t]) \) is the global dual complex. Thus, \( \mathcal{C}^{\circ\dagger} \) is the dual to \( \mathcal{C}^\circ \) over the field \( \mathbb{F} \), capturing cochains with coefficients in \( \mathbb{F} \). The dual boundary operator \( \partial^{\circ\dagger}: \mathcal{C}^{\circ\dagger} \to \mathcal{C}^{\circ\dagger} \) is defined by $\partial^{\circ\dagger}(\phi) = \phi \circ \partial^\circ$, for any \( \phi \in \mathcal{C}^{\circ\dagger} \). This definition ensures that \( (\partial^{\circ\dagger})^2 = 0 \) since \( (\partial^\circ)^2 = 0 \) in the dual complex \( \mathcal{C}^\circ \). We compute \( \mathsf{H}(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \):
+\item We define the double dual complex \( \mathcal{C}^{\circ\dagger} = \Hom_\F(\mathcal{C}^\circ, \F) \), where \( \mathcal{C}^\circ = \Hom_{\mathbb{F}[t]}(\mathcal{C}, \mathbb{F}[t]) \) is the global dual complex. Thus, \( \mathcal{C}^{\circ\dagger} \) is the dual to \( \mathcal{C}^\circ \) over the field \( \mathbb{F} \), capturing cochains with coefficients in \( \mathbb{F} \). The dual boundary operator \( \partial^{\circ\dagger}: \mathcal{C}^{\circ\dagger} \to \mathcal{C}^{\circ\dagger} \) is defined by $\partial^{\circ\dagger}(\phi) = \phi \circ \partial^\circ$, for any \( \phi \in \mathcal{C}^{\circ\dagger} \). This definition ensures that \( (\partial^{\circ\dagger})^2 = 0 \) since \( (\partial^\circ)^2 = 0 \) in the dual complex \( \mathcal{C}^\circ \). We compute \( H(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \):
 \[
-\mathsf{H}_k(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) = \ker(\partial^{\circ\dagger}_k) / \ima(\partial^{\circ\dagger}_{k+1}),
+H_k(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) = \ker(\partial^{\circ\dagger}_k) / \ima(\partial^{\circ\dagger}_{k+1}),
 \]
-where \( \partial^{\circ\dagger}_k: C_k(X_i) \to C_{k-1}(X_{i+1}) \). To establish the isomorphism with persistent relative homology\index{homology}, we note that the module \( \mathcal{C}^{\circ\dagger} \) reflects the algebraic structure of chains in the dual-dual setting, with coefficients in \( \mathbb{F} \). The dual action captures the inverse of the inclusion maps \( f_{i,i+1} \) from \( X_i \) to \( X_{i+1} \), while \( \partial^{\circ\dagger} \) acts compatibly. Thus, \( \mathsf{H}_k(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \) encodes the persistent relative homology\index{homology} groups \( H_k(X_i, X_j) \) for all \( 0 \leq i \leq j \leq n \). Finally,
+where \( \partial^{\circ\dagger}_k: C_k(X_i) \to C_{k-1}(X_{i+1}) \). To establish the isomorphism with persistent relative homology\index{homology}, we note that the module \( \mathcal{C}^{\circ\dagger} \) reflects the algebraic structure of chains in the dual-dual setting, with coefficients in \( \mathbb{F} \). The dual action captures the inverse of the inclusion maps \( f_{i,i+1} \) from \( X_i \) to \( X_{i+1} \), while \( \partial^{\circ\dagger} \) acts compatibly. Thus, \( H_k(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \) encodes the persistent relative homology\index{homology} groups \( H_k(X_i, X_j) \) for all \( 0 \leq i \leq j \leq n \). Finally,
 \[
-\mathsf{H}(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \cong \bigoplus_{0 \leq i \leq j \leq n} H_k(X_i, X_j).
+H(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \cong \bigoplus_{0 \leq i \leq j \leq n} H_k(X_i, X_j).
 \]
 \end{enumerate}
 \end{proof}
