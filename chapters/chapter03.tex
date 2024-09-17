@@ -385,38 +385,22 @@ For all integers $d \geq 0$, it holds that \cite[\S 2.3]{de2011dualities}:
 \end{theorem}
 
 \begin{proof}
-When considering coefficients in a field $\F$ rather than in a ring, the universal coefficient theorem assures us of a natural isomorphism between the $d$-th cohomology\index{cohomology} group and the homomorphisms from the $d$-th homology\index{homology} group to the base field:
-\begin{equation}
-H^{d}(X; \F) \cong \operatorname{Hom}(H_{d}(X; \F), \F).
-\end{equation}
-Therefore, the associated maps
+When considering coefficients in a field $\F$ rather than in a ring, the universal coefficient theorem assures us of a natural isomorphism between the $d$-th cohomology\index{cohomology} group and the homomorphisms from the $d$-th homology\index{homology} group to the base field: $H^{d}(X; \F) \cong \operatorname{Hom}(H_{d}(X; \F), \F)$. Therefore, the associated maps
 \begin{equation}
 H_{d}(X_{i}; \F) \rightarrow H_{d}(X_{j}; \F) \quad \text{and} \quad H^{d}(X_{i}; \F) \leftarrow H^{d}(X_{j}; \F)
 \end{equation}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a filtration\index{filtration} $X_{1} \subseteq X_{2} \subseteq \cdots \subseteq X_{n}$ of a topological space $X$, extending to $X_{\infty}$ where $X_{\infty}$ is the direct limit of the filtration\index{filtration}. The homology\index{homology} groups $H_{d}(X_{n})$ for some fixed dimension $d$ serve as the initial terms for the relative homology\index{homology} groups $H_{d}(X_{\infty}, X)$. Since $H_{d}(X)$ is consistent with $H_{d}(X_{n})$ as $n$ approaches infinity, these sequences can be unified into a single sequence:
+Consider a filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subseteq X_{d}$ of a topological space $X$, extending to $X_{\infty}$ where $X_{\infty}$ is the direct limit of the filtration\index{filtration}. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
 \begin{align}
-H_{d}(X) \to H_{d}(X_{\infty}, X).
+\{1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
 \end{align}
-For this concatenated sequence, the indices are denoted as
-\begin{align}
-\{1, 2, \ldots, n = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (n-1)^{\flat}\},
-\end{align}
-using the $\flat$ symbol to indicate relative homology\index{homology} part of the sequence.
-
-This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
-
+using the $\flat$ symbol to indicate relative homology\index{homology} part of the sequence. This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
 \begin{itemize}
-	\item $(p, q)$ where $1 \leq p \leq q < n$, denoted as
-		$[p, q+1)$ or $[a_{p}, a_{q+1})$.
-
-	\item $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq n
-		-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
-
-	\item $(p, q^{\flat})$ where $1 \leq p \leq n$ and $0 \leq
-		q \leq n-1$, represented as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
+	\item $(p, q)$ where $1 \leq p \leq q < d$, denoted as $[p, q+1)$ or $[a_{p}, a_{q+1})$.
+	\item $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq d-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
+	\item $(p, q^{\flat})$ where $1 \leq p \leq d, 0 \leq q \leq n-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
 \end{itemize}
 
 \begin{corollary}
