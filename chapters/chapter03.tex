@@ -22,16 +22,16 @@ A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimen
 \begin{definition}[Cell complex]
 A cell complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
 \begin{align}
-\mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subset X = \bigcup_{k=0}^{\infty} X^k =: X^\infty
+\mathcal{X}: \quad \emptyset \subset X_0 \subset X_1 \subset X_2 \subset \cdots \subset X = \bigcup_{k=0}^{\infty} X_k =: X_\infty
 \end{align}
 such that:
 \begin{enumerate}
-    \item \(X^0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{k-1} \to X^{k-1}\), where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_a\) in the set of all \(k\)-cells of the complex. Specifically,
+    \item \(X_0\) is a discrete set of points.
+    \item For each \(k \geq 1\), \(X_k\) is obtained from \(X_{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{k-1} \to X_{k-1}\) from the $k-1$-sphere, where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_a\) in the set of all \(k\)-cells of the complex. Specifically,
 \begin{align}
-    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(k)}_a,
+    X_k = X_{k-1} \cup \bigcup_{a \in I_k} \sigma^{(k)}_a,
 \end{align}
-    where each \(\sigma^{(k)}_a \cong \mathbb{B}^k\) and \(\sigma^{(k)}_a \cap X^{k-1} = \varphi_a(S^{k-1})\).
+    where each \(\sigma^{(k)}_a \cong \mathbb{B}^k\) and \(\sigma^{(k)}_a \cap X_{k-1} = \varphi_a(S^{k-1})\).
     \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(k)}_a\}\).
 \end{enumerate}
 \end{definition}
@@ -40,7 +40,7 @@ such that:
 A cell complex satisfies the following conditions:
 \begin{itemize}
     \item The closure \(\overline{\sigma^{(k)}_a}\) intersects only finitely many cells \(\sigma^{(l)}_b\) for \(l \leq k\).
-    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}\).
+    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X_k\) is closed in \(X_k\) for all \(k \in \mathbb{N}\).
 \end{itemize}
 \end{remark}
 
@@ -51,12 +51,12 @@ A simplicial complex is a cell complex.
 \begin{proof}
 Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 \begin{align}
-\emptyset \subset K^0 \subset K^1 \subset K^2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K^k,
+\emptyset \subset K_0 \subset K_1 \subset K_2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K_k,
 \end{align}
-where \(K^k\) is the \(k\)-skeleton of \(K\). The 0-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K^{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
+where \(K_k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K_0\) consists of the $0$-simplices, which form a discrete set. Assume \(K_{k-1}\) is constructed. To form \(K_k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K_{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K_{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{1}\) starts with vertices \(\sigma^{(1)}_a\), $a \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X^{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(k)}\}_{a \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X_{k} =: X_\infty$, where \(X_{1}\) starts with vertices \(\sigma^{(1)}_a\), $a \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X_{k} := X_{k-1} \cup \{\sigma^{(k)}\}_{a \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
 
 \begin{example}
 	\label{filteredsphere}
@@ -200,8 +200,8 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V
 In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H$
 to a filtration\index{filtration} of a complex $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
-	H(\mathcal{X}): \quad H(X_{1}) \to H(X_{2}) \to \cdots
-	\to H(X_{d}),
+	H(\mathcal{X}): \quad H(X^{1}) \to H(X^{2}) \to \cdots
+	\to H(X^{d}),
 \end{equation}
 where $H(-)$ generally represents either the $k$-th dimensional
 homology\index{homology}, denoted by $H_{k}(-;\F)$, or the absolute homology\index{homology}, expressed as $H
@@ -241,15 +241,15 @@ as they represent ephemeral topological features\index{topological features}.
 \subsection{The Four Standard Persistence Modules}
 \label{TheFourStandardPersistenceModules}
 The standard module of absolute persistent homology\index{homology}\index{persistent homology\index{homology}}, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology\index{homology} groups
-$H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
-can be made by considering the absolute cohomology\index{cohomology} groups $H^{\bullet}(X_{i})$,
+$H_{\bullet}(X^{i})$ relate to each other as the index $i$ changes. Similar observations
+can be made by considering the absolute cohomology\index{cohomology} groups $H^{\bullet}(X^{i})$,
 the relative homology\index{homology} groups $H_{\bullet}(X_{n}, X_{i})$, and the relative cohomology\index{cohomology}
-groups $H^{\bullet}(X_{n}, X_{i})$ \cite[\S 2.4]{de2011dualities}. The persistence diagram for absolute cohomology\index{cohomology} is represented as a multiset of integer
-pairs $(p,q)$, where $1 \leq p \leq q \leq n$ for a finite filtration\index{filtration}. For relative
+groups $H^{\bullet}(X^{d}, X^{i})$ \cite[\S 2.4]{de2011dualities}. The persistence diagram for absolute cohomology\index{cohomology} is represented as a multiset of integer
+pairs $(p,q)$, where $1 \leq p \leq q \leq d$ for a finite filtration\index{filtration}. For relative
 homology\index{homology} and cohomology\index{cohomology}, the persistence diagram consists of a multiset of
-tuples $(p,q)$ where $0 \leq p \leq q \leq n-1$ for a finite filtration\index{filtration}. In each
+tuples $(p,q)$ where $0 \leq p \leq q \leq d-1$ for a finite filtration\index{filtration}. In each
 case, we interpret $(p,q)$ as a half-open interval $[a_{p}, a_{q+1})$ with the
-convention that $a_{0} = -\infty$ and $a_{n+1} = \infty$.
+convention that $a_{0} = -\infty$ and $a_{d+1} = \infty$.
 
 \begin{example}
 	For $\mathcal{S}^{2}$ we yield
