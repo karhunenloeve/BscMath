@@ -201,17 +201,17 @@ In the context of algebraic topology\index{topology}, applying the homology\inde
 to a filtration\index{filtration} of a complex $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
 	H(\mathcal{X}): \quad H(X_{1}) \to H(X_{2}) \to \cdots
-	\to H(X_{n}),
+	\to H(X_{d}),
 \end{equation}
 where $H(-)$ generally represents either the $k$-th dimensional
 homology\index{homology}, denoted by $H_{k}(-;\F)$, or the absolute homology\index{homology}, expressed as $H
 _{\bullet}(-;\F)$. Here, this diagram characterizes a sequence of abelian
 groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module. Persistence modules\index{modules}\index{persistence modules\index{modules}} are central to understanding how the features of a space evolve
 over time. According to Theorem \ref{decompositionPersistenceModules}, they can be decomposed into interval modules\index{modules}. Each interval module is associated with an
-ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq n$, within a finite
+ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq d$, within a finite
 filtration\index{filtration}. These pairs $(p,q)$ signify topological features\index{topological features} that persist over an
 index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally,
-these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_{n+1}
+these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_{d+1}
 = \infty$ being a customary notation when the sequence extends beyond the largest
 indexed space. The decomposition of a persistence module into its constituent interval modules\index{modules} is
 represented in a persistence diagram or a barcode\index{barcode}. This barcode\index{barcode} is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset
@@ -225,14 +225,14 @@ In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted
 as they represent ephemeral topological features\index{topological features}.
 
 \begin{example}
-    In the further elaboration of our example \cite[\S 2.2]{de2011dualities}, we consider the topological subspaces $S_{1}$,
+    In the further elaboration of our example \cite[\S 2.3, Example]{de2011dualities}, we consider the topological subspaces $S_{1}$,
     $S_{3}$, $S_{5}$, all of which are contractible. Meanwhile,
     $S_{2}$, $S_{4}$, $S_{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
     respectively. This structural distinction leads to four distinct intervals in
     the persistence diagram of the absolute homology\index{homology} of a sphere, specifically $\mathcal{S}^{2}$:
     \begin{align}
         \mathrm{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \\
-                                                    & = \{(1,\infty)_{0}, (2,3)_{0}, (4,5)_{1}, (6, \infty)_{2} \}.
+                                                    & \cong \{[1,\infty)_{0}, [2,3)_{0}, [4,5)_{1}, [6, \infty)_{2} \}.
     \end{align}
     Here, the subscript $k$ in $(p,q)_{k}$ or $[a_{p}, a_{q+1})_{k}$ denotes a topological
     feature in the $k$-dimensional homology\index{homology}.
