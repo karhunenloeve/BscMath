@@ -361,23 +361,17 @@ This sequence is exact on the left because $\operatorname{Hom}(-, G)$ is left ex
 \begin{align}
 R^{1} \operatorname{Hom}(A, G) = \frac{\ker(\operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}(P_{2}, G))}{\operatorname{im}(\operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G))}.
 \end{align}
-The group $\operatorname{Ext}^{1}(A, G)$ classifies extensions of $A$ by $G$, equivalent to the kernel / image calculation in the cohomology\index{cohomology} of the $\operatorname{Hom}$-sequence:
+The group $\operatorname{Ext}^{1}(A, G)$ classifies extensions of $A$ by $G$, equivalent to the kernel / image calculation in the cohomology\index{cohomology} of the $\operatorname{Hom}$-sequence $R^{1} \operatorname{Hom}(A, G)$. Given $H_{d}(X; \mathbb{Z})$, consider the short exact sequence obtained from the projective resolution of $\mathbb{Z}$: $0 \rightarrow \mathbb{Z} \rightarrow F \rightarrow H_{d}(X; \mathbb{Z}) \rightarrow 0$, where $F$ is free. Applying $\operatorname{Hom}(-, G)$ gives
 \begin{align}
-\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G).
+0 \rightarrow &\operatorname{Hom}(H_{d}(X; \mathbb{Z}), G) \rightarrow \operatorname{Hom}(F, G) \rightarrow \cdots \nonumber\\
+\cdots \rightarrow &\operatorname{Hom}(\mathbb{Z}, G) \rightarrow \operatorname{Ext}^{1}(H_{d}(X; \mathbb{Z}), G) \rightarrow 0.
 \end{align}
-Given $H_{n}(X; \mathbb{Z})$, consider the short exact sequence obtained from the projective resolution of $\mathbb{Z}$: $0 \rightarrow \mathbb{Z} \rightarrow F \rightarrow H_{n}(X; \mathbb{Z}) \rightarrow 0$, where $F$ is free. Applying $\operatorname{Hom}(-, G)$ gives
+We apply $\operatorname{Ext}^{1}$, which gives rise to the long exact sequence of $\operatorname{Ext}^1$-groups:
 \begin{align}
-0 \rightarrow &\operatorname{Hom}(H_{n}(X; \mathbb{Z}), G) \rightarrow \operatorname{Hom}(F, G) \rightarrow \cdots \\
-\cdots \rightarrow &\operatorname{Hom}(\mathbb{Z}, G) \rightarrow \operatorname{Ext}^{1}(H_{n}(X; \mathbb{Z}), G) \rightarrow 0.
+0 \rightarrow &\operatorname{Hom}(H_{d}(X; \mathbb{Z}), G) \rightarrow H^{d}(X; G) \rightarrow \cdots \nonumber\\
+\cdots \rightarrow &\operatorname{Ext}^{1}(H_{d-1}(X; \mathbb{Z}), G) \rightarrow 0.
 \end{align}
-We apply $\operatorname{Ext}^{1}$, which gives rise to the long exact sequence of $\operatorname{Ext}$ groups:
-\begin{align}
-0 \rightarrow &\operatorname{Hom}(H_{n}(X; \mathbb{Z}), G) \rightarrow H^{n}(X; G) \rightarrow \cdots \\
-\cdots \rightarrow &\operatorname{Ext}^{1}(H_{n-1}(X; \mathbb{Z}), G) \rightarrow 0.
-\end{align}
-Finally, we verify exactness and splitting. The term $\operatorname{Ext}^{1}(H_{n-1}(X; \mathbb{Z}), G)$ measures the non-trivial extensions of $G$ by $H_{n-1}(X; \mathbb{Z})$, which corresponds to the obstructions to lifting $H_{n-1}(X; \mathbb{Z})$ linearly over $G$. The term $\operatorname{Hom}(H_{n}(X; \mathbb{Z}), G)$ represents the group homomorphisms from $H_{n}(X; \mathbb{Z})$ to $G$, which naturally includes in $H^{n}(X; G)$. The sequence is exact at each stage by the properties of derived functors and their application to the singular chain complex. The sequence ends with $0$ because $\operatorname{Ext}^{1}$ of a projective (or free) module vanishes, and $\mathbb{Z}$ is free. The sequence splits because the functor $\operatorname{Hom}(-, G)$ preserves products and coproducts. However, the way it splits is not canonical and depends on the choice of a splitting homomorphism, which is not unique.
-
-In the generalization of the universal coefficient theorem to the case of modules\index{modules} over a principal ideal domain, the $\operatorname{Ext}^{1}$ terms vanish since $\F$ is a field, thus we obtain $H^{n}(X;\F) \cong \operatorname{Hom}(H_{n}(X;\F),\F)$ \cite[p.198 \S 3.3.1]{hatcher2005algebraic}.
+Finally, we verify exactness and splitting. The term $\operatorname{Ext}^{1}(H_{d-1}(X; \mathbb{Z}), G)$ measures the non-trivial extensions of $G$ by $H_{d-1}(X; \mathbb{Z})$, which corresponds to the obstructions to lifting $H_{d-1}(X; \mathbb{Z})$ linearly over $G$. The term $\operatorname{Hom}(H_{d}(X; \mathbb{Z}), G)$ represents the group homomorphisms from $H_{d}(X; \mathbb{Z})$ to $G$, which naturally includes in $H^{d}(X; G)$. The sequence is exact at each stage by the properties of derived functors and their application to the singular chain complex \cite[Horseshoe Lemma 2.2.8]{Weibel1994}. The sequence ends with $0$ because $\operatorname{Ext}^{1}$ of a projective (or free) module vanishes, and $\mathbb{Z}$ is free. The sequence splits because the functor $\operatorname{Hom}(-, G)$ preserves products and coproducts. However, the way it splits is not canonical and depends on the choice of a splitting homomorphism, which is not unique. In the generalization of the universal coefficient theorem to the case of modules\index{modules} over a PID, the $\operatorname{Ext}^{1}$ terms vanish since $\F$ is a field, thus we obtain $H^{d}(X;\F) \cong \operatorname{Hom}(H_{d}(X;\F),\F)$ \cite[\S 3.3.1, p. 198]{hatcher2005algebraic}.
 \end{proof}
 
 \begin{theorem}
