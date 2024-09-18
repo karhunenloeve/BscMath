@@ -85,10 +85,10 @@ A persistence module is a collection of vector spaces $\{V_i\}_{i \in I}$ over a
 such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{V_r}$ for all $r \leq s \leq t$.
 \end{definition}
 
-We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\text{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
+We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\operatorname{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence Module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $V: (\R,\leq) \rightarrow \text{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
+A persistence module is a functor $V: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
 V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
@@ -198,7 +198,7 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $V
 \subsection{Persistent Homology on Complexes}
 \label{PersistentHomologyonComplexes}
 In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H$
-to a filtration\index{filtration} of a complex $\mathcal{X}$ yields a sequence of algebraic structures:
+to a filtration\index{filtration} of a topological space $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
 	H(\mathcal{X}): \quad H(X_{1}) \to H(X_{2}) \to \cdots
 	\to H(X_{d}),
@@ -240,7 +240,7 @@ as they represent ephemeral topological features\index{topological features}.
 
 \subsection{The Four Standard Persistence Modules}
 \label{TheFourStandardPersistenceModules}
-\begin{figure}[htb!]
+\begin{figure}[t!]
 	\begin{align*}
 		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d-1}) \rightarrow H_{\bullet}(X_{d}),             \\
 		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d-1}) \leftarrow H^{\bullet}(X_{d}),                \\
@@ -345,7 +345,7 @@ which splits, though not canonically.
 \end{theorem}
 
 \begin{proof}
-Let $C_{\bullet}(\mathcal{X})$ be the singular chain complex of a topological space $X$ with integer coefficients. The homology\index{homology} groups $H_{d}(X; \mathbb{Z})$ are defined as:
+Let $(C_{\bullet}(\mathcal{X}),\partial)$ be the singular chain complex of a topological space $X$ with integer coefficients. The homology\index{homology} groups $H_{d}(X; \mathbb{Z})$ are defined as:
 \begin{align}
 H_{d}(X; \mathbb{Z}) := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}),
 \end{align}
@@ -377,7 +377,7 @@ In the generalization of the universal coefficient theorem to the case of module
 \end{proof}
 
 \begin{theorem}
-For all integers $d \geq 0$, it holds that \cite[\S 2.3]{de2011dualities}:
+For all integers $d \geq 0$, it holds that \cite[Proposition 2.3]{de2011dualities}:
 \begin{align}
 \mathrm{Pers}(H_{d}(\mathcal{X};\F)) &= \mathrm{Pers}(H^{d}(\mathcal{X};\F)), \\
 \mathrm{Pers}(H_{d}((X_{\infty}, \mathcal{X});\F)) &= \mathrm{Pers}(H^{d}((X_{\infty}, \mathcal{X});\F)).
@@ -400,7 +400,7 @@ using the $\flat$ symbol to indicate relative homology\index{homology} part of t
 \begin{enumerate}
 	\item $(p, q)$ where $1 \leq p \leq q < d$, denoted as $[p, q+1)$ or $[a_{p}, a_{q+1})$.
 	\item $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq d-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
-	\item $(p, q^{\flat})$ where $1 \leq p \leq d, 0 \leq q \leq n-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
+	\item $(p, q^{\flat})$ where $1 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
 \end{enumerate}
 
 \begin{corollary}
@@ -444,8 +444,8 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \subsection{Persistent Chain Complexes}
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
-can be described via a filtered cell complex $\mathcal{X}:= \sigma_{1} \cup \cdots
-\cup \sigma_{d}$, so that the persistence module can be expressed as the
+can be described via a filtered cell complex $\mathcal{X}:= \bigcup_{a \in I_1} \sigma_a^{(1)} \cup \cdots
+\cup \bigcup_{a \in I_d} \sigma_a^{(d)}$, adding a single cell at a time for each filtration step, so that the persistence module can be expressed as the
 sequence
 \[
 	\mathcal{C}: \quad C_{1} \to C_{2} \to \cdots \to C_{d},
