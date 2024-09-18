@@ -480,22 +480,19 @@ reverse direction.
 \begin{example}
 	For $\mathcal{S}^{2}$, the boundary operator is given by
 	\begin{align}
-		\partial\sigma_{1} & = \partial\sigma_{2} = 0,                       \\
-		\partial\sigma_{3} & = \partial\sigma_{4} = \sigma_{1}-\sigma_{2},   \\
-		\partial\sigma_{5} & = \partial\sigma_{6} = \sigma_{3} - \sigma_{4}.
+		\label{matrix}
+		\partial_0\sigma^{(0)}_{1} & = \partial_d\sigma^{(0)}_{2} = 0, \nonumber\\
+		\partial_1\sigma_{3}^{(1)} & = \partial_1\sigma_{4}^{(1)} = \sigma_{1}^{(0)}-\sigma_{2}^{(0)}, \nonumber\\
+		\partial_2\sigma_{5}^{2} & = \partial_2\sigma_{6}^{(2)} = \sigma_{3}^{(1)} - \sigma_{4}^{(1)}.
 	\end{align}
-	This information can also be summarized in a matrix. Similarly, the coboundary
-	operator is given by
+	Similarly, the coboundary operator is given by
 	\begin{align}
-		\delta\sigma_{1}^{\flat} = -\delta\sigma_{2}^{\flat} & = \sigma_{3}^{\flat} + \sigma_{4}^{\flat}, \\
-		\delta\sigma_{3}^{\flat} = -\delta\sigma_{4}^{\flat} & = \sigma_{5}^{\flat} + \sigma_{6}^{\flat}, \\
-		\delta\sigma_{5}^{\flat} = \delta\sigma_{6}^{\flat}  & = 0.
+		\label{transposed}
+		\delta^0\sigma_{1}^{(0)\flat} = -\delta^0\sigma_{2}^{(0)\flat} & = \sigma_{3}^{(1)\flat} + \sigma_{4}^{(1)\flat}, \nonumber\\
+		\delta^1\sigma_{3}^{(1)\flat} = -\delta^1\sigma_{4}^{(1)\flat} & = \sigma_{5}^{(2)\flat} + \sigma_{6}^{(2)\flat}, \nonumber\\
+		\delta^2\sigma_{5}^{(2)\flat} = \delta^2\sigma_{6}^{(2)\flat}  & = 0.
 	\end{align}
-	This data can analogously be summarized in a transposed matrix
-	\cite[p.7]{de2011dualities}.
-
-	The relative homology\index{homology} and cohomology\index{cohomology} persistence modules\index{modules}\index{persistence modules\index{modules}} are then defined as
-	the homology\index{homology} of the persistence modules\index{modules}\index{persistence modules\index{modules}} \cite[p.7]{de2011dualities}:
+	The data in Eq. \ref{matrix} can be summarized in a matrix and the data in Eq. \ref{transposed} can analogously be summarized in its transposed matrix. The relative homology\index{homology} and cohomology\index{cohomology} persistence modules\index{modules}\index{persistence modules\index{modules}} are then defined as the homology\index{homology} of the persistence modules\index{modules}\index{persistence modules\index{modules}} \cite[\S 2.6, Example]{de2011dualities}:
 	\begin{align}
 		(C_{d}/\mathcal{C}):         & \quad C_{d} \rightarrow (C_{d}/C_{1}) \rightarrow (C_{d}/C_{2}) \rightarrow \cdots \rightarrow (C_{d}/C_{d-1}),                             \\
 		(C_{d}/\mathcal{C})^{\flat}: & \quad C_{d}^{\flat} \leftarrow (C_{d}/C_{1})^{\flat} \leftarrow (C_{d}/C_{2})^{\flat} \leftarrow \cdots \leftarrow (C_{d}/C_{d-1})^{\flat}.
