@@ -475,7 +475,7 @@ in any abelian group $G$ to the homology\index{homology} of the space with integ
 $H^{d}(X;\mathbb{Z})$ denote the $d$-th singular homology\index{homology} and cohomology\index{cohomology} groups
 with coefficients in $\mathbb{Z}$, respectively. We further involve
 $\operatorname{Hom}(A, G)$, denoting group homomorphisms from an abelian group $A$ to another
-abelian group $G$, and $\operatorname{Ext}^{1}(A, G)$ \cite[\S 3.1, p. 195]{hatcher2005algebraic}, which measures obstructions
+abelian group $G$, and $\operatorname{Ext}^{1}(A, G)$ \cite[\S 3.1, p.195]{hatcher2005algebraic}, which measures obstructions
 in the splitting of a short exact sequence of abelian groups. Further, we use the
 properties of derived functors \cite[\S 2.7]{Weibel1994}.
 
@@ -518,11 +518,11 @@ We apply $\operatorname{Ext}^{1}$, which gives rise to the long exact sequence o
 \end{align}
 Finally, we verify exactness and splitting. The term $\operatorname{Ext}^{1}(H_{d-1}(X; \mathbb{Z}), G)$ measures the non-trivial extensions of $G$ by $H_{d-1}(X; \mathbb{Z})$, which corresponds to the obstructions to lifting $H_{d-1}(X; \mathbb{Z})$ linearly over $G$. The term $\operatorname{Hom}(H_{d}(X; \mathbb{Z}), G)$ represents the group homomorphisms from $H_{d}(X; \mathbb{Z})$ to $G$, which naturally includes in $H^{d}(X; G)$. The sequence is exact at each stage by the properties of derived functors and their application to the singular chain complex \cite[Horseshoe Lemma 2.2.8]{Weibel1994}. The sequence ends with $0$ because $\operatorname{Ext}^{1}$ of a projective (or free) module vanishes, and $\mathbb{Z}$ is free. The sequence splits because the functor $\operatorname{Hom}(-, G)$ preserves products and coproducts. However, the way it splits is not canonical and depends on the choice of a splitting homomorphism, which is not unique.
 
-In the generalization of the universal coefficient theorem to the case of modules\index{modules} over a PID, the $\operatorname{Ext}^{1}$ terms vanish since $\F$ is a field, thus we obtain $H^{d}(X;\F) \cong \operatorname{Hom}(H_{d}(X;\F),\F)$ \cite[\S 3.3.1, p. 198]{hatcher2005algebraic}.
+In the generalization of the universal coefficient theorem to the case of modules\index{modules} over a PID, the $\operatorname{Ext}^{1}$ terms vanish since $\F$ is a field, thus we obtain $H^{d}(X;\F) \cong \operatorname{Hom}(H_{d}(X;\F),\F)$ \cite[\S 3.3.1, p.198]{hatcher2005algebraic}.
 \end{proof}
 
-\begin{theorem}
-For all integers $d \geq 0$, it holds that \cite[Proposition 2.3]{de2011dualities}:
+\begin{theorem}{\cite[Proposition 2.3]{de2011dualities}}
+For all integers $d \geq 0$, it holds that:
 \begin{align}
 \mathrm{Pers}(H_{d}(\mathcal{X};\F)) &= \mathrm{Pers}(H^{d}(\mathcal{X};\F)), \\
 \mathrm{Pers}(H_{d}((X_{\infty}, \mathcal{X});\F)) &= \mathrm{Pers}(H^{d}((X_{\infty}, \mathcal{X});\F)).
@@ -537,7 +537,7 @@ H_{d}(X_{i}; \F) \rightarrow H_{d}(X_{j}; \F) \quad \text{and} \quad H^{d}(X_{i}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
+Consider a finite filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
 \begin{align}
 \{1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
 \end{align}
@@ -548,8 +548,8 @@ using the $\flat$ symbol to indicate relative homology\index{homology} part of t
 	\item $(p, q^{\flat})$ where $1 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
 \end{enumerate}
 
-\begin{corollary}
-The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively, as discovered in \cite[Proposition 2.5]{de2011dualities}:
+\begin{corollary}{\cite[Proposition 2.5]{de2011dualities}}
+The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively:
 \begin{enumerate}
     \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k}(\mathcal{X}))$.
     \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k-1}(\mathcal{X}))$.
@@ -699,7 +699,7 @@ reverse direction.
 \end{proof}
 
 \begin{remark}
-In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(-)$-simplex is called positive if it belongs to a $(-)$-cycle and negative if it doesn't, respectively \cite[\S 2, p. 516]{Edelsbrunner2000}:
+In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(-)$-simplex is called positive if it belongs to a $(-)$-cycle and negative if it doesn't, respectively \cite[\S 2, p.516]{Edelsbrunner2000}:
 \begin{itemize}
 	\item $B$ identifies the positive simplices that remain unpaired,
 	\item $B^{\Join}$ identifies the positive simplices that do become paired,
@@ -712,8 +712,8 @@ the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(-)}_{b}$ 
 $\partial_{(-)} \hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$.
 \end{remark}
 
-\begin{theorem}
-	For all integers $d \geq 0$ it holds that \cite[\S 2.4]{de2011dualities}:
+\begin{theorem}{\cite[\S 2.4]{de2011dualities}}
+	For all integers $d \geq 0$, it holds that:
 	\begin{align*}
 		\mathrm{Pers}(H_{d}(\mathcal{X}) \cong \mathrm{Pers}(H_{d+1}(\mathcal{X}),                       \\
 		\mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}) \cong \mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}).
@@ -731,7 +731,7 @@ TBD
 	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
 \end{remark}
 
-In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a filtration\index{filtration} of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $n$ generators $\sigma_1, \ldots, \sigma_n$, where $\sigma_i$ has degree $i$. The associated chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \) have inclusions \( X_i \subseteq X_{i+1} \) that induce chain maps \( f_{i,i+1}: C(X_i) \to C(X_{i+1}) \). The boundary operator $\partial: \mathcal{C} \rightarrow \mathcal{C}$ is a homomorphism of graded modules\index{modules}. We define the pointwise dual as the dual to the ground field $\F$, such that
+In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a finite filtration\index{filtration} of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $n$ generators $\sigma_1, \ldots, \sigma_n$, where $\sigma_i$ has degree $i$. The associated chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \) have inclusions \( X_i \subseteq X_{i+1} \) that induce chain maps \( f_{i,i+1}: C(X_i) \to C(X_{i+1}) \). The boundary operator $\partial: \mathcal{C} \rightarrow \mathcal{C}$ is a homomorphism of graded modules\index{modules}. We define the pointwise dual as the dual to the ground field $\F$, such that
 \begin{align}
 \mathcal{C}^\dagger &= \Hom_\F(\mathcal{C},\F), \\
 C^\dagger_n&: C_{-n} \rightarrow \F \; \text{is a linear map.}

@@ -208,7 +208,7 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 	\end{align}
 \end{proof}
 
-\begin{definition}[Boundary]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
+\begin{definition}[Boundary]{\cite[\S 2, p.106]{hatcher2005algebraic}} 
 	Let \( \sigma^{(d)} \) be an oriented \( d \)-simplex in a complex \( K \). The boundary of \( \sigma^{(d)} \) is defined as the simplicial \( (d-1) \)-chain of \( K \) with coefficients in the abelian group\index{abelian group} \( G \), given by
 	\begin{align}
 		\partial_d(\sigma^{(d)}) = \sum_{i=0}^{d} (-1)^{i} \sigma^{(d-1)}_{i}, 
@@ -273,7 +273,7 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 	Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
 \end{example}
 
-\begin{definition}[$d$-cycle]{\cite[\S 2, p. 106]{hatcher2005algebraic}}
+\begin{definition}[$d$-cycle]{\cite[\S 2, p.106]{hatcher2005algebraic}}
 	A $d$-chain is called a $d$-cycle if its boundary is equal to zero.
 \end{definition}
 
@@ -290,7 +290,7 @@ A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if
 
 It is worth noting that \( B^{\triangle}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\triangle}_{d} \) is a subgroup of \( Z^{\triangle}_{d} \) and \( Z^{\triangle}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\triangle}_{d} \) is normal. Therefore, we can construct the group quotient $H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d}$. 
 
-\begin{definition}[Simplicial homology group]{\cite[\S 2, p. 106]{hatcher2005algebraic}} 
+\begin{definition}[Simplicial homology group]{\cite[\S 2, p.106]{hatcher2005algebraic}} 
 	The group \( H^{\triangle}_{d} \) represents the \( d \)-dimensional simplicial homology\index{homology} group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
 	\begin{align}
 		H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
@@ -705,7 +705,7 @@ This sequence forms a chain complex because \( \partial_{d+1} \circ \partial_{d}
 
 We propose two important facts about \( H_{d}(X, A) \):
 
-\begin{proposition}{\cite[\S 2.1, p. 115]{hatcher2005algebraic}}
+\begin{proposition}{\cite[\S 2.1, p.115]{hatcher2005algebraic}}
 	\begin{enumerate}
 		\item Elements in \( H_{d}(X, A) \) are represented by relative cycles, which are \( d \)-chains \( c \) in \( C_{d}(X) \) such that \( \partial_{d}(c) \in C_{d-1}(A) \).
 		\item A relative cycle \( c \) is trivial in \( H_{d}(X, A) \) if and only if it is a relative boundary, i.e., \( c \) is the sum of a chain in \( C_{d}(A) \) and the boundary of a chain in \( C_{d+1}(X) \).
