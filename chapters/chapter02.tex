@@ -103,12 +103,12 @@ can be described purely in terms of combinatorics\index{combinatorics} using abs
 		\item Every singleton set $\{v_{i}\}$, where $v_{i} \in V(K)$, is included in $\tilde
 		      {K}$.
 		      		      		      		      		      
-		\item If a set $\sigma^{(d)}$ is in $\tilde{K}$ and $\tau^{(k)}$ is a subset
-		      of $\sigma^{(d)}$, then $\tau^{(k)}$ must also be in $\tilde{K}$.
+		\item If a set $A$ is in $\tilde{K}$ and $B$ is a subset
+		      of $A$, then $B$ must also be in $\tilde{K}$.
 	\end{enumerate}
 \end{definition}
 
-The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex
+We have a correspondence of $A \subset \tilde{K}$ with $\sigma^{(d)} \in K$ and $B \subset \tilde{K}$ with $\tau^{(k)} \in K$. The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex
 $K$ is commonly referred to as its vertex scheme\index{vertex scheme}.
 Conversely, if an abstract complex $\tilde{K}$ serves as the vertex scheme for a
 complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\index{geometric
@@ -388,7 +388,7 @@ The index of a chain $c = \sum_{i=0}^{k} g_i \sigma_i^{(d)}$ is $I(c) = \sum_{i=
 \end{corollary}
 
 \begin{proof}
-	Proposition \ref{decomp} says that if \( K \) is a connected, then \( H^{\triangle}_{0}(K; \mathbb{Z}) \cong \mathbb{Z} \). Consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\triangle}_{0}(K; \mathbb{Z}) \) can be expressed as
+	Proposition \ref{decomp} says that if \( K \) is connected, then \( H^{\triangle}_{0}(K; \mathbb{Z}) \cong \mathbb{Z} \). Consider a complex \( K \) that consists of \( p \) connected components\index{connected components} \( K_1, K_2, \ldots, K_p \). The $0$-dimensional simplicial\index{simplicial} homology\index{homology} group \( H^{\triangle}_{0}(K; \mathbb{Z}) \) can be expressed as
 	\begin{align}
 		H^{\triangle}_{0}(K; \mathbb{Z}) = H^{\triangle}_{0}(K_1; \mathbb{Z}) \oplus H^{\triangle}_{0}(K_2; \mathbb{Z}) \oplus \cdots \oplus H^{\triangle}_{0}(K_p; \mathbb{Z}). 
 	\end{align}	
