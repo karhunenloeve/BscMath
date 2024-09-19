@@ -56,11 +56,11 @@ Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 where \(K_k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K_0\) consists of the $0$-simplices, which form a discrete set. Assume \(K_{k-1}\) is constructed. To form \(K_k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K_{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_k \sigma^{(k)} \to K_{k-1}\), where \(\partial_k \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^k\), and \(\partial_k \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X_{k} =: X_\infty$, where \(X_{1}\) starts with vertices \(\sigma^{(1)}_a\), $a \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X_{k} := X_{k-1} \cup \{\sigma^{(k)}\}_{a \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the dimension of the simplex. Additionally, associated real values \(a_{i}\) are assigned to these indices, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular $k$-simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subset X = \bigcup_{k=1}^{\infty} X_{k} =: X_\infty$, where \(X_{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_k$ the index set of all $k$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X_{k} := X_{k-1} \cup \{\sigma^{(-)}\}_{a \in I_k}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k\}\), denoting the filtration level. The dimension of the simplex, denoted by $-$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process. We will use the same running example as in \cite[\S 2.2, Example]{de2011dualities}.
 
 \begin{example}
 	\label{filteredsphere}
-	The following illustrative example is a cellular filtration\index{filtration} of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. The development of the filtration\index{filtration} can be expressed as follows, as proposed by \cite[\S 2.2, Example]{de2011dualities}:
+	The following illustrative example is a cellular filtration\index{filtration} of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. 	In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively. The development of the filtration\index{filtration} can be visualized as follows, as proposed by \cite[\S 2.2, Example]{de2011dualities}.
 	\begin{figure}[H]%
 	    \centering
 	    \subfloat{
@@ -215,8 +215,8 @@ We investigate the persistent topology\index{topology} of filtered topological s
 		\item[$\subset$] $S_{5} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)} := (\sigma_{3}^{(1)}, \sigma_{4}^{(1)})\}$
 		\item[$\subset$] $S_{6} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)}, \sigma_{6}^{(2)} := (\sigma_{4}^{(1)}, \sigma_{3}^{(1)})\}.$
 	\end{itemize}
-	In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 \end{example}
+\vspace{0.2cm}
 
 \section{Persistence Modules}
 \label{PersistenceModules}
@@ -317,7 +317,7 @@ By induction on the number of summands, we conclude that the multiplicities $m_i
 \begin{definition}[Barcode\index{barcode}]
 The barcode\index{barcode} associated with a persistence module $V$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
 \begin{align}
-	\mathcal{B}(V) := \{(I_i, m_i)\}_{i=1}^n.
+	\mathcal{B}(V) := \{(I_i, m_i)\}_{i=1}^d.
 \end{align}
 Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I_i)$ in the decomposition of $V$.
 \end{definition}
@@ -589,35 +589,35 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \subsection{Persistent Chain Complexes}
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
-can be described via a filtered cell complex $\mathcal{X}:= (\bigcup_{a \in I_1} \sigma_a^{(1)}) \cup \cdots
-\cup (\bigcup_{a \in I_d} \sigma_a^{(d)})$, adding a single cell at a time for each filtration step, so that the persistence module is the sequence
+can be described via a filtered cell complex $\mathcal{X}:= (\bigcup_{a \in I_1} \sigma_a^{(-)}) \cup \cdots
+\cup (\bigcup_{a \in I_d} \sigma_a^{(-)})$, adding a single cell at a time for each filtration step, so that the persistence module is the sequence
 \[
-	\mathcal{C}: \quad C_{1} \to C_{2} \to \cdots \to C_{d},
+	\mathcal{V}: \quad V_{1} \to V_{2} \to \cdots \to V_{d},
 \]
-for a finite filtration\index{filtration}, where each $C_{i} := \langle \{\sigma^{(1)}_a\}_{a \in I_1}, \{\sigma^{(2)}_a\}_{a \in I_2}, \ldots, \{\sigma^{(i)}_a\}_{a \in I_i}
+for a finite filtration\index{filtration}, where each $V_{i} := \langle \{\sigma^{(-)}_a\}_{a \in I_1}, \{\sigma^{(-)}_a\}_{a \in I_2}, \ldots, \{\sigma^{(-)}_a\}_{a \in I_i}
 \rangle$ is a vector space (or an abelian group) over a field $\F$,
-generated by the elements $\sigma^{(1)}_a, \ldots, \sigma^{(i)}_a$ for $a \in I_i$. The boundary operator
+generated by the elements $\sigma^{(-)}_a$ for $a \in I_1, \ldots, I_i$. The boundary operator
 is defined by $\partial_d \sigma^{(d)}_{j} = \sum_{i<j}\lambda_{ij}\sigma^{(d-1)}_{i}$ for $\lambda
-_{ij}\in \F$ for all $i, j \in \{1, \ldots, d\}$. Then $C_{\bullet}(X_{i}) = (C_{i},\partial_{i})$ is the chain complex for the absolute
-homology\index{homology} of $X_{i}$, and $C_{\bullet}(\mathcal{X}) = (\mathcal{C},\partial)$
+_{ij}\in \F$ for all $i, j \in \{1, \ldots, d\}$. Then $V_{\bullet}(X_{i}) = (V_{i},\partial_{i})$ is the chain complex for the absolute
+homology\index{homology} of $X_{i}$, and $V_{\bullet}(\mathcal{X}) = (\mathcal{V},\partial)$
 represents the persistent version for $\mathcal{X}$. This leads to the definition
 of the persistent absolute homology\index{homology} of $\mathcal{X}$ as
 \[
-	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}, \partial): \quad \frac{\ker(\partial_{1})}{\text{im}(\partial_{1})}
+	H_{\bullet}(\mathcal{X}) = H(\mathcal{V}, \partial): \quad \frac{\ker(\partial_{1})}{\text{im}(\partial_{1})}
 	\to \frac{\ker(\partial_{2})}{\text{im}(\partial_{2})}\to \cdots \to \frac{\ker(\partial_{d})}{\text{im}(\partial_{d})}
 	.
 \]
 
 For the persistent absolute cohomology\index{cohomology} $H^{\bullet}(\mathcal{X})$, we define
 \[
-	\mathcal{C}^{\flat}: \quad C^{\flat}_{1} \leftarrow C^{\flat}_{2} \leftarrow \cdots
-	\leftarrow C^{\flat}_{d},
+	\mathcal{V}^{\flat}: \quad V^{\flat}_{1} \leftarrow V^{\flat}_{2} \leftarrow \cdots
+	\leftarrow V^{\flat}_{d},
 \]
-where $C_{i}^{\flat} = \text{Hom}(C_{i}, \F) = \langle \{\sigma^{(1)\flat}_a\}_{a \in I_1}, \{\sigma^{(2)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(i)\flat}_a\}_{a \in I_1} \rangle$, with the elements
-$\{\sigma^{(i)\flat}_a\}_{a\in I_i}$ as the dual basis of $\{\sigma^{(i)}_a\}_{a \in I_i}$. The coboundary $\delta
+where $V_{i}^{\flat} = \text{Hom}(V_{i}, \F) = \langle \{\sigma^{(-)\flat}_a\}_{a \in I_1}, \{\sigma^{(-)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(-)\flat}_a\}_{a \in I_1} \rangle$, with the elements
+$\{\sigma^{(-)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(-)}_a\}_{a \in I_j}$. The coboundary $\delta
 = \partial^{\flat}$ is defined as the adjoint of $\partial$. Then
-$C^{\flat}(\mathcal{X}) = (\mathcal{C}^{\flat}, \delta)$ and
-$H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}, \delta) = \ker(\delta) / \text{im}
+$V^{\flat}(\mathcal{X}) = (\mathcal{V}^{\flat}, \delta)$ and
+$H^{\bullet}(\mathcal{X}) = H(\mathcal{V}^{\flat}, \delta) = \ker(\delta) / \text{im}
 (\delta)$. This too constitutes a persistence module, with morphisms in the
 reverse direction.
 
@@ -638,13 +638,13 @@ reverse direction.
 	\end{align}
 	The data in Eq. \ref{matrix} and in Eq. \ref{transposed} can be summarized in a matrix and its transposed, respectively. The relative homology\index{homology} and cohomology\index{cohomology} persistence modules\index{modules}\index{persistence modules\index{modules}} are then defined as the homology\index{homology} of the persistence modules\index{modules}\index{persistence modules\index{modules}} \cite[\S 2.6, Example]{de2011dualities}:
 	\begin{align}
-		(C_{d}/\mathcal{C}):         & \quad C_{d} \rightarrow (C_{d}/C_{1}) \rightarrow (C_{d}/C_{2}) \rightarrow \cdots \rightarrow (C_{d}/C_{d-1}),                             \\
-		(C_{d}/\mathcal{C})^{\flat}: & \quad C_{d}^{\flat} \leftarrow (C_{d}/C_{1})^{\flat} \leftarrow (C_{d}/C_{2})^{\flat} \leftarrow \cdots \leftarrow (C_{d}/C_{d-1})^{\flat}.
+		(V_{d}/\mathcal{V}):         & \quad V_{d} \rightarrow (V_{d}/V_{1}) \rightarrow (V_{d}/V_{2}) \rightarrow \cdots \rightarrow (V_{d}/V_{d-1}),                             \\
+		(V_{d}/\mathcal{V})^{\flat}: & \quad V_{d}^{\flat} \leftarrow (V_{d}/V_{1})^{\flat} \leftarrow (V_{d}/V_{2})^{\flat} \leftarrow \cdots \leftarrow (V_{d}/V_{d-1})^{\flat}.
 	\end{align}
-	We note that the mappings $\rightarrow$ from $\mathcal{C}$ and the mappings $\leftarrow$
-	from $(C_{d}/\mathcal{C})^{\flat}$ are injective, while the mappings
-	$\leftarrow$ from $\mathcal{C}^{\flat}$ and the mappings $\rightarrow$ from
-	$(C_{d}/\mathcal{C})$ are surjective. Thus, absolute and relative cohomology\index{cohomology}
+	We note that the mappings $\rightarrow$ from $\mathcal{V}$ and the mappings $\leftarrow$
+	from $(V_{d}/\mathcal{V})^{\flat}$ are injective, while the mappings
+	$\leftarrow$ from $\mathcal{V}^{\flat}$ and the mappings $\rightarrow$ from
+	$(V_{d}/\mathcal{V})$ are surjective. Thus, absolute and relative cohomology\index{cohomology}
 	are structurally similar but qualitatively different from absolute homology\index{homology}
 	and relative homology\index{homology}.
 \end{example}
@@ -652,82 +652,64 @@ reverse direction.
 \begin{figure}
 \centering
 \begin{tikzcd}
-                                  & \vdots \arrow[d, "\partial_{d+2}"]                                   & \vdots \arrow[d, "\partial_{d+2}"]                               & \vdots \arrow[d, "\partial_{d+2}"]                                            & \vdots \arrow[d, "\partial_{d+2}"]                                   &        \\
-\cdots \arrow[r, "f^{i-2}_{d+1}"] & C_{d+1}^{i-1} \arrow[r, "f^{i-1}_{d+1}"] \arrow[d, "\partial_{d+1}"] & C_{d+1}^{i} \arrow[r, "f^{i}_{d+1}"] \arrow[d, "\partial_{d+1}"] & C_{d+1}^{i+1} \arrow[r, "f^{i+1}_{d+1}", no head] \arrow[d, "\partial_{d+1}"] & C_{d+1}^{i+2} \arrow[d, "\partial_{d+1}"] \arrow[r, "f^{i+2}_{d+1}"] & \cdots \\
-\cdots \arrow[r, "f^{i-2}_{d}"]   & C_{d}^{i-1} \arrow[d, "\partial_{d}"] \arrow[r, "f^{i-1}_{d}"]       & C_{d}^{i} \arrow[d, "\partial_{d}"] \arrow[r, "f^{i}_{d}"]       & C_{d}^{i+1} \arrow[d, "\partial_{d}"] \arrow[r, "f^{i+1}_{d}"]                & C_{d}^{i+2} \arrow[d, "\partial_{d}"] \arrow[r, "f^{i+2}_{d}"]       & \cdots \\
-\cdots \arrow[r, "f^{i-2}_{d-1}"] & C_{d-1}^{i-1} \arrow[d, "\partial_{d-1}"] \arrow[r, "f^{i-1}_{d-1}"] & C_{d-1}^{i} \arrow[d, "\partial_{d-1}"] \arrow[r, "f^{i}_{d-1}"] & C_{d-1}^{i+1} \arrow[d, "\partial_{d-1}"] \arrow[r, "f^{i+1}_{d-1}"]          & C_{d-1}^{i+2} \arrow[d, "\partial_{d-1}"] \arrow[r, "f^{i+2}_{d-1}"] & \cdots \\
+                                  & \vdots \arrow[d, "\partial_{k+2}"]                                   & \vdots \arrow[d, "\partial_{k+2}"]                               & \vdots \arrow[d, "\partial_{k+2}"]                                            & \vdots \arrow[d, "\partial_{k+2}"]                                   &        \\
+\cdots \arrow[r, "f^{i-2}_{k+1}"] & V_{k+1}^{i-1} \arrow[r, "f^{i-1}_{k+1}"] \arrow[d, "\partial_{k+1}"] & V_{k+1}^{i} \arrow[r, "f^{i}_{k+1}"] \arrow[d, "\partial_{k+1}"] & V_{k+1}^{i+1} \arrow[r, "f^{i+1}_{k+1}", no head] \arrow[d, "\partial_{k+1}"] & V_{k+1}^{i+2} \arrow[d, "\partial_{k+1}"] \arrow[r, "f^{i+2}_{k+1}"] & \cdots \\
+\cdots \arrow[r, "f^{i-2}_{k}"]   & V_{k}^{i-1} \arrow[d, "\partial_{k}"] \arrow[r, "f^{i-1}_{k}"]       & V_{k}^{i} \arrow[d, "\partial_{k}"] \arrow[r, "f^{i}_{k}"]       & V_{k}^{i+1} \arrow[d, "\partial_{k}"] \arrow[r, "f^{i+1}_{k}"]                & V_{k}^{i+2} \arrow[d, "\partial_{k}"] \arrow[r, "f^{i+2}_{k}"]       & \cdots \\
+\cdots \arrow[r, "f^{i-2}_{k-1}"] & V_{k-1}^{i-1} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i-1}_{k-1}"] & V_{k-1}^{i} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i}_{k-1}"] & V_{k-1}^{i+1} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i+1}_{k-1}"]          & V_{k-1}^{i+2} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i+2}_{k-1}"] & \cdots \\
                                   & \vdots                                                               & \vdots                                                           & \vdots                                                                        & \vdots                                                               &       
 \end{tikzcd}
 \caption[A persistence complex]{A persistent chain complex, where moving to the right increases the filtration\index{filtration} index, while moving downwards decreases the dimension.}
 \end{figure}
 
 \begin{theorem}[Partition of persistence modules]
-	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}$ be given and $\partial$ as above, then there
-	exists a partition $\{1,2, \ldots, d\} = P^{\Join} \sqcup P \sqcup N$ with a bijective pairing $P \leftrightarrow N$, such that $p$ is paired with $n$ if and only if $[p,n) \in \textbf{Pairs}(\mathcal{C}, \partial)$. Furthermore, there is a basis
-	$\hat{\sigma}_{1}, \hat{\sigma}_{2}, \ldots, \hat{\sigma}_{d}$ of $C_{d}$ such
+	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{V}$ be given and $\partial$ as above, then there
+	exists a partition $\{1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$. Furthermore, there is a basis
+	$\hat{\sigma}^{(-)}_{1}, \hat{\sigma}^{(-)}_{2}, \ldots, \hat{\sigma}^{(-)}_{d}$ of $V_{d}$ such
 	that
 	\begin{itemize}
-		\item $C_{i} = \langle \hat{\sigma}_{1}, \ldots, \hat{\sigma}_{i} \rangle$ for
+		\item $V_{i} = \langle \hat{\sigma}^{(-)}_{1}, \ldots, \hat{\sigma}^{(-)}_{i} \rangle$ for
 			each $i$.
-		\item $\partial\hat{\sigma}_{p} = 0$ for all $p \in P^{\Join}$.
-		\item $\partial\hat{\sigma}_{n} = \hat{\sigma}_{p}$, and thus
-			$\partial\hat{\sigma}_{p} = 0$, for all $[p,n) \in \textbf{Pairs}$.
+		\item $\partial_{(-)}\hat{\sigma}^{(-)}_{b} = 0$ for all $b \in B^{\Join}$.
+		\item $\partial_{(-)}\hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$, and thus
+			$\partial_{(-)}\hat{\sigma}^{(-)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
 	\end{itemize}
 	It follows that the persistence diagram
-	$\mathrm{Pers}(H(\mathcal{C},\partial))$ consists of $[a_{p}, \infty)$ for
-	$p \in P^{\Join}$ together with intervals $[a_{p},a_{n})$ for
-	$[p,n) \in \textbf{Pairs}$.
+	$\operatorname{Pers}(H(\mathcal{V},\partial))$ consists of $[a_{b}, \infty)$ for
+	$b \in B^{\Join}$ together with intervals $[a_{b},a_{d})$ for
+	$[b,d) \in \operatorname{Pairs}$.
 \end{theorem}
 
 \begin{proof}
-	Let $\mathcal{C}= \{C_{i}\}_{i \in I}$ be a filtered chain complex associated with
+	Let $\mathcal{V}= \{V_{i}\}_{i \in I}$ be a filtered chain complex associated with
 	a topological space, structured over a field $\F$ for any finite index
 	set $I$. The filtration\index{filtration} indices ${1, 2, \ldots, d}$, where $d = \vert I \vert$,
 	classify the stages at which elements are born or die in homology\index{homology}. The
-	partition of $\{1, 2, \ldots, d\}$ into $P^{\Join} \sqcup P \sqcup N$ is then
-	constructed such that:
-	\begin{itemize}
-		\item $P^{\Join}$ contains indices corresponding to elements that persist indefinitely,
-			i.e., those for which $\partial\sigma_{i} = 0$ and $\sigma_{i}$ does not
-			become a boundary at any higher index.
-
-		\item $P$ and $N$ are paired bijectively, where each $p \in P$ (births)
-			corresponds uniquely to an $n \in N$ (deaths), signifying the termination of
-			the homological feature introduced at $p$. This pairing is determined
-			through the matrix reduction of $\partial$, ensuring that every cycle born
-			at stage $p$ becomes a boundary at stage $n$.
-	\end{itemize}
-
-	We then construct a basis ${\hat{\sigma}_i}$ such that for each $i$, $\hat{\sigma}
-	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in P^{\Join}$, then
-	$\partial\hat{\sigma}_{i} = 0$, indicating these elements are cycles that persist
-	indefinitely. For pairs $[p, n) \in \textbf{Pairs}(\mathcal{C}, \partial)$
-	with $p \in P$ and $n \in N$, set $\partial\hat{\sigma}_{n} = \hat{\sigma}_{p}$
-	and $\partial\hat{\sigma}_{p} = 0$, reflecting the fact that the cycle
-	$\hat{\sigma}_{p}$ born at $p$ becomes a boundary at $n$ and thus ceases to
-	contribute to homology\index{homology} past $n$.
-
-	Hence, the persistence diagram $\mathrm{Pers}(H(\mathcal{C}, \partial))$ contains
-	intervals $[a_{p}, \infty)$ for each $p \in P^{\Join}$, indicating persistent
-	homological features and intervals $[a_{p}, a_{n})$ for each
-	$[p, n) \in \textbf{Pairs}$, describing features with finite lifespans,
-	starting as a cycle at $p$ and terminating as a boundary at $n$.
+	partition of $\{1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{(-)}\sigma^{(-)}_{i} = 0$ and $\sigma^{(-)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(-)}_i}$ such that for each $i$, $\hat{\sigma}^{(-)}
+	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in B^{\Join}$, then
+	$\partial_{(-)}\hat{\sigma}^{(-)}_{i} = 0$, indicating these elements are cycles that persist
+	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$
+	with $b \in B$ and $d \in D$, set $\partial_{(-)}\hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$
+	and $\partial_{(-)}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
+	$\hat{\sigma}^{(-)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
+	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{V}, \partial))$ contains
+	intervals $[a_{b}, \infty)$ for each $b \in B^{\Join}$, indicating persistent
+	homological features and intervals $[a_{b}, a_{d})$ for each
+	$[b, d) \in \operatorname{Pairs}$, describing features with finite lifespans,
+	starting as a cycle at $b$ and terminating as a boundary at $d$.
 \end{proof}
 
 \begin{remark}
-In \ref{persistence partition} the index sets are defined as follows \cite[p.8]{de2011dualities}:
+In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(-)$-simplex is called positive if it belongs to a $(-)$-cycle and negative if it doesn't, respectively \cite[\S 2, p. 516]{Edelsbrunner2000}:
 \begin{itemize}
-	\item $P$ identifies the positive simplices that remain unpaired,
-
-	\item $P^{\Join}$ identifies the positive simplices that do become paired,
-
-	\item $N$ identifies the negative simplices.
+	\item $B$ identifies the positive simplices that remain unpaired,
+	\item $B^{\Join}$ identifies the positive simplices that do become paired,
+	\item $D$ identifies the negative simplices.
 \end{itemize}
-The vectors $\hat{\sigma}_{p}$ and $\hat{\sigma}_{n}$ are cycles characterized by
-their leading terms $\sigma_{p}$ and $\sigma_{n}$ respectively, while the vector
-$\hat{\sigma}_{n}$ is a chain with leading term $\sigma_{n}$. This chain 'kills'
-the homology\index{homology} class of its paired cycle $\hat{\sigma}_{p}$ through the boundary relation
-$\partial \hat{\sigma}_{n} = \hat{\sigma}_{p}$.
+The vectors $\hat{\sigma}^{(-)}_{b}$ and $\hat{\sigma}^{(-)}_{d}$ are cycles characterized by
+their leading terms $\sigma^{(-)}_{b}$ and $\sigma^{(-)}_{d}$ respectively, while the vector
+$\hat{\sigma}^{(-)}_{d}$ is a chain with leading term $\sigma^{(-)}_{d}$. This chain 'kills'
+the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(-)}_{b}$ through the boundary relation
+$\partial_{(-)} \hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$.
 \end{remark}
 
 \begin{theorem}
