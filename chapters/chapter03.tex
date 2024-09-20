@@ -727,7 +727,7 @@ The decomposition $\{1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new bas
 	\mathcal{V} &= \bigoplus_{b^\Join \in B^\Join} \mathcal{V}_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{V}_{bd} \nonumber\\
 	&= \bigoplus_{b^\Join \in B^\Join} \langle \hat{\sigma}_{b^\Join} \rangle \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \langle \hat{\sigma}_{b}, \hat{\sigma}_{d} \rangle.
 \end{align}
-The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((V_d/\mathcal{V}),\partial)$ separately for each summand. For summands of the form $\mathcal{V}_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. This information can be expressed again through explicit persistent chain complexes:
+The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((V_d/\mathcal{V}),\partial)$ separately for each summand. For summands of the form $\mathcal{V}_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
 \begin{align}
 	((V_{b^{\Join}})_d/\mathcal{V}_{b^\Join})&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\ker(\partial)&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
@@ -748,7 +748,7 @@ It follows that $H((V_{bd})_n/\mathcal{V}_{bd})$ contributes a single interval o
 	In this case, we get an isomorphism of multisets. This is due to the identification
 	of the intervals $[a,\infty) \leftrightarrow [-\infty, a)$ for $\mathrm{Pers}_{\infty}$.
 	Thus, persistent homology\index{homology}\index{persistent homology\index{homology}} and relative homology\index{homology} barcodes carry the same information,
-	with a dimension shift for the finite intervals \cite[\S 2.4]{de2011dualities}.
+	with a dimension shift for the finite intervals \cite[Proposition 2.4]{de2011dualities}.
 \end{remark}
 
 In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a finite filtration\index{filtration} of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $n$ generators $\sigma_1, \ldots, \sigma_n$, where $\sigma_i$ has degree $i$. The associated chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \) have inclusions \( X_i \subseteq X_{i+1} \) that induce chain maps \( f_{i,i+1}: C(X_i) \to C(X_{i+1}) \). The boundary operator $\partial: \mathcal{C} \rightarrow \mathcal{C}$ is a homomorphism of graded modules\index{modules}. We define the pointwise dual as the dual to the ground field $\F$, such that
