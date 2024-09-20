@@ -537,7 +537,7 @@ H_{d}(X_{i}; \F) \rightarrow H_{d}(X_{j}; \F) \quad \text{and} \quad H^{d}(X_{i}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a finite filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are denoted as
+Consider a finite filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are 
 \begin{align}
 \{1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
 \end{align}
@@ -618,7 +618,7 @@ $\{\sigma^{(-)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(-)}_a\}_{a
 = \partial^{\flat}$ is defined as the adjoint of $\partial$. Then
 $V^{\flat}(\mathcal{X}) = (\mathcal{V}^{\flat}, \delta)$ and
 $H^{\bullet}(\mathcal{X}) = H(\mathcal{V}^{\flat}, \delta) = \ker(\delta) / \text{im}
-(\delta)$. This too constitutes a persistence module, with morphisms in the
+(\delta)$. This is a persistence module, with morphisms in the
 reverse direction.
 
 \begin{example}
@@ -661,6 +661,7 @@ reverse direction.
 \caption[A persistence complex]{A persistent chain complex, where moving to the right increases the filtration\index{filtration} index, while moving downwards decreases the dimension.}
 \end{figure}
 
+\newpage
 \begin{theorem}[Partition of persistence modules]
 	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{V}$ be given and $\partial$ as above, then there
 	exists a partition $\{1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$. Furthermore, there is a basis
@@ -712,16 +713,35 @@ the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(-)}_{b}$ 
 $\partial_{(-)} \hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$.
 \end{remark}
 
-\begin{theorem}{\cite[\S 2.4]{de2011dualities}}
+\begin{theorem}{\cite[Proposition 2.4]{de2011dualities}}
 	For all integers $d \geq 0$, it holds that:
 	\begin{align*}
-		\mathrm{Pers}(H_{d}(\mathcal{X}) \cong \mathrm{Pers}(H_{d+1}(\mathcal{X}),                       \\
-		\mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}) \cong \mathrm{Pers}(H_{d}(X_{\infty}, \mathcal{X}).
+		\mathrm{Pers}_0(H_{d}(\mathcal{X})) \cong \mathrm{Pers}_0(H_{d+1}(X_\infty, \mathcal{X})), \nonumber\\
+		\mathrm{Pers}_\infty(H_{d}(X_{\infty}, \mathcal{X})) \cong \mathrm{Pers}_\infty(H_{d}(X_{\infty}, \mathcal{X})).
 	\end{align*}
 \end{theorem}
 
-\begin{proof}
-TBD
+\begin{proof}{\textit{\cite[Proof of Proposition 2.4]{de2011dualities}}}
+The decomposition $\{1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}^{(-)}_1, \hat{\sigma}^{(-)}_2, \ldots, \hat{\sigma}^{(-)}_d$ allow us to write the persistent chain complex $\mathcal{V}$ as a direct sum of persistent chain complexes, such that
+\begin{align}
+	\mathcal{V} &= \bigoplus_{b^\Join \in B^\Join} \mathcal{V}_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{V}_{bd} \nonumber\\
+	&= \bigoplus_{b^\Join \in B^\Join} \langle \hat{\sigma}_{b^\Join} \rangle \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \langle \hat{\sigma}_{b}, \hat{\sigma}_{d} \rangle.
+\end{align}
+The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((V_d/\mathcal{V}),\partial)$ separately for each summand. For summands of the form $\mathcal{V}_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. This information can be expressed again through explicit persistent chain complexes:
+\begin{align}
+	((V_{b^{\Join}})_d/\mathcal{V}_{b^\Join})&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	\ker(\partial)&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	\operatorname{im}(\partial)&: \quad 0 \rightarrow 0,\nonumber\\
+	H := \ker(\partial) / \operatorname(im)(\partial)&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0.
+\end{align}
+It follows that $H((V_{b^\Join})_d/\mathcal{V}_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}^{(-)}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{V}))$. For summands of the type $\mathcal{V}_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,d-1\}$, and $\{d,\ldots, n-1\}$, or explicitly:
+\begin{align}
+((V_{bd})_n/\mathcal{V}_{bd}) &: \quad \langle \hat{\sigma}^{(-)}_b, \hat{\sigma}^{(-)}_d \rangle \rightarrow \langle \hat{\sigma}^{(-)}_d \rangle \rightarrow 0,\nonumber\\
+\ker(\partial) &: \quad \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow \langle \hat{\sigma}^{(-)}_d \rangle \rightarrow 0, \nonumber\\
+\operatorname{im}(\partial) &: \quad \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow 0 \rightarrow 0,\nonumber\\
+H := \ker{\partial} / \operatorname{im}(\partial) &: \quad 0 \rightarrow \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow 0.
+\end{align}
+It follows that $H((V_{bd})_n/\mathcal{V}_{bd})$ contributes a single interval of the form $[a_b,a_d)$, generated by the equivalence class $[\hat{\sigma}^{(-)}_b]$, and thus has one dimension more than $[a_b,a_d) \in \operatorname{Pers}(H(\mathcal{V}))$, which is generated by $[\hat{\sigma}^{(-)}_d]$.
 \end{proof}
 
 \begin{remark}
@@ -752,7 +772,7 @@ These are graded $\F[t]$ modules\index{modules} themselves. The operations $-^\c
 \end{enumerate}
 \end{corollary}
 
-\begin{proof}
+\begin{proof}\noindent
 \begin{enumerate}
 \item The persistent homology\index{homology}\index{persistent homology\index{homology}} groups for the filtration\index{filtration} are:
 \[
