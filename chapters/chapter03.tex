@@ -60,7 +60,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 
 \begin{example}
 	\label{filteredsphere}
-	The following illustrative example is a cellular filtration\index{filtration} of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. 	In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively. The development of the filtration\index{filtration} can be visualized as follows, as proposed by \cite[\S 2.2, Example]{de2011dualities}.
+	The following illustrative example is a cellular filtration\index{filtration} of the 2-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. 	In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S_{2}$ consists of two distinct points. In $S_{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S_{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S_{3}$. Finally, $S_{5}$ and $S_{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively \cite[\S 2.2, Example]{de2011dualities}.
 	\begin{figure}[H]%
 	    \centering
 	    \subfloat{
@@ -99,7 +99,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 		        \begin{tikzpicture}
 				  \coordinate (1) at (-1.3cm,0cm);
 				  \coordinate (2) at (1.3cm,0cm);
-				  \draw[looseness=0.5] (1) to[out=-60, in=240] (2);
+				  \draw[-latex, looseness=0.5] (1) to[out=-60, in=240] (2);
 				  \draw[color=white, dashed, looseness=0.5] (1) to[out=60, in=-240] (2);
 				  \draw[color=white, looseness=1.6] (1) to[out=-90, in=270] (2);
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
@@ -116,8 +116,8 @@ We investigate the persistent topology\index{topology} of filtered topological s
 		    	\begin{tikzpicture}
 				  \coordinate (1) at (-1.3cm,0cm);
 				  \coordinate (2) at (1.3cm,0cm);
-				  \draw[looseness=0.5] (1) to[out=-60, in=240] (2);
-				  \draw[looseness=0.5] (1) to[out=60, in=-240] (2);
+				  \draw[-latex, looseness=0.5] (1) to[out=-60, in=240] (2);
+				  \draw[latex-, looseness=0.5] (1) to[out=60, in=-240] (2);
 				  \draw[color=white, looseness=1.6] (1) to[out=-90, in=270] (2);
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
@@ -134,8 +134,8 @@ We investigate the persistent topology\index{topology} of filtered topological s
 		        \begin{tikzpicture}
 				  \coordinate (1) at (-1.3cm,0cm);
 				  \coordinate (2) at (1.3cm,0cm);
-				  \draw[looseness=0.5] (1) to[out=-60, in=240] (2);
-				  \draw[looseness=0.5] (1) to[out=60, in=-240] (2);
+				  \draw[-latex, looseness=0.5] (1) to[out=-60, in=240] (2);
+				  \draw[latex-, looseness=0.5] (1) to[out=60, in=-240] (2);
 				  \draw[looseness=1.6] (1) to[out=-90, in=270] (2);
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
@@ -165,8 +165,8 @@ We investigate the persistent topology\index{topology} of filtered topological s
 		        \begin{tikzpicture}
 				  \coordinate (1) at (-1.3cm,0cm);
 				  \coordinate (2) at (1.3cm,0cm);
-				  \draw[looseness=0.5] (1) to[out=-60, in=240] (2);
-				  \draw[dashed, looseness=0.5] (1) to[out=60, in=-240] (2);
+				  \draw[-latex, looseness=0.5] (1) to[out=-60, in=240] (2);
+				  \draw[latex-, dashed, looseness=0.5] (1) to[out=60, in=-240] (2);
 				  \draw[looseness=1.6] (1) to[out=-90, in=270] (2);
 				  \draw[looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
