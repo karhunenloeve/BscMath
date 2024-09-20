@@ -31,9 +31,9 @@ corresponds to a single point, a $1$-simplex to a line segment between two
 points, a $2$-simplex to a triangle, and a $3$-simplex to a tetrahedron. Notably,
 a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 
-\begin{theorem}[$d$-disk to $d$-simplex]
+\begin{lemma}[$d$-disk to $d$-simplex]
 	The $d$-simplex $\sigma^{(d)}$ is homeomorphic to the $d$-dimensional disk $D^{d}$.
-\end{theorem}
+\end{lemma}
 
 \begin{proof}
 	Define the standard \( d \)-simplex \( \sigma^{(d)} \) as
@@ -108,7 +108,7 @@ can be described purely in terms of combinatorics\index{combinatorics} using abs
 	\end{enumerate}
 \end{definition}
 
-We have a correspondence of $A \subset \tilde{K}$ with $\sigma^{(d)} \in K$ and $B \subset \tilde{K}$ with $\tau^{(k)} \in K$. The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex
+We have a correspondence of $A \subset \tilde{K}$ if and only if $\sigma^{(d)} \in K$ and $B \subset \tilde{K}$ if and only if $\tau^{(k)} \in K$. The abstract simplicial complex $\tilde{K}$ associated with a simplicial complex
 $K$ is commonly referred to as its vertex scheme\index{vertex scheme}.
 Conversely, if an abstract complex $\tilde{K}$ serves as the vertex scheme for a
 complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\index{geometric
@@ -138,9 +138,9 @@ Let $\tilde{K}$ be an abstract simplicial complex. Any two geometric realization
 \end{proposition}
 
 \begin{proof}
-Let $K_1$ and $K_2$ be two geometric realizations of the abstract simplicial complex $\tilde{K}$ in $\mathbb{R}^d$. Let the vertices of $\tilde{K}$ be $\{v_1, \dots, v_n\}$. Each vertex $v_i$ is mapped to a point $p_i$ in $K_1$ and to a point $q_i$ in $K_2$. There is a bijection between the vertices of $K_1$ and $K_2$: 
+Let $K_1$ and $K_2$ be two geometric realizations of the abstract simplicial complex $\tilde{K}$ in $\mathbb{R}^n$. Let the vertices of $\tilde{K}$ be $\{v_1, \dots, v_d\}$. Each vertex $v_i$ is mapped to a point $p_i$ in $K_1$ and to a point $q_i$ in $K_2$. There is a bijection between the vertices of $K_1$ and $K_2$: 
 \begin{align}
-\phi: \{p_1, \dots, p_n\} \to \{q_1, \dots, q_n\}, \quad \phi(p_i) = q_i \text{ for each } i.
+\phi: \{p_1, \dots, p_d\} \to \{q_1, \dots, q_d\}, \quad \phi(p_i) = q_i \text{ for each } i.
 \end{align}
 Extend $\phi$ to a map $f: K_1 \to K_2$ on simplices. Let $\sigma^{(k)} = [p_{i_0}, \dots, p_{i_{k}}]$ be a $k$-simplex in $K_1$, corresponding to the simplex $\tau^{(k)} = [q_{i_0}, \dots, q_{i_{k}}]$ in $K_2$. For $x \in \sigma^{(k)}$, write $x = \sum_{j=0}^{k} \lambda_j p_{i_j}$ with $\sum_{j=0}^{k} \lambda_j = 1$, and define $f(x) = \sum_{j=0}^{k} \lambda_j q_{i_j}$. This defines $f$ linearly on simplices. Since $f$ respects face relations and is continuous on each simplex, $f$ is globally continuous. The map $f$ is bijective, as it maps each vertex $p_i$ to the corresponding $q_i$, and the linear extension preserves this correspondence on simplices. Hence, $f$ is a homeomorphism. Similarly, the inverse map $f^{-1}: K_2 \to K_1$ is continuous by the same construction.
 \end{proof}
@@ -153,7 +153,7 @@ Any finite abstract simplicial complex of dimension $d$ can be realized as a sim
 \end{theorem}
 
 \begin{proof}
-Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$.  Let $V(K)$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(K) \to \mathbb{R}^{2d+1}$, which is possible because $V(K)$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma^{(k)} = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
+Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$, $\operatorname{im}(f) = K$.  Let $V(K)$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(K) \to \mathbb{R}^{2d+1}$, which is possible because $V(K)$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma^{(k)} = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
 \end{proof}
 
 \section{Simplicial Homology}
@@ -165,7 +165,7 @@ order by an odd permutation, the orientation is considered reversed, while even 
 preserve the orientation. Thus, a simplex can have only two possible orientations. To denote the orientation, we use round brackets $(\cdot)$ instead of square brackets $[\cdot]$ for simplices.
 Moreover, the orientation of a \( d \)-simplex induces an orientation on its \( (d-1) \)-faces.
 Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents an oriented
-\( d \)-simplex, then the orientation of the \( (d-1) \)-face \( \tau^{(d-1)} \) of
+\( d \)-simplex, then the orientation of the \( (d-1) \)-face \( \tau_i^{(d-1)} \) of
 \( \sigma^{(d)} \), omitting the vertex \( v_{i} \), is given by
 \begin{equation}
 	\tau_{i}^{(d-1)} = (-1)^{i} (v_{0}, \ldots, v_{i-1}, v_{i+1}, \ldots, v_{d}).
@@ -173,13 +173,13 @@ Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents 
 
 \begin{definition}[$d$-chain]{\cite[\S 2.3]{zomorodian2004computing}}
 	\label{d-Chain}
-	Given a set \(\{\sigma_{0}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \(G\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
+	Given a set \(\{\sigma_{0}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \((G,+)\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
 	\begin{align}
 		c := g_{0}\sigma^{(d)}_{0} + g_{1}\sigma^{(d)}_{1} + \ldots + g_{k}\sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i}\sigma^{(d)}_{i}. 
 	\end{align}
 \end{definition}
 
-Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
+Henceforth, we will assume that \( (G,+) = (\mathbb{Z}, +) \).
 
 \begin{lemma}
 	The set of simplicial \( d \)-chains \( C^{\triangle}_{d} \) forms an abelian group\index{abelian group} \( (C^{\triangle}_{d}, +) \).
@@ -196,9 +196,9 @@ Henceforth, we will assume that \( G = (\mathbb{Z}, +) \).
 		c + c' &= \sum_{i=0}^{k} g_{i} \sigma_{i}^{(d)} + \sum_{j=0}^{l} g'_{j} \sigma_{j}^{(d)} \\
 			   &= \sum_{i=0}^{\min(k, l)} (g_{i} + g'_{i}) \sigma_{i}^{(d)} + 
 				\begin{cases}
-				\sum_{j=\min(k, l)+1}^{\max(k, l)} g_{j} \sigma_{j}^{(d)}  & \text{if } k > l, \\
+				\sum_{j=l+1}^{k} g_{j} \sigma_{j}^{(d)}  & \text{if } k > l, \\
 				0                                                          & \text{if } k = l, \\
-				\sum_{j=\min(k, l)+1}^{\max(k, l)} g'_{j} \sigma_{j}^{(d)} & \text{if } k < l. 
+				\sum_{j=k+1}^{l} g'_{j} \sigma_{j}^{(d)} & \text{if } k < l. 
 				\end{cases}
 	\end{align}
 	Hence, \( c + c' \in C^{\triangle}_{d} \). The associativity of the group operation in \( C^{\triangle}_{d} \) follows directly from
@@ -277,7 +277,7 @@ Since \( \sigma^{(d)} \) is an oriented simplex, the \( \sigma^{(d-1)}_{i} \) fa
 	A $d$-chain is called a $d$-cycle if its boundary is equal to zero.
 \end{definition}
 
-We denote the set of \( d \)-cycles of a complex \( K \) over an abelian group $G$ and in particular in this thesis over the group \( \mathbb{Z} \) as \( Z^{\triangle}_{d} \), the simplicial cycle group. It is important to note that \( Z^{\triangle}_{d} \) is a subgroup of \( C^{\triangle}_{d} \) and can also be expressed as:
+We denote the set of \( d \)-cycles of a complex \( K \) over an abelian group $G$ - and in particular in this thesis over the group \( \mathbb{Z} \) - as \( Z^{\triangle}_{d} \), the simplicial cycle group. It is important to note that \( Z^{\triangle}_{d} \) is a subgroup of \( C^{\triangle}_{d} \) and can also be expressed as:
 \begin{align}
 	Z^{\triangle}_{d} := \ker(\partial_{d}). 
 \end{align}
