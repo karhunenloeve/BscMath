@@ -1,15 +1,7 @@
-\documentclass[b5paper, 11pt, twoside]{report}
+\documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{geometry}
-\geometry{
-	twoside,
-	bindingoffset=7mm,
-	verbose,
-	marginratio={5:7,5:7},
-	textwidth=130mm,
-	height=200mm,
-	foot=2cm
-}
+\usepackage{ragged2e}
+\usepackage[a4paper, margin=28mm, bindingoffset=7mm]{geometry}
 \usepackage[mathscr]{euscript}
 \usepackage[protrusion=true, expansion=true]{microtype}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -24,13 +16,12 @@ title=Index]
 \usepackage{fancyhdr}
 \usepackage{fbb}
 \usepackage{extarrows}
+\usepackage{euler}
 \usepackage{mathpazo}
 \usepackage{booktabs}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{xcolor}
-\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsection}{0pt}{1.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, topsep=0pt}
 \setlist[enumerate]{noitemsep, topsep=0pt}
@@ -74,10 +65,24 @@ title=Index]
 \newtheorem{corollary}[conj]{Corollary}
 \newtheorem{assume}[conj]{Assumption}
 
-\setlength{\lineskip}{1pt}
-\setlength{\lineskiplimit}{1pt}
-\setlength{\parindent}{15pt}
-\setlength{\baselineskip}{10pt}
+% Line spacing (consistent baseline grid)
+\setlength{\lineskip}{0pt} % No extra space between lines
+\setlength{\lineskiplimit}{0pt} % Prevent any additional line spacing
+
+% Paragraph indentation and uniform line spacing
+\setlength{\parindent}{20pt} % Standard paragraph indent, no variation
+\setlength{\baselineskip}{2.5\baselineskip} % Uniform line spacing across all lines (1.5 ensures readability while being consistent)
+
+% No extra space between paragraphs (homogeneous feel)
+\setlength{\parskip}{0pt} % No space between paragraphs
+
+% Additional fine-tuning for homogeneity
+\setlength{\topskip}{0pt} % Removes any potential top spacing inconsistency
+\setlength{\abovedisplayskip}{0pt} % No extra space above displays
+\setlength{\belowdisplayskip}{0pt} % No extra space below displays
+
+\setlength{\emergencystretch}{3em}
+\sloppy
 
 \title{Algebraic and Topological Persistence}
 \author{Luciano Melodia}
@@ -124,11 +129,11 @@ I hereby declare that I
 \end{itemize}
 
 \vspace{2cm}
-\begin{tabular}{@{}p{3.5in}p{2in}p{2in}@{}}
-	\hrulefill                 &   & Erlangen, \today \\
-	Luciano Melodia M.A., B.A. &   &                  \\
-	Friedrich-Alexander University \\
-	Erlangen-Nürnberg
+\begin{tabular}{@{}p{5in}p{2in}p{2in}@{}}
+	\hrulefill\newline
+	Luciano Melodia M.A., B.A. \\
+	Department of Mathematics \\
+	Friedrich-Alexander University Erlangen-Nürnberg
 \end{tabular}
 
 \chapter*{Acknowledgements}
