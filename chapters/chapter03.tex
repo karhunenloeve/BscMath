@@ -62,7 +62,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 
 \begin{example}{\cite[\S 2.2, Example]{de2011dualities}}
 	\label{filteredsphere}
-	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^{2}$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S^{2}$ consists of two distinct points. In $S^{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S^{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S^{3}$. Finally, $S^{5}$ and $S^{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
+	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^2$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S^{2}$ consists of two distinct points. In $S^{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S^{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S^{3}$. Finally, $S^{5}$ and $S^{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 	\begin{figure}[H]%
 	    \centering
 	    \subfloat{
@@ -288,7 +288,7 @@ The following theorem describes the decomposition of any persistence module:
 \label{decompositionPersistenceModules}
 Every persistence module $\mathcal{V}$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
 \begin{align}
-	\mathcal{V} \cong \bigoplus_{i=1}^{d} \mathbb{F}(I_i)^{m_i},
+	\mathcal{V} \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
 \end{align}
 where $I_i \neq I_j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
 \end{theorem}
@@ -319,7 +319,7 @@ By induction on the number of summands, we conclude that the multiplicities $m_i
 \begin{definition}[Barcode\index{barcode}]
 The barcode\index{barcode} associated with a persistence module $\mathcal{V}$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
 \begin{align}
-	\mathcal{B}(\mathcal{V}) := \{(I_i, m_i)\}_{i=1}^d.
+	\mathcal{B}(\mathcal{V}) := \{(I_i, m_i)\}_{i=0}^d.
 \end{align}
 Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I_i)$ in the decomposition of $\mathcal{V}$.
 \end{definition}
@@ -348,15 +348,15 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\
 In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H(\natural)$
 to a finite filtration\index{filtration} of a topological space $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
-	H(\mathcal{X}): \quad H(X_0) \rightarrow H(X_{1}) \to H(X_{2}) \to \cdots
-	\to H(X_{d}) \rightarrow H(X),
+	H(\mathcal{X}): \quad H(X^0) \rightarrow H(X^{1}) \to H(X^{2}) \to \cdots
+	\to H(X^{d}) \rightarrow H(X),
 \end{equation}
-where $H(\natural)$ generally represents either the $k$-th dimensional
+where $H(-)$ generally represents either the $k$-th dimensional
 homology\index{homology}, denoted by $H_{k}(-;\F)$, or the absolute homology\index{homology}, expressed as $H
 _{\bullet}(-;\F)$. Here, this diagram characterizes a sequence of abelian
 groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module. Persistence modules\index{modules}\index{persistence modules\index{modules}} are central to understanding how the features of a space evolve
 over time. According to Theorem \ref{decompositionPersistenceModules}, they can be decomposed into interval modules\index{modules}. Each interval module is associated with an
-ordered pair of integers $(p,q)$ where $1 \leq p \leq q \leq d$, within a finite
+ordered pair of integers $(p,q)$ where $0 \leq p \leq q \leq d$, within a finite
 filtration\index{filtration}. These pairs $(p,q)$ signify topological features\index{topological features} that persist over an
 index set $I := \{p, \ldots, q\}$, where $\inf\{I\} = p$ and $\sup\{I\} = q$. Conventionally,
 these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_{d+1}
@@ -364,7 +364,7 @@ these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_
 indexed space. The decomposition of a persistence module into its constituent interval modules\index{modules} is
 represented in a persistence diagram or a barcode\index{barcode}. This barcode\index{barcode} is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset
 of half-open intervals $[a_{p}, a_{q+1})$. This collection is formally expressed
-through the forgetful functor $\mathrm{Pers}(\natural)$, called the persistence diagram:
+through the forgetful functor $\mathrm{Pers}(-)$, called the persistence diagram:
 \begin{align}
     \mathrm{Pers}(H_k(\mathcal{X};\F)) & = \{(p_{1},q_{1}), \ldots, (p_{m},q_{m})\}                    \\
                                            & \cong \{[a_{p_1}, a_{q_1+1}), \ldots, [a_{p_m}, a_{q_m+1})\}.
@@ -373,9 +373,9 @@ In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted
 as they represent ephemeral topological features\index{topological features}.
 
 \begin{example}{\cite[\S 2.3, Example]{de2011dualities}}
-    We consider the topological subspaces $S_{1}$,
-    $S_{3}$, $S_{5}$, all of which are contractible. Meanwhile,
-    $S_{2}$, $S_{4}$, $S_{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
+    We consider the topological subspaces $S^{1}$,
+    $S^{3}$, $S^{5}$, all of which are contractible. Meanwhile,
+    $S^{2}$, $S^{4}$, $S^{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
     respectively. This structural distinction leads to four distinct intervals in
     the persistence diagram of the absolute homology\index{homology} of a sphere, specifically $\mathcal{S}^{2}$:
     \begin{align}
@@ -390,12 +390,12 @@ as they represent ephemeral topological features\index{topological features}.
 \label{TheFourStandardPersistenceModules}
 \begin{figure}[t!]
 	\begin{align*}
-		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X_{0}) \rightarrow H_{\bullet}(X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d-1}) \rightarrow H_{\bullet}(X_{d}),             \\
-		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X_{0}) \leftarrow H^{\bullet}(X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d-1}) \leftarrow H^{\bullet}(X_{d}),                \\
-		H_{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X_{d}) \rightarrow H_{\bullet}(X_{d},X_{0}) \rightarrow H_{\bullet}(X_{d},X_{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X_{d},X_{d-1}), \\
-		H^{\bullet}(X_{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X_{d}) \leftarrow H^{\bullet}(X_{d},X_{0}) \leftarrow H^{\bullet}(X_{d},X_{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X_{d}, X_{d-1}).
+		H_{\bullet}(\mathcal{X})             & : \quad H_{\bullet}(X^{0}) \rightarrow H_{\bullet}(X^{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X^{d-1}) \rightarrow H_{\bullet}(X^{d}),             \\
+		H^{\bullet}(\mathcal{X})             & : \quad H^{\bullet}(X^{0}) \leftarrow H^{\bullet}(X^{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X^{d-1}) \leftarrow H^{\bullet}(X^{d}),                \\
+		H_{\bullet}(X^{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X^{d}) \rightarrow H_{\bullet}(X^{d},X^{0}) \rightarrow H_{\bullet}(X^{d},X^{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X^{d},X^{d-1}), \\
+		H^{\bullet}(X^{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X^{d}) \leftarrow H^{\bullet}(X^{d},X^{0}) \leftarrow H^{\bullet}(X^{d},X^{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X^{d}, X^{d-1}).
 	\end{align*}
-	\caption{The four standard persistence modules are from top to bottom: persistent absolute homology, persistent absolute cohomology, persistent relative homology and persistent relative cohomology. The $\bullet$ indicates (co)homology in every dimension simultaneously. We can also write $H^{\bullet}(X_{d}, \mathcal{X}), H_{\bullet}(X_{d}, \mathcal{X})$ or $H^{\bullet}(X, \mathcal{X}), H_{\bullet}(X, \mathcal{X})$ instead of $H^{\bullet}(X_{\infty}, \mathcal{X}), H_{\bullet}(X_{\infty}, \mathcal{X})$, as the $k$th homology groups for $k > d$ become trivial.}
+	\caption{The four standard persistence modules are from top to bottom: persistent absolute homology, persistent absolute cohomology, persistent relative homology and persistent relative cohomology. The $\bullet$ indicates (co)homology in every dimension simultaneously. We can also write $H^{\bullet}(X {d}, \mathcal{X}), H_{\bullet}(X^{d}, \mathcal{X})$ or $H^{\bullet}(X, \mathcal{X}), H_{\bullet}(X, \mathcal{X})$ instead of $H^{\bullet}(X_{\infty}, \mathcal{X}), H_{\bullet}(X^{\infty}, \mathcal{X})$, as the $k$th homology groups for $k > d$ become trivial.}
 \end{figure}
 The standard module of absolute persistent homology\index{homology}\index{persistent homology\index{homology}}, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology\index{homology} groups
 $H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
