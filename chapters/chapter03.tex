@@ -552,7 +552,7 @@ using the $\flat$ symbol to indicate relative homology\index{homology} part of t
 \end{enumerate}
 
 \begin{corollary}{\cite[Proposition 2.5]{de2011dualities}}
-The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X_{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively:
+The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X^{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively:
 \begin{enumerate}
     \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k}(\mathcal{X}))$.
     \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k-1}(\mathcal{X}))$.
@@ -562,29 +562,29 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \begin{proof}
 	We begin by analyzing the first two types of intervals in the persistence diagram
-	$\mathrm{Pers}(H_{k}(X) \to H_{k}(X_{\infty}, X))$. These intervals either do
+	$\mathrm{Pers}(H_{k}(X) \to H_{k}(X^{\infty}, X))$. These intervals either do
 	not intersect the intermediate term $H_{k}(X_{d})$ or terminate before it. Consequently,
 	they correspond precisely to the finite intervals in $\mathrm{Pers}(H_{k}(X))$
-	and $\mathrm{Pers}(H_{k}(X_{\infty}, X))$, clarifying the first two cases. The
-	correspondence $\mathrm{Pers}_{0}(H_{k}(X_{\infty}, X)) = \mathrm{Pers}_{0}(H_{k-1}(X))$
+	and $\mathrm{Pers}(H_{k}(X^{\infty}, X))$, clarifying the first two cases. The
+	correspondence $\mathrm{Pers}_{0}(H_{k}(X^{\infty}, X)) = \mathrm{Pers}_{0}(H_{k-1}(X))$
 	helps in mapping these relationships.
 
 	The third case requires examining intervals of the form $[a, b^{\flat})$ and
 	proving that they are invariably of the form $[a, a^{\flat})$, which means that
 	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\mathrm{Pers}_{\infty}(
-	H_{k}(\X))$ and $\mathrm{Pers}_{\infty}(H_{k}(X_{\infty}, \X))$ are restrictions
-	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[Proposition 2.5, proof]{de2011dualities}.
+	H_{k}(\X))$ and $\mathrm{Pers}_{\infty}(H_{k}(X^{\infty}, \X))$ are restrictions
+	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[Proof of Proposition 2.5]{de2011dualities}.
 	To establish this, we compare the ascending filtration\index{filtration} defined by the images of
-	$H_{k}(X_{i})$ in $H_{k}(X_{d})$ for $i = 0, 1, 2, \ldots, d-1$ (denoted as
-	$\operatorname{im}(H_{k}(X_{i}) \to H_{k}(X_{d}))$) with the descending filtration\index{filtration} defined
-	by the kernels of $H_{k}(X_{d})$ in $H_{k}(X_{\infty}, X)$ for $i = 0, 1, 2, \ldots
-	, d-1$ (denoted as $\ker(H_{k}(X_{d}) \to H_{k}(X_{d}, X_{i}))$). This
+	$H_{k}(X^{i})$ in $H_{k}(X^{d})$ for $i = 0, 1, 2, \ldots, d-1$ (denoted as
+	$\operatorname{im}(H_{k}(X^{i}) \to H_{k}(X^{d}))$) with the descending filtration\index{filtration} defined
+	by the kernels of $H_{k}(X^{d})$ in $H_{k}(X^{\infty}, X)$ for $i = 0, 1, 2, \ldots
+	, d-1$ (denoted as $\ker(H_{k}(X^{d}) \to H_{k}(X^{d}, X^{i}))$). This
 	examination revolves around the fundamental properties of the homology\index{homology} groups
 	in a filtration\index{filtration} setting. For each index $i$, the image and kernel correspond to the same subspace of $H_{k}
-	(X_{d})$. This equivalence is guaranteed by the homology\index{homology} long exact sequence
-	associated with the pair $(X_{d}, X_{i})$, which links the relative and absolute
+	(X^{d})$. This equivalence is guaranteed by the homology\index{homology} long exact sequence
+	associated with the pair $(X^{d}, X^{i})$, which links the relative and absolute
 	homology\index{homology} groups. Specifically, the exact sequence implies that any cycle in $\operatorname{im}
-	(H_{k}(X_{i}) \to H_{k}(X_{d}))$ that becomes a boundary in $H_{k}(X_{d}, X_{i}
+	(H_{k}(X^{i}) \to H_{k}(X^{d}))$ that becomes a boundary in $H_{k}(X^{d}, X^{i}
 	)$ must vanish, thus equating the image and kernel. As a result, both
 	filtrations\index{filtrations} align perfectly, establishing that the third type of interval indeed
 	maps to self-closing intervals of the form $[a, a^{\flat})$.
