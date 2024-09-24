@@ -7,7 +7,7 @@ The Stability Theorem\index{stability theorem} will not be discussed in this the
 The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[Theorem 2.1, \S 3.1]{zomorodian2004computing}. The first step is to define the cell complex, as every simplicial complex is a cell complex. In this section, we continue to examine the consequences of absolute and relative homology\index{homology} and cohomology\index{cohomology} groups for filtrations\index{filtrations} of cell complexes, such as the introduced simplicial complexes. In particular, we derive the theory in the context of filtered simplicial complexes upon sets of points, embedded into some metric space. While we can apply the entire theory to simplicial complexes and their (co)homology\index{homology}, cell complexes provide a much broader context and significantly simplify notation in many instances. This yields a generalisation of the given situation.
 
 \begin{definition}[\(d\)-cell]
-A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimensional ball $\mathbb{B}^d = \{ x \in \mathbb{R}^d \; \vert \; \|x\| < 1 \}$, for any norm $\Vert \cdot \Vert.$.
+A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimensional ball $\mathbb{B}^d = \{ x \in \mathbb{R}^d \; \vert \; \|x\| < 1 \}$, for any norm $\Vert \cdot \Vert$.
 \end{definition}
 
 \begin{example}\noindent
@@ -27,12 +27,12 @@ A cell complex is a Hausdorff topological space \(X\) together with a filtration
 such that:
 \begin{enumerate}
     \item \(X^0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \((-)\)-cells \(\{\sigma^{(-)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{(-)-1} \to X^{k-1}\) from the $(-)-1$-sphere, where \(I_k\) is an indexing set for the \((-)\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \((-)\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \((-)\)-cell \(\sigma^{(-)}_a\) in the set of all \((-)\)-cells of the complex. Specifically,
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(\natural\)-cells \(\{\sigma^{(\natural)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{(\natural)-1} \to X^{k-1}\) from the $(\natural)-1$-sphere, where \(I_k\) is an indexing set for the \(\natural\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(\natural\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \(\natural\)-cell \(\sigma^{(\natural)}_a\) in the set of all \(\natural\)-cells of the complex. Specifically,
 \begin{align}
-    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(-)}_a,
+    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(\natural)}_a,
 \end{align}
-    where each \(\sigma^{(-)}_a \cong \mathbb{B}^k\) and \(\sigma^{(.)}_a \cap X^{k-1} = \varphi_a(S^{(-)-1})\).
-    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(-)}_a\}\).
+    where each \(\sigma^{(\natural)}_a \cong \mathbb{B}^k\) and \(\sigma^{(.)}_a \cap X^{k-1} = \varphi_a(S^{(\natural)-1})\).
+    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(\natural)}_a\}\).
 \end{enumerate}
 \end{definition}
 
@@ -53,10 +53,10 @@ Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
 \begin{align}
 \mathcal{K}: \quad \emptyset \subset K_0 \subset K_1 \subset K_2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K_k,
 \end{align}
-where \(K_k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K_0\) consists of the $0$-simplices, which form a discrete set. Assume \(K_{k-1}\) is constructed. To form \(K_k\), we attach each \((-)\)-simplex \(\sigma^{(-)} \in K\) to \(K_{k-1}\) via a map \(\varphi_{\sigma^{(-)}} : \partial_{(-)} \sigma^{(-)} \to K_{k-1}\), where \(\partial_{(-)} \sigma^{(-)}\) is the boundary of \(\sigma^{(-)}\). Each \(\sigma^{(-)}\) is homeomorphic to an open \((-)\)-ball \(\mathbb{B}^{(-)}\), and \(\partial_{(-)} \sigma^{(-)}\) is homeomorphic to the \(((-)-1)\)-sphere \(S^{(-)-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $(-)$ and $k$.
+where \(K_k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K_0\) consists of the $0$-simplices, which form a discrete set. Assume \(K_{k-1}\) is constructed. To form \(K_k\), we attach each \(\natural\)-simplex \(\sigma^{(\natural)} \in K\) to \(K_{k-1}\) via a map \(\varphi_{\sigma^{(\natural)}} : \partial_{(\natural)} \sigma^{(\natural)} \to K_{k-1}\), where \(\partial_{(\natural)} \sigma^{(\natural)}\) is the boundary of \(\sigma^{(\natural)}\). Each \(\sigma^{(\natural)}\) is homeomorphic to an open \(\natural\)-ball \(\mathbb{B}^{(\natural)}\), and \(\partial_{(\natural)} \sigma^{(\natural)}\) is homeomorphic to the \(((\natural)-1)\)-sphere \(S^{(\natural)-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $(\natural)$ and $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X_{k} =: X_\infty$, where \(X_{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_0$ the index set of all $(-)$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X_{k} := X_{k-1} \cup \{\sigma^{(-)}\}_{a \in I_{k}}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level, such that $a \in [k,k+1)$. The dimension of the simplex, denoted by $(-)$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X_{k} =: X_\infty$, where \(X_{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_0$ the index set of all $(\natural)$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X_{k} := X_{k-1} \cup \{\sigma^{(\natural)}\}_{a \in I_{k}}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level, such that $a \in [k,k+1)$. The dimension of the simplex, denoted by $(\natural)$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
 
 \begin{example}{\cite[\S 2.2, Example]{de2011dualities}}
 	\label{filteredsphere}
@@ -343,13 +343,13 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\
 
 \subsection{Persistent Homology on Complexes}
 \label{PersistentHomologyonComplexes}
-In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H(-)$
+In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H(\natural)$
 to a finite filtration\index{filtration} of a topological space $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
 	H(\mathcal{X}): \quad H(X_0) \rightarrow H(X_{1}) \to H(X_{2}) \to \cdots
 	\to H(X_{d}) \rightarrow H(X),
 \end{equation}
-where $H(-)$ generally represents either the $k$-th dimensional
+where $H(\natural)$ generally represents either the $k$-th dimensional
 homology\index{homology}, denoted by $H_{k}(-;\F)$, or the absolute homology\index{homology}, expressed as $H
 _{\bullet}(-;\F)$. Here, this diagram characterizes a sequence of abelian
 groups or finite-dimensional vector spaces, connected through linear maps, forming a persistence module. Persistence modules\index{modules}\index{persistence modules\index{modules}} are central to understanding how the features of a space evolve
@@ -362,7 +362,7 @@ these tuples are interpreted as half-open intervals $[a_{p}, a_{q+1})$, with $a_
 indexed space. The decomposition of a persistence module into its constituent interval modules\index{modules} is
 represented in a persistence diagram or a barcode\index{barcode}. This barcode\index{barcode} is a multiset of ordered tuples $(p,q)$ or, alternatively, a multiset
 of half-open intervals $[a_{p}, a_{q+1})$. This collection is formally expressed
-through the forgetful functor $\mathrm{Pers}(-)$, called the persistence diagram:
+through the forgetful functor $\mathrm{Pers}(\natural)$, called the persistence diagram:
 \begin{align}
     \mathrm{Pers}(H_k(\mathcal{X};\F)) & = \{(p_{1},q_{1}), \ldots, (p_{m},q_{m})\}                    \\
                                            & \cong \{[a_{p_1}, a_{q_1+1}), \ldots, [a_{p_m}, a_{q_m+1})\}.
@@ -590,14 +590,14 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \subsection{Persistent Chain Complexes}
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
-can be described via a filtered cell complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(-)}$, adding cells for each filtration step, so that the persistence module is the sequence
+can be described via a filtered cell complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(\natural)}$, adding cells for each filtration step, so that the persistence module is the sequence
 \[
 	\mathcal{C}: \quad C^{0} \to C^{1} \to C^{2} \to \cdots \to C^{d},
 \]
-for a finite filtration\index{filtration}, where each $V_{i} := \langle \{\sigma^{(-)}_a\}_{a \in I_0}, \{\sigma^{(-)}_a\}_{a \in I_1}, \ldots, \{\sigma^{(-)}_a\}_{a \in I_i}
+for a finite filtration\index{filtration}, where each $V_{i} := \langle \{\sigma^{(\natural)}_a\}_{a \in I_0}, \{\sigma^{(\natural)}_a\}_{a \in I_1}, \ldots, \{\sigma^{(\natural)}_a\}_{a \in I_i}
 \rangle$ is a vector space (or an abelian group) over a field $\F$,
-generated by the elements $\sigma^{(-)}_a$ for $a \in I_0, I_1, \ldots, I_i$. The boundary operator
-is defined by $\partial_{(-)} \sigma^{(-)}_{j} = \sum_{i<j}\lambda_{ij}\sigma^{((-)-1)}_{i}$ for $\lambda
+generated by the elements $\sigma^{(\natural)}_a$ for $a \in I_0, I_1, \ldots, I_i$. The boundary operator
+is defined by $\partial_{(\natural)} \sigma^{(\natural)}_{j} = \sum_{i<j}\lambda_{ij}\sigma^{((\natural)-1)}_{i}$ for $\lambda
 _{ij}\in \F$ for all $i, j \in \{0, 1, \ldots, d\}$. Then $V_{\bullet}(X_{i}) = (V_{i},\partial_{i})$ is the chain complex for the absolute
 homology\index{homology} of $X_{i}$, and $V_{\bullet}(\mathcal{X}) = (\mathcal{V},\partial)$
 represents the persistent version for $\mathcal{X}$. This leads to the definition
@@ -613,8 +613,8 @@ For the persistent absolute cohomology\index{cohomology} $H^{\bullet}(\mathcal{X
 	\mathcal{V}^{\flat}: \quad V^{\flat}_{1} \leftarrow V^{\flat}_{2} \leftarrow \cdots
 	\leftarrow V^{\flat}_{d},
 \]
-where $V_{i}^{\flat} = \text{Hom}(V_{i}, \F) = \langle \{\sigma^{(-)\flat}_a\}_{a \in I_1}, \{\sigma^{(-)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(-)\flat}_a\}_{a \in I_1} \rangle$, with the elements
-$\{\sigma^{(-)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(-)}_a\}_{a \in I_j}$. The coboundary $\delta
+where $V_{i}^{\flat} = \text{Hom}(V_{i}, \F) = \langle \{\sigma^{(\natural)\flat}_a\}_{a \in I_1}, \{\sigma^{(\natural)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(\natural)\flat}_a\}_{a \in I_1} \rangle$, with the elements
+$\{\sigma^{(\natural)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(\natural)}_a\}_{a \in I_j}$. The coboundary $\delta
 = \partial^{\flat}$ is defined as the adjoint of $\partial$. Then
 $V^{\flat}(\mathcal{X}) = (\mathcal{V}^{\flat}, \delta)$ and
 $H^{\bullet}(\mathcal{X}) = H(\mathcal{V}^{\flat}, \delta) = \ker(\delta) / \text{im}
@@ -664,14 +664,14 @@ reverse direction.
 \begin{theorem}[Partition of persistence modules]
 	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{V}$ be given and $\partial$ as above, then there
 	exists a partition $\{1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$. Furthermore, there is a basis
-	$\hat{\sigma}^{(-)}_{1}, \hat{\sigma}^{(-)}_{2}, \ldots, \hat{\sigma}^{(-)}_{d}$ of $V_{d}$ such
+	$\hat{\sigma}^{(\natural)}_{1}, \hat{\sigma}^{(\natural)}_{2}, \ldots, \hat{\sigma}^{(\natural)}_{d}$ of $V_{d}$ such
 	that
 	\begin{itemize}
-		\item $V_{i} = \langle \hat{\sigma}^{(-)}_{1}, \ldots, \hat{\sigma}^{(-)}_{i} \rangle$ for
+		\item $V_{i} = \langle \hat{\sigma}^{(\natural)}_{1}, \ldots, \hat{\sigma}^{(\natural)}_{i} \rangle$ for
 			each $i$.
-		\item $\partial_{(-)}\hat{\sigma}^{(-)}_{b} = 0$ for all $b \in B^{\Join}$.
-		\item $\partial_{(-)}\hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$, and thus
-			$\partial_{(-)}\hat{\sigma}^{(-)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
+		\item $\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{b} = 0$ for all $b \in B^{\Join}$.
+		\item $\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$, and thus
+			$\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
 	\end{itemize}
 	It follows that the persistence diagram
 	$\operatorname{Pers}(H(\mathcal{V},\partial))$ consists of $[a_{b}, \infty)$ for
@@ -684,13 +684,13 @@ reverse direction.
 	a topological space, structured over a field $\F$ for any finite index
 	set $I$. The filtration\index{filtration} indices ${1, 2, \ldots, d}$, where $d = \vert I \vert$,
 	classify the stages at which elements are born or die in homology\index{homology}. The
-	partition of $\{1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{(-)}\sigma^{(-)}_{i} = 0$ and $\sigma^{(-)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(-)}_i}$ such that for each $i$, $\hat{\sigma}^{(-)}
+	partition of $\{1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{(\natural)}\sigma^{(\natural)}_{i} = 0$ and $\sigma^{(\natural)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(\natural)}_i}$ such that for each $i$, $\hat{\sigma}^{(\natural)}
 	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in B^{\Join}$, then
-	$\partial_{(-)}\hat{\sigma}^{(-)}_{i} = 0$, indicating these elements are cycles that persist
+	$\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{i} = 0$, indicating these elements are cycles that persist
 	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$
-	with $b \in B$ and $d \in D$, set $\partial_{(-)}\hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$
-	and $\partial_{(-)}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
-	$\hat{\sigma}^{(-)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
+	with $b \in B$ and $d \in D$, set $\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$
+	and $\partial_{(\natural)}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
+	$\hat{\sigma}^{(\natural)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
 	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{V}, \partial))$ contains
 	intervals $[a_{b}, \infty)$ for each $b \in B^{\Join}$, indicating persistent
 	homological features and intervals $[a_{b}, a_{d})$ for each
@@ -699,17 +699,17 @@ reverse direction.
 \end{proof}
 
 \begin{remark}
-In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(-)$-simplex is called positive if it belongs to a $(-)$-cycle and negative if it doesn't, respectively \cite[\S 2, p.516]{Edelsbrunner2000}:
+In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(\natural)$-simplex is called positive if it belongs to a $(\natural)$-cycle and negative if it doesn't, respectively \cite[\S 2, p.516]{Edelsbrunner2000}:
 \begin{itemize}
 	\item $B$ identifies the positive simplices that remain unpaired,
 	\item $B^{\Join}$ identifies the positive simplices that do become paired,
 	\item $D$ identifies the negative simplices.
 \end{itemize}
-The vectors $\hat{\sigma}^{(-)}_{b}$ and $\hat{\sigma}^{(-)}_{d}$ are cycles characterized by
-their leading terms $\sigma^{(-)}_{b}$ and $\sigma^{(-)}_{d}$ respectively, while the vector
-$\hat{\sigma}^{(-)}_{d}$ is a chain with leading term $\sigma^{(-)}_{d}$. This chain 'kills'
-the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(-)}_{b}$ through the boundary relation
-$\partial_{(-)} \hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$.
+The vectors $\hat{\sigma}^{(\natural)}_{b}$ and $\hat{\sigma}^{(\natural)}_{d}$ are cycles characterized by
+their leading terms $\sigma^{(\natural)}_{b}$ and $\sigma^{(\natural)}_{d}$ respectively, while the vector
+$\hat{\sigma}^{(\natural)}_{d}$ is a chain with leading term $\sigma^{(\natural)}_{d}$. This chain 'kills'
+the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(\natural)}_{b}$ through the boundary relation
+$\partial_{(\natural)} \hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$.
 \end{remark}
 
 \begin{theorem}{\cite[Proposition 2.4]{de2011dualities}}
@@ -721,26 +721,26 @@ $\partial_{(-)} \hat{\sigma}^{(-)}_{d} = \hat{\sigma}^{(-)}_{b}$.
 \end{theorem}
 
 \begin{proof}{\textit{\cite[Proof of Proposition 2.4]{de2011dualities}}}
-The decomposition $\{1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}^{(-)}_1, \hat{\sigma}^{(-)}_2, \ldots, \hat{\sigma}^{(-)}_d$ allow us to write the persistent chain complex $\mathcal{V}$ as a direct sum of persistent chain complexes, such that
+The decomposition $\{1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}^{(\natural)}_1, \hat{\sigma}^{(\natural)}_2, \ldots, \hat{\sigma}^{(\natural)}_d$ allow us to write the persistent chain complex $\mathcal{V}$ as a direct sum of persistent chain complexes, such that
 \begin{align}
 	\mathcal{V} &= \bigoplus_{b^\Join \in B^\Join} \mathcal{V}_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{V}_{bd} \nonumber\\
 	&= \bigoplus_{b^\Join \in B^\Join} \langle \hat{\sigma}_{b^\Join} \rangle \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \langle \hat{\sigma}_{b}, \hat{\sigma}_{d} \rangle.
 \end{align}
 The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((V_d/\mathcal{V}),\partial)$ separately for each summand. For summands of the form $\mathcal{V}_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
 \begin{align}
-	((V_{b^{\Join}})_d/\mathcal{V}_{b^\Join})&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
-	\ker(\partial)&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	((V_{b^{\Join}})_d/\mathcal{V}_{b^\Join})&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	\ker(\partial)&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\operatorname{im}(\partial)&: \quad 0 \rightarrow 0,\nonumber\\
-	H := \ker(\partial) / \operatorname(im)(\partial)&: \quad \langle \hat{\sigma}^{(-)}_{b^\Join}\rangle \rightarrow 0.
+	H := \ker(\partial) / \operatorname(im)(\partial)&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0.
 \end{align}
-It follows that $H((V_{b^\Join})_d/\mathcal{V}_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}^{(-)}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{V}))$. For summands of the type $\mathcal{V}_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,d-1\}$, and $\{d,\ldots, n-1\}$, or explicitly:
+It follows that $H((V_{b^\Join})_d/\mathcal{V}_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}^{(\natural)}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{V}))$. For summands of the type $\mathcal{V}_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,d-1\}$, and $\{d,\ldots, n-1\}$, or explicitly:
 \begin{align}
-((V_{bd})_n/\mathcal{V}_{bd}) &: \quad \langle \hat{\sigma}^{(-)}_b, \hat{\sigma}^{(-)}_d \rangle \rightarrow \langle \hat{\sigma}^{(-)}_d \rangle \rightarrow 0,\nonumber\\
-\ker(\partial) &: \quad \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow \langle \hat{\sigma}^{(-)}_d \rangle \rightarrow 0, \nonumber\\
-\operatorname{im}(\partial) &: \quad \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow 0 \rightarrow 0,\nonumber\\
-H := \ker{\partial} / \operatorname{im}(\partial) &: \quad 0 \rightarrow \langle \hat{\sigma}^{(-)}_b \rangle \rightarrow 0.
+((V_{bd})_n/\mathcal{V}_{bd}) &: \quad \langle \hat{\sigma}^{(\natural)}_b, \hat{\sigma}^{(\natural)}_d \rangle \rightarrow \langle \hat{\sigma}^{(\natural)}_d \rangle \rightarrow 0,\nonumber\\
+\ker(\partial) &: \quad \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow \langle \hat{\sigma}^{(\natural)}_d \rangle \rightarrow 0, \nonumber\\
+\operatorname{im}(\partial) &: \quad \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow 0 \rightarrow 0,\nonumber\\
+H := \ker{\partial} / \operatorname{im}(\partial) &: \quad 0 \rightarrow \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow 0.
 \end{align}
-It follows that $H((V_{bd})_n/\mathcal{V}_{bd})$ contributes a single interval of the form $[a_b,a_d)$, generated by the equivalence class $[\hat{\sigma}^{(-)}_b]$, and thus has one dimension more than $[a_b,a_d) \in \operatorname{Pers}(H(\mathcal{V}))$, which is generated by $[\hat{\sigma}^{(-)}_d]$.
+It follows that $H((V_{bd})_n/\mathcal{V}_{bd})$ contributes a single interval of the form $[a_b,a_d)$, generated by the equivalence class $[\hat{\sigma}^{(\natural)}_b]$, and thus has one dimension more than $[a_b,a_d) \in \operatorname{Pers}(H(\mathcal{V}))$, which is generated by $[\hat{\sigma}^{(\natural)}_d]$.
 \end{proof}
 
 \begin{remark}
