@@ -635,13 +635,13 @@ reverse direction.
 	\end{align}
 	The data in Eq. \ref{matrix} and in Eq. \ref{transposed} can be summarized in a matrix and its transposed, respectively. The relative homology\index{homology} and cohomology\index{cohomology} persistence modules\index{modules}\index{persistence modules\index{modules}} are then defined as the homology\index{homology} of the persistence modules\index{modules}\index{persistence modules\index{modules}}:
 	\begin{align}
-		(C_{d}/\mathcal{C}):         & \quad C_{d} \rightarrow (C_{d}/C_{1}) \rightarrow (C_{d}/C_{2}) \rightarrow \cdots \rightarrow (C_{d}/C_{d-1}),                             \\
-		(C_{d}/\mathcal{C})^{\flat}: & \quad C_{d}^{\flat} \leftarrow (C_{d}/C_{1})^{\flat} \leftarrow (C_{d}/C_{2})^{\flat} \leftarrow \cdots \leftarrow (C_{d}/C_{d-1})^{\flat}.
+		(C_{d}/\mathcal{C}(X)):         & \quad C_{d} \rightarrow (C_{d}/C_{1}) \rightarrow (C_{d}/C_{2}) \rightarrow \cdots \rightarrow (C_{d}/C_{d-1}),                             \\
+		(C_{d}/\mathcal{C}(X))^{\flat}: & \quad C_{d}^{\flat} \leftarrow (C_{d}/C_{1})^{\flat} \leftarrow (C_{d}/C_{2})^{\flat} \leftarrow \cdots \leftarrow (C_{d}/C_{d-1})^{\flat}.
 	\end{align}
-	We note that the mappings $\rightarrow$ from $\mathcal{C}$ and the mappings $\leftarrow$
-	from $(C_{d}/\mathcal{C})^{\flat}$ are injective, while the mappings
-	$\leftarrow$ from $\mathcal{C}^{\flat}$ and the mappings $\rightarrow$ from
-	$(C_{d}/\mathcal{C})$ are surjective. Thus, absolute and relative cohomology\index{cohomology}
+	We note that the mappings $\rightarrow$ from $\mathcal{C}(X)$ and the mappings $\leftarrow$
+	from $(C_{d}/\mathcal{C}(X)^{\flat})$ are injective, while the mappings
+	$\leftarrow$ from $\mathcal{C}^{\flat}(X)$ and the mappings $\rightarrow$ from
+	$(C_{d}/\mathcal{C}(X))$ are surjective. Thus, absolute and relative cohomology\index{cohomology}
 	are structurally similar but qualitatively different from absolute homology\index{homology}
 	and relative homology\index{homology}.
 \end{example}
@@ -655,7 +655,7 @@ reverse direction.
 \cdots \arrow[r, "f^{i-1}_{i-2, k-1}"] & C_{k-1}^{i-1} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i}_{i-1, k-1}"] & C_{k-1}^{i} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i+1}_{i, k-1}"] & C_{k-1}^{i+1} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i+2}_{i+1, k-1}"]          & C_{k-1}^{i+2} \arrow[d, "\partial_{k-1}"] \arrow[r, "f^{i+3}_{i+2, k-1}"] & \cdots \\
                                   & \vdots                                                               & \vdots                                                           & \vdots                                                                        & \vdots                                                               &       
 \end{tikzcd}
-\caption{A persistent chain complex, where moving to the right increases the filtration\index{filtration} index, while moving downwards decreases the dimension. The maps $f_{i,k}^{i+1}$ correspond to the structure map from the $i$th to the $(i+1)$st chain group -- or vector space -- in filtration step $k$. The boundary operator is defined for the chain complex, restricting it for each element to the respective chain group.}
+\caption{A persistent chain complex, where moving to the right increases the filtration\index{filtration} index, while moving downwards decreases the dimension. The maps $f_{i,k}^{i+1}$ correspond to the structure map from the $i$th to the $(i+1)$st chain group over $\mathbb{Z}$ -- or vector space if we work over $\F$ -- in filtration step $k$. The boundary operator is defined for the chain complex, restricting it for each element to the respective chain group.}
 \end{figure}
 
 \begin{theorem}[Partition of persistence modules]
@@ -780,7 +780,7 @@ These are graded $\F[t]$ modules\index{modules} themselves. The operations $-^\c
 \subsection{Cohomology of Chain Complexes}
 Persistent relative cohomology\index{cohomology} is structurally similar to persistent absolute homology\index{homology} \cite[\S 2.7]{de2011dualities}. We adopt Morozov's notation for the reversed sequence:
 \begin{align}
-	(C_n / \mathcal{C})^\sharp &: \quad C_n^\sharp \leftarrow (C_n / C_1)^\sharp \leftarrow \cdots \leftarrow (C_n / C_{n-1})^\sharp, \\
+	(C_n / \mathcal{C}(X))^\sharp &: \quad C_n^\sharp \leftarrow (C_n / C_1)^\sharp \leftarrow \cdots \leftarrow (C_n / C_{n-1})^\sharp, \\
 	\mathcal{C}^\perp &: \quad C_1^\perp \rightarrow C_2^\perp \rightarrow \cdots \rightarrow C_n^\perp,
 \end{align}
 where we set \( C_i^\perp := (C_n / C_{n-i})^\sharp \). It is already known that \( \sigma_1^\sharp, \ldots, \sigma_n^\sharp \) form a basis of \( C_n^\sharp \), dual to the generators \( \sigma_1, \ldots, \sigma_n \) of \( C_n \). We define \( \tau_i = \sigma^\sharp_{n+1-i} \), leading to
