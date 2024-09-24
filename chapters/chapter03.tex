@@ -225,7 +225,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 Persistent homology\index{homology}\index{persistent homology\index{homology}} is derived by applying the homology\index{homology} functor to a filtration\index{filtration} of a topological space. This section will examine the concept of persistent modules\index{modules}, which serve to describe persistent homology\index{homology}\index{persistent homology\index{homology}} from an algebraic perspective. Similarly, as filtrations\index{filtrations} describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology\index{homology} vector spaces or modules\index{modules}, the dimension or rank of the associated homomorphisms are the $k$th Betti numbers, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
 
 \begin{definition}[Persistence module]{\cite[\S 1.1]{chazal2016structure}}
-A real persistence module $\mathcal{V}$ is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
+A real persistence module $\mathcal{C}(X)$ is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
 \begin{align}
 \phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r,s \in I: r \leq s,
 \end{align}
@@ -235,7 +235,7 @@ such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \ma
 We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\operatorname{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence Module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $\mathcal{V}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
+A persistence module is a functor $\mathcal{C}(X): (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
 V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
@@ -286,15 +286,15 @@ The following theorem describes the decomposition of any persistence module:
 
 \begin{theorem}[Decomposition]{\cite[\S 1.5]{chazal2016structure}}
 \label{decompositionPersistenceModules}
-Every persistence module $\mathcal{V}$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
+Every persistence module $\mathcal{C}(X)$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
 \begin{align}
-	\mathcal{V} \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
+	\mathcal{C}(X) \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
 \end{align}
 where $I_i \neq I_j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
 \end{theorem}
 
 \begin{proof}
-To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{V} = \{V_t, f_{s}^t\}_{s \leq t}$, we map $\mathcal{V}$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) := (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
+To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{C}(X) = \{V_t, f_{s}^t\}_{s \leq t}$, we map $\mathcal{C}(X)$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) := (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
 \begin{align}
 	M = \bigoplus_{t \in \mathbb{R}} V_t \cong \bigoplus_{i=0}^d T^{\alpha_i} \mathbb{F}[t] \oplus \bigoplus_j T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}).
 \end{align}
@@ -304,12 +304,12 @@ For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We s
 
 Now, suppose we have two decompositions:
 \begin{align}
-	\bigoplus_i \mathbb{F}(I_i) \cong \mathcal{V} \cong \mathcal{V}' \cong \bigoplus_j \mathbb{F}(J_j).
+	\bigoplus_i \mathbb{F}(I_i) \cong \mathcal{C}(X) \cong \mathcal{C}(X)' \cong \bigoplus_j \mathbb{F}(J_j).
 \end{align}
 Consider the composition of morphisms:
 \begin{align}
-	f_{ij}: &\mathbb{F}(I_i) \hookrightarrow \mathcal{V} \cong \mathcal{V}' \twoheadrightarrow \mathbb{F}(J_j),\\
-	g_{ij}: &\mathbb{F}(J_j) \hookrightarrow \mathcal{V}' \cong \mathcal{V} \twoheadrightarrow \mathbb{F}(I_i).
+	f_{ij}: &\mathbb{F}(I_i) \hookrightarrow \mathcal{C}(X) \cong \mathcal{C}(X)' \twoheadrightarrow \mathbb{F}(J_j),\\
+	g_{ij}: &\mathbb{F}(J_j) \hookrightarrow \mathcal{C}(X)' \cong \mathcal{C}(X) \twoheadrightarrow \mathbb{F}(I_i).
 \end{align}
 The equation $\sum_{i,j} g_{ij}f_{ij} = 1$ implies that at least one of the compositions $f_{ij}g_{ij} \neq 0$, yielding an isomorphism between $\mathbb{F}(I_i)$ and $\mathbb{F}(J_j)$ for some $i, j$. Since the interval modules\index{modules} are indecomposable and distinct intervals $I_i$ and $J_j$ cannot yield non-trivial morphisms between each other, this forces $I_i = J_j$ and $m_i = m_j$. 
 
@@ -317,29 +317,29 @@ By induction on the number of summands, we conclude that the multiplicities $m_i
 \end{proof}
 
 \begin{definition}[Barcode\index{barcode}]
-The barcode\index{barcode} associated with a persistence module $\mathcal{V}$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
+The barcode\index{barcode} associated with a persistence module $\mathcal{C}(X)$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
 \begin{align}
-	\mathcal{B}(\mathcal{V}) := \{(I_i, m_i)\}_{i=0}^d.
+	\mathcal{B}(\mathcal{C}(X)) := \{(I_i, m_i)\}_{i=0}^d.
 \end{align}
-Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I_i)$ in the decomposition of $\mathcal{V}$.
+Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I_i)$ in the decomposition of $\mathcal{C}(X)$.
 \end{definition}
 
-At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $\mathcal{V}$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
+At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $\mathcal{C}(X)$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
 
 \begin{definition}[Spectrum]
-A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{V}$ if, for every neighborhood $U_t$ of $t$, there exist $s < r$ in $U_t$ such that the map $f_{s}^t$ is not an isomorphism. The (finite) spectrum of $\mathcal{V}$ is defined as:
+A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{C}(X)$ if, for every neighborhood $U_t$ of $t$, there exist $s < r$ in $U_t$ such that the map $f_{s}^t$ is not an isomorphism. The (finite) spectrum of $\mathcal{C}(X)$ is defined as:
 \begin{align}
-	\text{Spec}(\mathcal{V}) := \{ \text{spectral points} \} \cup \{\infty\}.
+	\text{Spec}(\mathcal{C}(X)) := \{ \text{spectral points} \} \cup \{\infty\}.
 \end{align}
 \end{definition}
 
 \newpage
 \begin{remark}\noindent
 \begin{itemize}
-    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $s < r$ within this interval, the corresponding structure map $f_{s}^r$ of the persistence module $\mathcal{V}$ is an isomorphism. A point $t$ becomes a spectral point if, within any neighborhood $U_t$ around $t$, there exists a pair $(s, r)$ such that the map $f_{s}^r$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
-    \item The barcode\index{barcode} $\mathcal{B}(\mathcal{V})$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $t$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
-    \item The spectrum $\text{Spec}(\mathcal{V})$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
-    \item Since the persistence module $\mathcal{V}$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(\mathcal{V})$ represents the asymptotic behavior of $\mathcal{V}$, capturing the intervals of the form $(a, \infty)$.
+    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $s < r$ within this interval, the corresponding structure map $f_{s}^r$ of the persistence module $\mathcal{C}(X)$ is an isomorphism. A point $t$ becomes a spectral point if, within any neighborhood $U_t$ around $t$, there exists a pair $(s, r)$ such that the map $f_{s}^r$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
+    \item The barcode\index{barcode} $\mathcal{B}(\mathcal{C}(X))$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $t$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
+    \item The spectrum $\text{Spec}(\mathcal{C}(X))$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
+    \item Since the persistence module $\mathcal{C}(X)$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(\mathcal{C}(X))$ represents the asymptotic behavior of $\mathcal{C}(X)$, capturing the intervals of the form $(a, \infty)$.
 \end{itemize}
 \end{remark}
 
@@ -695,7 +695,7 @@ reverse direction.
 \end{proof}
 
 \begin{remark}{\cite[\S 2, p.516]{Edelsbrunner2000}}
-In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(\natural)$-simplex is called positive if it belongs to a $(\natural)$-cycle and negative if it doesn't, respectively:
+In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(\natural)$-simplex is called positive if it belongs to a $\natural$-cycle and negative if it doesn't, respectively:
 \begin{itemize}
 	\item $B$ identifies the positive simplices that remain unpaired,
 	\item $B^{\Join}$ identifies the positive simplices that do become paired,
@@ -711,32 +711,32 @@ $\partial_{(\natural)} \hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}
 \begin{theorem}{\cite[Proposition 2.4]{de2011dualities}}
 	For all integers $d \geq 0$, it holds that:
 	\begin{align*}
-		\mathrm{Pers}_0(H_{d}(\mathcal{X})) \cong \mathrm{Pers}_0(H_{d+1}(X_\infty, \mathcal{X})), \nonumber\\
-		\mathrm{Pers}_\infty(H_{d}(X_{\infty}, \mathcal{X})) \cong \mathrm{Pers}_\infty(H_{d}(X_{\infty}, \mathcal{X})).
+		\mathrm{Pers}_0(H_{d}(\mathcal{X})) \cong \mathrm{Pers}_0(H_{d+1}(X^\infty, \mathcal{X})), \nonumber\\
+		\mathrm{Pers}_\infty(H_{d}(X^{\infty}, \mathcal{X})) \cong \mathrm{Pers}_\infty(H_{d}(X^{\infty}, \mathcal{X})).
 	\end{align*}
 \end{theorem}
 
 \begin{proof}{\textit{\cite[Proof of Proposition 2.4]{de2011dualities}}}
-The decomposition $\{1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}^{(\natural)}_1, \hat{\sigma}^{(\natural)}_2, \ldots, \hat{\sigma}^{(\natural)}_d$ allow us to write the persistent chain complex $\mathcal{V}$ as a direct sum of persistent chain complexes, such that
+The decomposition $\{0,1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}^{(\natural)}_0, \hat{\sigma}^{(\natural)}_1, \ldots, \hat{\sigma}^{(\natural)}_d$ allow us to write the persistent chain complex $\mathcal{C}(X)$ as a direct sum of persistent chain complexes, such that
 \begin{align}
-	\mathcal{V} &= \bigoplus_{b^\Join \in B^\Join} \mathcal{V}_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{V}_{bd} \nonumber\\
+	\mathcal{C}(X) &= \bigoplus_{b^\Join \in B^\Join} \mathcal{C}(X)_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{C}(X)_{bd} \nonumber\\
 	&= \bigoplus_{b^\Join \in B^\Join} \langle \hat{\sigma}_{b^\Join} \rangle \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \langle \hat{\sigma}_{b}, \hat{\sigma}_{d} \rangle.
 \end{align}
-The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((V_d/\mathcal{V}),\partial)$ separately for each summand. For summands of the form $\mathcal{V}_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
+The boundary operator is compatible with this decomposition, where $\partial$ for each summand is defined as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((C_d/\mathcal{C}(X)),\partial)$ separately for each summand. For summands of the form $\mathcal{C}(X)_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
 \begin{align}
-	((V_{b^{\Join}})_d/\mathcal{V}_{b^\Join})&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	((C_{b^{\Join}})_d/\mathcal{C}(X)_{b^\Join})&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\ker(\partial)&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\operatorname{im}(\partial)&: \quad 0 \rightarrow 0,\nonumber\\
-	H := \ker(\partial) / \operatorname(im)(\partial)&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0.
+	H := \ker(\partial) / \operatorname{im}(\partial)&: \quad \langle \hat{\sigma}^{(\natural)}_{b^\Join}\rangle \rightarrow 0.
 \end{align}
-It follows that $H((V_{b^\Join})_d/\mathcal{V}_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}^{(\natural)}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{V}))$. For summands of the type $\mathcal{V}_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,d-1\}$, and $\{d,\ldots, n-1\}$, or explicitly:
+It follows that $H((C_{b^\Join})_d/\mathcal{C}(X)_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}^{(\natural)}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{C}(X)))$. For summands of the type $\mathcal{C}(X)_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,d-1\}$, and $\{d,\ldots, n-1\}$, or explicitly:
 \begin{align}
-((V_{bd})_n/\mathcal{V}_{bd}) &: \quad \langle \hat{\sigma}^{(\natural)}_b, \hat{\sigma}^{(\natural)}_d \rangle \rightarrow \langle \hat{\sigma}^{(\natural)}_d \rangle \rightarrow 0,\nonumber\\
+((C_{bd})_n/\mathcal{C}(X)_{bd}) &: \quad \langle \hat{\sigma}^{(\natural)}_b, \hat{\sigma}^{(\natural)}_d \rangle \rightarrow \langle \hat{\sigma}^{(\natural)}_d \rangle \rightarrow 0,\nonumber\\
 \ker(\partial) &: \quad \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow \langle \hat{\sigma}^{(\natural)}_d \rangle \rightarrow 0, \nonumber\\
 \operatorname{im}(\partial) &: \quad \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow 0 \rightarrow 0,\nonumber\\
 H := \ker{\partial} / \operatorname{im}(\partial) &: \quad 0 \rightarrow \langle \hat{\sigma}^{(\natural)}_b \rangle \rightarrow 0.
 \end{align}
-It follows that $H((V_{bd})_n/\mathcal{V}_{bd})$ contributes a single interval of the form $[a_b,a_d)$, generated by the equivalence class $[\hat{\sigma}^{(\natural)}_b]$, and thus has one dimension more than $[a_b,a_d) \in \operatorname{Pers}(H(\mathcal{V}))$, which is generated by $[\hat{\sigma}^{(\natural)}_d]$.
+It follows that $H((C_{bd})_n/\mathcal{C}(X)_{bd})$ contributes a single interval of the form $[a_b,a_d)$, generated by the equivalence class $[\hat{\sigma}^{(\natural)}_b]$, and thus has one dimension more than $[a_b,a_d) \in \operatorname{Pers}(H(\mathcal{C}(X)))$, which is generated by $[\hat{\sigma}^{(\natural)}_d]$.
 \end{proof}
 
 \begin{remark}
