@@ -658,9 +658,9 @@ reverse direction.
 \end{figure}
 
 \begin{theorem}[Partition of persistence modules]
-	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{V}$ be given and $\partial$ as above, then there
-	exists a partition $\{1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$. Furthermore, there is a basis
-	$\hat{\sigma}^{(\natural)}_{1}, \hat{\sigma}^{(\natural)}_{2}, \ldots, \hat{\sigma}^{(\natural)}_{d}$ of $V_{d}$ such
+	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}(X)$ be given and $\partial$ as above, then there
+	exists a partition $\{0,1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$. Furthermore, there is a basis
+	$\hat{\sigma}^{(\natural)}_{1}, \hat{\sigma}^{(\natural)}_{2}, \ldots, \hat{\sigma}^{(\natural)}_{d}$ of $C_{d}$ such
 	that
 	\begin{itemize}
 		\item $V_{i} = \langle \hat{\sigma}^{(\natural)}_{1}, \ldots, \hat{\sigma}^{(\natural)}_{i} \rangle$ for
@@ -670,7 +670,7 @@ reverse direction.
 			$\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
 	\end{itemize}
 	It follows that the persistence diagram
-	$\operatorname{Pers}(H(\mathcal{V},\partial))$ consists of $[a_{b}, \infty)$ for
+	$\operatorname{Pers}(H(\mathcal{C}(X),\partial))$ consists of $[a_{b}, \infty)$ for
 	$b \in B^{\Join}$ together with intervals $[a_{b},a_{d})$ for
 	$[b,d) \in \operatorname{Pairs}$.
 \end{theorem}
@@ -678,16 +678,16 @@ reverse direction.
 \begin{proof}
 	Let $\mathcal{V}= \{V_{i}\}_{i \in I}$ be a filtered chain complex associated with
 	a topological space, structured over a field $\F$ for any finite index
-	set $I$. The filtration\index{filtration} indices ${1, 2, \ldots, d}$, where $d = \vert I \vert$,
+	set $I$. The filtration\index{filtration} indices ${0, 1, 2, \ldots, d}$, where $d = \vert I \vert$,
 	classify the stages at which elements are born or die in homology\index{homology}. The
-	partition of $\{1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{(\natural)}\sigma^{(\natural)}_{i} = 0$ and $\sigma^{(\natural)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(\natural)}_i}$ such that for each $i$, $\hat{\sigma}^{(\natural)}
+	partition of $\{0, 1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{(\natural)}\sigma^{(\natural)}_{i} = 0$ and $\sigma^{(\natural)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(\natural)}_i}$ such that for each $i$, $\hat{\sigma}^{(\natural)}
 	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in B^{\Join}$, then
 	$\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{i} = 0$, indicating these elements are cycles that persist
-	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{V}, \partial)$
+	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$
 	with $b \in B$ and $d \in D$, set $\partial_{(\natural)}\hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$
 	and $\partial_{(\natural)}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
 	$\hat{\sigma}^{(\natural)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
-	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{V}, \partial))$ contains
+	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{C}(X), \partial))$ contains
 	intervals $[a_{b}, \infty)$ for each $b \in B^{\Join}$, indicating persistent
 	homological features and intervals $[a_{b}, a_{d})$ for each
 	$[b, d) \in \operatorname{Pairs}$, describing features with finite lifespans,
