@@ -22,16 +22,16 @@ A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimen
 \begin{definition}[Cell complex]
 A cell complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
 \begin{align}
-\mathcal{X}: \quad \emptyset \subset X_0 \subset X_1 \subset X_2 \subset \cdots \subseteq X = \bigcup_{k=0}^{\infty} X_k =: X_\infty
+\mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subseteq X = \bigcup_{k=0}^{\infty} X^k =: X^\infty
 \end{align}
 such that:
 \begin{enumerate}
-    \item \(X_0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X_k\) is obtained from \(X_{k-1}\) by attaching a collection of \((-)\)-cells \(\{\sigma^{(-)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{(-)-1} \to X_{k-1}\) from the $(-)-1$-sphere, where \(I_k\) is an indexing set for the \((-)\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \((-)\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \((-)\)-cell \(\sigma^{(-)}_a\) in the set of all \((-)\)-cells of the complex. Specifically,
+    \item \(X^0\) is a discrete set of points.
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \((-)\)-cells \(\{\sigma^{(-)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{(-)-1} \to X^{k-1}\) from the $(-)-1$-sphere, where \(I_k\) is an indexing set for the \((-)\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \((-)\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \((-)\)-cell \(\sigma^{(-)}_a\) in the set of all \((-)\)-cells of the complex. Specifically,
 \begin{align}
-    X_k = X_{k-1} \cup \bigcup_{a \in I_k} \sigma^{(-)}_a,
+    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(-)}_a,
 \end{align}
-    where each \(\sigma^{(-)}_a \cong \mathbb{B}^k\) and \(\sigma^{(.)}_a \cap X_{k-1} = \varphi_a(S^{(-)-1})\).
+    where each \(\sigma^{(-)}_a \cong \mathbb{B}^k\) and \(\sigma^{(.)}_a \cap X^{k-1} = \varphi_a(S^{(-)-1})\).
     \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(-)}_a\}\).
 \end{enumerate}
 \end{definition}
@@ -40,7 +40,7 @@ such that:
 A cell complex satisfies the following conditions:
 \begin{itemize}
     \item The closure \(\overline{\sigma^{(m)}_a}\) intersects only finitely many cells \(\sigma^{(n)}_b\) for \(n \leq m, n,m \in \mathbb{N}_0\).
-    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X_k\) is closed in \(X_k\) for all \(k \in \mathbb{N}_0\).
+    \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}_0\).
 \end{itemize}
 \end{remark}
 
@@ -592,7 +592,7 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
 can be described via a filtered cell complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(-)}$, adding cells for each filtration step, so that the persistence module is the sequence
 \[
-	\mathcal{V}: \quad V_{1} \to V_{2} \to \cdots \to V_{d},
+	\mathcal{C}: \quad C^{0} \to C^{1} \to C^{2} \to \cdots \to C^{d},
 \]
 for a finite filtration\index{filtration}, where each $V_{i} := \langle \{\sigma^{(-)}_a\}_{a \in I_0}, \{\sigma^{(-)}_a\}_{a \in I_1}, \ldots, \{\sigma^{(-)}_a\}_{a \in I_i}
 \rangle$ is a vector space (or an abelian group) over a field $\F$,
