@@ -538,15 +538,15 @@ H_{d}(X_{i}; \F) \rightarrow H_{d}(X_{j}; \F) \quad \text{and} \quad H^{d}(X_{i}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a finite filtration\index{filtration} $X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are 
+Consider a finite filtration\index{filtration} $X_{0} \subset X_{1} \subset X_{2} \subset \cdots \subset X_d \subseteq X_{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X_{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X_{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X_{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X_{\infty}, X)$. For this concatenated sequence, the indices are 
 \begin{align}
-\{1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
+\{0, 1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
 \end{align}
 using the $\flat$ symbol to indicate relative homology\index{homology} part of the sequence. This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
 \begin{enumerate}
-	\item $(p, q)$ where $1 \leq p \leq q < d$, denoted as $[p, q+1)$ or $[a_{p}, a_{q+1})$.
+	\item $(p, q)$ where $0 \leq p \leq q < d$, denoted as $[p, q+1)$ or $[a_{p}, a_{q+1})$.
 	\item $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq d-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
-	\item $(p, q^{\flat})$ where $1 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
+	\item $(p, q^{\flat})$ where $0 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
 \end{enumerate}
 
 \begin{corollary}{\cite[Proposition 2.5]{de2011dualities}}
