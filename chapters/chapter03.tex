@@ -542,21 +542,21 @@ are adjoint and hence possess the same rank. Since the persistence intervals ove
 
 Consider a finite filtration\index{filtration} $X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X^d \subseteq X^{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X^{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X^{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X^{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X^{\infty}, X)$. For this concatenated sequence, the indices are 
 \begin{align}
-\{0, 1, 2, \ldots, d = 0^{\flat}, 1^{\flat}, 2^{\flat}, \ldots, (d-1)^{\flat}\},
+\{0, 1, 2, \ldots, d = \bar{0}, \bar{1}, \bar{2}, \ldots, \overline{(d-1)}\},
 \end{align}
-using the $\flat$ symbol to indicate relative homology\index{homology} part of the sequence. This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
+using the barred numbers to indicate relative homology\index{homology} part of the sequence. This structure allows us to discuss the persistence diagram associated with this homological configuration. The persistence intervals in this diagram can generally be categorized into three types:
 \begin{enumerate}
 	\item $(p, q)$ where $0 \leq p \leq q < d$, denoted as $[p, q+1)$ or $[a_{p}, a_{q+1})$.
-	\item $(p^{\flat}, q^{\flat})$ where $0 < p \leq q \leq d-1$, denoted as $[p^{\flat}, q^{\flat}+1)$ or $[a_{p^\flat}, a_{q^\flat+1})$.
-	\item $(p, q^{\flat})$ where $0 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, q^{\flat}+1)$ or $[a_{p}, a_{q^\flat+1})$.
+	\item $(\bar{p}, \bar{q})$ where $0 < p \leq q \leq d-1$, denoted as $[\bar{p}, \bar{q}+1)$ or $[a_{\bar{p}}, a_{\bar{q}+1})$.
+	\item $(p, \bar{q})$ where $0 \leq p \leq d, 0 \leq q \leq d-1$, denoted as $[p, \bar{q}+1)$ or $[a_{p}, a_{\bar{q}+1})$.
 \end{enumerate}
 
 \begin{corollary}{\cite[Proposition 2.5]{de2011dualities}}
 The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X^{\infty}, \mathcal{X}))$ comprises the following collections of intervals, which match the previously discussed types of intervals bijectively:
 \begin{enumerate}
     \item An interval $[a, b)$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k}(\mathcal{X}))$.
-    \item An interval $[a^{\flat}, b^{\flat})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k-1}(\mathcal{X}))$.
-    \item An interval $[a, a^{\flat})$ for every interval $[a, \infty)$ in $\mathrm{Pers}_{\infty}(H_{k}(\mathcal{X}))$.
+    \item An interval $[\bar{a}, \bar{b})$ for every interval $[a, b)$ in $\mathrm{Pers}_{0}(H_{k-1}(\mathcal{X}))$.
+    \item An interval $[a, \bar{a})$ for every interval $[a, \infty)$ in $\mathrm{Pers}_{\infty}(H_{k}(\mathcal{X}))$.
 \end{enumerate}
 \end{corollary}
 
@@ -569,11 +569,11 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 	correspondence $\mathrm{Pers}_{0}(H_{k}(X^{\infty}, X)) = \mathrm{Pers}_{0}(H_{k-1}(X))$
 	helps in mapping these relationships.
 
-	The third case requires examining intervals of the form $[a, b^{\flat})$ and
-	proving that they are invariably of the form $[a, a^{\flat})$, which means that
+	The third case requires examining intervals of the form $[a, \bar{b})$ and
+	proving that they are invariably of the form $[a, \bar{a})$, which means that
 	the paired intervals $[a,\infty)$ and $[-\infty,a)$ in $\mathrm{Pers}_{\infty}(
 	H_{k}(\X))$ and $\mathrm{Pers}_{\infty}(H_{k}(X^{\infty}, \X))$ are restrictions
-	of a single interval $[a,a^{\flat})$ in the concatenated sequence \cite[Proof of Proposition 2.5]{de2011dualities}.
+	of a single interval $[a,\bar{a})$ in the concatenated sequence \cite[Proof of Proposition 2.5]{de2011dualities}.
 	To establish this, we compare the ascending filtration\index{filtration} defined by the images of
 	$H_{k}(X^{i})$ in $H_{k}(X^{d})$ for $i = 0, 1, 2, \ldots, d-1$ (denoted as
 	$\operatorname{im}(H_{k}(X^{i}) \to H_{k}(X^{d}))$) with the descending filtration\index{filtration} defined
@@ -587,7 +587,7 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 	(H_{k}(X^{i}) \to H_{k}(X^{d}))$ that becomes a boundary in $H_{k}(X^{d}, X^{i}
 	)$ must vanish, thus equating the image and kernel. As a result, both
 	filtrations\index{filtrations} align perfectly, establishing that the third type of interval indeed
-	maps to self-closing intervals of the form $[a, a^{\flat})$.
+	maps to self-closing intervals of the form $[a, \bar{a})$.
 \end{proof}
 
 \subsection{Persistent Chain Complexes}
