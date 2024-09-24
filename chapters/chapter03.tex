@@ -345,7 +345,7 @@ A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\
 
 \subsection{Persistent Homology on Complexes}
 \label{PersistentHomologyonComplexes}
-In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H(\natural)$
+In the context of algebraic topology\index{topology}, applying the homology\index{homology} functor $H(-)$
 to a finite filtration\index{filtration} of a topological space $\mathcal{X}$ yields a sequence of algebraic structures:
 \begin{equation}
 	H(\mathcal{X}): \quad H(X^0) \rightarrow H(X^{1}) \to H(X^{2}) \to \cdots
@@ -395,7 +395,7 @@ as they represent ephemeral topological features\index{topological features}.
 		H_{\bullet}(X^{\infty}, \mathcal{X}) & : \quad H_{\bullet}(X^{d}) \rightarrow H_{\bullet}(X^{d},X^{0}) \rightarrow H_{\bullet}(X^{d},X^{1}) \rightarrow \cdots \rightarrow H_{\bullet}(X^{d},X^{d-1}), \\
 		H^{\bullet}(X^{\infty}, \mathcal{X}) & : \quad H^{\bullet}(X^{d}) \leftarrow H^{\bullet}(X^{d},X^{0}) \leftarrow H^{\bullet}(X^{d},X^{1}) \leftarrow \cdots \leftarrow H^{\bullet}(X^{d}, X^{d-1}).
 	\end{align*}
-	\caption{The four standard persistence modules are from top to bottom: persistent absolute homology, persistent absolute cohomology, persistent relative homology and persistent relative cohomology. The $\bullet$ indicates (co)homology in every dimension simultaneously. We can also write $H^{\bullet}(X {d}, \mathcal{X}), H_{\bullet}(X^{d}, \mathcal{X})$ or $H^{\bullet}(X, \mathcal{X}), H_{\bullet}(X, \mathcal{X})$ instead of $H^{\bullet}(X_{\infty}, \mathcal{X}), H_{\bullet}(X^{\infty}, \mathcal{X})$, as the $k$th homology groups for $k > d$ become trivial.}
+	\caption{The four standard persistence modules are from top to bottom: persistent absolute homology, persistent absolute cohomology, persistent relative homology and persistent relative cohomology. The $(\bullet)$ indicates the direct sum of (co)homology over dimension, in other words the absolute homology. We can also write $H^{\bullet}(X^{d}, \mathcal{X}), H_{\bullet}(X^{d}, \mathcal{X})$ or $H^{\bullet}(X, \mathcal{X}), H_{\bullet}(X, \mathcal{X})$ instead of $H^{\bullet}(X^{\infty}, \mathcal{X}), H_{\bullet}(X^{\infty}, \mathcal{X})$, as the $k$th homology groups for $k > d$ become trivial.}
 \end{figure}
 The standard module of absolute persistent homology\index{homology}\index{persistent homology\index{homology}}, $H_{\bullet}(\mathcal{X})$, illustrates how the absolute homology\index{homology} groups
 $H_{\bullet}(X_{i})$ relate to each other as the index $i$ changes. Similar observations
