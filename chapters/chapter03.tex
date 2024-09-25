@@ -41,7 +41,7 @@ such that:
 \begin{remark}
 A CW-complex satisfies the following conditions:
 \begin{itemize}
-    \item The closure \(\overline{\sigma^{(m)}_i}\) intersects only finitely many cells \(\sigma^{(n)}_j\) for \(n \leq m, \text{and } n,m,i,j \in \mathbb{N}_0\).
+    \item The closure \(\overline{\sigma^{(m)}_i}\) intersects finitely many cells \(\sigma^{(n)}_j\) for \(n \leq m, \text{and } n,m,i,j \in \mathbb{N}_0\).
     \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}_0\).
 \end{itemize}
 \end{remark}
@@ -55,14 +55,14 @@ Let \(K\) be a simplicial complex. We construct \(K\) as a CW-complex by
 \begin{align}
 \mathcal{K}: \quad \emptyset \subset K^0 \subset K^1 \subset K^2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K^k,
 \end{align}
-where \(K^k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(\natural\)-simplex \(\sigma^{(\natural)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(\natural)}} : \partial_{\natural} \sigma^{(\natural)} \to K^{k-1}\), where \(\partial_{\natural} \sigma^{(\natural)}\) is the boundary of \(\sigma^{(\natural)}\). Each \(\sigma^{(\natural)}\) is homeomorphic to an open \(\natural\)-ball \(\mathbb{B}^{\natural}\), and \(\partial_{\natural} \sigma^{(\natural)}\) is homeomorphic to the \((\natural-1)\)-sphere \(S^{\natural-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a CW-complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $\natural, k$.
+where \(K^k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(k\)-simplex \(\sigma^{(k)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(k)}} : \partial_{k} \sigma^{(k)} \to K^{k-1}\), where \(\partial_{k} \sigma^{(k)}\) is the boundary of \(\sigma^{(k)}\). Each \(\sigma^{(k)}\) is homeomorphic to an open \(k\)-ball \(\mathbb{B}^{\natural}\), and \(\partial_{k} \sigma^{(k)}\) is homeomorphic to the \((k-1)\)-sphere \(S^{k-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a CW-complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered CW-complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_0$ the index set of all $\natural$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(\natural)}\}_{a \in I_{k}}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level, such that $a \in [k,k+1)$. The dimension of the simplex, denoted by $\natural$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered CW-complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{0}\) starts with vertices \(\sigma^{(0)}\), and each subsequent complex \(X_{i}\) is constructed by adding a single cell to the previous complex $X^{k} := X^{k-1} \cup \sigma^{(k)}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
 
 \begin{example}{\cite[\S 2.2, Example]{de2011dualities}}
 	\label{filteredsphere}
-	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^2$. This process constructs a CW-complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S^{2}$ consists of two distinct points. In $S^{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S^{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S^{3}$. Finally, $S^{5}$ and $S^{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
+	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^2$. This process constructs a CW-complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{0}^{(0)}$ stands for the initial point. The set $S^{1}$ consists of two distinct points. In $S^{2}$ a path connecting $\sigma_{0}^{(0)}$ and $\sigma_{1}^{(0)}$ is added. $S^{3}$ extends this path with its reversal, from $\sigma_{1}^{(0)}$ to $\sigma_{0}^{(0)}$, thus distinguishing it from the path in $S^{2}$. Finally, $S^{4}$ and $S^{5}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 	\begin{figure}[H]%
 	    \centering
 	    \subfloat{
@@ -75,9 +75,9 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill[color=white] (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
 				  \node at (1.67,0.1) {};
-				  \node at (-1.5,1.2) {$S^1$};
+				  \node at (-1.5,1.2) {$S^0$};
 				\end{tikzpicture}
 	    }%
 	    \hfill
@@ -91,9 +91,9 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
-				  \node at (1.67,0.1) {$\sigma_2^{(0)}$};
-				  \node at (-1.5,1.2) {$S^2$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
+				  \node at (1.67,0.1) {$\sigma_1^{(0)}$};
+				  \node at (-1.5,1.2) {$S^1$};
 				\end{tikzpicture}
 	    }%
 	    \hfill
@@ -107,10 +107,10 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
-				  \node at (1.67,0.1) {$\sigma_2^{(0)}$};
-				  \node[fill=white] at (0,-0.4) {$\sigma_3^{(1)}$};
-				  \node at (-1.5,1.2) {$S^3$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
+				  \node at (1.67,0.1) {$\sigma_1^{(0)}$};
+				  \node[fill=white] at (0,-0.4) {$\sigma_2^{(1)}$};
+				  \node at (-1.5,1.2) {$S^2$};
 				\end{tikzpicture}
 	    }%
 	    \newline
@@ -124,11 +124,11 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
-				  \node at (1.67,0.1) {$\sigma_2^{(0)}$};
-				  \node[fill=white] at (0,-0.4) {$\sigma_3^{(1)}$};
-				  \node[fill=white] at (0,0.4) {$\sigma_4^{(1)}$};
-				  \node at (-1.5,1.2) {$S^4$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
+				  \node at (1.67,0.1) {$\sigma_1^{(0)}$};
+				  \node[fill=white] at (0,-0.4) {$\sigma_2^{(1)}$};
+				  \node[fill=white] at (0,0.4) {$\sigma_3^{(1)}$};
+				  \node at (-1.5,1.2) {$S^3$};
 				\end{tikzpicture}
 	    }%
 	    \hfill
@@ -142,11 +142,11 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=white, looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
-				  \node at (1.67,0.1) {$\sigma_2^{(0)}$};
-				  \node[fill=white] at (0,-0.4) {$\sigma_3^{(1)}$};
-				  \node[fill=white] at (0,0.4) {$\sigma_4^{(1)}$};
-				  \node[fill=white] at (-1.1,-0.8) {$\sigma_5^{(2)}$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
+				  \node at (1.67,0.1) {$\sigma_1^{(0)}$};
+				  \node[fill=white] at (0,-0.4) {$\sigma_2^{(1)}$};
+				  \node[fill=white] at (0,0.4) {$\sigma_3^{(1)}$};
+				  \node[fill=white] at (-1.1,-0.8) {$\sigma_4^{(2)}$};
 				  \coordinate (a) at (-0.67cm,-0.52cm);
 				  \coordinate (b) at (-0.47cm,-0.9cm);
 				  \coordinate (c) at (-0.75cm,-0.65cm);
@@ -159,7 +159,7 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=gray, looseness=1] (c) to[out=-20, in=200] (d);
 				  \draw[color=gray, looseness=1] (c') to[out=-20, in=200] (d');
 				  \draw[color=gray, looseness=0.6] (a') to[out=250, in=160] (b');
-				  \node at (-1.5,1.2) {$S^5$};
+				  \node at (-1.5,1.2) {$S^4$};
 				\end{tikzpicture}
 	    }%
 	    \hfill
@@ -173,12 +173,12 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[looseness=1.6] (1) to[out=90, in=-270] (2);
 				  \fill (canvas cs:x=-1.3cm,y=0cm) circle (2pt);
 				  \fill (canvas cs:x=1.3cm,y=0cm) circle (2pt);
-				  \node at (-1.6,0.1) {$\sigma_1^{(0)}$};
-				  \node at (1.67,0.1) {$\sigma_2^{(0)}$};
-				  \node[fill=white] at (0,-0.4) {$\sigma_3^{(1)}$};
-				  \node[fill=white] at (0,0.4) {$\sigma_4^{(1)}$};
-				  \node[fill=white] at (-1.1,-0.8) {$\sigma_5^{(2)}$};
-				  \node[fill=white] at (1.2,1) {$\sigma_6^{(2)}$};
+				  \node at (-1.6,0.1) {$\sigma_0^{(0)}$};
+				  \node at (1.67,0.1) {$\sigma_1^{(0)}$};
+				  \node[fill=white] at (0,-0.4) {$\sigma_2^{(1)}$};
+				  \node[fill=white] at (0,0.4) {$\sigma_3^{(1)}$};
+				  \node[fill=white] at (-1.1,-0.8) {$\sigma_4^{(2)}$};
+				  \node[fill=white] at (1.2,1) {$\sigma_5^{(2)}$};
 				  \coordinate (a) at (-0.67cm,-0.52cm);
 				  \coordinate (b) at (-0.47cm,-0.9cm);
 				  \coordinate (c) at (-0.75cm,-0.65cm);
@@ -203,20 +203,20 @@ We investigate the persistent topology\index{topology} of filtered topological s
 				  \draw[color=gray, looseness=0.7] (g) to[out=-40, in=40] (h);
 				  \draw[color=gray, looseness=0.7] (g') to[out=0, in=-250] (h');
 				  \draw[color=gray, looseness=0.3] (e') to[out=-30, in=20] (f');
-				  \node at (-1.5,1.2) {$S^6$};
+				  \node at (-1.5,1.2) {$S^5$};
 				\end{tikzpicture}
 	    }%
 	\end{figure}
-
 	\begin{itemize}
 		\item[$\mathcal{S}^{2}:$] $\emptyset$
-		\item[$\subset$] $S^{1} := \{\sigma_{1}^{(0)}\}$
-		\item[$\subset$] $S^{2} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}\}$
-		\item[$\subset$] $S^{3} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)} := (\sigma_{1}^{(0)}, \sigma_{2}^{(0)})\}$
-		\item[$\subset$] $S^{4} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)} := (\sigma_{2}^{(0)}, \sigma_{1}^{(0)})\}$
-		\item[$\subset$] $S^{5} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)} := (\sigma_{3}^{(1)}, \sigma_{4}^{(1)})\}$
-		\item[$\subset$] $S^{6} := \{\sigma_{1}^{(0)}, \sigma_{2}^{(0)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)}, \sigma_{6}^{(2)} := (\sigma_{4}^{(1)}, \sigma_{3}^{(1)})\}.$
+		\item[$\subset$] $S^{0} := \{\sigma_{0}^{(0)}\}$
+		\item[$\subset$] $S^{1} := \{\sigma_{0}^{(0)}, \sigma_{1}^{(0)}\}$
+		\item[$\subset$] $S^{2} := \{\sigma_{0}^{(0)}, \sigma_{1}^{(0)}, \sigma_{2}^{(1)} := (\sigma_{0}^{(0)}, \sigma_{1}^{(0)})\}$
+		\item[$\subset$] $S^{3} := \{\sigma_{0}^{(0)}, \sigma_{1}^{(0)}, \sigma_{2}^{(1)}, \sigma_{3}^{(1)} := (\sigma_{1}^{(0)}, \sigma_{1}^{(0)})\}$
+		\item[$\subset$] $S^{4} := \{\sigma_{0}^{(0)}, \sigma_{1}^{(0)}, \sigma_{2}^{(1)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)} := (\sigma_{2}^{(1)}, \sigma_{3}^{(1)})\}$
+		\item[$\subset$] $S^{5} := \{\sigma_{0}^{(0)}, \sigma_{1}^{(0)}, \sigma_{2}^{(1)}, \sigma_{3}^{(1)}, \sigma_{4}^{(1)}, \sigma_{5}^{(2)} := (\sigma_{3}^{(1)}, \sigma_{2}^{(1)})\}.$
 	\end{itemize}
+	In this example we have six cells $\sigma_0^{(0)}, \ldots, \sigma_5^{(0)}$ with birth times $a_i = i$ for $i = 0, \ldots, 5$.
 \end{example}
 \vspace{0.2cm}
 
