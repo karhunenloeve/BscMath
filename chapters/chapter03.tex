@@ -29,19 +29,19 @@ A cell complex is a Hausdorff topological space \(X\) together with a filtration
 such that:
 \begin{enumerate}
     \item \(X^0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(\natural\)-cells \(\{\sigma^{(\natural)}_a\}_{a \in I_k}\) via continuous maps \(\varphi_a : S^{\natural-1} \to X^{k-1}\) from the $(\natural-1)$-sphere, where \(I_k\) is an indexing set for the \(\natural\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(\natural\)-cells. Each \(a \in I_k\) is an index that uniquely identifies a \(\natural\)-cell \(\sigma^{(\natural)}_a\) in the set of all \(\natural\)-cells of the complex. Specifically,
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_i\}_{i \in I_k}\) via continuous maps \(\varphi_i : S^{k-1} \to X^{k-1}\) from the $(k-1)$-sphere, where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(i \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_i\) in the set of all \(k\)-cells of the complex. Specifically,
 \begin{align}
-    X^k = X^{k-1} \cup \bigcup_{a \in I_k} \sigma^{(\natural)}_a,
+    X^k = X^{k-1} \cup \bigcup_{i \in I_k} \sigma^{(k)}_i,
 \end{align}
-    where each \(\sigma^{(\natural)}_a \cong \mathbb{B}^k\) and \(\sigma^{(\natural)}_a \cap X^{k-1} = \varphi_a(S^{\natural-1})\).
-    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(\natural)}_a\}\).
+    where each \(\sigma^{(k)}_i \cong \mathbb{B}^k\) and \(\sigma^{(k)}_i \cap X^{k-1} = \varphi_i(S^{k-1})\).
+    \item The topology\index{topology} on \(X\) is the weak topology\index{topology} with respect to the cells \(\{\sigma^{(k)}_i\}\).
 \end{enumerate}
 \end{definition}
 
 \begin{remark}
 A cell complex satisfies the following conditions:
 \begin{itemize}
-    \item The closure \(\overline{\sigma^{(m)}_a}\) intersects only finitely many cells \(\sigma^{(n)}_b\) for \(n \leq m, n,m \in \mathbb{N}_0\).
+    \item The closure \(\overline{\sigma^{(m)}_i}\) intersects only finitely many cells \(\sigma^{(n)}_j\) for \(n \leq m, n,m,i,j \in \mathbb{N}_0\).
     \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}_0\).
 \end{itemize}
 \end{remark}
