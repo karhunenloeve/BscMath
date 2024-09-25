@@ -745,24 +745,24 @@ It follows that $H((C_{bd})_d/\mathcal{C}(X)_{bd})$ contributes a single interva
 	with a dimension shift for the finite intervals.
 \end{remark}
 
-In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a finite filtration\index{filtration} of a topological space $ \mathcal{X} : X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n = X$, with chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $n$ generators $\sigma_1, \ldots, \sigma_n$, where $\sigma_i$ has degree $i$. The associated chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \) have inclusions \( X_i \subseteq X_{i+1} \) that induce chain maps \( f_{i,i+1}: C(X_i) \to C(X_{i+1}) \). The boundary operator $\partial: \mathcal{C} \rightarrow \mathcal{C}$ is a homomorphism of graded modules\index{modules}. We define the pointwise dual as the dual to the ground field $\F$, such that
+In this closing argument, we will prove the four statements in Morozov's paper that were left open for the reader \cite[\S 2.8]{de2011dualities}. Consider a finite filtration\index{filtration} of a topological space $X_0 \subseteq X_1 \subseteq \cdots \subseteq X_d = X$, with chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \). We regard $\mathcal{C}$ as a free module over $\F[t]$ with $d$ generators $\sigma^{(\natural)}_0, \sigma^{(\natural)}_1, \ldots, \sigma^{(\natural)}_d$, where $\sigma^{(\natural)}_i$ has degree $i$. This means w.l.o.g. that we add only a single cell at a time for each step within the filtration. The associated chain complexes\index{chain complexes} \( C(X_i) \) over \( \mathbb{F} \) have inclusions \( X_i \subseteq X_{i+1} \) that induce structure maps \( f_{i}^{i+1}: C(X_i) \to C(X_{i+1}) \). The boundary operator $\partial: \mathcal{C}(X) \rightarrow \mathcal{C}(X)$ is a homomorphism of graded modules\index{modules}. We define the pointwise dual as the dual to the ground field $\F$, such that
 \begin{align}
-\mathcal{C}^\dagger &= \Hom_\F(\mathcal{C},\F), \\
-C^\dagger_n&: C_{-n} \rightarrow \F \; \text{is a linear map.}
+\mathcal{C}^\dagger(X) &= \Hom_\F(\mathcal{C}(X),\F), \\
+C^\dagger_d&: C_{-d} \rightarrow \F \; \text{is a linear map.}
 \end{align}
 Analogously, we define the global dual as dual to the polynomial ring $\F[t]$:
 \begin{align}
-\mathcal{C}^\circ &= \Hom_{\F[t]}(\mathcal{C},\F[t]), \\
-C^\circ_n&: \mathcal{C} \rightarrow \F[t] \; \text{graded module homomorphism of degree $n$.}
+\mathcal{C}^\circ(X) &= \Hom_{\F[t]}(\mathcal{C}(X),\F[t]), \\
+C^\circ_d&: \mathcal{C}(X) \rightarrow \F[t] \; \text{graded module homomorphism of degree $d$.}
 \end{align}
-These are graded $\F[t]$ modules\index{modules} themselves. The operations $-^\circ$ and $-\dagger$ are contravariant functors, thus the boundary map on $\mathcal{C}$ induces boundary maps on the two new modules\index{modules} \cite[\S 2.8]{de2011dualities}.
+These are graded $\F[t]$ modules\index{modules} themselves. The operations $-^\circ$ and $-\dagger$ are contravariant functors, thus the boundary map on $\mathcal{C}(X)$ induces boundary maps on the two new modules\index{modules} \cite[\S 2.8]{de2011dualities}.
 
 \begin{corollary}\noindent
 \begin{enumerate}
-\item \(H(\mathcal{C}, \partial) \; \widehat{=} \; \text{persistent absolute homology\index{homology} of } \mathcal{X}.\)
-\item \(H(\mathcal{C}^\dagger, \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
-\item \(H(\mathcal{C}^\circ, \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
-\item \(H(\mathcal{C}^{\circ\dagger}, \partial^{\circ\dagger}) \; \widehat{=} \; \text{persistent relative homology\index{homology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}(X), \partial) \; \widehat{=} \; \text{persistent absolute homology\index{homology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^\dagger(X), \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^\circ(X), \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \; \widehat{=} \; \text{persistent relative homology\index{homology} of } \mathcal{X}.\)
 \end{enumerate}
 \end{corollary}
 
