@@ -134,15 +134,15 @@ The specific realization mentioned above is referred to as the natural
 realization\index{natural realization}.
 
 \begin{proposition}
-Let $\tilde{K}$ be an abstract simplicial complex. Any two geometric realizations $K_1$ and $K_2$ of $\tilde{K}$ are homeomorphic.
+Let $\tilde{K}$ be an abstract simplicial complex. Any two geometric realizations $K$ and $K'$ of $\tilde{K}$ are homeomorphic.
 \end{proposition}
 
 \begin{proof}
-Let $K_1$ and $K_2$ be two geometric realizations of the abstract simplicial complex $\tilde{K}$ in $\mathbb{R}^n$. Let the vertices of $\tilde{K}$ be $\{v_1, \dots, v_d\}$. Each vertex $v_i$ is mapped to a point $p_i$ in $K_1$ and to a point $q_i$ in $K_2$. There is a bijection between the vertices of $K_1$ and $K_2$: 
+Let $K$ and $K'$ be two geometric realizations of the abstract simplicial complex $\tilde{K}$ in $\mathbb{R}^n$. Let the vertices of $\tilde{K}$ be $\{v_1, \dots, v_d\}$. Each vertex $v_i$ is mapped to a point $p_i$ in $K$ and to a point $q_i$ in $K'$. There is a bijection of vertices from $K$ to $K'$: 
 \begin{align}
 \phi: \{p_1, \dots, p_d\} \to \{q_1, \dots, q_d\}, \quad \phi(p_i) = q_i \text{ for each } i.
 \end{align}
-Extend $\phi$ to a map $f: K_1 \to K_2$ on simplices. Let $\sigma^{(k)} = [p_{i_0}, \dots, p_{i_{k}}]$ be a $k$-simplex in $K_1$, corresponding to the simplex $\tau^{(k)} = [q_{i_0}, \dots, q_{i_{k}}]$ in $K_2$. For $x \in \sigma^{(k)}$, write $x = \sum_{j=0}^{k} \lambda_j p_{i_j}$ with $\sum_{j=0}^{k} \lambda_j = 1$, and define $f(x) = \sum_{j=0}^{k} \lambda_j q_{i_j}$. This defines $f$ linearly on simplices. Since $f$ respects face relations and is continuous on each simplex, $f$ is globally continuous. The map $f$ is bijective, as it maps each vertex $p_i$ to the corresponding $q_i$, and the linear extension preserves this correspondence on simplices. Hence, $f$ is a homeomorphism. Similarly, the inverse map $f^{-1}: K_2 \to K_1$ is continuous by the same construction.
+Extend $\phi$ to a map $f: K \to K'$ on simplices. Let $\sigma^{(k)} = [p_{i_0}, \dots, p_{i_{k}}]$ be a $k$-simplex in $K$, corresponding to the simplex $\tau^{(k)} = [q_{i_0}, \dots, q_{i_{k}}]$ in $K'$. For $x \in \sigma^{(k)}$, write $x = \sum_{j=0}^{k} \lambda_j p_{i_j}$ with $\sum_{j=0}^{k} \lambda_j = 1$, and define $f(x) = \sum_{j=0}^{k} \lambda_j q_{i_j}$. This defines $f$ linearly on simplices. Since $f$ respects face relations and is continuous on each simplex, $f$ is globally continuous. The map $f$ is bijective, as it maps each vertex $p_i$ to the corresponding $q_i$, and the linear extension preserves this correspondence on simplices. Hence, $f$ is a homeomorphism. Similarly, the inverse map $f^{-1}: K' \to K$ is continuous by the same construction.
 \end{proof}
 
 Furthermore, it has been proven that any finite abstract simplicial complex of dimension
