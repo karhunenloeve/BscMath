@@ -381,13 +381,13 @@ The index of a chain $c = \sum_{i=0}^{k} g_i \sigma_i^{(d)}$ is $I(c) = \sum_{i=
 	\end{align}
 	Since \( \partial_{1}(c) \) is a boundary, we have \( c = \partial_{1}(c) \sim 0 \). Thus, \( (g w - g v) \sim 0 \), implying \( g w \sim g v \). Therefore, any \( 0 \)-chain \( c \) in \( K \) is homologous to the chain \( g v \). We observe that homologous chains have equal indices, i.e., \( I(c) = I(g v) = g \). Thus, \( c \sim g v \implies c \sim I(c) v \). This shows that if \( I(c) = 0 \), then \( c \sim 0 \). Since \( I \) is a homomorphism from \( C^{\triangle}_{0} = Z^{\triangle}_{0} \) to \( \mathbb{Z} \), for any \( 0 \)-simplex \( c \) and \( g \in \mathbb{Z} \), the chain \( g c \in C^{\triangle}_{0} \) is a cycle with \( I(g c) = g \). Therefore, \( I(Z^{\triangle}_{0}) = \mathbb{Z} \). Since \( I(c) = 0 \) is equivalent to \( c \sim 0 \), we have \( B^{\triangle}_{0} = \ker(I) \). Thus,
 	\begin{align}
-		H^{\triangle}_{0} = Z^{\triangle}_{0} / B^{\triangle}_{0} = C_0^\triangle / \ker(I) = \cong \mathbb{Z}. 
+		H^{\triangle}_{0} = Z^{\triangle}_{0} / B^{\triangle}_{0} = C_0^\triangle / \ker(I) \cong \mathbb{Z}. 
 	\end{align}
 \end{proof}
 
 \begin{corollary}
 	\label{directsum0hom}
-	The group $H_d^\triangle(K;\mathbb{Z})$ can be represented as \( \mathbb{Z}^{p} = \bigoplus_{p} \mathbb{Z} \), where \( p \) denotes the number of connected components\index{connected components} present in \( K \).
+	The group $H_d^\triangle(K;\mathbb{Z})$ can be represented as \( \mathbb{Z}^{p} = \bigoplus_{i=1}^{p} \mathbb{Z} \), where \( p \) denotes the number of connected components\index{connected components} present in \( K \).
 \end{corollary}
 
 \begin{proof}
@@ -495,6 +495,10 @@ As mentioned earlier, when we apply the boundary map twice to a \( d \)-chain \(
 \end{definition}
 
 In the following section, we will explore how this definition of homology allows us to establish a simple relationship between homeomorphic spaces and their corresponding homology groups. This relationship becomes apparent when we consider the fact that the definitions of \( H_{d} \) and \( H^{\triangle}_{d} \) are analogous. Intuitively, we would expect these two groups to be the same for triangulable topological\index{topological} spaces. However, this is not immediately obvious. One reason for this is that \( H^{\triangle}_{d} \) is finitely generated, while the chain group \( C_{d}(X) \), from which we derived \( H_{d} \), is uncountable. Interestingly, for spaces where both simplicial\index{simplicial} and singular homology groups can be calculated, these two groups are indeed equivalent. We will provide a proof for this later on. But before we do, let us present some facts about singular homology that support the intuition that \( H_{d} \) is isomorphic to \( H^{\triangle}_{d} \).
+
+\begin{remark}
+If we omit information in the notation, e.g. omit the ground group and write $H_k(X)$ instead of $H_k(X;\mathbb{Z})$ or omit the dimension $H(X)$ instead of $H_k(X)$, all results apply to the general case, i.e. to all omitted information.
+\end{remark}
 
 \begin{proposition}{\cite[Proposition 2.6]{hatcher2005algebraic}}
 	In the context of a topological\index{topological} space \( X \), \( H_{d}(X) \) is isomorphic to the direct sum\index{direct sum} \( H_{d}(X_{1}) \oplus \cdots \oplus H_{d}(X_{p}) \), where \( X_{i} \) represents the path-connected components\index{connected components} of \( X \).
