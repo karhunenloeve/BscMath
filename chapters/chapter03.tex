@@ -4,7 +4,7 @@ The Stability Theorem\index{stability theorem} will not be discussed in this the
 
 \section{Filtrations of Complexes}
 \label{FiltrationsofComplexes}
-The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[Theorem 2.1, \S 3.1]{zomorodian2004computing}. The first step is to define the cell complex, as every simplicial complex is a cell complex. In this section, we continue to examine the consequences of absolute and relative homology\index{homology} and cohomology\index{cohomology} groups for filtrations\index{filtrations} of cell complexes, such as the introduced simplicial complexes. In particular, we derive the theory in the context of filtered simplicial complexes upon sets of points, embedded into some metric space. While we can apply the entire theory to simplicial complexes and their (co)homology\index{homology}, cell complexes provide a much broader context and significantly simplify notation in many instances.
+The following individual (co)homology\index{homology} groups are defined with coefficients in a fixed field, which we shall denote by $\F$, and form a graded module over the ring of polynomials in one variable $\F[t]$. Replacing the field with a ring leads to substantial problems, but most results still hold for principal ideal domains, see \cite[Theorem 2.1, \S 3.1]{zomorodian2004computing}. The first step is to define the CW-complex, as every simplicial complex is a CW-complex. In this section, we continue to examine the consequences of absolute and relative homology\index{homology} and cohomology\index{cohomology} groups for filtrations\index{filtrations} of CW-complexes, such as the introduced simplicial complexes. In particular, we derive the theory in the context of filtered simplicial complexes upon sets of points, embedded into some metric space. While we can apply the entire theory to simplicial complexes and their (co)homology\index{homology}, CW-complexes provide a much broader context and significantly simplify notation in many instances.
 
 This yields a generalisation of the given situation.
 
@@ -22,14 +22,14 @@ A \(d\)-cell is a topological space that is homeomorphic to the open \(d\)-dimen
 \end{example}
 
 \begin{definition}[Cell complex]
-A cell complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
+A CW-complex is a Hausdorff topological space \(X\) together with a filtration\index{filtration}
 \begin{align}
 \mathcal{X}: \quad \emptyset \subset X^0 \subset X^1 \subset X^2 \subset \cdots \subseteq X = \bigcup_{k=0}^{\infty} X^k =: X^\infty
 \end{align}
 such that:
 \begin{enumerate}
     \item \(X^0\) is a discrete set of points.
-    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_i\}_{i \in I_k}\) via continuous maps \(\varphi_i : S^{k-1} \to X^{k-1}\) from the $(k-1)$-sphere, where \(I_k\) is an indexing set for the \(k\)-cells of the cell complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(i \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_i\) in the set of all \(k\)-cells of the complex. Specifically,
+    \item For each \(k \geq 1\), \(X^k\) is obtained from \(X^{k-1}\) by attaching a collection of \(k\)-cells \(\{\sigma^{(k)}_i\}_{i \in I_k}\) via continuous maps \(\varphi_i : S^{k-1} \to X^{k-1}\) from the $(k-1)$-sphere, where \(I_k\) is an indexing set for the \(k\)-cells of the CW-complex. This set may be finite or infinite, depending on the number of \(k\)-cells. Each \(i \in I_k\) is an index that uniquely identifies a \(k\)-cell \(\sigma^{(k)}_i\) in the set of all \(k\)-cells of the complex. Specifically,
 \begin{align}
     X^k = X^{k-1} \cup \bigcup_{i \in I_k} \sigma^{(k)}_i,
 \end{align}
@@ -39,7 +39,7 @@ such that:
 \end{definition}
 
 \begin{remark}
-A cell complex satisfies the following conditions:
+A CW-complex satisfies the following conditions:
 \begin{itemize}
     \item The closure \(\overline{\sigma^{(m)}_i}\) intersects only finitely many cells \(\sigma^{(n)}_j\) for \(n \leq m, \text{and } n,m,i,j \in \mathbb{N}_0\).
     \item A set \(A \subseteq X\) is closed if and only if \(A \cap X^k\) is closed in \(X^k\) for all \(k \in \mathbb{N}_0\).
@@ -47,22 +47,22 @@ A cell complex satisfies the following conditions:
 \end{remark}
 
 \begin{proposition}
-A simplicial complex is a cell complex.
+A simplicial complex is a CW-complex.
 \end{proposition}
 
 \begin{proof}
-Let \(K\) be a simplicial complex. We construct \(K\) as a cell complex by
+Let \(K\) be a simplicial complex. We construct \(K\) as a CW-complex by
 \begin{align}
 \mathcal{K}: \quad \emptyset \subset K^0 \subset K^1 \subset K^2 \subset \cdots \subset K = \bigcup_{k=0}^{\infty} K^k,
 \end{align}
-where \(K^k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(\natural\)-simplex \(\sigma^{(\natural)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(\natural)}} : \partial_{\natural} \sigma^{(\natural)} \to K^{k-1}\), where \(\partial_{\natural} \sigma^{(\natural)}\) is the boundary of \(\sigma^{(\natural)}\). Each \(\sigma^{(\natural)}\) is homeomorphic to an open \(\natural\)-ball \(\mathbb{B}^{\natural}\), and \(\partial_{\natural} \sigma^{(\natural)}\) is homeomorphic to the \((\natural-1)\)-sphere \(S^{\natural-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a cell complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $\natural, k$.
+where \(K^k\) is the \(k\)-skeleton of \(K\). The $0$-skeleton \(K^0\) consists of the $0$-simplices, which form a discrete set. Assume \(K^{k-1}\) is constructed. To form \(K^k\), we attach each \(\natural\)-simplex \(\sigma^{(\natural)} \in K\) to \(K^{k-1}\) via a map \(\varphi_{\sigma^{(\natural)}} : \partial_{\natural} \sigma^{(\natural)} \to K^{k-1}\), where \(\partial_{\natural} \sigma^{(\natural)}\) is the boundary of \(\sigma^{(\natural)}\). Each \(\sigma^{(\natural)}\) is homeomorphic to an open \(\natural\)-ball \(\mathbb{B}^{\natural}\), and \(\partial_{\natural} \sigma^{(\natural)}\) is homeomorphic to the \((\natural-1)\)-sphere \(S^{\natural-1}\). The topology\index{topology} on \(|\tilde{K}|\), the geometric realization of the vertex scheme of \(K\), is the weak topology\index{topology} with respect to the simplices, thereby satisfying the topology\index{topology} condition of a CW-complex. The closure-finite condition is satisfied because the closure of each simplex intersects only finitely many simplices. The proof is completed by induction over $\natural, k$.
 \end{proof}
 
-We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered cell complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_0$ the index set of all $\natural$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(\natural)}\}_{a \in I_{k}}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level, such that $a \in [k,k+1)$. The dimension of the simplex, denoted by $\natural$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
+We investigate the persistent topology\index{topology} of filtered topological spaces, focusing primarily on the prototypical example of a filtered CW-complex $\mathcal{X}: \emptyset \subset X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subseteq X = \bigcup_{k=1}^{\infty} X^{k} =: X^\infty$, where \(X^{0}\) starts with vertices \(\sigma^{(0)}_a\), $a \in I_0$ the index set of all $\natural$-simplices, and each subsequent complex \(X_{i}\) is constructed by adding cells to the previous complex $X^{k} := X^{k-1} \cup \{\sigma^{(\natural)}\}_{a \in I_{k}}$. Here, the indexing set is \(\{0, 1, 2, \ldots, k, \ldots\}\), denoting the filtration level, such that $a \in [k,k+1)$. The dimension of the simplex, denoted by $\natural$, can vary. Additionally, associated real values \(a_{i}\) are assigned to the indexing sets, satisfying \(a_{1} \leq a_{2} \leq \cdots \leq a_{k}\), to indicate for which parameter the particular simplex is created during some filtration process.
 
 \begin{example}{\cite[\S 2.2, Example]{de2011dualities}}
 	\label{filteredsphere}
-	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^2$. This process constructs a cell complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S^{2}$ consists of two distinct points. In $S^{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S^{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S^{3}$. Finally, $S^{5}$ and $S^{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
+	The following illustrative example is a cellular filtration\index{filtration} of the $2$-sphere, denoted by $\mathcal{S}^2$. This process constructs a CW-complex and introduces an ordering among the cells to provide a useful framework for organising the cells. In this sequence, the cell $\sigma_{1}^{(0)}$ stands for the initial point. The set $S^{2}$ consists of two distinct points. In $S^{3}$ a path connecting $\sigma_{1}^{(0)}$ and $\sigma_{2}^{(0)}$ is added. $S^{4}$ extends this path with its reversal, from $\sigma_{2}^{(0)}$ to $\sigma_{1}^{(0)}$, thus distinguishing it from the path in $S^{3}$. Finally, $S^{5}$ and $S^{6}$ make a distinction between cells representing the upper and lower halves of the sphere, respectively.
 	\begin{figure}[H]%
 	    \centering
 	    \subfloat{
@@ -592,7 +592,7 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \subsection{Persistent Chain Complexes}
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
-can be described via a filtered cell complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(\natural)}$, adding cells for each filtration step, so that the persistence module is the sequence
+can be described via a filtered CW-complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(\natural)}$, adding cells for each filtration step, so that the persistence module is the sequence
 \[
 	\mathcal{C}(X): \quad C_{0} \to C_{1} \to C_{2} \to \cdots \to C_{d},
 \]
