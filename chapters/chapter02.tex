@@ -566,8 +566,7 @@ In order to demonstrate the equivalence of \( H_{d}^{\triangle} \) and \( H_{d} 
 	The groups $C_{d}(X)$ represent the collection of singular\index{singular} $d$-chains that form
 	a part of a chain complex, where the boundary operator $\partial_{d}$ is the map between these groups in the respective dimensions:
 	\begin{align}
-		\mathcal{C}(X):\quad \cdots &\xrightarrow{}C_{d+1}(X) \xrightarrow{\partial_{d+1}} C_{d}(X) \xrightarrow{\partial_d}C_{d-1}(X) \xrightarrow{}\cdots \nonumber\\
-		\cdots &\xrightarrow{}C_{1}(X) \xrightarrow{\partial_1} C_{0}(X) \xrightarrow{\partial_0}0.                              
+		\mathcal{C}(X):\quad \cdots &\xrightarrow{\partial_{d+2}}C_{d+1} \xrightarrow{\partial_{d+1}} C_{d} \xrightarrow{\partial_d}C_{d-1} \xrightarrow{\partial_{d-1}}\cdots \xrightarrow{\partial_2}C_{1} \xrightarrow{\partial_1} C_{0} \xrightarrow{\partial_0}0.                              
 	\end{align}
 \end{example}
 
@@ -595,7 +594,7 @@ In order to demonstrate the equivalence of \( H_{d}^{\triangle} \) and \( H_{d} 
 	\label{chainmaps}
 	A chain map $f$ between two chain complexes $(A, \partial^{(A)}
 	)$ and $(B, \partial^{(B)})$ induces a homomorphism between their respective homology
-	groups.
+	groups $f_\star: H_d(A) \rightarrow H_d(B)$.
 \end{theorem}
 
 \begin{proof}
@@ -636,7 +635,7 @@ We can apply Theorem \ref{chainmaps} to the case of singular\index{singular} hom
 We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \( C_{d}(X) \). This gives us the following commutative diagram:
 \begin{equation}
 	\begin{tikzcd}
-		\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d, "f_{\star d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_{\star d}"] & C_{d-1}(X) \arrow[r, "\partial_{d-1}"] \arrow[d, "f_{\star d-1}"] & \cdots \\ 
+		\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(X) \arrow[r, "\partial_{d+1}"] \arrow[d, "f_{\star, d+1}"] & C_d(X) \arrow[r, "\partial_d"] \arrow[d, "f_{\star, d}"] & C_{d-1}(X) \arrow[r, "\partial_{d-1}"] \arrow[d, "f_{\star, d-1}"] & \cdots \\ 
 		\cdots \arrow[r, "\partial_{d+2}"] & C_{d+1}(Y) \arrow[r, "\partial_{d+1}"] & C_d(Y) \arrow[r, "\partial_d"] & C_{d-1}(Y) \arrow[r, "\partial_{d-1}"] & \cdots.
 	\end{tikzcd}
 \end{equation}
@@ -706,7 +705,7 @@ The concept we will now discuss is that of relative homology groups. Let \( X \)
 \begin{align}
 	\mathcal{C}(X,A): \quad \cdots \rightarrow C_{d+1}(X, A) \xrightarrow{\partial_{d+1}} C_{d}(X, A) \xrightarrow{\partial_{d}} C_{d-1}(X, A) \rightarrow \cdots. 
 \end{align}
-This sequence forms a chain complex because \( \partial_{d} \circ \partial_{d+1} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A)\) as the homology groups of this chain complex and $H_\bullet(\mathcal{C}(X,A))$ as the homology of the entire chain complex, this becomes important in the Chapter \ref{PersistentHomology} on persistent homology.
+This sequence forms a chain complex because \( \partial_{d} \circ \partial_{d+1} = 0 \). We can then define the relative homology groups\index{relative homology group} \( H_{d}(X, A)\) as the homology groups of this chain complex and $H_\bullet(\mathcal{C}(X,A))$ as the homology of the entire chain complex, this becomes important in Chapter \ref{PersistentHomology} on persistent homology.
 
 We propose two important facts about \( H_{d}(X, A) \):
 
