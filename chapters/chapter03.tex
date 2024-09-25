@@ -602,8 +602,8 @@ is defined by $\partial_{(\natural)} \sigma^{(\natural)}_{j} = \sum_{i<j}\lambda
 _{ij}\in \F$ for all $i, j \in \{0, 1, \ldots, d\}$. Then $\mathcal{C}(X) = \{C_{i},\partial_{i}\}_{i=0}^{d}$ is the chain complex of $X$, and $\mathcal{C}(\mathcal{X})$ represents the persistent version for $\mathcal{X}$. This leads to the definition
 of the persistent absolute homology\index{homology} of $\mathcal{X}$ as
 \[
-	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}(X), \partial): \quad \frac{\ker(\partial_{1})}{\text{im}(\partial_{1})}
-	\to \frac{\ker(\partial_{2})}{\text{im}(\partial_{2})}\to \cdots \to \frac{\ker(\partial_{d})}{\text{im}(\partial_{d})}
+	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}(X), \partial): \quad \frac{\ker(\partial_{0})}{\text{im}(\partial_{1})}
+	\to \frac{\ker(\partial_{1})}{\text{im}(\partial_{2})} \to \frac{\ker(\partial_{2})}{\text{im}(\partial_{3})}\to \cdots \to \frac{\ker(\partial_{d})}{\text{im}(\partial_{d+1})}
 	.
 \]
 
@@ -614,9 +614,7 @@ For the persistent absolute cohomology\index{cohomology} $H^{\bullet}(\mathcal{X
 	\leftarrow C^{\flat}_{d},
 \]
 where $C_{i}^{\flat} = \text{Hom}(C_{i}, \F) = \langle \{\sigma^{(\natural)\flat}_a\}_{a \in I_0}, \{\sigma^{(\natural)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(\natural)\flat}_a\}_{a \in I_i} \rangle$, with the elements $\{\sigma^{(\natural)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(\natural)}_a\}_{a \in I_j}$. The coboundary $\delta
-= \partial^{\flat}$ is defined as the adjoint of $\partial$. Then $C^{\flat}(\mathcal{X}) = (\mathcal{C}^{\flat}(X), \delta)$ and
-$H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}(X), \delta) = \ker(\delta) / \text{im}(\delta)$. This is a persistence module, with morphisms in the
-reverse direction.
+= \partial^{\flat}$ is defined as the adjoint of $\partial$. Considering $(\mathcal{C}^{\flat}(X), \delta)$, its homology forms a module structure $H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}(X), \delta) = \ker(\delta) / \text{im}(\delta)$. This is a persistence module, with morphisms in the reverse direction.
 
 \begin{example}{\cite[\S 2.6, Example]{de2011dualities}}
 	For $\mathcal{S}^{2}$, the boundary operator is given by
