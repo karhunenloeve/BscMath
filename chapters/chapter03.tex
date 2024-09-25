@@ -225,27 +225,27 @@ We investigate the persistent topology\index{topology} of filtered topological s
 Persistent homology\index{homology}\index{persistent homology\index{homology}} is derived by applying the homology\index{homology} functor to a filtration\index{filtration} of a topological space. This section will examine the concept of persistent modules\index{modules}, which serve to describe persistent homology\index{homology}\index{persistent homology\index{homology}} from an algebraic perspective. Similarly, as filtrations\index{filtrations} describe the evolution of a simplicial complex under a one-parameter or multi-parameter family, the persistence module describes the evolution of associated vector spaces. In the case of homology\index{homology} vector spaces or modules\index{modules}, the dimension or rank of the associated homomorphisms are the $k$-th Betti numbers, which indicates the number of $k$-dimensional holes of a topological space in intuitive terms.
 
 \begin{definition}[Persistence module]{\cite[\S 1.1]{chazal2016structure}}
-A real persistence module $\mathcal{C}(X)$ is a collection of vector spaces $\{V_i\}_{i \in I}$ over a partially ordered index set $(I,\leq)$ together with linear maps
+A real persistence module $\mathcal{C}$ is a collection of vector spaces $\{C^i\}_{i \in I}$ indexed over a partially ordered set $(I,\leq)$ together with linear maps
 \begin{align}
-\phi_{r}^{s}: V_r \rightarrow V_s, \quad \forall r,s \in I: r \leq s,
+\phi_{r}^{s}: C^r \rightarrow C^s, \quad \forall r,s \in I: r \leq s,
 \end{align}
-such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{V_r}$ for all $r \leq s \leq t$.
+such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{C^r}$ for all $r \leq s \leq t$.
 \end{definition}
 
 We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\operatorname{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $\mathcal{C}(X): (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{V_r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: V_r \rightarrow V_s, r \leq s$, such that the following diagram commutes:
+A persistence module is a functor $\mathcal{C}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{C^r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: C^r \rightarrow C^s, r \leq s$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
-V_r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & V_s \\
-V_t. \arrow[ru, "{\phi_{t}^{s}}" description]                                      &    
+C^r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & C^s \\
+C^t. \arrow[ru, "{\phi_{t}^{s}}" description]                                      &    
 \end{tikzcd}
 \end{equation}
 \end{definition}
 
 \begin{remark}
-A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $f_r: V_r \rightarrow V'_r$, which is compatible with the maps $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}.
+A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $\varphi_r: C^r \rightarrow {C'}^r$, which is compatible with the maps $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}.
 \end{remark}
 
 The category of persistence modules\index{modules}\index{persistence modules\index{modules}} is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules\index{modules}\index{persistence modules\index{modules}} remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, (in)finite dimensional vector spaces over other fields. It is also possible to consider persistence modules\index{modules}\index{persistence modules\index{modules}} over cochain complexes in place of vector spaces.
@@ -255,23 +255,23 @@ In the following, we will make a number of simplifying assumptions:
 \begin{assume}\noindent
 \begin{enumerate}
 	\item For all $r \in \R\backslash S$, where $S$ is a finite subset, there exists a neighbourhood $U_r$ of $r$ such that the map $\phi_u^{u'}$ is an isomorphism for all $u \leq u'$ in $U_r$.
-	\item $V_u = 0$ for $u$ sufficiently small.
+	\item $C^u = 0$ for $u$ sufficiently small.
 	\item For all $t \in \R$ and for all $s \leq t$ with $t-s$ sufficiently small, the mapping $\phi_s^t$ is an isomorphism.
 \end{enumerate}
 \end{assume}
 
-The assumptions 1, 2 are referred to as finite type conditions. Assumption 1 implies that there is a finite number of 'jumps', while we have that $V_u = V_\infty$ for $u$ large enough. Assumption 3 is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
+The assumptions $1$, $2$ are referred to as finite type conditions. Assumption $1$ implies that there is a finite number of 'jumps', while we have that $C^u = C^\infty$ for $u$ large enough. Assumption $3$ is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
 
 \begin{definition}[Interval module]
 Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
 \begin{align}
-	\mathbb{F}(I)_t = 
+	\mathbb{F}(I_i) = 
 	\begin{cases}
-		\mathbb{F}, & \text{if} \; t \in I, \\
+		\mathbb{F}, & \text{if} \; i \in I, \\
 		0, & \text{otherwise}.
 	\end{cases}
 \end{align}
-The structure maps $f_{s}^t: \mathbb{F}(I)_s \to \mathbb{F}(I)_t$ for $s \leq t$ are defined as:
+The structure maps $f_{s}^t: \mathbb{F}(I)^s \to \mathbb{F}(I)^t$ for $s \leq t$ are defined as:
 \begin{align}
 	f_{s}^t = 
 	\begin{cases}
@@ -286,32 +286,32 @@ The following theorem describes the decomposition of any persistence module:
 
 \begin{theorem}[Decomposition]{\cite[\S 1.5]{chazal2016structure}}
 \label{decompositionPersistenceModules}
-Every persistence module $\mathcal{C}(X)$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
+Every persistence module $\mathcal{C}$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
 \begin{align}
-	\mathcal{C}(X) \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
+	\mathcal{C} \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
 \end{align}
 where $I_i \neq I_j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
 \end{theorem}
 
 \begin{proof}
-To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{C}(X) = \{V_t, f_{s}^t\}_{s \leq t}$, we map $\mathcal{C}(X)$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) := (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
+To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{C} = \{C^t, f_{s}^t\}_{s \leq t}$, we map $\mathcal{C}(X)$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) := (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
 \begin{align}
-	M = \bigoplus_{t \in \mathbb{R}} V_t \cong \bigoplus_{i=0}^d T^{\alpha_i} \mathbb{F}[t] \oplus \bigoplus_j T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}).
+	M = \bigoplus_{t \in \mathbb{R}} C^t \cong \bigoplus_{i=0}^d T^{a_i} \mathbb{F}[t] \oplus \bigoplus_j T^{b_j} \mathbb{F}[t] / (t^{d_j}).
 \end{align}
-Here, \( T^{\alpha_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( \alpha_i \), meaning \( (T^{\alpha_i} \mathbb{F}[t])_d = \mathbb{F}[t]_{d - \alpha_i} \). This corresponds to interval modules\index{modules} of the form \( (\alpha_i, \infty) \). Similarly, \( T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( \gamma_j \), defined by \( (T^{\gamma_j} \mathbb{F}[t] / (t^{d_j}))_d = \mathbb{F}[t]_{d - \gamma_j} / (t^{d_j}) \). This corresponds to interval modules\index{modules} of the form \( (\gamma_j, \gamma_j + d_j] \). 
+Here, \( T^{a_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( a_i \), meaning \( (T^{a_i} \mathbb{F}[t])_d = \mathbb{F}[t]_{d - a_i} \). This corresponds to interval modules\index{modules} of the form \( (a_i, \infty) \). Similarly, \( T^{b_j} \mathbb{F}[t] / (t^{d_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( b_j \), defined by \( (T^{b_j} \mathbb{F}[t] / (t^{d_j}))_d = \mathbb{F}[t]_{d - b_j} / (t^{d_j}) \). This corresponds to interval modules\index{modules} of the form \( (b_j, b_j + d_j] \). 
 
-For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)_t \to \mathbb{F}(I)_t$ must be a linear map. Since $\mathbb{F}(I)_t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s}^t$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
+For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)^t \to \mathbb{F}(I)^t$ must be a linear map. Since $\mathbb{F}(I)^t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s}^t$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
 
 Now, suppose we have two decompositions:
 \begin{align}
-	\bigoplus_i \mathbb{F}(I_i) \cong \mathcal{C}(X) \cong \mathcal{C}'(X) \cong \bigoplus_j \mathbb{F}(J_j).
+	\bigoplus_i \mathbb{F}(I_i) \cong \mathcal{C} \cong \mathcal{C}' \cong \bigoplus_j \mathbb{F}(J_j).
 \end{align}
 Consider the composition of morphisms:
 \begin{align}
-	f_{ij}: &\mathbb{F}(I_i) \hookrightarrow \mathcal{C}(X) \cong \mathcal{C}'(X) \twoheadrightarrow \mathbb{F}(J_j),\\
-	g_{ij}: &\mathbb{F}(J_j) \hookrightarrow \mathcal{C}'(X) \cong \mathcal{C}(X) \twoheadrightarrow \mathbb{F}(I_i).
+	f_{i}^j: &\mathbb{F}(I_i) \hookrightarrow \mathcal{C} \cong \mathcal{C}' \twoheadrightarrow \mathbb{F}(J_j),\\
+	g_{i}^j: &\mathbb{F}(J_j) \hookrightarrow \mathcal{C}' \cong \mathcal{C} \twoheadrightarrow \mathbb{F}(I_i).
 \end{align}
-The equation $\sum_{i,j} g_{ij}f_{ij} = 1$ implies that at least one of the compositions $f_{ij}g_{ij} \neq 0$, yielding an isomorphism between $\mathbb{F}(I_i)$ and $\mathbb{F}(J_j)$ for some $i, j$. Since the interval modules\index{modules} are indecomposable and distinct intervals $I_i$ and $J_j$ cannot yield non-trivial morphisms between each other, this forces $I_i = J_j$ and $m_i = m_j$. 
+The equation $\sum_{i,j} g_{i}^jf_{i}^j = 1$ implies that at least one of the compositions $f_{i}^jg_{i}^j \neq 0$, yielding an isomorphism between $\mathbb{F}(I_i)$ and $\mathbb{F}(J_j)$ for some $i, j$. Since the interval modules\index{modules} are indecomposable and distinct intervals $I_i$ and $J_j$ cannot yield non-trivial morphisms between each other, this forces $I_i = J_j$ and $m_i = m_j$. 
 
 By induction on the number of summands, we conclude that the multiplicities $m_i$ and the intervals $I_i$ in both decompositions must coincide.
 \end{proof}
