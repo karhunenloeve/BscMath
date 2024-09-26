@@ -227,56 +227,56 @@ Persistent homology\index{homology}\index{persistent homology\index{homology}} i
 \begin{definition}[Persistence module]{\cite[\S 1.1]{chazal2016structure}}
 A real persistence module $\mathcal{C}$ is a collection of vector spaces $\{C^i\}_{i \in I}$ indexed over a partially ordered set $(I,\leq)$ together with linear maps
 \begin{align}
-\phi_{r}^{s}: C^r \rightarrow C^s, \quad \forall r,s \in I: r \leq s,
+\phi_{i}^{j}: C^i \rightarrow C^j, \quad \forall i,j \in I: i \leq j,
 \end{align}
-such that $\phi_{r}^{t} = \phi^{t}_{s} \circ \phi_{r}^{s}$ and $\phi_{r}^r = \mathbb{I}_{C^r}$ for all $r \leq s \leq t$.
+such that $\phi_{i}^{k} = \phi^{k}_{j} \circ \phi_{i}^{j}$ and $\phi_{i}^i = \mathbb{I}_{C^i}$ for all $i \leq j \leq k$.
 \end{definition}
 
 We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\operatorname{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $\mathcal{C}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{C^r\}_{r\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{r}^{s}: C^r \rightarrow C^s, r \leq s$, such that the following diagram commutes:
+A persistence module is a functor $\mathcal{C}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{C^i\}_{i\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{i}^{j}: C^i \rightarrow C^j, i \leq j$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
-C^r \arrow[d, "{\phi_{r}^{t}}" description] \arrow[r, "{\phi_{r}^{s}}" description] & C^s \\
-C^t. \arrow[ru, "{\phi_{t}^{s}}" description]                                      &    
+C^i \arrow[d, "{\phi_{i}^{j}}"' description] \arrow[r, "{\phi_{i}^{k}}" description] & C^k \\
+C^j. \arrow[ru, "{\phi_{j}^{k}}" description]                                      &    
 \end{tikzcd}
 \end{equation}
 \end{definition}
 
 \begin{remark}
-A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $\varphi_r: C^r \rightarrow {C'}^r$, which is compatible with the maps $\phi_{r}^{s}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}.
+A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $\varphi_i: C^i \rightarrow {C'}^i$, which is compatible with the maps $\phi_{i}^{j}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}. Note, that the upper index in this particular case is not a power, but an index, induced by the partial order of the domain of the persistence module functor.
 \end{remark}
 
-The category of persistence modules\index{modules}\index{persistence modules\index{modules}} is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules\index{modules}\index{persistence modules\index{modules}} remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, (in)finite dimensional vector spaces over other fields. It is also possible to consider persistence modules\index{modules}\index{persistence modules\index{modules}} over cochain complexes in place of vector spaces.
+The category of persistence modules\index{modules}\index{persistence modules\index{modules}} is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules\index{modules}\index{persistence modules\index{modules}} remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, (in)finite dimensional vector spaces over other fields. It is also possible to consider persistence modules\index{modules}\index{persistence modules\index{modules}} over (co)chain complexes in place of vector spaces.
 
 In the following, we will make a number of simplifying assumptions:
 
 \begin{assume}\noindent
 \begin{enumerate}
-	\item For all $r \in \R\backslash S$, where $S$ is a finite subset, there exists a neighbourhood $U_r$ of $r$ such that the map $\phi_u^{u'}$ is an isomorphism for all $u \leq u'$ in $U_r$.
-	\item $C^u = 0$ for $u$ sufficiently small.
-	\item For all $t \in \R$ and for all $s \leq t$ with $t-s$ sufficiently small, the mapping $\phi_s^t$ is an isomorphism.
+	\item For all $i \in \R\backslash J$, where $J$ is a finite subset, there exists a neighbourhood $U_i$ of $i$ such that the map $\phi_i^{i'}$ is an isomorphism for all $i\leq i'$ in $U_i$.
+	\item $C^i = 0$ for $i$ sufficiently small.
+	\item For all $j \in \R$ and for all $i \leq j$ with $j-i$ sufficiently small, the mapping $\phi_i^j$ is an isomorphism.
 \end{enumerate}
 \end{assume}
 
-The assumptions $1$, $2$ are referred to as finite type conditions. Assumption $1$ implies that there is a finite number of 'jumps', while we have that $C^u = C^\infty$ for $u$ large enough. Assumption $3$ is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
+The assumptions $1$, $2$ are referred to as finite type conditions. Assumption $1$ implies that there is a finite number of 'jumps', while we have that $C^i = C^\infty$ for $i$ large enough. Assumption $3$ is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
 
 \begin{definition}[Interval module]
 Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
 \begin{align}
-	\mathbb{F}(I_i) = 
+	\mathbb{F}(I)^i = 
 	\begin{cases}
 		\mathbb{F}, & \text{if} \; i \in I, \\
 		0, & \text{otherwise}.
 	\end{cases}
 \end{align}
-The structure maps $f_{s}^t: \mathbb{F}(I)^s \to \mathbb{F}(I)^t$ for $s \leq t$ are defined as:
+The structure maps $f_{i}^j: \mathbb{F}(I^i) \to \mathbb{F}(I^j)$ for $i \leq j$ are defined as:
 \begin{align}
-	f_{s}^t = 
+	f_{i}^j = 
 	\begin{cases}
-		\mathrm{id}_{\mathbb{F}}, & \text{if } s, t \in I, \\
-		0, & \text{if } s \notin I \text{ or } t \notin I.
+		\mathrm{id}_{\mathbb{F}}, & \text{if } i, j \in I, \\
+		0, & \text{if } i \notin I \text{ or } j \notin I.
 	\end{cases}
 \end{align}
 \end{definition}
@@ -288,58 +288,58 @@ The following theorem describes the decomposition of any persistence module:
 \label{decompositionPersistenceModules}
 Every persistence module $\mathcal{C}$ over a field $\mathbb{F}$ is isomorphic to a direct sum of interval modules\index{modules}:
 \begin{align}
-	\mathcal{C} \cong \bigoplus_{i=0}^{d} \mathbb{F}(I_i)^{m_i},
+	\mathcal{C} \cong \bigoplus_{i=0}^{d} \mathbb{F}(I^i)^{m_i},
 \end{align}
-where $I_i \neq I_j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
+where $I^i \neq I^j$ for all $i \neq j$, and $m_i$ are multiplicities. This decomposition is unique up to isomorphism and permutation of the summands.
 \end{theorem}
 
 \begin{proof}
-To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{C} = \{C^t, f_{s}^t\}_{s \leq t}$, we map $\mathcal{C}(X)$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{t \in \mathbb{R}} V_t$, where the action of $t$ on $M$ is defined by $t \cdot (v_0, v_1, \ldots) := (0, f_{0,1}(v_0), f_{1,2}(v_1), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
+To establish the existence of such a decomposition, we define a functor from the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}} to the category of finitely generated graded modules\index{modules} over the polynomial ring $\mathbb{F}[t]$. For a persistence module $\mathcal{C} = \{C^i, f_{i}^j\}_{i \leq j}$, we map $\mathcal{C}$ to the graded $\mathbb{F}[t]$-module $M = \bigoplus_{i \in \mathbb{R}} C^i$, where the action of $i$ on $M$ is defined by $i \cdot (v_0, v_1, \ldots) := (0, \ldots, f_i^{i+1}(v_i), f_{i+1}^{i+2}(v_{i+2}), \ldots)$. The conditions ensuring the persistence module structure (finite generation and compatible transition maps) imply that $M$ is finitely generated as an $\mathbb{F}[t]$-module. This functor is an equivalence of categories: the inverse functor takes a graded $\mathbb{F}[t]$-module and interprets the grading as a persistence parameter over $\mathbb{R}$. Since $\mathbb{F}[t]$ is a principal ideal domain (PID), we can apply the structure theorem for finitely generated modules\index{modules} over a PID \cite[\S 2.1]{zomorodian2004computing}, which yields:
 \begin{align}
-	M = \bigoplus_{t \in \mathbb{R}} C^t \cong \bigoplus_{i=0}^d T^{a_i} \mathbb{F}[t] \oplus \bigoplus_j T^{b_j} \mathbb{F}[t] / (t^{d_j}).
+	M = \bigoplus_{i \in \mathbb{R}} C^i \cong \bigoplus_{k=0}^d T^{a_k} \mathbb{F}[i] \oplus \bigoplus_l T^{b_l} \mathbb{F}[i] / (i^{d_l}).
 \end{align}
-Here, \( T^{a_i} \mathbb{F}[t] \) denotes the graded free module over \( \mathbb{F}[t] \) shifted by \( a_i \), meaning \( (T^{a_i} \mathbb{F}[t])_d = \mathbb{F}[t]_{d - a_i} \). This corresponds to interval modules\index{modules} of the form \( (a_i, \infty) \). Similarly, \( T^{b_j} \mathbb{F}[t] / (t^{d_j}) \) represents a torsion module over \( \mathbb{F}[t] \) that is shifted by \( b_j \), defined by \( (T^{b_j} \mathbb{F}[t] / (t^{d_j}))_d = \mathbb{F}[t]_{d - b_j} / (t^{d_j}) \). This corresponds to interval modules\index{modules} of the form \( (b_j, b_j + d_j] \). 
+Here, \( T^{a_i} \mathbb{F}[i] \) denotes the graded free module over \( \mathbb{F}[i] \) shifted by \( a_i \), meaning \( (T^{a_i} \mathbb{F}[i])_d = \mathbb{F}[i]_{d - a_i} \). This corresponds to interval modules\index{modules} of the form \( (a_i, \infty) \). Similarly, \( T^{b_l} \mathbb{F}[i] / (i^{d_l}) \) represents a torsion module over \( \mathbb{F}[i] \) that is shifted by \( b_l \), defined by \( (T^{b_l} \mathbb{F}[i] / (i^{d_l}))_d = \mathbb{F}[i]_{d - b_l} / (i^{d_l}) \). This corresponds to interval modules\index{modules} of the form \( (b_l, b_l + d_l] \). 
 
-For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_t: \mathbb{F}(I)^t \to \mathbb{F}(I)^t$ must be a linear map. Since $\mathbb{F}(I)^t = \mathbb{F}$ for $t \in I$ and $0$ otherwise, $\phi_t$ must be multiplication by a scalar $\lambda_t \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I)_t$ is a simple module (i.e., it has no non-trivial submodules) when $t \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{s}^t$, we must have $\lambda_s = \lambda_t$ for all $s, t \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
+For uniqueness, consider the endomorphism ring $\text{End}(\mathbb{F}(I))$. We show that $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$. Any endomorphism $\phi: \mathbb{F}(I) \to \mathbb{F}(I)$ must respect the persistence module structure, meaning $\phi_i: \mathbb{F}(I^i) \to \mathbb{F}(I^j)$ must be a linear map. Since $\mathbb{F}(I^i) = \mathbb{F}$ for $i \in I$ and $0$ otherwise, $\phi_i$ must be multiplication by a scalar $\lambda_i \in \mathbb{F}$. The critical technical reason for this is that $\mathbb{F}(I^i)$ is a simple module (i.e., it has no non-trivial submodules) when $i \in I$. Furthermore, for the endomorphism to be compatible with the structure maps $f_{i}^j$, we must have $\lambda_i = \lambda_j$ for all $i, j \in I$, meaning $\phi$ acts as multiplication by a constant $\lambda \in \mathbb{F}$ uniformly across the entire interval $I$. Hence, $\text{End}(\mathbb{F}(I)) \cong \mathbb{F}$.
 
 Now, suppose we have two decompositions:
 \begin{align}
-	\bigoplus_i \mathbb{F}(I_i) \cong \mathcal{C} \cong \mathcal{C}' \cong \bigoplus_j \mathbb{F}(J_j).
+	\bigoplus_i \mathbb{F}(I^i) \cong \mathcal{C} \cong \mathcal{C}' \cong \bigoplus_j \mathbb{F}(J^j).
 \end{align}
 Consider the composition of morphisms:
 \begin{align}
-	f_{i}^j: &\mathbb{F}(I_i) \hookrightarrow \mathcal{C} \cong \mathcal{C}' \twoheadrightarrow \mathbb{F}(J_j),\\
-	g_{i}^j: &\mathbb{F}(J_j) \hookrightarrow \mathcal{C}' \cong \mathcal{C} \twoheadrightarrow \mathbb{F}(I_i).
+	f_{i}^j: &\mathbb{F}(I^i) \hookrightarrow \mathcal{C} \cong \mathcal{C}' \twoheadrightarrow \mathbb{F}(J^j),\\
+	g_{i}^j: &\mathbb{F}(J^j) \hookrightarrow \mathcal{C}' \cong \mathcal{C} \twoheadrightarrow \mathbb{F}(I^i).
 \end{align}
-The equation $\sum_{i,j} g_{i}^jf_{i}^j = 1$ implies that at least one of the compositions $f_{i}^jg_{i}^j \neq 0$, yielding an isomorphism between $\mathbb{F}(I_i)$ and $\mathbb{F}(J_j)$ for some $i, j$. Since the interval modules\index{modules} are indecomposable and distinct intervals $I_i$ and $J_j$ cannot yield non-trivial morphisms between each other, this forces $I_i = J_j$ and $m_i = m_j$. 
+The equation $\sum_{i,j} g_{i}^jf_{i}^j = 1$ implies that at least one of the compositions $f_{i}^jg_{i}^j \neq 0$, yielding an isomorphism between $\mathbb{F}(I^i)$ and $\mathbb{F}(J^j)$ for some $i, j$. Since the interval modules\index{modules} are indecomposable and distinct intervals $I^i$ and $J^j$ cannot yield non-trivial morphisms between each other, this forces $I^i = J^j$ and $m_i = m_j$. 
 
-By induction on the number of summands, we conclude that the multiplicities $m_i$ and the intervals $I_i$ in both decompositions must coincide.
+By induction on the number of summands $i,j$, we conclude that the multiplicities $m_i$ and the intervals $I_i$ in both decompositions must coincide.
 \end{proof}
 
 \begin{definition}[Barcode\index{barcode}]
-The barcode\index{barcode} associated with a persistence module $\mathcal{C}(X)$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
+The barcode\index{barcode} associated with a persistence module $\mathcal{C}$ is a collection of tuples consisting of interval modules\index{modules} and their corresponding multiplicities, given by the decomposition in Theorem \ref{decompositionPersistenceModules}:
 \begin{align}
-	\mathcal{B}(\mathcal{C}(X)) := \{(I_i, m_i)\}_{i=0}^d.
+	\mathcal{B}(\mathcal{C}) := \{(I^i, m_i)\}_{i=0}^d.
 \end{align}
-Here, each $I_i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I_i)$ in the decomposition of $\mathcal{C}(X)$.
+Here, each $I^i$ is an interval, and $m_i$ is the multiplicity of the interval module $\mathbb{F}(I^i)$ in the decomposition of $\mathcal{C}$.
 \end{definition}
 
-At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $\mathcal{C}(X)$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
+At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $\mathcal{C}$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
 
 \begin{definition}[Spectrum]
-A point $t \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{C}(X)$ if, for every neighborhood $U_t$ of $t$, there exist $s < r$ in $U_t$ such that the map $f_{s}^t$ is not an isomorphism. The (finite) spectrum of $\mathcal{C}(X)$ is defined as:
+A point $k \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{C}$ if, for every neighborhood $U_k$ of $k$, there exist $i < j$ in $U_k$ such that the map $f_{i}^k$ is not an isomorphism. The (finite) spectrum of $\mathcal{C}$ is defined as:
 \begin{align}
-	\text{Spec}(\mathcal{C}(X)) := \{ \text{spectral points} \} \cup \{\infty\}.
+	\text{Spec}(\mathcal{C}) := \{ \text{spectral points} \} \cup \{\infty\}.
 \end{align}
 \end{definition}
 
 \newpage
 \begin{remark}\noindent
 \begin{itemize}
-    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $s < r$ within this interval, the corresponding structure map $f_{s}^r$ of the persistence module $\mathcal{C}(X)$ is an isomorphism. A point $t$ becomes a spectral point if, within any neighborhood $U_t$ around $t$, there exists a pair $(s, r)$ such that the map $f_{s}^r$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
-    \item The barcode\index{barcode} $\mathcal{B}(\mathcal{C}(X))$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $t$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
-    \item The spectrum $\text{Spec}(\mathcal{C}(X))$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
-    \item Since the persistence module $\mathcal{C}(X)$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(\mathcal{C}(X))$ represents the asymptotic behavior of $\mathcal{C}(X)$, capturing the intervals of the form $(a, \infty)$.
+    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $i < j$ within this interval, the corresponding structure map $f_{i}^j$ of the persistence module $\mathcal{C}$ is an isomorphism. A point $k$ becomes a spectral point if, within any neighborhood $U_k$ around $k$, there exists a pair $(i, j)$ such that the map $f_{i}^j$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
+    \item The barcode\index{barcode} $\mathcal{B}(\mathcal{C})$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $k$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
+    \item The spectrum $\text{Spec}(\mathcal{C})$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
+    \item Since the persistence module $\mathcal{C}$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(\mathcal{C})$ represents the asymptotic behavior of $\mathcal{C}$, capturing the intervals of the form $(a, \infty)$.
 \end{itemize}
 \end{remark}
 
@@ -373,14 +373,14 @@ In practical applications, intervals where $a_{p} = a_{q+1}$ are usually omitted
 as they represent ephemeral topological features\index{topological features}.
 
 \begin{example}{\cite[\S 2.3, Example]{de2011dualities}}
-    We consider the topological subspaces $S^{1}$,
-    $S^{3}$, $S^{5}$, all of which are contractible. Meanwhile,
-    $S^{2}$, $S^{4}$, $S^{6}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
+    We consider the topological subspaces $S^{0}$,
+    $S^{2}$, $S^{4}$, all of which are contractible. Meanwhile,
+    $S^{1}$, $S^{3}$, $S^{5}$ are homeomorphic to the $0$-sphere, $1$-sphere, and $2$-sphere,
     respectively. This structural distinction leads to four distinct intervals in
-    the persistence diagram of the absolute homology\index{homology} of a sphere, specifically $\mathcal{S}^{2}$:
+    the persistence diagram of the absolute homology\index{homology} of a sphere, specifically $\mathcal{S}^{1}$:
     \begin{align}
-        \mathrm{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(1,6)_{0}, (2,2)_{0}, (4,4)_{1}, (6,6)_{2} \}             \nonumber\\
-                                                    & \cong \{[1,\infty)_{0}, [2,3)_{0}, [4,5)_{1}, [6, \infty)_{2} \}.
+        \mathrm{Pers}(H_{\bullet}(\mathcal{S}^{2})) & = \{(0,5)_{0}, (1,1)_{0}, (3,3)_{1}, (5,5)_{2} \}             \nonumber\\
+                                                    & \cong \{[0,\infty)_{0}, [1,2)_{0}, [3,4)_{1}, [5, \infty)_{2} \}.
     \end{align}
     Here, the subscript $k$ in $(p,q)_{k}$ or $[a_{p}, a_{q+1})_{k}$ denotes a topological
     feature in the $k$-dimensional homology\index{homology}.
@@ -411,12 +411,12 @@ convention that $a_{0} = -\infty$ and $a_{d+1} = \infty$.
 \begin{example}{\cite[\S 2.4, Example]{de2011dualities}}
 	For $\mathcal{S}^{2}$ we yield
 	\begin{align}
-		\mathrm{Pers}(H_{\bullet}(S^{6},\mathcal{S}^{2})) & = \{(0,0)_{0}, (2,2)_{1}, (4,4)_{2}, (0,5)_{2}\}               \\
-		                                                  & \cong \{[-\infty, 1)_{0}, [2,3)_{1}, [4,5)_{2}, [-\infty,6)_{3}\}.
+		\mathrm{Pers}(H_{\bullet}(S^{5},\mathcal{S}^{2})) & = \{(0,0)_{0}, (1,1)_{1}, (3,3)_{2}, (0,4)_{2}\}               \\
+		                                                  & \cong \{[-\infty, 0)_{0}, [1,2)_{1}, [3,4)_{2}, [-\infty,5)_{3}\}.
 	\end{align}
-	At index $2$ there is a nontrivial element of $H_{1}(S^{6},S^{2})$ represented
-	by any arc connecting the two points of $S^{2}$ --
-	the homology\index{homology} class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}(S^{6},S^{3})$, thus we yield the interval $[2,3)$.
+	At index $1$ there is a nontrivial element of $H_{1}(S^{5},S^{1})$ represented
+	by any arc connecting the two points of $S^{1}$ --
+	the homology\index{homology} class is $[\sigma_{3}] = [\sigma_{4}]$. This class vanishes in $H_{1}(S^{5},S^{2})$, thus we yield the interval $[1,2)$.
 \end{example}
 
 \section{Persistent (Co)homology}
@@ -486,7 +486,7 @@ properties of derived functors \cite[\S 2.7]{Weibel1994}.
 \label{UniversalCoefficientsforCohomology}
 Let $X$ be a topological space and $G$ an abelian group. For any integer $d \geq 0$, there is a short exact sequence:
 \begin{align}
-0 \rightarrow &\operatorname{Ext}^{1}(H_{d-1}(X;\mathbb{Z}), G) \rightarrow H^{d}(X; G) \rightarrow \cdots \\
+0 \rightarrow &\operatorname{Ext}^{1}(H_{d-1}(X;\mathbb{Z}), G) \rightarrow H^{d}(X; G) \rightarrow \cdots \nonumber\\
 \cdots \rightarrow &\operatorname{Hom}(H_{d}(X;\mathbb{Z}), G) \rightarrow 0,
 \end{align}
 which splits, though not canonically.
@@ -497,11 +497,11 @@ Let $(\mathcal{C}(X),\partial)$ be the singular chain complex of a topological s
 \begin{align}
 H_{d}(X; \mathbb{Z}) := \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}),
 \end{align}
-where $\partial_{d}$ are the boundary maps in $\mathcal{C}(X)$. The chain group $C_{d}(X)$ consists of formal sums of singular $d$-simplices in $X$ with integer coefficients. The boundary maps $\partial_{d}: C_{d}(X) \rightarrow C_{d-1}(X)$ are defined by
+where $\partial_{d}$ are the boundary maps in $\mathcal{C}(X)$. The chain group $C_{d}$ consists of formal sums of singular $d$-simplices in $X$ with integer coefficients. The boundary maps $\partial_{d}: C_{d} \rightarrow C_{d-1}$ are defined by
 \begin{align}
 \partial_{d}(\tilde{\sigma}^{(d)}) = \sum_{i=0}^{d}(-1)^{i} \tilde{\sigma}^{(d)}|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]},
 \end{align}
-where $\tilde{\sigma}^{(d)}: \tilde{\sigma}^{d} \rightarrow X$ is a singular simplex, and $\tilde{\sigma}|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]}$ denotes the restriction of $\tilde{\sigma}$ to the $i$-th face of the simplex, omitting the $i$-th vertex. The functor $\operatorname{Hom}(-, G)$ applied to $C_{d}(X)$ yields a group $\operatorname{Hom}(C_{d}(X), G)$, and the coboundary $\delta^{d}$ for the cochain complex $\operatorname{Hom}(\mathcal{C}^\flat(X), G)$ -- see Eq. \ref{cohomcomplex} -- is $\delta^{d}(f) = f \circ \partial_{d+1}$ for $f \in \operatorname{Hom}(C_{d+1}(X), G)$. This leads to the cohomology\index{cohomology groups} groups $H^{d}(X; G) := \ker(\delta^{d}) / \operatorname{im}(\delta^{d-1})$. We consider the projective resolution of $\mathcal{C}^\flat(X)$ to effectively apply the $\operatorname{Ext}^1$-functor. For an abelian group $A$, $\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G)$, where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[Vista 3.4.6, \S 3.5]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[Definition 2.2.4]{Weibel1994}: $\cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0$, where each $P_{i}$ is a projective abelian group. Then we can apply the functor $\operatorname{Hom}(-, G)$ to the projective resolution:
+where $\tilde{\sigma}^{(d)}: \tilde{\sigma}^{d} \rightarrow X$ is a singular simplex, and $\tilde{\sigma}|_{[v_0, \ldots, \hat{v}_i, \ldots, v_d]}$ denotes the restriction of $\tilde{\sigma}$ to the $i$-th face of the simplex, omitting the $i$-th vertex. The functor $\operatorname{Hom}(-, G)$ for an abelian group $G$ applied to $C_{d}$ yields a group $\operatorname{Hom}(C_{d}, G)$, and the coboundary $\delta^{d}$ for the cochain complex $\operatorname{Hom}(\mathcal{C}^\flat(X), G)$ -- see Eq. \ref{cohomcomplex} -- is $\delta^{d}(f) = f \circ \partial_{d+1}$ for $f \in \operatorname{Hom}(C_{d+1}(X), G)$. This leads to the cohomology\index{cohomology groups} groups $H^{d}(X; G) := \ker(\delta^{d}) / \operatorname{im}(\delta^{d-1})$. We consider the projective resolution of $\mathcal{C}^\flat(X)$ to effectively apply the $\operatorname{Ext}^1$-functor. For an abelian group $A$, $\operatorname{Ext}^{1}(A, G) = R^{1} \operatorname{Hom}(A, G)$, where $R^{1}$ denotes the first right derived functor of $\operatorname{Hom}$ \cite[Vista 3.4.6, \S 3.5]{Weibel1994}. To show this equality, we begin by taking a projective resolution of $A$ \cite[Definition 2.2.4]{Weibel1994}: $\cdots \to P_{2} \to P_{1} \to P_{0} \to A \to 0$, where each $P_{i}$ is a projective abelian group. Then we can apply the functor $\operatorname{Hom}(-, G)$ to the projective resolution:
 \begin{align}
 0 \to \operatorname{Hom}(P_{0}, G) \to \operatorname{Hom}(P_{1}, G) \to \operatorname{Hom}(P_{2}, G) \to \cdots.
 \end{align}
@@ -540,7 +540,7 @@ H_{d}(X^{i}; \F) \rightarrow H_{d}(X^{j}; \F) \quad \text{and} \quad H^{d}(X^{i}
 are adjoint and hence possess the same rank. Since the persistence intervals over a field are uniquely determined by the dimension and rank of the homology\index{homology} vector spaces, it follows that this holds for both homology\index{homology} and cohomology\index{cohomology}. Consequently, they share the same barcode\index{barcode}.
 \end{proof}
 
-Consider a finite filtration\index{filtration} $X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X^d \subseteq X^{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X^{d})$ for some fixed dimension $k$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X^{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X^{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X^{\infty}, X)$. For this concatenated sequence, the indices are 
+Consider a finite filtration\index{filtration} $X^{0} \subset X^{1} \subset X^{2} \subset \cdots \subset X^d \subseteq X^{\infty}$ of a topological space $X$. The homology\index{homology} groups $H_{k}(X^{d})$ for some fixed dimension $k \leq d$ serve as the initial terms for the relative homology\index{homology} groups $H_{k}(X^{\infty}, X)$. Since $H_{k}(X)$ is consistent with $H_{k}(X^{d})$ as $d$ approaches infinity, these sequences can be unified into a single sequence: $H_{k}(X) \to H_{k}(X^{\infty}, X)$. For this concatenated sequence, the indices are 
 \begin{align}
 \{0, 1, 2, \ldots, d = \bar{0}, \bar{1}, \bar{2}, \ldots, \overline{(d-1)}\},
 \end{align}
@@ -592,17 +592,13 @@ The barcode\index{barcode} $\mathrm{Pers}(H_{k}(\mathcal{X}) \rightarrow H_{k}(X
 
 \subsection{Persistent Chain Complexes}
 Alternatively, following \cite[\S 2.6]{de2011dualities}, the standard persistence module
-can be described via a filtered CW-complex $\mathcal{X}:= \bigcup_{i=0}^{d}\bigcup_{a \in I_d} \sigma_a^{(\natural)}$, adding cells for each filtration step, so that the persistence module is the sequence
+can be described via a filtered CW-complex $\mathcal{X}:= \bigcup_{k=0}^{d} \sigma_k^{(k)}$, adding a single cell for each filtration step, so that the persistence module is the sequence
 \[
 	\mathcal{C}(X): \quad C_{0} \to C_{1} \to C_{2} \to \cdots \to C_{d},
 \]
-for a finite filtration\index{filtration}, where each $C_{k}^{i} := \langle \{\sigma^{(k)}_a\}_{a \in I_0}, \{\sigma^{(k)}_a\}_{a \in I_1}, \ldots, \{\sigma^{(k)}_a\}_{a \in I_i}
-\rangle$ is a vector space (or an abelian group) over a field $\F$, generated by the $k$-simplizes $\sigma^{(k)}_a$ for $a \in I_0, I_1, \ldots, I_i$. The boundary operator
-is defined by $\partial_{\natural} \sigma^{(k)}_{j} = \sum_{i<j}\lambda_{ij}\sigma^{(k-1)}_{i}$ for $\lambda
-_{ij}\in \F$ for all $i, j \in \{0, 1, \ldots, d\}$. Then $\mathcal{C}(X) = \{C_{k},\partial_{k}\}_{k=0}^{d}$ is the chain complex of $X$, and $\mathcal{C}(\mathcal{X})$ represents the persistent version for $\mathcal{X}$. This leads to the definition
-of the persistent absolute homology\index{homology} of $\mathcal{X}$ as
+for a finite filtration\index{filtration}, where each $C_{k}^{i} := \langle \sigma_0^{(k)}, \sigma_1^{(k)}, \ldots, \sigma_i^{(k)} \rangle$ is a vector space (or an abelian group) over a field $\F$, generated by the $k$-simplizes $\sigma^{(k)}_i$. The boundary operator is defined by $\partial_{k} \sigma^{(k)}_{j} = \sum_{i<j}\lambda_{ij}\sigma^{(k-1)}_{i}$ for $\lambda_{ij}\in \F$ for all $i, j \in \{0, 1, \ldots, d\}$. Then $\mathcal{C}(X) = \{C_{k},\partial_{k}\}_{k=0}^{d}$ is the chain complex of $X$, and $\mathcal{C}(\mathcal{X})$ represents the persistent version for $\mathcal{X}$. This leads to the definition of the persistent absolute homology\index{homology} of $\mathcal{X}$ as
 \[
-	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}(X), \partial): \quad \frac{\ker(\partial_{0})}{\text{im}(\partial_{1})}
+	H_{\bullet}(\mathcal{X}) = H(\mathcal{C}(\mathcal{X}), \partial): \quad \frac{\ker(\partial_{0})}{\text{im}(\partial_{1})}
 	\to \frac{\ker(\partial_{1})}{\text{im}(\partial_{2})} \to \frac{\ker(\partial_{2})}{\text{im}(\partial_{3})}\to \cdots \to \frac{\ker(\partial_{d})}{\text{im}(\partial_{d+1})}
 	.
 \]
@@ -613,23 +609,22 @@ For the persistent absolute cohomology\index{cohomology} $H^{\bullet}(\mathcal{X
 	\mathcal{C}^{\flat}(X): \quad C^{\flat}_{1} \leftarrow C^{\flat}_{2} \leftarrow \cdots
 	\leftarrow C^{\flat}_{d},
 \]
-where $C_{i}^{\flat} = \text{Hom}(C_{i}, \F) = \langle \{\sigma^{(\natural)\flat}_a\}_{a \in I_0}, \{\sigma^{(\natural)\flat}_a\}_{a \in I_1}, \ldots, \{\sigma^{(\natural)\flat}_a\}_{a \in I_i} \rangle$, with the elements $\{\sigma^{(\natural)\flat}_a\}_{a\in I_j}$ as the dual basis of $\{\sigma^{(\natural)}_a\}_{a \in I_j}$. The coboundary $\delta
-= \partial^{\flat}$ is defined as the adjoint of $\partial$. Considering $(\mathcal{C}^{\flat}(X), \delta)$, its homology forms a module structure $H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}(X), \delta) = \ker(\delta) / \text{im}(\delta)$. This is a persistence module, with morphisms in the reverse direction.
+where $C^{i\flat}_k = \text{Hom}(C^{i}_k, \F) = \langle \sigma_0^{(k)\flat}, \sigma_1^{(k)\flat}, \ldots, \sigma_i^{(k)\flat} \rangle$, with the elements $\sigma^{(k)\flat}_i$ as the dual basis of $\sigma^{(k)}_i$. The coboundary $\delta= \partial^{\flat}$ is defined as the adjoint of $\partial$. Considering $(\mathcal{C}^{\flat}(X), \delta)$, its homology forms a module structure $H^{\bullet}(\mathcal{X}) = H(\mathcal{C}^{\flat}(\mathcal{X}), \delta) = \ker(\delta) / \text{im}(\delta)$. This is a persistence module, with morphisms in the reverse direction.
 
 \begin{example}{\cite[\S 2.6, Example]{de2011dualities}}
 	For $\mathcal{S}^{2}$, the boundary operator is given by
 	\begin{align}
 		\label{matrix}
-		\partial_0\sigma^{(0)}_{1} & = \partial_0\sigma^{(0)}_{2} = 0, \nonumber\\
-		\partial_1\sigma_{3}^{(1)} & = \partial_1\sigma_{4}^{(1)} = \sigma_{1}^{(0)}-\sigma_{2}^{(0)}, \nonumber\\
-		\partial_2\sigma_{5}^{(2)} & = \partial_2\sigma_{6}^{(2)} = \sigma_{3}^{(1)} - \sigma_{4}^{(1)}.
+		\partial_0\sigma^{(0)}_{0} & = \partial_0\sigma^{(0)}_{1} = 0, \nonumber\\
+		\partial_1\sigma_{2}^{(1)} & = \partial_1\sigma_{3}^{(1)} = \sigma_{0}^{(0)}-\sigma_{1}^{(0)}, \nonumber\\
+		\partial_2\sigma_{4}^{(2)} & = \partial_2\sigma_{5}^{(2)} = \sigma_{2}^{(1)} - \sigma_{3}^{(1)}.
 	\end{align}
 	Similarly, the coboundary operator is given by
 	\begin{align}
 		\label{transposed}
-		\delta^0\sigma_{1}^{(0)\flat} = -\delta^0\sigma_{2}^{(0)\flat} & = \sigma_{3}^{(1)\flat} + \sigma_{4}^{(1)\flat}, \nonumber\\
-		\delta^1\sigma_{3}^{(1)\flat} = -\delta^1\sigma_{4}^{(1)\flat} & = \sigma_{5}^{(2)\flat} + \sigma_{6}^{(2)\flat}, \nonumber\\
-		\delta^2\sigma_{5}^{(2)\flat} = \delta^2\sigma_{6}^{(2)\flat}  & = 0.
+		\delta^0\sigma_{0}^{(0)\flat} = -\delta^0\sigma_{1}^{(0)\flat} & = \sigma_{2}^{(1)\flat} + \sigma_{3}^{(1)\flat}, \nonumber\\
+		\delta^1\sigma_{2}^{(1)\flat} = -\delta^1\sigma_{3}^{(1)\flat} & = \sigma_{4}^{(2)\flat} + \sigma_{5}^{(2)\flat}, \nonumber\\
+		\delta^2\sigma_{4}^{(2)\flat} = \delta^2\sigma_{5}^{(2)\flat}  & = 0.
 	\end{align}
 \end{example}
 
@@ -653,36 +648,35 @@ We note that the mappings $\rightarrow$ from $\mathcal{C}(X)$ and the mappings $
 \end{figure}
 
 \begin{theorem}[Partition of persistence modules]
-	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}(X)$ be given and $\partial$ as above, then there
-	exists a partition $\{0,1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$. Furthermore, there is a basis
-	$\hat{\sigma}^{(\natural)}_{0}, \hat{\sigma}^{(\natural)}_{1}, \hat{\sigma}^{(\natural)}_{2}, \ldots, \hat{\sigma}^{(\natural)}_{d}$ of $C_{d}$ such
+	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}(\mathcal{X})$ be given and $\partial$ as above, then there
+	exists a partition $\{0,1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{C}(\mathcal{X}), \partial)$. Furthermore, there is a basis
+	$\hat{\sigma}^{(k)}_{0}, \hat{\sigma}^{(k)}_{1}, \hat{\sigma}^{(k)}_{2}, \ldots, \hat{\sigma}^{(k)}_{d}$ of $C^{d}_k$ such
 	that
 	\begin{itemize}
-		\item $C_{i} = \langle \hat{\sigma}^{(\natural)}_{0}, \hat{\sigma}^{(\natural)}_{1}, \ldots, \hat{\sigma}^{(\natural)}_{i} \rangle$ for
+		\item $C^{i}_k = \langle \hat{\sigma}^{(k)}_{0}, \hat{\sigma}^{(k)}_{1}, \ldots, \hat{\sigma}^{(k)}_{i} \rangle$ for
 			each $i$.
-		\item $\partial_{\natural}\hat{\sigma}^{(\natural)}_{b} = 0$ for all $b \in B^{\Join}$.
-		\item $\partial_{\natural}\hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$, and thus
-			$\partial_{\natural}\hat{\sigma}^{(\natural)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
+		\item $\partial_{k}\hat{\sigma}^{(k)}_{b} = 0$ for all $b \in B^{\Join}$.
+		\item $\partial_{k}\hat{\sigma}^{(k)}_{d} = \hat{\sigma}^{(k)}_{b}$, and thus
+			$\partial_{k}\hat{\sigma}^{(k)}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
 	\end{itemize}
 	It follows that the persistence diagram
-	$\operatorname{Pers}(H(\mathcal{C}(X),\partial))$ consists of $[a_{b}, \infty)$ for
+	$\operatorname{Pers}(H(\mathcal{C}(\mathcal{X}),\partial))$ consists of $[a_{b}, \infty)$ for
 	$b \in B^{\Join}$ together with intervals $[a_{b},a_{d})$ for
 	$[b,d) \in \operatorname{Pairs}$.
 \end{theorem}
 
 \begin{proof}
-	Let $\mathcal{C}(X) = \{C_{i}\}_{i \in I}$ be a filtered chain complex associated with
-	a topological space, structured over a field $\F$ for any finite index
-	set $I$. The filtration\index{filtration} indices ${0, 1, 2, \ldots, d}$, where $d = \vert I \vert$,
+	Let $\mathcal{C}(\mathcal{X})$ be a finite filtered chain complex associated with
+	a topological space, structured over a field $\F$. The filtration\index{filtration} indices ${0, 1, 2, \ldots, d}$
 	classify the stages at which elements are born or die in homology\index{homology}. The
-	partition of $\{0, 1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{\natural}\sigma^{(\natural)}_{i} = 0$ and $\sigma^{(\natural)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(\natural)}_i}$ such that for each $i$, $\hat{\sigma}^{(\natural)}
-	_{i}$ is a generator of $C_{i}$. Specifically, if $i \in B^{\Join}$, then
-	$\partial_{\natural}\hat{\sigma}^{(\natural)}_{i} = 0$, indicating these elements are cycles that persist
-	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$
-	with $b \in B$ and $d \in D$, set $\partial_{\natural}\hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$
-	and $\partial_{\natural}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
-	$\hat{\sigma}^{(\natural)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
-	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{C}(X), \partial))$ contains
+	partition of $\{0, 1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial_{k}\sigma^{(k)}_{i} = 0$ and $\sigma^{(k)}_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}^{(k)}_i}$ such that for each $i$, $\hat{\sigma}^{(k)}
+	_{i}$ is a generator of $C^{i}_k$. Specifically, if $i \in B^{\Join}$, then
+	$\partial_{k}\hat{\sigma}^{(k)}_{i} = 0$, indicating these elements are cycles that persist
+	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{C}(\mathcal{X}), \partial)$
+	with $b \in B$ and $d \in D$, set $\partial_{k}\hat{\sigma}^{(k)}_{d} = \hat{\sigma}^{(k)}_{b}$
+	and $\partial_{k}\hat{\sigma}_{b} = 0$, reflecting the fact that the cycle
+	$\hat{\sigma}^{(k)}_{b}$ born at $b$ becomes a boundary at $d$ and thus ceases to
+	contribute to homology\index{homology} past $d$. Hence, the persistence diagram $\operatorname{Pers}(H(\mathcal{C}(\mathcal{X}), \partial))$ contains
 	intervals $[a_{b}, \infty)$ for each $b \in B^{\Join}$, indicating persistent
 	homological features and intervals $[a_{b}, a_{d})$ for each
 	$[b, d) \in \operatorname{Pairs}$, describing features with finite lifespans,
@@ -690,17 +684,17 @@ We note that the mappings $\rightarrow$ from $\mathcal{C}(X)$ and the mappings $
 \end{proof}
 
 \begin{remark}{\cite[\S 2, p.516]{Edelsbrunner2000}}
-In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $(\natural)$-simplex is called positive if it belongs to a $\natural$-cycle and negative if it doesn't, respectively:
+In Theorem \ref{persistencepartition} the index sets can be reexpressed in the original language of positive and negative simplices proposed by Edelsbrunner et al. \cite[p.8]{de2011dualities}, where a $k$-simplex is called positive if it belongs to a $k$-cycle and negative if it doesn't, respectively:
 \begin{itemize}
 	\item $B$ identifies the positive simplices that remain unpaired,
 	\item $B^{\Join}$ identifies the positive simplices that do become paired,
 	\item $D$ identifies the negative simplices.
 \end{itemize}
-The simplices $\hat{\sigma}^{(\natural)}_{b}$ and $\hat{\sigma}^{(\natural)}_{d}$ are cycles characterized by
-their leading terms $\sigma^{(\natural)}_{b}$ and $\sigma^{(\natural)}_{d}$ respectively, while the simplex
-$\hat{\sigma}^{(\natural)}_{d}$ is a chain with leading term $\sigma^{(\natural)}_{d}$. This chain 'kills'
-the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(\natural)}_{b}$ through the boundary relation
-$\partial_{\natural} \hat{\sigma}^{(\natural)}_{d} = \hat{\sigma}^{(\natural)}_{b}$.
+The simplices $\hat{\sigma}^{(k)}_{b}$ and $\hat{\sigma}^{(k)}_{d}$ are cycles characterized by
+their leading terms $\sigma^{(k)}_{b}$ and $\sigma^{(k)}_{d}$ respectively, while the simplex
+$\hat{\sigma}^{(k)}_{d}$ is a chain with leading term $\sigma^{(k)}_{d}$. This chain 'kills'
+the homology\index{homology} class of its paired cycle $\hat{\sigma}^{(k)}_{b}$ through the boundary relation
+$\partial_{k} \hat{\sigma}^{(k)}_{d} = \hat{\sigma}^{(k)}_{b}$.
 \end{remark}
 
 \begin{theorem}{\cite[Proposition 2.4]{de2011dualities}}
