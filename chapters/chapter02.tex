@@ -31,7 +31,7 @@ corresponds to a single point, a $1$-simplex to a line segment between two
 points, a $2$-simplex to a triangle, and a $3$-simplex to a tetrahedron. Notably,
 a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 
-\begin{lemma}[$d$-disk to $d$-simplex]
+\begin{lemma}[$d$-simplex to $d$-disk]
 	The $d$-simplex $\sigma^{(d)}$ is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \end{lemma}
 
@@ -125,8 +125,8 @@ complex $K$ in $\mathbb{R}^{n}$, then $K$ is known as a geometric realization\in
 	\subset \mathbb{R}^{n}$, the simplex
 	$[e_{1}, e_{2}, \ldots, e_{d}]$, where $e_{i}$ represents the $i$-th unit vector.
 	In this context, $K$ refers to the subcomplex of $\sigma^{(d-1)}$ such that $[e
-		_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ with $0 \leq l \leq d$ if and only if $[v_{i_0}, \ldots
-	, v_{i_l}]$ is a simplex of $\tilde{K}$.
+		_{i_0}, \ldots, e_{i_l}]$ is a $l$-simplex of $K$ with $0 \leq l \leq d$ if and only if $\{v_{i_0}, \ldots
+	, v_{i_l}\}$ is a subset of $\tilde{K}$.
 \end{proof}
 
 Pay attention, that this result is in particular interesting for data analysis, as computer aided methods deal with finite point sets. All realizations of an abstract simplicial complex are homeomorphic to each other.
@@ -153,7 +153,7 @@ Any finite abstract simplicial complex of dimension $d$ can be realized as a sim
 \end{theorem}
 
 \begin{proof}
-Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$, $\operatorname{im}(f) = K$.  Let $V(K)$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(K) \to \mathbb{R}^{2d+1}$, which is possible because $V(K)$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each simplex $\sigma^{(k)} = [v_0, \dots, v_k]$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in \tilde{K}$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
+Let $\tilde{K}$ be a finite abstract simplicial complex of dimension $d$. We construct an injective geometric realization $f: \tilde{K} \to \mathbb{R}^{2d+1}$, $\operatorname{im}(f) = K$.  Let $V(K)$ be the vertex set of $\tilde{K}$. First, define an injective map $\tilde{f}: V(K) \to \mathbb{R}^{2d+1}$, which is possible because $V(K)$ is finite and $\mathbb{R}^{2d+1}$ has sufficient dimensionality. If necessary, we adjust $\tilde{f}$ by slight perturbations to ensure that the images of the vertices of each $k$-simplex $\sigma^{(k)} \in \tilde{K}$ are affinely independent in $\mathbb{R}^{2d+1}$. Next, extend $\tilde{f}$ to a map $f: \tilde{K} \to \mathbb{R}^{2d+1}$ by defining it on each subset $\{v_0, \dots, v_k\}$ through the unique affine map such that $f(v_i) = \tilde{f}(v_i)$. The injectivity of $\tilde{f}$ on the vertices and the affine independence of the vertex images guarantee that $f$ is injective on each simplex and preserves the simplicial structure. In particular, for any $k$-simplices $\sigma^{(k)}, \tau^{(k)} \in K$, we have $f(V(\sigma^{(k)}) \cap V(\tau^{(k)})) = f(V(\sigma^{(k)})) \cap f(V(\tau^{(k)}))$. This ensures that $f$ is a well-defined injective map on the geometric realization of $\tilde{K}$.
 \end{proof}
 
 \section{Simplicial Homology}
@@ -188,7 +188,7 @@ Henceforth, we will assume that \( (G,+) = (\mathbb{Z}, +) \).
 \begin{proof}
 	The identity element of the group is the empty chain, given by:
 	\begin{align}
-		e_{C^{\triangle}_d} = \sum_{i \in \emptyset} g_{i} \sigma_{i}^{(d)} = e_{G} = 0. 
+		e_{C^{\triangle}_d} = \sum_{i \in \emptyset} g_{i} \sigma_{i}^{(d)} =: 0. 
 	\end{align}
 				
 	The sum of two chains is defined as:
