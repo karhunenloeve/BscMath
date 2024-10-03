@@ -235,7 +235,7 @@ such that $\phi_{i}^{k} = \phi^{k}_{j} \circ \phi_{i}^{j}$ and $\phi_{i}^i = \ma
 We rephrase this definition in categorical language, which makes it easier for us to define the normal form of persistence modules\index{modules}\index{persistence modules\index{modules}}. Persistence modules\index{modules}\index{persistence modules\index{modules}} have a decomposition into interval modules\index{modules}, which cannot be further decomposed. On the other hand, an interval module is a persistence module that is indecomposable. Let $\operatorname{Vect}_\F$ be the category of finite dimensional vector spaces over $\F$. The reals are a partially ordered category $(\R, \leq)$. Consider the real persistence module:
 
 \begin{definition}[Persistence module]{\cite[\S 1.3]{chazal2016structure}}
-A persistence module is a functor $\mathcal{C}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{C^i\}_{i\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{i}^{j}: C^i \rightarrow C^j, i \leq j$, such that the following diagram commutes:
+A real persistence module is a functor $\mathcal{C}: (\R,\leq) \rightarrow \operatorname{Vect}_\F$. It is uniquely defined by a family $\{C^i\}_{i\in\R}$ of finite dimensional vector spaces over $\F$ together with morphisms $\phi_{i}^{j}: C^i \rightarrow C^j, i \leq j$, such that the following diagram commutes:
 \begin{equation}
 \begin{tikzcd}
 C^i \arrow[d, "{\phi_{i}^{j}}"' description] \arrow[r, "{\phi_{i}^{k}}" description] & C^k \\
@@ -245,7 +245,7 @@ C^j. \arrow[ru, "{\phi_{j}^{k}}" description]                                   
 \end{definition}
 
 \begin{remark}
-A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $\varphi_i: C^i \rightarrow {C'}^i$, which is compatible with the maps $\phi_{i}^{j}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}. Note, that the upper index in this particular case is not a power, but an index, induced by the partial order of the domain of the persistence module functor.
+A morphism of persistence modules\index{modules}\index{persistence modules\index{modules}} is a natural transformation. This can be written as a morphism $\varphi_i: C^i \rightarrow {C'}^i$, which is compatible with the maps $\phi_{i}^{j}$. This defines the category $\mathrm{Pers}$ of persistence modules\index{modules}\index{persistence modules\index{modules}}. Note, that the upper index in this particular case is not a power, but nothing else then an index, induced by the partial order of the domain of the persistence module functor.
 \end{remark}
 
 The category of persistence modules\index{modules}\index{persistence modules\index{modules}} is abelian. A notable consequence of the aforementioned results is that a part of the constructions for persistence modules\index{modules}\index{persistence modules\index{modules}} remain valid when the category of finite-dimensional vector spaces over a field is replaced by another abelian category. This includes, for instance, (in)finite dimensional vector spaces over other fields. It is also possible to consider persistence modules\index{modules}\index{persistence modules\index{modules}} over (co)chain complexes in place of vector spaces.
@@ -263,7 +263,7 @@ In the following, we will make a number of simplifying assumptions:
 The assumptions $1$, $2$ are referred to as finite type conditions. Assumption $1$ implies that there is a finite number of 'jumps', while we have that $C^i = C^\infty$ for $i$ large enough. Assumption $3$ is called semi-continuity and can be visualised by the following indecomposable interval modules\index{modules}:
 
 \begin{definition}[Interval module]
-Let $I$ be an interval of the form $(a,b]$ or $(a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
+Let $I$ be an interval of the form $[a,b)$ or $[a,\infty)$ with $-\infty < a < b \leq \infty$. We define an interval module $\mathbb{F}(I)$ over a field $\mathbb{F}$ as follows:
 \begin{align}
 	\mathbb{F}(I^i) = 
 	\begin{cases}
