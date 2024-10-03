@@ -327,7 +327,7 @@ Here, each $I^i$ is an interval, and $m_i$ is the multiplicity of the interval m
 At this point, we can establish a connection to spectral theory. In particular, for real-valued filtrations\index{filtrations}, the spectrum of a persistence module $\mathcal{C}$ can be represented by specific intervals arising from the decomposition of persistence modules\index{modules}\index{persistence modules\index{modules}}.
 
 \begin{definition}[Spectrum]
-A point $k \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{C}$ if, for every neighborhood $U_k$ of $k$, there exist $i < j$ in $U_k$ such that the map $f_{i}^k$ is not an isomorphism. The (finite) spectrum of $\mathcal{C}$ is defined as:
+A point $k \in \mathbb{R}$ is called a spectral point of a persistence module $\mathcal{C}$ if, for every neighborhood $U_k$ of $k$, there exist $i < j$ in $U_k$ such that the map $f_{i}^j$ is not an isomorphism. The (finite) spectrum of $\mathcal{C}$ is defined as:
 \begin{align}
 	\text{Spec}(\mathcal{C}) := \{ \text{spectral points} \} \cup \{\infty\}.
 \end{align}
@@ -335,7 +335,7 @@ A point $k \in \mathbb{R}$ is called a spectral point of a persistence module $\
 
 \begin{remark}\noindent
 \begin{itemize}
-    \item For each interval $I = (a,b]$ or $(a,\infty)$, and for any two points $i < j$ within this interval, the corresponding structure map $f_{i}^j$ of the persistence module $\mathcal{C}$ is an isomorphism. A point $k$ becomes a spectral point if, within any neighborhood $U_k$ around $k$, there exists a pair $(i, j)$ such that the map $f_{i}^j$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
+    \item For each interval $I = [a,b)$ or $[a,\infty)$, and for any two points $i < j$ within this interval, the corresponding structure map $f_{i}^j$ of the persistence module $\mathcal{C}$ is an isomorphism. A point $k$ becomes a spectral point if, within any neighborhood $U_k$ around $k$, there exists a pair $(i, j)$ with $i,j \in U_k$ such that the map $f_{i}^j$ is not an isomorphism. This identifies a change in the module's behavior, such as the birth of a new feature or the death of an existing one.
     \item The barcode\index{barcode} $\mathcal{B}(\mathcal{C})$ provides a visual and combinatorial representation of the intervals and their multiplicities. Each interval in the barcode\index{barcode} corresponds to a range of points $k$ on the real line where the persistence module maintains consistent behavior. A spectral point indicates a transition between these behaviors, which corresponds to the endpoints of intervals in the barcode\index{barcode}.
     \item The spectrum $\text{Spec}(\mathcal{C})$ summarizes the critical values on the real line where the module's structure changes. This concept is similar to the spectrum in functional analysis, where one considers the set of scalars (like eigenvalues) that describe how a linear operator acts on a vector space.
     \item Since the persistence module $\mathcal{C}$ is finitely generated, the set of intervals in its decomposition is finite. This implies that the set of spectral points, which correspond to transitions between intervals, is also finite. The inclusion of $\infty$ in $\text{Spec}(\mathcal{C})$ represents the asymptotic behavior of $\mathcal{C}$, capturing the intervals of the form $(a, \infty)$.
