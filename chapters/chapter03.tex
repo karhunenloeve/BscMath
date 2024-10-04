@@ -649,11 +649,11 @@ We note that the mappings $\rightarrow$ from $\mathcal{C}(X)$ and the mappings $
 \begin{theorem}[Partition of persistence modules]
 	{\cite[Theorem 2.6]{de2011dualities}} \label{persistencepartition} Let $\mathcal{C}(X)$ be given and $\partial$ as above, then there
 	exists a partition $\{0,1,2, \ldots, d\} = B^{\Join} \sqcup B \sqcup D$ with a bijective pairing $B \leftrightarrow D$, such that $b$ is paired with $d$ if and only if $[b,d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$. Furthermore, there is a basis
-	$\hat{\sigma}_{0}, \hat{\sigma}_{1}, \hat{\sigma}_{2}, \ldots, \hat{\sigma}_{d}$ of $C_d$ such
+	$\hat{\sigma}_{0}, \hat{\sigma}_{1}, \hat{\sigma}_{2}, \ldots, \hat{\sigma}_{d}$ of $C^d$ such
 	that
 	\begin{itemize}
-		\item $C_k = \langle \hat{\sigma}_{0}, \hat{\sigma}_{1}, \ldots, \hat{\sigma}_{k} \rangle$ for
-			each $k$.
+		\item $C^i = \langle \hat{\sigma}_{0}, \hat{\sigma}_{1}, \ldots, \hat{\sigma}_{i} \rangle$ for
+			each $i$.
 		\item $\partial\hat{\sigma}_{b} = 0$ for all $b \in B^{\Join}$.
 		\item $\partial\hat{\sigma}_{d} = \hat{\sigma}_{b}$, and thus
 			$\partial\hat{\sigma}_{b} = 0$, for all $[b,d) \in \operatorname{Pairs}$.
@@ -668,7 +668,7 @@ We note that the mappings $\rightarrow$ from $\mathcal{C}(X)$ and the mappings $
 	Let $\mathcal{C}(X)$ be a finite filtered chain complex associated with
 	a topological space, structured over a field $\F$. The filtration\index{filtration} indices ${0, 1, 2, \ldots, d}$
 	classify the stages at which elements are born or die in homology\index{homology}. The
-	partition of $\{0, 1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial\sigma_{i} = 0$ and $\sigma_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}_i}$ such that for each $i$, $\hat{\sigma}_{i}$ is a generator of $C_k$. Specifically, if $i \in B^{\Join}$, then
+	partition of $\{0, 1, 2, \ldots, d\}$ into $B^{\Join} \sqcup B \sqcup D$ is then constructed such that $B^{\Join}$ contains indices corresponding to elements that persist indefinitely, i.e., those for which $\partial\sigma_{i} = 0$ and $\sigma_{i}$ does not become a boundary at any higher index. $B$ and $D$ are paired bijectively, where each $b \in B$ (births) corresponds uniquely to an $d \in D$ (deaths), signifying the termination of the homological feature introduced at $d$. This pairing is determined through the matrix reduction of $\partial$, ensuring that every cycle born at stage $b$ becomes a boundary at stage $d$. We then construct a basis ${\hat{\sigma}_i}$ such that for each $i$, $\hat{\sigma}_{i}$ is a generator of $C^i$. Specifically, if $i \in B^{\Join}$, then
 	$\partial\hat{\sigma}_{i} = 0$, indicating these elements are cycles that persist
 	indefinitely. For pairs $[b, d) \in \operatorname{Pairs}(\mathcal{C}(X), \partial)$
 	with $b \in B$ and $d \in D$, set $\partial\hat{\sigma}_{d} = \hat{\sigma}_{b}$
@@ -706,17 +706,17 @@ $\partial \hat{\sigma}_{d} = \hat{\sigma}_{b}$.
 \begin{proof}{\textit{\cite[Proof of Proposition 2.4]{de2011dualities}}}
 The decomposition $\{0,1,2,\ldots,d\} = B^\Join \sqcup B \sqcup D$ and the new basis $\hat{\sigma}_0, \hat{\sigma}_1, \ldots, \hat{\sigma}_d$ allow us to write the persistent chain complex $\mathcal{C}(\mathcal{X})$ as a direct sum of persistent chain complexes, such that
 \begin{align}
-	\mathcal{C}(X) &= \bigoplus_{b^\Join \in B^\Join} \mathcal{C}(X)_{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{C}(X)_{bd} \nonumber\\
+	\mathcal{C}(X) &= \bigoplus_{b^\Join \in B^\Join} \mathcal{C}(X)^{b^\Join} \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \mathcal{C}(X)^{bd} \nonumber\\
 	&= \bigoplus_{b^\Join \in B^\Join} \langle \hat{\sigma}_{b^\Join} \rangle \oplus \bigoplus_{[b,d) \in \operatorname{Pairs}} \langle \hat{\sigma}_{b}, \hat{\sigma}_{d} \rangle.
 \end{align}
-The boundary operator is compatible with this decomposition, where $\partial$ is defined for each summand as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((C_d/\mathcal{C}(X)),\partial)$ separately for each summand. For summands of the form $\mathcal{C}(X)_{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
+The boundary operator is compatible with this decomposition, where $\partial$ is defined for each summand as the corresponding boundary operator of the chain complex. Therefore, we can compute the homology $H((C^d/\mathcal{C}(X)),\partial)$ separately for each summand. For summands of the form $\mathcal{C}(X)^{b^\Join}$, the persistence modules are constant over two phases, with indices in $\{0,\ldots,b^\Join - 1\}$ and $\{b^\Join, \ldots, d-1\}$. Thus,
 \begin{align}
-	((C_{b^{\Join}})_d/\mathcal{C}(X)_{b^\Join})&: \quad \langle \hat{\sigma}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
+	(C^{b^{\Join}d}/\mathcal{C}(X)^{b^\Join})&: \quad \langle \hat{\sigma}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\ker(\partial)&: \quad \langle \hat{\sigma}_{b^\Join}\rangle \rightarrow 0,\nonumber\\
 	\operatorname{im}(\partial)&: \quad 0 \rightarrow 0,\nonumber\\
 	H := \ker(\partial) / \operatorname{im}(\partial)&: \quad \langle \hat{\sigma}_{b^\Join}\rangle \rightarrow 0.
 \end{align}
-It follows that $H((C_{b^\Join})_d/\mathcal{C}(X)_{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{C}(X)))$. For summands of the type $\mathcal{C}(X)_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,b^{\Join}-1\}$, and $\{b^\Join,\ldots, d-1\}$, or explicitly:
+It follows that $H(C^{b^\Join d}/\mathcal{C}(X)^{b^\Join})$ contributes an interval of the form $[-\infty, a_{b^\Join})$, generated by the equivalence class of $[\hat{\sigma}_{b^\Join}]$, and thus has the same homological dimension as $[a_{b^{\Join}}, \infty) \in \operatorname{Pers}(H(\mathcal{C}(X)))$. For summands of the type $\mathcal{C}(X)_{bd}$, the persistence modules can be divided into constants over three phases, with indices in the ranges $\{0,\ldots,b-1\},$ $\{b,\ldots,b^{\Join}-1\}$, and $\{b^\Join,\ldots, d-1\}$, or explicitly:
 \begin{align}
 ((C_{bd})_d/\mathcal{C}(X)_{bd}) &: \quad \langle \hat{\sigma}_b, \hat{\sigma}_d \rangle \rightarrow \langle \hat{\sigma}_d \rangle \rightarrow 0,\nonumber\\
 \ker(\partial) &: \quad \langle \hat{\sigma}_b \rangle \rightarrow \langle \hat{\sigma}_d \rangle \rightarrow 0, \nonumber\\
