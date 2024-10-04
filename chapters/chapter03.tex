@@ -774,46 +774,21 @@ where \( H^k(X^i) \) denotes the \( k \)-th cohomology group of \( X^i \), and t
 \[
 H(\mathcal{C}^\dagger(X), \partial^\dagger) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X^i \subseteq X^j).
 \]
-\item The persistent relative cohomology groups associated with a filtration \( (X^i)_{0 \leq i \leq d} \) are defined as
+\item The persistent relative cohomology groups associated with a filtration \( (X^i)_{0 \leq i \leq n} \) are defined as
 \[
 H^k(X^i, X^j) = \operatorname{coker} \left( H^k(X^j) \xrightarrow{f_{i}^{j}} H^k(X^i) \right),
 \]
-where \( H^k(X^i) \) denotes the \( k \)-th cohomology group of \( X^i \), and the map \( f_{i}^{j} \) is induced by the inclusion \( i: X^i \hookrightarrow X^j \).
-
-To construct the dual boundary operator, we define \( \partial^\circ: \mathcal{C}^\circ(X) \to \mathcal{C}^\circ(X) \) by
+where \( H^k(X^i) \) denotes the \( k \)-th cohomology group of \( X^i \), and the map \( f_{i}^{j} \) is induced by the inclusion \( i: X^i \hookrightarrow X^j \). To construct the dual boundary operator, we define \( \partial^\circ: \mathcal{C}^\circ(X) \to \mathcal{C}^\circ(X) \) by $\partial^\circ(\psi) = \psi \circ \partial$, for any \( \psi \in \mathcal{C}^\circ(X) \). This operator is a graded module homomorphism of degree \( 1 \), ensuring that \( \partial^\circ \) satisfies $(\partial^\circ)^2 = 0$, due to the fact that \( \partial^2 = 0 \) in the original chain complex. We compute the cohomology of the dual complex $H^k(\mathcal{C}^\circ(X), \partial^\circ) = \ker(\partial^\circ) / \ima(\partial^\circ)$, where \( \partial^\circ: C^i \to C^{i+1} \). To establish an isomorphism with persistent relative cohomology, we observe that the module \( \mathcal{C}^\circ(X) \) encodes the algebraic structure of cochains with coefficients in \( \mathbb{F}[i] \), reflecting the inclusions of the filtration in a dual setting. The action of \( i \) in \( \mathbb{F}[i] \) represents the structure maps \( f_{i}^{i+1} \) from \( C^i \) to \( C^{i+1} \), while \( \partial^\circ \) acts compatibly as a graded map. Thus, \( H^k(\mathcal{C}^\circ(X), \partial^\circ) \) captures the persistent relative cohomology groups \( H^k(X^i, X^j) \) for all \( 0 \leq i \leq j \leq d \). Therefore, we conclude that
 \[
-\partial^\circ(\psi) = \psi \circ \partial,
+H(\mathcal{C}^\circ(X), \partial^\circ) \cong \bigoplus_{0 \leq i \leq j \leq n} H^k(X^i, X^j).
 \]
-for any \( \psi \in \mathcal{C}^\circ(X) \). This operator is a graded module homomorphism of degree \( 1 \), ensuring that \( \partial^\circ \) satisfies $(\partial^\circ)^2 = 0$, due to the fact that \( \partial^2 = 0 \) in the original chain complex.
-
-We compute the cohomology of the dual complex $H^k(\mathcal{C}^\circ(X), \partial^\circ) = \ker(\partial^\circ) / \ima(\partial^\circ)$, where \( \partial^\circ: C^i \to C^{i+1} \).
-
-To establish an isomorphism with persistent relative cohomology, we observe that the module \( \mathcal{C}^\circ(X) \) encodes the algebraic structure of cochains with coefficients in \( \mathbb{F}[i] \), reflecting the inclusions of the filtration in a dual setting. The action of \( i \) in \( \mathbb{F}[i] \) represents the structure maps \( f_{i}^{i+1} \) from \( C^i \) to \( C^{i+1} \), while \( \partial^\circ \) acts compatibly as a graded map.
-
-Thus, \( H^k(\mathcal{C}^\circ(X), \partial^\circ) \) captures the persistent relative cohomology groups \( H^k(X^i, X^j) \) for all \( 0 \leq i \leq j \leq d \). Therefore, we conclude that
-\[
-H(\mathcal{C}^\circ(X), \partial^\circ) \cong \bigoplus_{0 \leq i \leq j \leq d} H^k(X^i, X^j).
-\]
-
 \item We define the double dual complex as 
 \[
 \mathcal{C}^{\circ\dagger}(X) = \Hom_\F(\mathcal{C}^\circ(X), \F),
 \]
-where \( \mathcal{C}^\circ(X) = \Hom_{\mathbb{F}[i]}(\mathcal{C}(X), \mathbb{F}[i]) \) is the global dual complex. Thus, \( \mathcal{C}^{\circ\dagger}(X) \) serves as the dual of \( \mathcal{C}^\circ(X) \) over the field \( \mathbb{F} \), capturing cochains with coefficients in \( \mathbb{F} \).
-
-The dual boundary operator \( \partial^{\circ\dagger}: \mathcal{C}^{\circ\dagger}(X) \to \mathcal{C}^{\circ\dagger}(X) \) is defined by
+where \( \mathcal{C}^\circ(X) = \Hom_{\mathbb{F}[i]}(\mathcal{C}(X), \mathbb{F}[i]) \) is the global dual complex. Thus, \( \mathcal{C}^{\circ\dagger}(X) \) serves as the dual of \( \mathcal{C}^\circ(X) \) over the field \( \mathbb{F} \), capturing cochains with coefficients in \( \mathbb{F} \). The dual boundary operator \( \partial^{\circ\dagger}: \mathcal{C}^{\circ\dagger}(X) \to \mathcal{C}^{\circ\dagger}(X) \) is defined by $\partial^{\circ\dagger}(\phi) = \phi \circ \partial^\circ$, for any \( \phi \in \mathcal{C}^{\circ\dagger}(X) \). This definition guarantees that $(\partial^{\circ\dagger})^2 = 0$, since \( (\partial^\circ)^2 = 0 \) holds in the dual complex \( \mathcal{C}^\circ(X) \). We compute the cohomology of the double dual complex $H_k(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) = \ker(\partial^{\circ\dagger}) / \ima(\partial^{\circ\dagger})$, where \( \partial^{\circ\dagger}: C^i \to C^{i+1} \). To establish an isomorphism with persistent relative homology, we observe that the module \( \mathcal{C}^{\circ\dagger}(X) \) reflects the algebraic structure of chains in the dual-dual setting, with coefficients in \( \mathbb{F} \). The dual action captures the inverse of the structure maps \( f_{i}^{i+1} \) from \( C^i \) to \( C^{i+1} \), while \( \partial^{\circ\dagger} \) acts compatibly as a graded map. Thus, \( H_k(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \) encodes the persistent relative homology groups \( H_k(X^i, X^j) \) for all \( 0 \leq i \leq j \leq n \). Finally, we conclude that 
 \[
-\partial^{\circ\dagger}(\phi) = \phi \circ \partial^\circ,
-\]
-for any \( \phi \in \mathcal{C}^{\circ\dagger}(X) \). This definition guarantees that $(\partial^{\circ\dagger})^2 = 0$, since \( (\partial^\circ)^2 = 0 \) holds in the dual complex \( \mathcal{C}^\circ(X) \).
-
-We compute the cohomology of the double dual complex $H_k(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) = \ker(\partial^{\circ\dagger}) / \ima(\partial^{\circ\dagger})$, where \( \partial^{\circ\dagger}: C^i \to C^{i+1} \).
-
-To establish an isomorphism with persistent relative homology, we observe that the module \( \mathcal{C}^{\circ\dagger}(X) \) reflects the algebraic structure of chains in the dual-dual setting, with coefficients in \( \mathbb{F} \). The dual action captures the inverse of the structure maps \( f_{i}^{i+1} \) from \( C^i \) to \( C^{i+1} \), while \( \partial^{\circ\dagger} \) acts compatibly as a graded map.
-
-Thus, \( H_k(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \) encodes the persistent relative homology groups \( H_k(X^i, X^j) \) for all \( 0 \leq i \leq j \leq d \). Finally, we conclude that 
-\[
-H(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \cong \bigoplus_{0 \leq i \leq j \leq d} H_k(X^i, X^j).
+H(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \cong \bigoplus_{0 \leq i \leq j \leq n} H_k(X^i, X^j).
 \]
 \end{enumerate}
 \end{proof}
