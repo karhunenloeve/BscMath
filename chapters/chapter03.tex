@@ -794,27 +794,27 @@ H(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \cong \bigoplus_{0 \le
 \end{proof}
 
 \subsection{Cohomology of Chain Complexes}
-Persistent relative cohomology\index{cohomology} is structurally similar to persistent absolute homology\index{homology} \cite[\S 2.7]{de2011dualities}. We adopt Morozov's notation for the reversed sequence:
+Persistent relative cohomology\index{cohomology} is structurally similar to persistent absolute homology\index{homology}. We adopt Morozov's notation for the reversed sequence \cite[\S 2.7]{de2011dualities}:
 \begin{align}
-	(C_d / \mathcal{C}(X))^\sharp &: \quad C_d^\sharp \leftarrow (C_d / C_0)^\sharp \leftarrow (C_d / C_1)^\sharp \leftarrow \cdots \leftarrow (C_d / C_{d-1})^\sharp, \\
-	\mathcal{C}^\perp &: \quad C_0^\perp \rightarrow C_1^\perp \rightarrow C_2^\perp \rightarrow \cdots \rightarrow C_d^\perp,
+	(C^n / \mathcal{C}(X))^\sharp &: \quad C^{\sharp n} \leftarrow (C^n / C^0)^\sharp \leftarrow (C^n / C^1)^\sharp \leftarrow \cdots \leftarrow (C^n / C^{n-1})^\sharp, \\
+	\mathcal{C}^\perp &: \quad C^{\perp 0} \rightarrow C^{\perp 1} \rightarrow C^{\perp 2} \rightarrow \cdots \rightarrow C^{\perp n},
 \end{align}
-where we set \( C_i^\perp := (C_d / C_{d-i})^\sharp \). It is already known that \( \sigma_0^\sharp, \sigma_1^\sharp \ldots, \sigma_d^\sharp \) form a basis of \( C_d^\sharp \), dual to the generators \( \sigma_0, \sigma_1, \ldots, \sigma_d \) of \( C_d \). We define \( \tau_i = \sigma^\sharp_{d+1-i} \), leading to
+where we set \( C^{\perp i} := (C^n / C^{n-i})^\sharp \). It is already known that \( \sigma_0^\sharp, \sigma_1^\sharp \ldots, \sigma_n^\sharp \) form a basis of \( C^{\sharp n} \), dual to the generators \( \sigma_0, \sigma_1, \ldots, \sigma_n \) of \( C^n \). We define \( \tau_i = \sigma^\sharp_{n+1-i} \), leading to
 \begin{align}
-	C_i^\perp = \langle \sigma_d^\sharp, \sigma_{d-1}^\sharp, \ldots, \sigma_{d+1-i}^\sharp \rangle = \langle \tau_1, \tau_2, \ldots, \tau_i \rangle
+	C^{\perp i} = \langle \sigma_n^\sharp, \sigma_{n-1}^\sharp, \ldots, \sigma_{n+1-i}^\sharp \rangle = \langle \tau_1, \tau_2, \ldots, \tau_i \rangle
 \end{align}
 through elementary linear algebra, as can be seen in Example \ref{chaincomplexcohomology}.
 
 \begin{proposition}
-Let \( \partial \) be the boundary operator in homology\index{homology}. If \( \partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i \), then the corresponding coboundary operator \( \delta \) in cohomology\index{cohomology} is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$, where \( D_{ij}^\perp = D_{(d-j),(d-i)} \) is the transposed and reversed version of the matrix \( D_{ij} \). 
+Let \( \partial \) be the boundary operator in homology\index{homology}. If \( \partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i \), then the corresponding coboundary operator \( \delta \) in cohomology\index{cohomology} is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$, where \( D_{ij}^\perp = D_{(n-j),(n-i)} \) is the transposed and reversed version of the matrix \( D_{ij} \). 
 \end{proposition}
 
 \begin{proof}
-Recall the duality between homology\index{homology} and cohomology\index{cohomology}. The boundary operator \( \partial \) in homology\index{homology} is defined by its action on the basis elements \( \sigma_j \in C_d \) as $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$, where \( D_{ij} \) are the coefficients of the boundary map. The corresponding coboundary operator \( \delta \) in cohomology\index{cohomology} acts on the dual space \( C_d^\sharp \), which is spanned by the dual basis \( \{\sigma_0^\sharp, \sigma_1^\sharp, \ldots, \sigma_d^\sharp\} \), where \( \sigma_i^\sharp(\sigma_k) = \delta_{ik} \). Define \( \tau_i = \sigma^\sharp_{d+1-i} \), which reverses the index order in the dual space. The coboundary operator \( \delta \) is the adjoint of the boundary operator \( \partial \), meaning that for any \( \tau_j \in C_d^\sharp \), we have $\delta \tau_j (\sigma_k) = \tau_j(\partial \sigma_k)$. Substituting the expression for \( \partial \sigma_j \), we get $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$ and
+Recall the duality between homology\index{homology} and cohomology\index{cohomology}. The boundary operator \( \partial \) in homology\index{homology} is defined by its action on the basis elements \( \sigma_j \in C^n \) as $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$, where \( D_{ij} \) are the coefficients of the boundary map. The corresponding coboundary operator \( \delta \) in cohomology\index{cohomology} acts on the dual space \( C^{\sharp n} \), which is spanned by the dual basis \( \{\sigma_0^\sharp, \sigma_1^\sharp, \ldots, \sigma_n^\sharp\} \), where \( \sigma_i^\sharp(\sigma_k) = \delta_{ik} \). Define \( \tau_i = \sigma^\sharp_{n+1-i} \), which reverses the index order in the dual space. The coboundary operator \( \delta \) is the adjoint of the boundary operator \( \partial \), meaning that for any \( \tau_j \in C^{\sharp n} \), we have $\delta \tau_j (\sigma_k) = \tau_j(\partial \sigma_k)$. Substituting the expression for \( \partial \sigma_j \), we get $\partial \sigma_j = \sum_{i < j} D_{ij} \sigma_i$ and
 \begin{align}
 \delta \tau_j (\sigma_k) = \tau_j\left( \sum_{i < j} D_{ij} \sigma_i \right) = \sum_{i < j} D_{ij} \tau_j(\sigma_i).
 \end{align}
-By definition of the dual basis, \( \tau_j(\sigma_i) = \delta_{d+1-j,i} \), which means the action of \( \delta \) on \( \tau_j \) depends on the corresponding entries of the boundary matrix \( D_{ij} \). The coboundary operator \( \delta \) is thus governed by the transposed and index-reversed matrix \( D^\perp \), where $D_{ij}^\perp = D_{(d-j),(d-i)}$. Therefore, the action of \( \delta \) on \( \tau_j \) is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$. \end{proof}
+By definition of the dual basis, \( \tau_j(\sigma_i) = \delta_{n+1-j,i} \), which means the action of \( \delta \) on \( \tau_j \) depends on the corresponding entries of the boundary matrix \( D_{ij} \). The coboundary operator \( \delta \) is thus governed by the transposed and index-reversed matrix \( D^\perp \), where $D_{ij}^\perp = D_{(n-j),(n-i)}$. Therefore, the action of \( \delta \) on \( \tau_j \) is given by $\delta \tau_j = \sum_{i < j} D_{ij}^\perp \tau_i$. \end{proof}
 
 \begin{remark}{\cite[\S 2.7]{de2011dualities}}
 Due to the structural similarity of \( \mathcal{C}^\perp(X) \) and \( \mathcal{C}(X) \), persistent absolute cohomology\index{cohomology} is interpreted as 'relative persistent relative cohomology\index{cohomology}'.
