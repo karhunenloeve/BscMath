@@ -20,7 +20,7 @@ commonly called point cloud.
 	Formally, $\sigma^{(d)}$ is
 	defined by:
 	\begin{equation}
-		\sigma^{(d)}:= [x_0, \ldots, x_d] = \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; \bigg\vert \; \sum_{i=0}^{d}\lambda
+		\sigma^{(d)}\coloneq [x_0, \ldots, x_d] = \left\{\sum_{i=0}^{d}\lambda_{i} x_{i} \; \bigg\vert \; \sum_{i=0}^{d}\lambda
 		_{i} = 1, \; \lambda_{i} \geq 0\right\}.
 	\end{equation}
 \end{definition}
@@ -38,11 +38,11 @@ a $d$-simplex is homeomorphic to the $d$-dimensional disk $D^{d}$.
 \begin{proof}
 	Define the standard \( d \)-simplex \( \sigma^{(d)} \) as
 	\begin{align}
-		\sigma^{(d)} := \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1} \bigg\vert \sum_{i=0}^{d} x_{i} = 1, \, x_{i} \geq 0\right\}, 
+		\sigma^{(d)} \coloneq \left\{(x_{0}, \ldots, x_{d}) \in \mathbb{R}^{d+1} \bigg\vert \sum_{i=0}^{d} x_{i} = 1, \, x_{i} \geq 0\right\}, 
 	\end{align}
 	and the \( d \)-dimensional disk \( D^{d} \) as
 	\begin{align}
-		D^{d} := \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \bigg\vert \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}. 
+		D^{d} \coloneq \left\{(x_{0}, \ldots, x_{d-1}) \in \mathbb{R}^{d} \bigg\vert \sum_{i=0}^{d-1} x_{i}^{2} \leq 1\right\}. 
 	\end{align}
 					
 	We construct a homeomorphism \( f: \sigma^{(d)} \rightarrow D^{d} \) by
@@ -164,7 +164,7 @@ specific ordering of the vertices. If the vertex ordering differs from our chose
 order by an odd permutation, the orientation is considered reversed, while even permutations
 preserve the orientation. Thus, a simplex can have only two possible orientations. To denote the orientation, we use round brackets $(\cdot)$ instead of square brackets $[\cdot]$ for simplices.
 Moreover, the orientation of a \( d \)-simplex induces an orientation on its \( (d-1) \)-faces.
-Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents an oriented
+Specifically, if \( \sigma^{(d)} \coloneq (v_{0}, v_{1}, \ldots, v_{d}) \) represents an oriented
 \( d \)-simplex, then the orientation of the \( (d-1) \)-face \( \tau_i^{(d-1)} \) of
 \( \sigma^{(d)} \), omitting the vertex \( v_{i} \), is given by
 \begin{equation}
@@ -175,7 +175,7 @@ Specifically, if \( \sigma^{(d)} := (v_{0}, v_{1}, \ldots, v_{d}) \) represents 
 	\label{d-Chain}
 	Given a set \(\{\sigma_{0}^{(d)}, \ldots, \sigma_{k}^{(d)}\}\) of arbitrarily oriented \(d\)-simplices in a complex \(K\) and an abelian group\index{abelian group} \((G,+)\), a \(d\)-chain \(c\) with coefficients \(g_{i} \in G\) is defined as a formal sum\index{formal sum}:
 	\begin{align}
-		c := g_{0}\sigma^{(d)}_{0} + g_{1}\sigma^{(d)}_{1} + \ldots + g_{k}\sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i}\sigma^{(d)}_{i}. 
+		c \coloneq g_{0}\sigma^{(d)}_{0} + g_{1}\sigma^{(d)}_{1} + \ldots + g_{k}\sigma^{(d)}_{k} = \sum_{i=0}^{k} g_{i}\sigma^{(d)}_{i}. 
 	\end{align}
 \end{definition}
 
@@ -188,7 +188,7 @@ Henceforth, we will assume that \( (G,+) = (\mathbb{Z}, +) \).
 \begin{proof}
 	The identity element of the group is the empty chain, given by:
 	\begin{align}
-		e_{C^{\triangle}_d} = \sum_{i \in \emptyset} g_{i} \sigma_{i}^{(d)} =: 0. 
+		e_{C^{\triangle}_d} = \sum_{i \in \emptyset} g_{i} \sigma_{i}^{(d)} \coloneq 0. 
 	\end{align}
 				
 	The sum of two chains is defined as:
@@ -270,7 +270,7 @@ The compatibility with addition can in principle be seen by the definition of th
 				
 	This property can be generalized to higher dimensions through induction. Therefore, since \( \partial_d \) is a group homomorphism and the chain \( c \) is a sum of \( d \)-simplices, we conclude for $d \geq 1$:
 	\begin{align}
-		\partial^{2}_d(c) := \partial_{d-1}(\partial_{d}(c)) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\triangle}_{d}. 
+		\partial^{2}_d(c) \coloneq \partial_{d-1}(\partial_{d}(c)) = 0 \quad \text{for any \( d \)-chain \( c \) in } C^{\triangle}_{d}. 
 	\end{align}
 				
 	Consequently, the boundary of the boundary is zero. Moreover, if the boundary of a simplex is zero, it is referred to as a cycle. By this definition, we can deduce that the boundary of any simplex is a cycle.
@@ -282,7 +282,7 @@ The compatibility with addition can in principle be seen by the definition of th
 
 We denote the set of \( d \)-cycles of a complex \( K \) over an abelian group $G$ - and in particular in this thesis over the group \( \mathbb{Z} \) - as \( Z^{\triangle}_{d} \), the simplicial cycle group. It is important to note that \( Z^{\triangle}_{d} \) is a subgroup of \( C^{\triangle}_{d} \) and can also be expressed as:
 \begin{align}
-	Z^{\triangle}_{d} := \ker(\partial_{d}). 
+	Z^{\triangle}_{d} \coloneq \ker(\partial_{d}). 
 \end{align}
 
 A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if it can be expressed as the boundary of a \( (d+1) \)-chain in \( K \), where \( d = 0, 1, \ldots, k-1 \). In other words, a cycle is considered a boundary if it can be 'filled in' by a higher-dimensional chain. This equivalence relation is denoted as \( c \sim 0 \).
@@ -291,12 +291,12 @@ A \( d \)-cycle of a \( k \)-complex \( K \) is said to be homologous to zero if
 	The subgroup of $Z^{\triangle}_{d}$ consisting of boundaries is referred to as the simplicial boundary group $B^{\triangle}_{d}$.
 \end{definition}
 
-It is worth noting that \( B^{\triangle}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\triangle}_{d} \) is a subgroup of \( Z^{\triangle}_{d} \) and \( Z^{\triangle}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\triangle}_{d} \) is normal. Therefore, we can construct the group quotient $H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d}$. 
+It is worth noting that \( B^{\triangle}_{d} \) is equal to the image of the boundary operator \( \partial_{d+1} \). Since \( B^{\triangle}_{d} \) is a subgroup of \( Z^{\triangle}_{d} \) and \( Z^{\triangle}_{d} \) is an abelian group\index{abelian group}, every subgroup of \( Z^{\triangle}_{d} \) is normal. Therefore, we can construct the group quotient $H^{\triangle}_{d} \coloneq Z^{\triangle}_{d} / B^{\triangle}_{d}$. 
 
 \begin{definition}[Simplicial homology group]{\cite[\S 2, p.106]{hatcher2005algebraic}} 
 	The group \( H^{\triangle}_{d} \) represents the \( d \)-dimensional simplicial homology\index{homology} group of the complex \( K \) over \( \mathbb{Z} \). It is expressed as the group quotient:
 	\begin{align}
-		H^{\triangle}_{d} := Z^{\triangle}_{d} / B^{\triangle}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
+		H^{\triangle}_{d} \coloneq Z^{\triangle}_{d} / B^{\triangle}_{d} = \ker(\partial_{d}) / \operatorname{im}(\partial_{d+1}). 
 	\end{align}
 \end{definition}
 
@@ -636,7 +636,7 @@ In order to demonstrate the equivalence of \( H_{d}^{\triangle} \) and \( H_{d} 
 \label{ExactandShortExactSequences}
 We can apply Theorem \ref{chainmaps} to the case of singular\index{singular} homology. Consider two topological\index{topological} spaces \( X \) and \( Y \). For any map \( f: X \rightarrow Y \), we can define an induced homomorphism \( f_{\star}: C_{d}(X) \rightarrow C_{d}(Y) \) by composing singular\index{singular} \( d \)-simplices\index{simplices} \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow X \) with \( f \). Specifically, we have
 \begin{align}
-	f_{\star} := f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y. 
+	f_{\star} \coloneq f \circ \tilde{\sigma}^{(d)}: \sigma^{(d)} \rightarrow Y. 
 \end{align}
 
 We can extend this definition by applying \( f_{\star} \) to \( d \)-chains in \( C_{d}(X) \). This gives us the following commutative diagram:
@@ -1011,7 +1011,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 	\end{align}
 	Now we can drop the group\index{group} $LC_{-1}(Y)$ again, and the relation $\partial_{d+1} T_{d} + T_{d-1}\partial_{d} = \mathbb{I} - S_d$ still holds since $T_{-1}$ is zero for $LC_{-1}(Y)$.
 		
-	\item Barycentric subdivision of general chains \cite[Proposition 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_d(X) \). Define the operator\index{operator} \( S_d: C_d(X) \to C_d(X) \) by \( S_d\tilde{\sigma}^{(d)} := \sigma_\star S_d\sigma^{(d)} \), where \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \) is a singular \( d \)-simplex\index{simplex}, and \( S_d\sigma^{(d)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( d \)-simplex\index{simplex} \( \sigma^{(d)} \). The barycentric\index{barycentric} subdivision \( S_d\sigma^{(d)} \) is a signed sum of the \( d \)-simplices that make up the subdivision of \( \sigma^{(d)} \). We will now prove that \( S_d \) is a chain map, i.e., that \( S_d \) commutes with the boundary operator\index{operator}, \( S_{d-1}\partial_{d} = \partial_d S_d \):
+	\item Barycentric subdivision of general chains \cite[Proposition 2.21 (3)]{hatcher2005algebraic}: Consider the chain complex \( C_d(X) \). Define the operator\index{operator} \( S_d: C_d(X) \to C_d(X) \) by \( S_d\tilde{\sigma}^{(d)} \coloneq \sigma_\star S_d\sigma^{(d)} \), where \( \tilde{\sigma}^{(d)}: \sigma^{(d)} \to X \) is a singular \( d \)-simplex\index{simplex}, and \( S_d\sigma^{(d)} \) denotes the barycentric\index{barycentric} subdivision of the standard \( d \)-simplex\index{simplex} \( \sigma^{(d)} \). The barycentric\index{barycentric} subdivision \( S_d\sigma^{(d)} \) is a signed sum of the \( d \)-simplices that make up the subdivision of \( \sigma^{(d)} \). We will now prove that \( S_d \) is a chain map, i.e., that \( S_d \) commutes with the boundary operator\index{operator}, \( S_{d-1}\partial_{d} = \partial_d S_d \):
 	\begin{align}
 		\partial_d S_d\tilde{\sigma}^{(d)} & = \partial_d (\sigma_\star S_d\sigma^{(d)}) = \sigma_\star \partial_d (S_d\sigma^{(d)}) = \sigma_\star S_{d-1}(\partial_d \sigma^{(d)}) \nonumber\\
 		                 & = \sigma_\star S_{d-1}\left(\sum_i (-1)^i \sigma^{(d-1)}_i\right) \nonumber\\
@@ -1020,7 +1020,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		                 & = S_{d-1}\left(\sum_i (-1)^i \tilde{\sigma}^{(d-1)} \vert_{\sigma^{(d-1)}_i}\right) \nonumber\\
 		                 & = S_{d-1}(\partial_{d} \tilde{\sigma}^{(d)}). 
 	\end{align}
-	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} := \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T_d \) provides a chain homotopy between the subdivision operator\index{operator} \( S_d \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \). The verification is as follows:
+	Next, define the operator\index{operator} \( T_d \) on \( C_d(X) \) by \( T_d\tilde{\sigma}^{(d)} \coloneq \sigma_\star T_d\sigma^{(d)} \), where \( \sigma_\star \) denotes the pullback by \( T_d\sigma^{(d)} \). We will show that \( T_d \) provides a chain homotopy between the subdivision operator\index{operator} \( S_d \) and the identity map, satisfying \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \). The verification is as follows:
 	\begin{align}
 		\partial_{d+1} T_d\tilde{\sigma}^{(d)} & = \partial_{d+1} (\sigma_\star T_d\sigma^{(d)}) = \sigma_\star (\partial_{d+1} T_d\sigma^{(d)}) \nonumber\\
 		                 & = \sigma_\star (\sigma^{(d)} - S_{d}\sigma^{(d)} - T_{d-1}\partial_{d} \sigma^{(d)}) \nonumber\\
@@ -1037,7 +1037,7 @@ The equivalence is demonstrated by setting \( B = X \setminus Z \) and \( Z = X 
 		& = \sum_{0 \leq i < m} (S_{d}^i - S_{d}^{i+1}) \nonumber\\
 		&= \mathbb{I} - S^m_{d}.                                                       
 	\end{align}
-	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( \mathcal{C}^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} := D_d^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
+	In the calculation, we use the fact that \( T_{d-1}\partial_{d} + \partial_{d+1} T_{d} = \mathbb{I} - S_{d} \), which shows that \( D^m_d \) serves as a homotopy between the identity map \( \mathbb{I} \) and \( S^m_d \). For each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \), there exists an integer \( m \) such that \( S^m_d(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \), where \( \mathcal{U}(X) \) is an open cover of \( X \). In this context, \( \mathcal{C}^{\mathcal{U}}(X) \) denotes the chain complex where simplices are refined to align with the cover \( \mathcal{U} \). This holds because, for sufficiently large \( m \), the simplices of \( S^m_d(\sigma^{(d)}) \) have diameters smaller than a Lebesgue number for the cover of \( \sigma^{(d)} \) by the open sets \( (\tilde{\sigma}^{(d)})^{-1}(\operatorname{int}(U_j)) \).\footnote{The Lebesgue number is a positive real number \( \epsilon \) such that any set with diameter less than \( \epsilon \) is contained within some element of the cover. The existence of such a number is guaranteed by the compactness of \( \sigma^{(d)} \). Since \( m \) may vary depending on \( \tilde{\sigma}^{(d)} \), we define \( m(\tilde{\sigma}^{(d)}) \) as the smallest integer such that \( S_d^m(\tilde{\sigma}^{(d)}) \) lies in \( C_d^{\mathcal{U}}(X) \).} We define the operator\index{operator} \( D_d : C_d(X) \to C_{d+1}(X) \) by \( D_d\tilde{\sigma}^{(d)} \coloneq D_d^{m(\tilde{\sigma}^{(d)})}(\tilde{\sigma}^{(d)}) \) for each singular \( d \)-simplex\index{simplex} \( \tilde{\sigma}^{(d)} : \sigma^{(d)} \to X \). Our objective is to find a chain map \( \rho : C_d(X) \to C_d(X) \) whose image lies in \( C_d^{\mathcal{U}}(X) \), and which satisfies the chain homotopy equation
 	\begin{align}
 		\partial_{d+1} D_{d} + D_{d-1} \partial_{d}= \mathbb{I} - \rho. 
 	\end{align}
