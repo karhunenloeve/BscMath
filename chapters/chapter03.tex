@@ -750,8 +750,8 @@ These are graded $\F[i]$-modules\index{modules} themselves. The operations $-^\c
 \begin{theorem}\noindent
 \begin{enumerate}
 \item \(H_\bullet(\mathcal{C}(X), \partial) \; \widehat{=} \; \text{persistent absolute homology\index{homology} of } \mathcal{X}.\)
-\item \(H_\bullet(\mathcal{C}^\dagger(X), \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
-\item \(H_\bullet(\mathcal{C}^\circ(X), \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H^\bullet(\mathcal{C}^\dagger(X), \partial^\dagger) \; \widehat{=} \; \text{persistent absolute cohomology\index{cohomology} of } \mathcal{X}.\)
+\item \(H^\bullet(\mathcal{C}^\circ(X), \partial^\circ) \; \widehat{=} \; \text{persistent relative cohomology\index{cohomology} of } \mathcal{X}.\)
 \item \(H_\bullet(\mathcal{C}^{\circ\dagger}(X), \partial^{\circ\dagger}) \; \widehat{=} \; \text{persistent relative homology\index{homology} of } \mathcal{X}.\)
 \end{enumerate}
 \end{theorem}
@@ -830,9 +830,9 @@ If the boundary map for \( \partial \sigma_2 \) is given by:
 \[
 	\partial \sigma_2 = D_{20} \sigma_0 + D_{21} \sigma_1,
 \]
-then the coboundary operator \( \delta \) acts on \( \tau_0 \) as:
+then the coboundary operator \( \delta \) acts on \( \tau_2 \) as:
 \[
-	\delta \tau_0 = D_{21}^\perp \tau_1 + D_{20}^\perp \tau_2,
+	\delta \tau_2 = D_{21}^\perp \tau_1 + D_{20}^\perp \tau_0,
 \]
 where \( D_{21}^\perp = D_{12} \) and \( D_{20}^\perp = D_{02} \) are the transposed entries.
 \end{example}
@@ -856,7 +856,7 @@ Let \( \{\hat{\sigma}_0^\sharp, \ldots, \hat{\sigma}_n^\sharp \}\) be the dual o
 \end{corollary}
 
 \begin{proof}
-We use Theorem \ref{persistencepartition} and obtain a partition of indices \( \{0, 1, 2, \ldots, n\} = B \sqcup B^{\Join} \sqcup D \) for \( \mathcal{C}^\perp(X) \) and new generators \( \hat{\tau}_i \), where:
+We use Theorem \ref{persistencepartition} and obtain a partition of indices \( \{0, 1, 2, \ldots, n\} = B^{\Join} \sqcup B \sqcup  D \) for \( \mathcal{C}^\perp(X) \) and new generators \( \hat{\tau}_i \), where:
 \begin{align}
 \delta \hat{\tau}_i = 0 \quad \text{for } i \in B \sqcup D, \quad \delta \hat{\tau}_d = \hat{\tau}_b \quad \text{for pairs } (b,d) \in \text{Pairs}(\mathcal{C}^\perp(X), \delta).
 \end{align}
