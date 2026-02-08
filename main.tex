@@ -1,0 +1,166 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{ragged2e}
+\usepackage[a4paper, margin=31mm, bindingoffset=4mm]{geometry}
+\usepackage[mathscr]{euscript}
+\usepackage[protrusion=true, expansion=true]{microtype}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{tikz}
+\usepackage{imakeidx}
+\makeindex[columns=2,
+title=Index]
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{fbb}
+\usepackage{extarrows}
+\usepackage{euler}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\usepackage{etoolbox}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{breqn}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{adjustbox}
+\usepackage{tikz-cd}
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelsep=colon, labelformat=simple, labelfont=sc}
+\usepackage[style=nature, sorting=nty]{biblatex}
+\addbibresource{main.bib}
+\graphicspath{{images/}}
+\usepackage{xcolor}
+\usetikzlibrary{shapes.geometric, positioning, fit, calc}
+\allowdisplaybreaks
+\definecolor{darkred}{rgb}{0.7, 0, 0}
+\definecolor{azureblue}{rgb}{0, 0.5, 1}
+\definecolor{golden}{rgb}{1, 0.8, 0.2}
+
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\X}{{\mathcal{X}}}
+\newcommand{\V}{{\mathcal{V}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\ima}{\mathrm{im}}
+\newcommand{\Hom}{{\mathrm{Hom}}}
+
+\newtheorem{conj}{Conjecture}
+\numberwithin{conj}{section}
+\newtheorem{definition}[conj]{Definition}
+\newtheorem{remark}[conj]{Remark}
+\newtheorem{example}[conj]{Example}
+\newtheorem{theorem}[conj]{Theorem}
+\newtheorem{lemma}[conj]{Lemma}
+\newtheorem{proposition}[conj]{Proposition}
+\newtheorem{corollary}[conj]{Corollary}
+\newtheorem{assume}[conj]{Assumption}
+
+% Line spacing (consistent baseline grid)
+\setlength{\lineskip}{0pt} % No extra space between lines
+\setlength{\lineskiplimit}{0pt} % Prevent any additional line spacing
+
+% Paragraph indentation and uniform line spacing
+\setlength{\parindent}{20pt} % Standard paragraph indent, no variation
+\setlength{\baselineskip}{2.5\baselineskip} % Uniform line spacing across all lines (1.5 ensures readability while being consistent)
+
+% No extra space between paragraphs (homogeneous feel)
+\setlength{\parskip}{0pt} % No space between paragraphs
+
+% Additional fine-tuning for homogeneity
+\setlength{\topskip}{0pt} % Removes any potential top spacing inconsistency
+\setlength{\abovedisplayskip}{0pt} % No extra space above displays
+\setlength{\belowdisplayskip}{0pt} % No extra space below displays
+
+\setlength{\emergencystretch}{3em}
+\sloppy
+
+\title{Algebraic and Topological Persistence}
+\author{Luciano Melodia}
+\date{\today}
+
+\begin{document}
+\vspace{0.5cm}
+\input{titlepage}
+\input{abstract}
+
+\chapter*{Dedication}
+I dedicate this thesis to those closest to me, who have provided invaluable support throughout this journey. I could not have written these pages or undertaken this path without the indispensable support I received.
+
+My academic career took me through German and Italian studies, then to a major in Information Science with a focus on Media Informatics, culminating in a Master's degree from Regensburg. I then did a three-year doctoral programme in Computer Science at Erlangen, after which I shifted my focus to theoretical Mathematics. Throughout, I was driven by a desire to understand the underlying structures of language and computing. I am proud of these experiences and the insights they have given me.
+
+I am grateful to my mother, Beata, who supported my decisions wholeheartedly once they were made, despite initial reservations.
+
+I would like to thank my late father, Domenico, for teaching me to value the past more than the future.
+
+I'd also like to thank my sister Dominique and her husband Maxwell, who never let up on me about physics and political subjects. They made sure I kept up with these subjects whenever we had time to chat about them.
+
+To Luciana, who brought joy and laughter back into my life during challenging times -- thank you.
+
+Also to Luciano and Arianna, who listened to me in difficult times and welcomed me to Sicily with delicious cassata.
+
+And to all those unnamed, if these words strike a chord, I am aware that you have touched my life in significant ways.
+
+I have learned a great deal from each of you.
+
+\chapter*{Declaration}
+I hereby declare that I
+
+\begin{itemize}
+	\item alone wrote the submitted Bachelor's thesis without illicit or improper
+	      assistance.
+	      	      
+	\item did not use any materials other than those listed in the bibliography and
+	      that all passages taken from these sources in part or in full have been marked
+	      as citations and their sources cited individually in the thesis. Citations
+	      include the version (edition and year of publication) and paragraphs of the used materials.
+	      	      
+	\item have not submitted this Bachelor's thesis to another institution and that
+	      it has never been used for other purposes or to fulfill other requirements.
+\end{itemize}
+
+\vspace{2cm}
+\begin{tabular}{@{}p{5in}p{2in}p{2in}@{}}
+	\hrulefill\newline
+	Luciano Melodia M.A., B.A. \\
+	Department of Mathematics \\
+	Friedrich-Alexander University Erlangen-Nürnberg
+\end{tabular}
+
+\chapter*{Acknowledgements}
+I would like to express my gratitude to Prof. Dr. Catherine Meusburger, who not only taught me the rigours of the Bachelor's programme in Mathematics but also illuminated the more complex concepts of Linear Algebra I and II. Her assistance during our early sessions was crucial. We met in the study room to discuss exercise sheets and her guidance was invaluable. I am particularly grateful for the moments she joined us after a refreshing cup of coffee, skillfully translating challenging problems into clear solutions on the blackboard with swift strokes of chalk.
+
+I would like to express my gratitude to my supervisor, Prof. Dr. Kang Li. His willingness to engage in discussions was instrumental in motivating me, particularly when I was overwhelmed by the vast sea of scientific papers and theorems. Prof. Li's expertise in simplifying complex research for my bachelor's thesis was priceless, and his guidance has been a driving force in my early academic journey in Mathematics.
+
+I would be remiss if I did not acknowledge the invaluable contributions of my friends and colleagues, including Luciana Diaconescu, who helped proofreading, Philipp Gäbelein, Michael Schleich, Aneek Butt, Sarah Wiesend, Adrian Hieber, Thomas Reichelt, Moritz Lanz, Sebastian Müller, Thomas Büttner, Anton Rechenauer, Tobias Simon, Michael Preeg, Constantin Winkler and Anton Hoof. I'd like to give my deepest cordial gratitude to Marie-Louise Isenberg. Without her, I probably wouldn't be here.
+
+They all made my days better, supported me unwaveringly, and their presence was essential to my achievements. I know they will succeed wherever they are now, and I am always here for them.
+
+\newpage
+\tableofcontents
+
+\singlespacing
+\chapter{Motivation}
+\input{chapters/chapter01}
+
+\chapter{Topological Spaces and Groups}
+\input{chapters/chapter02}
+
+\chapter{Homological Persistence}
+\input{chapters/chapter03}
+
+\singlespacing
+\printbibliography
+
+\newpage
+\printindex
+\end{document}
